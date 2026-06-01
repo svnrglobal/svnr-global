@@ -300,22 +300,34 @@ export default function BlogArticle() {
         ogImage={`https://svnrglobal.com${article.image}`}
         ogType="article"
         articlePublishedTime="2026-06-01T00:00:00Z"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "Article",
-          "headline": article.title,
-          "description": articleDescription,
-          "image": `https://svnrglobal.com${article.image}`,
-          "datePublished": "2026-06-01T00:00:00Z",
-          "dateModified": "2026-06-01T00:00:00Z",
-          "author": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-          "publisher": {
-            "@type": "Organization",
-            "name": "SVNR Global",
-            "logo": { "@type": "ImageObject", "url": "https://svnrglobal.com/svnr-logo.svg" }
-          },
-          "mainEntityOfPage": { "@type": "WebPage", "@id": `https://svnrglobal.com/blog/${article.slug}` }
-        }}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": article.title,
+            "description": articleDescription,
+            "image": `https://svnrglobal.com${article.image}`,
+            "datePublished": "2026-06-01T00:00:00Z",
+            "dateModified": "2026-06-01T00:00:00Z",
+            "author": {
+              "@type": "Person",
+              "name": "Hamza",
+              "url": "https://svnrglobal.com/about",
+              "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "SVNR Global",
+              "logo": { "@type": "ImageObject", "url": "https://svnrglobal.com/og-image.png" }
+            },
+            "mainEntityOfPage": { "@type": "WebPage", "@id": `https://svnrglobal.com/blog/${article.slug}` }
+          }
+        ]}
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Blog", url: "/blog" },
+          { name: article.title, url: `/blog/${article.slug}` },
+        ]}
       />
       {/* HERO */}
       <section className="relative w-full h-[70vh] flex items-end overflow-hidden">
@@ -377,6 +389,29 @@ export default function BlogArticle() {
               )}
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* AUTHOR BIO */}
+      <section className="relative z-10 bg-[#0A0A0B] px-6 pb-10">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="flex items-start gap-5 liquid-glass rounded-2xl p-6"
+          >
+            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-white font-medium text-lg">
+              H
+            </div>
+            <div>
+              <p className="text-white font-medium text-sm mb-1">Written by Hamza</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-3">Founder, SVNR Global</p>
+              <p className="text-white/50 text-sm leading-relaxed">
+                Hamza leads SVNR Global's client acquisition infrastructure practice. He works with premium operators across luxury, private equity, real estate, and high-ticket B2B to build systematic outreach systems that generate qualified pipeline — without ads, referrals, or trade fair dependency.
+              </p>
+            </div>
+          </motion.div>
         </div>
       </section>
 

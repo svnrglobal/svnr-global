@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { BarChart, Bar, AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 const aovData = [
   { ch: "D2C", aov: 100 }, { ch: "Trade Q1", aov: 180 }, { ch: "Trade Q2", aov: 260 }, { ch: "Trade Q3", aov: 312 },
@@ -21,6 +22,16 @@ const services = [
 export default function HighTicketEcommerce() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+      <SEO
+        title="High-Ticket E-commerce Client Acquisition | SVNR Global | SVNR Global"
+        description="For premium D2C and wholesale operators looking to grow average order value and trade buyer relationships. AI-powered outreach that converts."
+        canonical="/sectors/high-ticket-ecommerce"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Sectors", url: "/sectors" },
+          { name: "High-Ticket E-commerce", url: "/sectors/high-ticket-ecommerce" },
+        ]}
+      />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
         <img src="/sectors/ecommerce-EA694261-B27B-44EA-9C9C-02F22C06A07B.jpg" alt="High-Ticket E-commerce" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />

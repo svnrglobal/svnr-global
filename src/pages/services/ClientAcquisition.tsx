@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Target, Map, Mail, Handshake } from "lucide-react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 const gradient = "linear-gradient(135deg, #667eea, #764ba2)";
 
@@ -33,6 +34,16 @@ const sectors = ["Luxury Rugs", "Premium Real Estate", "Private Equity", "Wealth
 export default function ClientAcquisition() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+      <SEO
+        title="Client Acquisition — AI-Powered B2B Outreach | SVNR Global"
+        description="We identify, reach, and warm the exact decision-makers in your market. Continuously. Without your time."
+        canonical="/services/client-acquisition"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Client Acquisition", url: "/services/client-acquisition" },
+        ]}
+      />
       {/* HERO */}
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
         <video

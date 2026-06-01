@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 const aumData = [
   { m: "M1", contacts: 20 }, { m: "M3", contacts: 60 }, { m: "M6", contacts: 120 },
@@ -24,6 +25,16 @@ const services = [
 export default function WealthManagement() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+      <SEO
+        title="Wealth Management Client Acquisition | SVNR Global | SVNR Global"
+        description="We help wealth management boutiques and RIAs expand their UHNW client base with discretion. AI-driven prospect mapping and personalised outreach to qualified principals."
+        canonical="/sectors/wealth-management"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Sectors", url: "/sectors" },
+          { name: "Wealth Management", url: "/sectors/wealth-management" },
+        ]}
+      />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
         <img src="/sectors/wealth-photo-1444653614773-995cb1ef9efa.avif" alt="Wealth Management" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />

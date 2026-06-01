@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Database, Zap, TrendingUp, BarChart2 } from "lucide-react";
 import { BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 const gradient = "linear-gradient(135deg, #f093fb, #f5576c)";
 
@@ -36,6 +37,16 @@ const sectors = ["Private Equity", "B2B Luxury", "Professional Services", "High-
 export default function RevenueOperations() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+      <SEO
+        title="Revenue Operations — Pipeline Management & Automation | SVNR Global"
+        description="Full-funnel revenue ops built around your deal cycle. Every stage tracked. Every signal acted on. No more pipeline surprises."
+        canonical="/services/revenue-operations"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Services", url: "/services" },
+          { name: "Revenue Operations", url: "/services/revenue-operations" },
+        ]}
+      />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
         <video className="absolute inset-0 w-full h-full object-cover z-0" src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_115655_b4d9cd77-feed-43cd-a198-af78ebdf1f7a.mp4" autoPlay loop muted playsInline />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.55) 55%, rgba(10,10,11,0.25) 100%)" }} />

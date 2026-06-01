@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 
 const enquiryData = [
@@ -36,6 +37,16 @@ const insights = [
 export default function LuxuryRugs() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+      <SEO
+        title="Luxury Rugs & Home Textiles Client Acquisition | SVNR Global | SVNR Global"
+        description="Systematic B2B outreach for luxury rug and carpet brands building international distribution. We map the A&D community in your target markets and deliver qualified enquiries."
+        canonical="/sectors/luxury-rugs-home-textiles"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Sectors", url: "/sectors" },
+          { name: "Luxury Rugs & Home Textiles", url: "/sectors/luxury-rugs-home-textiles" },
+        ]}
+      />
       {/* HERO */}
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
         <img src="/sectors/luxury-rugs-photo-1600166930985-a86f7295dd99.avif" alt="Luxury Rugs" className="absolute inset-0 w-full h-full object-cover z-0" />

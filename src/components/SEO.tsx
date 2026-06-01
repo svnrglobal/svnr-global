@@ -1,5 +1,10 @@
 import { useEffect } from "react";
 
+interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
+
 interface SEOProps {
   title: string;
   description: string;
@@ -8,12 +13,13 @@ interface SEOProps {
   ogType?: "website" | "article";
   articlePublishedTime?: string;
   schema?: object | object[];
+  breadcrumbs?: BreadcrumbItem[];
   noindex?: boolean;
 }
 
 const SITE_NAME = "SVNR Global";
 const SITE_URL = "https://svnrglobal.com";
-const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.svg`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 const TWITTER_HANDLE = "@svnrglobal";
 
 export default function SEO({
@@ -24,6 +30,7 @@ export default function SEO({
   ogType = "website",
   articlePublishedTime,
   schema,
+  breadcrumbs,
   noindex = false,
 }: SEOProps) {
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
@@ -97,11 +104,28 @@ export default function SEO({
     setMeta("twitter:image", ogImage);
 
     // JSON-LD structured data
-    if (schema) {
-      const schemas = Array.isArray(schema) ? schema : [schema];
-      schemas.forEach((s, i) => setScript(`ld-json-${i}`, s));
+    const breadcrumbSchema = breadcrumbs && breadcrumbs.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": breadcrumbs.map((item, idx) => ({
+            "@type": "ListItem",
+            "position": idx + 1,
+            "name": item.name,
+            "item": `${SITE_URL}${item.url}`,
+          })),
+        }
+      : null;
+
+    const allSchemas = [
+      ...(schema ? (Array.isArray(schema) ? schema : [schema]) : []),
+      ...(breadcrumbSchema ? [breadcrumbSchema] : []),
+    ];
+
+    if (allSchemas.length > 0) {
+      allSchemas.forEach((s, i) => setScript(`ld-json-${i}`, s));
       // Clean up any extras from a previous page
-      let i = schemas.length;
+      let i = allSchemas.length;
       while (document.getElementById(`ld-json-${i}`)) {
         removeScript(`ld-json-${i}`);
         i++;
@@ -114,7 +138,7 @@ export default function SEO({
         i++;
       }
     }
-  }, [fullTitle, description, canonicalUrl, ogImage, ogType, articlePublishedTime, schema, noindex]);
+  }, [fullTitle, description, canonicalUrl, ogImage, ogType, articlePublishedTime, schema, breadcrumbs, noindex]);
 
   return null;
 }

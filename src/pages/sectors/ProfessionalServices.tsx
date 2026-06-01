@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 const mandateData = [
   { q: "Q1", mandates: 2 }, { q: "Q2", mandates: 4 }, { q: "Q3", mandates: 5 }, { q: "Q4", mandates: 6 },
@@ -21,6 +22,16 @@ const services = [
 export default function ProfessionalServices() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+      <SEO
+        title="Professional Services Client Acquisition | SVNR Global | SVNR Global"
+        description="For law firms, consultancies, accountancies, and advisory practices building a systematic client acquisition pipeline. Outreach that positions you as a peer, not a vendor."
+        canonical="/sectors/professional-services"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Sectors", url: "/sectors" },
+          { name: "Professional Services", url: "/sectors/professional-services" },
+        ]}
+      />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
         <img src="/sectors/professional-A015474D-5AE6-4690-B0C0-35613EAEE95D.JPG" alt="Professional Services" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />

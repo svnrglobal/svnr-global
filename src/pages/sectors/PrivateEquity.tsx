@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 const pipelineData = [
   { q: "Q1", pre: 3, banker: 1 }, { q: "Q2", pre: 5, banker: 2 },
@@ -31,6 +32,16 @@ const insights = [
 export default function PrivateEquity() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+      <SEO
+        title="Private Equity Deal Flow & Investor Relations | SVNR Global | SVNR Global"
+        description="Proprietary deal flow infrastructure for PE firms and family offices. We surface opportunities before they are formally marketed through relationship-driven outreach."
+        canonical="/sectors/private-equity-family-offices"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Sectors", url: "/sectors" },
+          { name: "Private Equity & Family Offices", url: "/sectors/private-equity-family-offices" },
+        ]}
+      />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
         <img src="/sectors/private-equity-photo-1504711434969-e33886168f5c.avif" alt="Private Equity" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />

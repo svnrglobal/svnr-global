@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 const leadsData = [
   { q: "Q1", leads: 4 }, { q: "Q2", leads: 8 }, { q: "Q3", leads: 12 }, { q: "Q4", leads: 15 },
@@ -21,6 +22,16 @@ const services = [
 export default function Maritime() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+      <SEO
+        title="Maritime & Logistics Business Development | SVNR Global | SVNR Global"
+        description="Systematic B2B outreach for maritime operators, logistics firms, and freight specialists. We map your target market and build direct relationships with decision-makers."
+        canonical="/sectors/maritime-logistics"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Sectors", url: "/sectors" },
+          { name: "Maritime & Logistics", url: "/sectors/maritime-logistics" },
+        ]}
+      />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
         <img src="/sectors/maritime-66696B36-CAA5-4117-AA93-881FBF985E5C.JPG" alt="Maritime Logistics" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />

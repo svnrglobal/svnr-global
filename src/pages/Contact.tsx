@@ -55,6 +55,28 @@ export default function Contact() {
       </VideoHero>
 
       <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
+        <div className="max-w-4xl mx-auto mb-10 md:mb-14">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+            {[
+              { value: "40+", label: "Qualified leads per month", sub: "Average across active clients" },
+              { value: "14 min", label: "Time to first qualified reply", sub: "Premium real estate case study" },
+              { value: "< 60 days", label: "Time to first results", sub: "From engagement to pipeline" },
+            ].map((s, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="liquid-glass rounded-2xl px-6 py-5 text-center"
+              >
+                <div className="text-3xl font-medium text-white mb-1">{s.value}</div>
+                <p className="text-white/60 text-sm mb-1">{s.label}</p>
+                <p className="text-[10px] uppercase tracking-widest text-white/25">{s.sub}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}

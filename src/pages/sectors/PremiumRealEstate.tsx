@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, RadialBarChart, RadialBar, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
+import SEO from "../../components/SEO";
 
 const timelineData = [
   { day: "D1", response: 100 }, { day: "D3", response: 72 },
@@ -32,6 +33,16 @@ const insights = [
 export default function PremiumRealEstate() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+      <SEO
+        title="Premium Real Estate Client Acquisition | SVNR Global | SVNR Global"
+        description="We help premium real estate firms reach HNW investors and off-market buyers directly — without portal dependency. Systematic outreach to qualified principals."
+        canonical="/sectors/premium-real-estate"
+        breadcrumbs={[
+          { name: "Home", url: "/" },
+          { name: "Sectors", url: "/sectors" },
+          { name: "Premium Real Estate", url: "/sectors/premium-real-estate" },
+        ]}
+      />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
         <img src="/sectors/real-estate-photo-1505873242700-f289a29e1e0f.avif" alt="Premium Real Estate" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />

@@ -313,6 +313,61 @@ export default function Home() {
         </div>
       </section>
 
+      {/* SOCIAL PROOF */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-[10px] uppercase tracking-[0.3em] text-white/30 text-center mb-12"
+          >
+            What clients say
+          </motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {[
+              {
+                quote: "Thirteen qualified B2B enquiries in under two weeks. We had tried trade fairs for years and never moved this fast into a new market.",
+                author: "Director",
+                company: "German Carpet House",
+                sector: "Luxury Rugs & Home Textiles",
+                gradient: "linear-gradient(137deg, #F5A623 0%, #FFD200 100%)",
+              },
+              {
+                quote: "A qualified principal replied in fourteen minutes. The message read like it came from someone who understood the off-market world we operate in.",
+                author: "Principal",
+                company: "Zurich Real Estate Firm",
+                sector: "Premium Real Estate",
+                gradient: "linear-gradient(137deg, #0071E3 0%, #34C759 100%)",
+              },
+              {
+                quote: "They mapped 500 UHNW profiles before we sent a single message. The quality of intelligence was unlike anything we had built internally.",
+                author: "Managing Partner",
+                company: "Wealth Boutique",
+                sector: "Wealth Management",
+                gradient: "linear-gradient(137deg, #11998e 0%, #38ef7d 100%)",
+              },
+            ].map((t, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="liquid-glass rounded-3xl p-8 flex flex-col"
+              >
+                <div className="h-0.5 w-12 mb-6 rounded-full" style={{ background: t.gradient }} />
+                <p className="text-white/70 text-sm leading-relaxed italic flex-1 mb-6">"{t.quote}"</p>
+                <div>
+                  <p className="text-white text-sm font-medium">{t.author}</p>
+                  <p className="text-[10px] text-white/30 uppercase tracking-widest mt-0.5">{t.company} · {t.sector}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* SECTORS */}
       <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-7xl mx-auto">

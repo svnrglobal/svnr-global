@@ -54,8 +54,8 @@ export default function Nav() {
           <img
             src="/svnr-logo.svg"
             alt="SVNR Global"
-            className="block"
-            style={{ height: 112, width: 112, objectFit: "contain", mixBlendMode: "screen" }}
+            className="block w-[72px] h-[72px] md:w-[112px] md:h-[112px]"
+            style={{ objectFit: "contain", mixBlendMode: "screen" }}
           />
         </Link>
       </motion.div>
@@ -136,7 +136,7 @@ export default function Nav() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.97 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute top-[72px] left-4 right-4 pointer-events-auto rounded-2xl overflow-hidden"
+            className="absolute top-[64px] left-4 right-4 pointer-events-auto rounded-2xl overflow-hidden"
             style={{
               background: "rgba(12,12,14,0.97)",
               backdropFilter: "blur(24px)",

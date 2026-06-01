@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://www.svnrglobal.com/sitemap.xml
+
+# Block irrelevant crawl paths
+Disallow: /src/
+Disallow: /.git/

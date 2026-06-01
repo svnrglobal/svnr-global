@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#1a1a1a"/>
+      <stop offset="100%" stop-color="#000000"/>
+    </radialGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="35%">
+      <stop offset="0%" stop-color="#333333" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+
+  <!-- Faint S watermark left -->
+  <text x="60" y="460" font-family="Arial Black, sans-serif" font-size="520" font-weight="900"
+        fill="#ffffff" fill-opacity="0.04" letter-spacing="-20">S</text>
+
+  <!-- SVNR™ wordmark -->
+  <!-- S -->
+  <text x="600" y="310" font-family="Arial Black, Arial, sans-serif" font-size="200" font-weight="900"
+        fill="#ffffff" text-anchor="middle" letter-spacing="8">SVNЯ™</text>
+
+  <!-- Divider line -->
+  <line x1="470" y1="345" x2="730" y2="345" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.5"/>
+
+  <!-- Tagline -->
+  <text x="600" y="405" font-family="Arial, sans-serif" font-size="28" font-weight="400"
+        fill="#ffffff" fill-opacity="0.85" text-anchor="middle" letter-spacing="1">
+    Built for operators who
+    <tspan font-weight="700" font-style="italic"> do not chase.</tspan>
+  </text>
+</svg>

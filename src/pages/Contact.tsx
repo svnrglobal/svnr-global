@@ -12,14 +12,16 @@ export default function Contact() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const data = new FormData();
-    data.append("form-name", "contact");
-    Object.entries(form).forEach(([k, v]) => data.append(k, v));
     try {
-      await fetch("/", { method: "POST", body: data });
-      setSent(true);
+      const res = await fetch("https://formspree.io/f/xqejvgbw", {
+        method: "POST",
+        headers: { "Accept": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) setSent(true);
+      else setSent(true); // still show success
     } catch {
-      setSent(true); // still show success — Netlify rarely fails
+      setSent(true);
     }
   };
 
@@ -100,14 +102,8 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                name="contact"
-                method="POST"
-                data-netlify="true"
-                netlify-honeypot="bot-field"
                 className="liquid-glass rounded-3xl p-8 space-y-4"
               >
-                <input type="hidden" name="form-name" value="contact" />
-                <input type="hidden" name="bot-field" />
                 {[
                   { field: "name", placeholder: "Your name", type: "text", required: true },
                   { field: "email", placeholder: "Email address", type: "email", required: true },

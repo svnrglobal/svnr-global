@@ -110,9 +110,9 @@ export default function Blog() {
           "@context": "https://schema.org",
           "@type": "Blog",
           "name": "SVNR Global Blog",
-          "url": "https://www.svnrglobal.com/blog",
+          "url": "https://svnrglobal.com/blog",
           "description": "Insights on AI-powered client acquisition, outbound strategy, and revenue growth for premium B2B and luxury operators.",
-          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://www.svnrglobal.com" }
+          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
         }}
       />
       <VideoHero src={VIDEOS.main}>

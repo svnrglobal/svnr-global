@@ -35,9 +35,9 @@ export default function Contact() {
           "@context": "https://schema.org",
           "@type": "ContactPage",
           "name": "Contact SVNR Global",
-          "url": "https://www.svnrglobal.com/contact",
+          "url": "https://svnrglobal.com/contact",
           "description": "Get in touch with SVNR Global to discuss AI-powered client acquisition for your premium brand or B2B operation.",
-          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://www.svnrglobal.com" }
+          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
         }}
       />
       <VideoHero src={VIDEOS.main}>

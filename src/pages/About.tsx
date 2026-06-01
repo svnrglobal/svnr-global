@@ -78,9 +78,9 @@ export default function About() {
           "@context": "https://schema.org",
           "@type": "AboutPage",
           "name": "About SVNR Global",
-          "url": "https://www.svnrglobal.com/about",
+          "url": "https://svnrglobal.com/about",
           "description": "SVNR Global is a bespoke AI outreach and client acquisition agency serving luxury brands, private equity, and premium B2B operators globally.",
-          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://www.svnrglobal.com" }
+          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
         }}
       />
 

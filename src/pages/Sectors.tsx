@@ -120,9 +120,9 @@ export default function Sectors() {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           "name": "Industries Served by SVNR Global",
-          "url": "https://www.svnrglobal.com/sectors",
+          "url": "https://svnrglobal.com/sectors",
           "description": "Sector-specific AI outreach and client acquisition for luxury, real estate, private equity, wealth management, maritime, and more.",
-          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://www.svnrglobal.com" }
+          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
         }}
       />
       <VideoHero src={VIDEOS.main}>

@@ -10,8 +10,8 @@ const HOME_SCHEMA = [
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "SVNR Global",
-    "url": "https://www.svnrglobal.com",
-    "logo": "https://www.svnrglobal.com/svnr-logo.svg",
+    "url": "https://svnrglobal.com",
+    "logo": "https://svnrglobal.com/svnr-logo.svg",
     "description": "SVNR Global builds bespoke AI-powered client acquisition systems and outreach infrastructure for premium operators — luxury brands, private equity, real estate, and high-ticket B2B.",
     "foundingDate": "2019",
     "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
@@ -26,10 +26,10 @@ const HOME_SCHEMA = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "SVNR Global",
-    "url": "https://www.svnrglobal.com",
+    "url": "https://svnrglobal.com",
     "potentialAction": {
       "@type": "SearchAction",
-      "target": "https://www.svnrglobal.com/blog?q={search_term_string}",
+      "target": "https://svnrglobal.com/blog?q={search_term_string}",
       "query-input": "required name=search_term_string"
     }
   },

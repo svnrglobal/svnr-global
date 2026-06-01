@@ -297,7 +297,7 @@ export default function BlogArticle() {
         title={article.title}
         description={articleDescription}
         canonical={`/blog/${article.slug}`}
-        ogImage={`https://www.svnrglobal.com${article.image}`}
+        ogImage={`https://svnrglobal.com${article.image}`}
         ogType="article"
         articlePublishedTime="2026-06-01T00:00:00Z"
         schema={{
@@ -305,16 +305,16 @@ export default function BlogArticle() {
           "@type": "Article",
           "headline": article.title,
           "description": articleDescription,
-          "image": `https://www.svnrglobal.com${article.image}`,
+          "image": `https://svnrglobal.com${article.image}`,
           "datePublished": "2026-06-01T00:00:00Z",
           "dateModified": "2026-06-01T00:00:00Z",
-          "author": { "@type": "Organization", "name": "SVNR Global", "url": "https://www.svnrglobal.com" },
+          "author": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
           "publisher": {
             "@type": "Organization",
             "name": "SVNR Global",
-            "logo": { "@type": "ImageObject", "url": "https://www.svnrglobal.com/svnr-logo.svg" }
+            "logo": { "@type": "ImageObject", "url": "https://svnrglobal.com/svnr-logo.svg" }
           },
-          "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.svnrglobal.com/blog/${article.slug}` }
+          "mainEntityOfPage": { "@type": "WebPage", "@id": `https://svnrglobal.com/blog/${article.slug}` }
         }}
       />
       {/* HERO */}

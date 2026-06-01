@@ -12,7 +12,7 @@ interface SEOProps {
 }
 
 const SITE_NAME = "SVNR Global";
-const SITE_URL = "https://www.svnrglobal.com";
+const SITE_URL = "https://svnrglobal.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-default.svg`;
 const TWITTER_HANDLE = "@svnrglobal";
 

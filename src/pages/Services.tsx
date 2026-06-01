@@ -122,7 +122,7 @@ export default function Services() {
           "@context": "https://schema.org",
           "@type": "Service",
           "name": "AI Client Acquisition & Outreach Infrastructure",
-          "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://www.svnrglobal.com" },
+          "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
           "description": "Bespoke AI systems for client acquisition, outbound outreach, revenue operations, and business development for luxury brands and premium B2B operators.",
           "areaServed": "Worldwide",
           "serviceType": ["Client Acquisition", "AI Outreach", "Revenue Operations", "Deal Flow Generation", "Brand Outreach"]

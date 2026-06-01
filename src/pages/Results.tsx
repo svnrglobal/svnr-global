@@ -75,9 +75,9 @@ export default function Results() {
           "@context": "https://schema.org",
           "@type": "CollectionPage",
           "name": "SVNR Global Client Results",
-          "url": "https://www.svnrglobal.com/results",
+          "url": "https://svnrglobal.com/results",
           "description": "Measurable outcomes from AI-powered outreach campaigns across luxury, real estate, private equity, and high-ticket B2B sectors.",
-          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://www.svnrglobal.com" }
+          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
         }}
       />
       <VideoHero src={VIDEOS.main}>

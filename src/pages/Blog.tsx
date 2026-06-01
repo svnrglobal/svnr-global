@@ -116,11 +116,11 @@ export default function Blog() {
         }}
       />
       <VideoHero src={VIDEOS.main}>
-        <div className="max-w-4xl mx-auto px-6 text-center pt-32 pb-24">
+        <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6">
             Pillar Thinking
           </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6">
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6">
             How premium operators<br />
             <span className="shimmer-text">build their pipelines.</span>
           </motion.h1>
@@ -131,7 +131,7 @@ export default function Blog() {
       </VideoHero>
 
       {/* FEATURED ARTICLE */}
-      <section className="relative z-10 bg-[#0A0A0B] py-20 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <Link to={`/blog/${articles[0].slug}`} className="group grid md:grid-cols-2 gap-0 rounded-3xl overflow-hidden liquid-glass hover:ring-1 hover:ring-white/20 transition-all">
@@ -160,7 +160,7 @@ export default function Blog() {
       </section>
 
       {/* ALL ARTICLES GRID */}
-      <section className="relative z-10 bg-[#0A0A0B] pb-24 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] pb-16 md:pb-24 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-2">All articles</p>
@@ -202,7 +202,7 @@ export default function Blog() {
       </section>
 
       {/* CTA */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-4xl mx-auto text-center liquid-glass rounded-3xl p-12 md:p-16">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tight mb-6">Ready to build the system, not the campaign?</h2>

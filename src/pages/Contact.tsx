@@ -41,20 +41,20 @@ export default function Contact() {
         }}
       />
       <VideoHero src={VIDEOS.main}>
-        <div className="max-w-3xl mx-auto px-6 text-center pt-32 pb-24">
+        <div className="max-w-3xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
             className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6">
             Get in Touch
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }}
-            className="text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6">
+            className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6">
             If acquisition is the constraint,<br />
             <span className="shimmer-text">this is where it ends.</span>
           </motion.h1>
         </div>
       </VideoHero>
 
-      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}

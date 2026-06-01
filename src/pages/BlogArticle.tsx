@@ -340,7 +340,7 @@ export default function BlogArticle() {
       </section>
 
       {/* ARTICLE BODY */}
-      <section className="relative z-10 bg-[#0A0A0B] py-20 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-20 px-6">
         <div className="max-w-3xl mx-auto">
           {article.content.map((section, i) => (
             <motion.div
@@ -386,8 +386,8 @@ export default function BlogArticle() {
       </div>
 
       {/* CTA */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
-        <div className="max-w-3xl mx-auto liquid-glass rounded-3xl p-10 md:p-14 text-center">
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
+        <div className="max-w-3xl mx-auto liquid-glass rounded-3xl p-7 sm:p-10 md:p-14 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-3xl md:text-4xl font-medium text-white tracking-tight mb-4">Ready to build the system?</h2>
             <p className="text-white/50 mb-8 max-w-md mx-auto">We work with a small number of operators at a time. Every engagement is built specifically for your market.</p>
@@ -399,7 +399,7 @@ export default function BlogArticle() {
       </section>
 
       {/* RELATED ARTICLES */}
-      <section className="relative z-10 bg-[#0A0A0B] pb-24 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] pb-16 md:pb-24 px-6">
         <div className="max-w-7xl mx-auto">
           <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-8">More reading</p>
           <div className="grid md:grid-cols-3 gap-6">

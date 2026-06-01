@@ -145,7 +145,7 @@ export default function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.4 }}
-            className="text-5xl md:text-7xl lg:text-8xl font-medium text-white leading-[1.05] tracking-tight mb-8"
+            className="text-[2.1rem] sm:text-5xl md:text-7xl lg:text-8xl font-medium text-white leading-[1.1] tracking-tight mb-6 md:mb-8"
           >
             We build the systems that bring the right{" "}
             <span className="shimmer-text">clients</span> to you.
@@ -184,7 +184,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.4, duration: 0.8 }}
-            className="flex items-center justify-center gap-8 mt-16 flex-wrap"
+            className="flex items-center justify-center gap-5 sm:gap-8 mt-10 md:mt-16 flex-wrap"
           >
             {[
               { value: "312%", label: "ROI ceiling" },
@@ -242,7 +242,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -281,7 +281,7 @@ export default function Home() {
       </section>
 
       {/* RESULTS */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -314,7 +314,7 @@ export default function Home() {
       </section>
 
       {/* SECTORS */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -354,7 +354,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

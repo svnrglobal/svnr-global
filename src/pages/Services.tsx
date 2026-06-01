@@ -99,12 +99,10 @@ function ServiceDetailCard({ svc, index }: { svc: typeof SERVICES[0]; index: num
           </div>
         </div>
 
-        <div className="px-8 md:px-10 pb-8 pt-0 border-t border-white/10">
-          <div className="pt-6">
-            <Link to={`/services/${svc.slug}`} className="inline-flex items-center gap-2 text-xs text-white/40 hover:text-white transition-colors uppercase tracking-widest">
-              View full system <ArrowRight size={12} />
-            </Link>
-          </div>
+        <div className="border-t border-white/10 mt-6 pt-6">
+          <Link to={`/services/${svc.slug}`} className="inline-flex items-center gap-2 text-xs text-white/40 hover:text-white transition-colors uppercase tracking-widest">
+            View full system <ArrowRight size={12} />
+          </Link>
         </div>
       </div>
     </motion.div>
@@ -129,7 +127,7 @@ export default function Services() {
         }}
       />
       <VideoHero src={VIDEOS.main}>
-        <div className="max-w-4xl mx-auto px-6 text-center pt-32 pb-24">
+        <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -142,7 +140,7 @@ export default function Services() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6"
           >
             Eight AI systems.<br />
             <span className="shimmer-text">One operating infrastructure.</span>
@@ -159,9 +157,9 @@ export default function Services() {
       </VideoHero>
 
       {/* Overview Cards */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16 md:mb-24">
             {SERVICES.map((svc, i) => (
               <Link key={svc.slug} to={`/services/${svc.slug}`} style={{ textDecoration: "none" }}>
                 <FeatureCard

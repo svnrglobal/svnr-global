@@ -81,13 +81,13 @@ export default function Results() {
         }}
       />
       <VideoHero src={VIDEOS.main}>
-        <div className="max-w-4xl mx-auto px-6 text-center pt-32 pb-24">
+        <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
             className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6">
             Proof
           </motion.p>
           <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }}
-            className="text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6">
+            className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6">
             The system is the differentiator.<br />
             <span className="shimmer-text">The results follow.</span>
           </motion.h1>
@@ -98,7 +98,7 @@ export default function Results() {
         </div>
       </VideoHero>
 
-      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
         <div className="max-w-6xl mx-auto space-y-8">
           {caseStudies.map((cs, i) => (
             <motion.div

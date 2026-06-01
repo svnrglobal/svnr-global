@@ -40,7 +40,8 @@ export default function Footer() {
             <img
               src="/svnr-logo.svg"
               alt="SVNR Global"
-              style={{ height: 124, width: 124, objectFit: "contain", mixBlendMode: "screen" }}
+              className="w-[88px] h-[88px] md:w-[124px] md:h-[124px]"
+              style={{ objectFit: "contain", mixBlendMode: "screen" }}
             />
           </Link>
           <p className="text-sm leading-relaxed max-w-xs text-white/50">
@@ -55,7 +56,7 @@ export default function Footer() {
           </a>
         </div>
 
-        <div className="md:col-span-8 grid grid-cols-3 gap-8">
+        <div className="md:col-span-8 grid grid-cols-2 sm:grid-cols-3 gap-6 md:gap-8">
           {Object.entries(footerLinks).map(([section, items]) => (
             <div key={section}>
               <p className="text-sm uppercase tracking-wider text-white font-medium mb-4">{section}</p>

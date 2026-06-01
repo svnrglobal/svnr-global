@@ -126,7 +126,7 @@ export default function Sectors() {
         }}
       />
       <VideoHero src={VIDEOS.main}>
-        <div className="max-w-4xl mx-auto px-6 text-center pt-32 pb-24">
+        <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -139,7 +139,7 @@ export default function Sectors() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6"
           >
             We operate in<br />
             <span className="shimmer-text">eight industries.</span>
@@ -155,7 +155,7 @@ export default function Sectors() {
         </div>
       </VideoHero>
 
-      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+      <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {SECTORS.map((s, i) => (
             <motion.div

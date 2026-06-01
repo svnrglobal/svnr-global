@@ -105,7 +105,7 @@ export default function About() {
             initial={{ opacity: 0, y: 28 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
-            className="text-5xl md:text-7xl font-medium text-white leading-[1.05] tracking-tight mb-6"
+            className="text-[2.1rem] sm:text-5xl md:text-7xl font-medium text-white leading-[1.1] tracking-tight mb-5 md:mb-6"
           >
             We build the systems that bring<br />
             the right <span className="shimmer-text">clients</span> to you.
@@ -122,7 +122,7 @@ export default function About() {
             initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.1 }}
-            className="mt-10 flex items-center gap-6 justify-center"
+            className="mt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-6 justify-center"
           >
             <Link
               to="/contact"
@@ -152,18 +152,18 @@ export default function About() {
       </section>
 
       {/* ── STATS BAR ── */}
-      <section className="relative z-10 bg-[#0A0A0B] px-6 md:px-10 pt-24 pb-16">
+      <section className="relative z-10 bg-[#0A0A0B] px-6 md:px-10 pt-14 md:pt-24 pb-10 md:pb-16">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="grid grid-cols-2 md:grid-cols-4 border border-white/8 rounded-2xl overflow-hidden divide-x divide-y md:divide-y-0 divide-white/8"
+            className="grid grid-cols-2 md:grid-cols-4 border border-white/8 rounded-2xl overflow-hidden divide-x divide-y md:divide-y-0 divide-white/8 text-center md:text-left"
           >
             {stats.map((s) => (
-              <div key={s.label} className="px-8 py-10 flex flex-col justify-between">
-                <div className="text-4xl md:text-5xl font-medium text-white tracking-tight mb-3">{s.value}</div>
+              <div key={s.label} className="px-4 sm:px-8 py-6 sm:py-10 flex flex-col justify-between">
+                <div className="text-2xl sm:text-4xl md:text-5xl font-medium text-white tracking-tight mb-2 md:mb-3">{s.value}</div>
                 <div>
                   <div className="text-sm text-white/70 font-medium mb-1">{s.label}</div>
                   <div className="text-[10px] text-white/30 uppercase tracking-[0.15em]">{s.sub}</div>
@@ -175,8 +175,8 @@ export default function About() {
       </section>
 
       {/* ── ORIGIN STORY ── */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6 md:px-10">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6 md:px-10">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-10 md:gap-16 items-start">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -227,16 +227,16 @@ export default function About() {
       </section>
 
       {/* ── PULLQUOTE ── */}
-      <section className="relative z-10 bg-[#0A0A0B] py-20 px-6 md:px-10">
+      <section className="relative z-10 bg-[#0A0A0B] py-14 md:py-20 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 32 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9 }}
-            className="liquid-glass rounded-3xl px-10 md:px-20 py-16 md:py-20 text-center max-w-5xl mx-auto"
+            className="liquid-glass rounded-3xl px-5 sm:px-10 md:px-20 py-10 sm:py-14 md:py-20 text-center max-w-5xl mx-auto"
           >
-            <p className="text-2xl md:text-4xl font-medium text-white leading-[1.45] tracking-tight mb-8">
+            <p className="text-xl sm:text-2xl md:text-4xl font-medium text-white leading-[1.45] tracking-tight mb-6 md:mb-8">
               "The operators we work with do not run campaigns and hope.<br className="hidden md:block" />
               They run infrastructure — and close."
             </p>
@@ -246,13 +246,13 @@ export default function About() {
       </section>
 
       {/* ── WHAT WE BELIEVE ── */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6 md:px-10">
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-16"
+            className="mb-10 md:mb-16"
           >
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">What we believe</p>
             <h2 className="text-3xl md:text-4xl font-medium text-white tracking-tight max-w-2xl leading-snug">
@@ -280,7 +280,7 @@ export default function About() {
       </section>
 
       {/* ── VERTICALS ── */}
-      <section className="relative z-10 bg-[#0A0A0B] pb-24 px-6 md:px-10">
+      <section className="relative z-10 bg-[#0A0A0B] pb-16 md:pb-24 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -313,7 +313,7 @@ export default function About() {
       </section>
 
       {/* ── HOW IT WORKS ── */}
-      <section className="relative z-10 bg-[#0A0A0B] pb-24 px-6 md:px-10">
+      <section className="relative z-10 bg-[#0A0A0B] pb-16 md:pb-24 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -364,13 +364,13 @@ export default function About() {
       </section>
 
       {/* ── CTA ── */}
-      <section className="relative z-10 bg-[#0A0A0B] pb-32 px-6 md:px-10">
+      <section className="relative z-10 bg-[#0A0A0B] pb-16 md:pb-32 px-6 md:px-10">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="liquid-glass rounded-3xl px-10 md:px-16 py-16 md:py-20 flex flex-col md:flex-row gap-12 items-start md:items-end justify-between"
+            className="liquid-glass rounded-3xl px-6 md:px-16 py-10 md:py-20 flex flex-col md:flex-row gap-8 md:gap-12 items-start md:items-end justify-between"
           >
             <div className="max-w-xl">
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/25 mb-5">Start here</p>

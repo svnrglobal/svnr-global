@@ -108,7 +108,7 @@ export default function Contact() {
                   { field: "name", placeholder: "Your name", type: "text", required: true },
                   { field: "email", placeholder: "Email address", type: "email", required: true },
                   { field: "company", placeholder: "Company name", type: "text", required: true },
-                  { field: "website", placeholder: "Company website (e.g. yourcompany.com)", type: "url", required: false },
+                  { field: "website", placeholder: "Company website (e.g. yourcompany.com)", type: "text", required: false },
                 ].map(({ field, placeholder, type, required }) => (
                   <input
                     key={field}

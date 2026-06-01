@@ -146,6 +146,12 @@ export default function Nav() {
             }}
           >
             <div className="flex flex-col gap-1 p-3">
+              <Link
+                to="/"
+                className="px-4 py-3 rounded-xl text-sm text-white/60 hover:text-white hover:bg-white/5 uppercase tracking-widest font-light transition-all"
+              >
+                Home
+              </Link>
               {links.map((l) => (
                 <Link
                   key={l.href}

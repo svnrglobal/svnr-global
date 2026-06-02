@@ -37,7 +37,7 @@ const articles: Article[] = [
     slug: "luxury-rug-brand-distribution-strategy",
     title: "How Luxury Rug and Carpet Brands Build Distribution in New Markets Without a Showroom",
     category: "Luxury Rugs",
-    readTime: "8 min",
+    readTime: "12 min",
     image: "/blog/sustainable-luxury-carpets.jpg",
     imageAlt: "Luxury carpet manufacturing",
     content: [
@@ -55,20 +55,36 @@ const articles: Article[] = [
       {
         heading: "The A&D Community Is the Distribution Channel",
         body: "For luxury rug and carpet brands, the architecture and interior design community is not a marketing audience — it is the primary distribution channel. Interior designers specify rugs for projects. Their specification drives purchase. Their recommendation drives repeat specification. The relationship between a rug brand and an interior designer operates more like a wholesale relationship than a consumer marketing relationship. This means the question is not 'how do we market to interior designers.' The question is 'how do we build systematic trade relationships with interior designers in markets we are not yet present in.'",
-        image: "/blog/rug-unknown.jpg",
-        imageAlt: "Luxury rug detail and texture",
+        image: "/blog/rug-weaver-overhead.webp",
+        imageAlt: "Master weaver at handmade rug loom — craftsmanship behind luxury carpet brands",
+        imageCaption: "The craft at the centre of every premium rug brand — and why it alone does not drive distribution",
       },
       {
         heading: "Geography Is the Opportunity",
         body: "The single biggest distribution opportunity for most luxury rug brands is a geography they are completely absent from despite having a product that would perform there. These gaps exist not because the market is not ready — they exist because the brand's distribution development has been opportunistic rather than systematic. Systematic distribution development starts by mapping where the gaps are and then identifying, by name, the designers and showrooms operating in those cities whose portfolio, price point, and material preferences match the brand's product positioning.",
+        image: "/blog/rug-lifestyle-outdoor.webp",
+        imageAlt: "Luxury rugs displayed in lifestyle setting — the premium positioning that commands A&D attention",
       },
       {
         heading: "Trade Fairs Are Amplifiers, Not Acquisition Channels",
         body: "The role of trade fairs in a well-designed distribution strategy is amplification, not acquisition. A brand that has already been in contact with ten interior designers in a new city for three months before Maison & Objet opens has a completely different trade fair experience than one arriving cold. The warm contacts become scheduled meetings rather than booth walk-ins. Brands that rely exclusively on trade fairs for distribution development are paying exhibition costs to acquire cold contacts in a three-day window. Brands that use systematic outreach to build a warm audience before the fair opens use the same investment to advance existing relationships.",
+        image: "/blog/rug-fringe-texture.webp",
+        imageAlt: "Luxury rug texture and fringe detail — the material quality that earns specification",
+        imageCaption: "Material quality earns the specification. Systematic outreach earns the conversation.",
       },
       {
         heading: "What a New Market Distribution Program Looks Like in Practice",
         body: "A well-designed new market distribution program has a defined set of outputs across a 90-day window. In the first four weeks: a mapped list of named interior designers and showrooms in the target city, filtered by project type, price point, and material history. In weeks five through eight: follow-up sequencing based on initial responses, sample requests fulfilled, showroom conversations progressed. In weeks nine through twelve: a clear picture of which relationships have genuine potential and what the realistic path to first specifications looks like. At the end of 90 days, a brand has not opened a showroom — but it has relationships with the designers most likely to specify its product in that city.",
+      },
+      {
+        heading: "The Message That Opens the A&D Relationship",
+        body: "The message that earns a response from an interior designer or architect is not a catalogue introduction. It is a demonstration of specific knowledge about their practice. What kind of projects do they specify for? What price point do their clients operate at? What material direction is their recent portfolio showing? The message that references a specific project they designed, or a specific client sector they serve, and then connects that observation to a relevant product — that message is in a different category from the generic 'we would love to introduce our collection' email that fills every A&D inbox. The difference in response rate between these two approaches is not marginal. It is the difference between a programme that works and one that produces silence.",
+        image: "/blog/rug-art-design.webp",
+        imageAlt: "Artisan luxury rug — the design language that earns A&D specification",
+      },
+      {
+        heading: "Showrooms as the Outcome, Not the Entry Point",
+        body: "The conventional assumption is that distribution in a new market requires a showroom in that market. For luxury rug and carpet brands, a showroom is an outcome of successful distribution development — not the entry point. The brands that open showrooms in new cities typically do so after they have demonstrated market demand through direct-to-trade outreach. They know the designers who will drive volume before they commit to permanent space. The brands that open showrooms first and hope the market follows are the ones with expensive, underutilised space and a distribution picture that looks the same two years later.",
       },
     ],
   },
@@ -76,7 +92,7 @@ const articles: Article[] = [
     slug: "real-estate-investor-buyer-acquisition",
     title: "How Premium Real Estate Firms Reach Investor Buyers Without Portal Dependency",
     category: "Premium Real Estate",
-    readTime: "9 min",
+    readTime: "13 min",
     image: "/blog/blog-banner-10Jan2025.jpg",
     imageAlt: "Premium real estate",
     content: [
@@ -93,14 +109,30 @@ const articles: Article[] = [
       {
         heading: "The WhatsApp Channel Is Not a Detail",
         body: "In European and Middle Eastern prime real estate markets, WhatsApp is the dominant communication channel for high-value buyer and seller conversations. A principal buyer in Switzerland, Germany, the UAE, or across the Mediterranean does not manage significant financial conversations through a portal enquiry form. They respond to direct, personal contact on the channel they actually use for business communication. The real estate firm that reaches a qualified buyer directly on WhatsApp, with a specific message that demonstrates knowledge of that buyer's investment profile, is operating in a completely different competitive environment than the firm waiting for a portal enquiry.",
+        image: "/blog/real-estate-villa-modern.webp",
+        imageAlt: "Minimalist luxury villa — the category of asset whose buyer cannot be reached through portals",
+        imageCaption: "The buyers for assets at this level do not browse property portals. They respond to direct, intelligent contact.",
       },
       {
         heading: "Days on Market Is a Diagnostic, Not a Given",
         body: "When a prime property sits beyond the typical transaction window for its price band and geography, one of two things is true: the pricing is wrong, or the buyer pool is too small. A firm whose buyer acquisition is predominantly portal-driven has a buyer pool defined by whoever is actively searching on the portals at the time the property is listed. This pool excludes every principal who is not actively searching, every international buyer who does not use that specific portal, and every investor who would buy this property if they knew about it but has not entered the market formally.",
+        image: "/blog/real-estate-villa-landscape.jpg",
+        imageAlt: "Premium residential property in a dramatic landscape — the asset category where off-market reach is decisive",
+      },
+      {
+        heading: "Reading the Signals That Predict Buyer Readiness",
+        body: "A principal buyer does not decide to purchase a significant property in a moment. The decision is the endpoint of a process that can take months or years. Along the way, the signals are visible. A business sale creates immediate liquidity and a clear deployment need. A company IPO creates wealth that has never before been investable. A family office mandate changes from capital preservation to direct real estate ownership. Each of these events is publicly visible — in company announcements, in press coverage, in LinkedIn activity. The firm that identifies these signals as they happen and makes contact at the moment of readiness is not being aggressive. It is being intelligent about timing.",
+        image: "/blog/real-estate-exterior-porsche.jpg",
+        imageAlt: "High-end residential architecture — principal buyer properties require principal-level outreach",
+        imageCaption: "The assets that command this level of commitment require buyers who are identified before they are formally in the market.",
       },
       {
         heading: "Building the Off-Market Buyer Pipeline",
         body: "The firms closing the most valuable transactions in prime residential and investment property are not winning because they have better listings on the portals. They are winning because they have a system for reaching the buyers who never use the portals. This system identifies specific buyer profiles from signal data — liquidity events, company exits, family office mandates — and reaches those principals directly, on the right channel, with a specific message before any competitor has made contact.",
+      },
+      {
+        heading: "Why Speed of Contact Determines the Outcome",
+        body: "In the Zurich real estate case that sits in our results, a qualified principal replied in fourteen minutes. That response time is not accidental. It is the product of two factors: the message arrived at a moment when the principal was genuinely in the market, and it demonstrated specific knowledge of their investment profile. The firm that reaches the right buyer first — not the loudest, not the one with the most portal spend, but the first to make intelligent, specific contact at the right moment — wins the relationship. In prime real estate, the first relationship almost always becomes the first transaction.",
       },
     ],
   },
@@ -108,7 +140,7 @@ const articles: Article[] = [
     slug: "private-equity-proprietary-deal-flow",
     title: "How Private Equity Firms Source Proprietary Deal Flow Before Companies Enter a Formal Process",
     category: "Private Equity",
-    readTime: "10 min",
+    readTime: "14 min",
     image: "/blog/Founder-Syndrome-1024x614.jpg.webp",
     imageAlt: "Private equity deal flow",
     content: [
@@ -120,19 +152,33 @@ const articles: Article[] = [
         heading: "What a Researchable Thesis Looks Like",
         body: "A thesis specific enough to generate a researchable target universe is the foundation of proprietary deal flow. 'B2B services in Western Europe' is a category. 'Founder-led industrial maintenance businesses with 8–20M EBITDA and no succession plan' is a thesis. The first generates a list too large to work with. The second generates a list of companies where you can name the founder, infer the ownership structure, and understand why a conversation in the next 12 months might be timely. That level of specificity is what separates a genuine sourcing program from an outreach exercise.",
         image: "/blog/pe-deal-sourcing.png",
-        imageAlt: "Traditional deal sourcing vs modern approach",
+        imageAlt: "Traditional deal sourcing vs modern AI-powered approach",
       },
       {
         heading: "The Volume Trap",
         body: "500 generic emails to founders produce no relationships. 50 thoughtful, research-anchored contacts produce 50 first steps toward genuine conversations. The pipeline that generates proprietary deals is deep, not wide. Each contact in a real sourcing program is someone who received a message that demonstrated specific knowledge of their business, their sector, and the reasons why a conversation with this particular firm might be relevant. That message is not easy to write at scale. But it is the only message that produces a response worth having.",
+        image: "/blog/pe-boardroom-entry.jpeg",
+        imageAlt: "Private equity principal entering a high-stakes boardroom meeting",
+        imageCaption: "The deals that define a fund's vintage are won before the formal process — in rooms like this, months earlier.",
       },
       {
         heading: "Founders Remember Who Was Specific",
         body: "The firm that calls when the moment arrives is the one the founder has had the most substantive conversations with — not the most recognisable name. A succession process, a capital need, a strategic decision: the catalyst is almost always something specific, and it is almost always something a well-researched firm could have anticipated. Founders remember which firms have been intelligent and specific in their outreach. The relationship that produces a proprietary transaction is built in the months and years before the transaction is on anyone's radar.",
       },
       {
+        heading: "Mapping the Trigger Events That Precede a Transaction",
+        body: "The triggers that precede a founder's decision to explore a transaction are often visible in the public record. A management team hire that suggests professionalisation. A debt facility maturing within the next 24 months. A sector consolidation event that changes the competitive context. A founder approaching an age milestone without an obvious successor in the business. Each of these signals tells a well-prepared firm something about the likely timing of a conversation. The firm that monitors these signals systematically and reaches founders at the right moment is not being opportunistic — it is being prepared.",
+        image: "/blog/pe-reviewing-reports.jpeg",
+        imageAlt: "Private equity team reviewing deal intelligence and sector reports",
+        imageCaption: "Intelligence precedes outreach. The firms with the best proprietary deal flow invest in both.",
+      },
+      {
         heading: "The Infrastructure of Proprietary Deal Flow",
         body: "Building a proprietary deal flow program requires three layers of infrastructure: a research layer that maps and monitors the target universe continuously, an outreach layer that reaches founders and management teams with specific, research-backed communication, and a relationship management layer that keeps the firm present in the founder's mind through substantive follow-up. Most PE firms have none of these layers operating systematically. The ones that do are consistently winning deals that the rest of the market sees only in the press.",
+      },
+      {
+        heading: "The Timeline of a Relationship That Becomes a Deal",
+        body: "The typical proprietary deal is the result of a relationship that began 12 to 36 months before the transaction closed. The first contact was a message that demonstrated specific knowledge of the founder's business. The second was a follow-up after an industry event. The third was an article that referenced a trend directly relevant to their sector. By the time the founder was ready to explore a transaction, the PE firm was not a cold contact — it was a familiar presence with a specific point of view. The deal was effectively won in month three. The closing happened in month thirty.",
       },
     ],
   },
@@ -140,7 +186,7 @@ const articles: Article[] = [
     slug: "architecture-interior-design-studio-client-acquisition",
     title: "Client Acquisition for Architecture and Interior Design Studios: Moving Beyond Referrals",
     category: "Professional Services",
-    readTime: "9 min",
+    readTime: "13 min",
     image: "/blog/GettyImages-1224893561.jpg",
     imageAlt: "Architecture studio",
     content: [
@@ -158,10 +204,32 @@ const articles: Article[] = [
       {
         heading: "The Research Layer Most Studios Skip",
         body: "Before any outreach begins, the studio needs to know who it is trying to reach. This is not a vague demographic target. It is named individuals at named organisations with specific project pipelines. A property developer who just acquired a site in a specific city and has not yet appointed an architect is a precisely identified opportunity. A hospitality group that has announced expansion plans but has not yet released an RFP for design services is a warm prospect. This kind of intelligence is available to anyone who looks for it systematically.",
+        image: "/blog/architecture-floor-plans.webp",
+        imageAlt: "Architect working on precision floor plans — the detail orientation that earns premium commissions",
+        imageCaption: "The studio that reaches the developer before the RFP is issued wins the brief before the competition begins.",
+      },
+      {
+        heading: "The Developer Client as a Primary Target",
+        body: "For most architecture and interior design studios, the highest-value client category is the developer — residential, hospitality, or commercial — with a repeating project pipeline. A developer who builds three residential schemes per year across two cities is not a one-time client. They are a long-term source of commissions if the relationship is established and maintained. Most studios wait for developers to come to them through their consultant network. The studios that reach developers directly, at the moment a new site has been acquired and no architect has been appointed, are operating at a fundamentally different level of business development effectiveness.",
+        image: "/blog/architecture-model-display.jpg",
+        imageAlt: "Architectural scale model — the tool that communicates vision to developer clients",
+      },
+      {
+        heading: "Hospitality as a Systematic Opportunity",
+        body: "The hospitality sector represents one of the most consistent opportunities for design studios with relevant portfolio experience. Hotel groups, resort operators, and F&B brands commission design work on a predictable cycle tied to expansion plans, refurbishment programmes, and brand repositioning. These cycles are visible in trade press, in planning applications, and in company announcements. The studio that monitors this activity and reaches the right decision-maker at the right point in the project timeline is not waiting for a referral — it is creating its own pipeline.",
+        image: "/blog/luxury-hospitality-riad.jpg",
+        imageAlt: "Luxury hospitality interior — the category of commission that defines a design studio's portfolio",
+        imageCaption: "Hospitality commissions define careers. They are won through relationships built before the brief is issued.",
       },
       {
         heading: "The Competition in Creative Outreach Is Lower Than You Think",
         body: "Architecture and interior design studios are, by the standards of most industries, extremely passive in their business development. The competition for a well-researched, personally relevant message to a qualified prospect is almost non-existent. Most studios are waiting for the phone to ring. The studio that is making disciplined, specific, research-backed contact with a defined set of target clients each month is operating in a market where almost no other studio is doing the same thing.",
+      },
+      {
+        heading: "The Outreach That Works for Design Professionals",
+        body: "The message that earns a response from a developer or hospitality operator is not a portfolio showcase. Clients at this level receive portfolio presentations constantly. What they do not receive is a message that demonstrates specific knowledge of their current project, references their design direction accurately, and explains — briefly and precisely — why this studio's particular capability is relevant to what they are building. That message takes research. It takes restraint. And it converts at a rate that makes the portfolio showcase look like background noise.",
+        image: "/blog/luxury-hotel-lobby.jpg",
+        imageAlt: "Luxury hotel lobby interior design — the standard of work that earns premium commissions",
       },
     ],
   },
@@ -169,7 +237,7 @@ const articles: Article[] = [
     slug: "wealth-management-boutique-client-acquisition",
     title: "How Wealth Management Boutiques Reach the Next Generation of HNWI Clients",
     category: "Wealth Management",
-    readTime: "9 min",
+    readTime: "13 min",
     image: "/blog/istockphoto-1346853640-612x612.jpg",
     imageAlt: "Wealth management",
     content: [
@@ -187,10 +255,21 @@ const articles: Article[] = [
       {
         heading: "The Trigger Identification Problem",
         body: "Wealth management relationships are initiated at specific moments: a liquidity event, a divorce, an inheritance, a retirement, a business sale. The boutique that identifies these triggers as they are happening — from business press, company announcements, LinkedIn activity — and makes contact at the right moment is operating with a precision that referral-dependent acquisition cannot match. This is not a novel insight. It is a systematised version of what the best relationship managers at larger institutions have always done intuitively.",
+        image: "/blog/wealth-team-working.webp",
+        imageAlt: "Wealth management intelligence team working on prospect identification and market research",
+        imageCaption: "Intelligence infrastructure precedes outreach. The boutique that knows who to call before it calls wins the relationship.",
       },
       {
         heading: "Communication That Resonates with This Client",
         body: "An entrepreneur who has just sold a business does not respond well to generic wealth management marketing. They are not looking for a brand. They are looking for someone who understands their specific situation — the tax considerations of a particular deal structure, the difference between their current requirements and what they will need in five years, the complexity of managing wealth when the primary asset has just become liquid for the first time. The communication that starts a relationship with this client is specific, demonstrates expertise about their situation, and is delivered on the channel they actually use.",
+      },
+      {
+        heading: "The Discretion Requirement and Why It Changes Everything",
+        body: "UHNW client acquisition operates under a constraint that most outreach frameworks are not designed for: discretion is not a preference, it is a requirement. A prospective client who feels they have been approached indiscreetly will not just decline — they will share that experience within the professional network the boutique is trying to reach. Every contact in a UHNW acquisition programme must be calibrated for the possibility that the recipient will discuss it with others in the same social and professional circle. The message that reads like it was written specifically for one person, by someone who has done their research, is the only message that passes this test.",
+      },
+      {
+        heading: "Building a UHNW Pipeline Without Compromising the Relationship",
+        body: "The boutique that builds a genuine UHNW acquisition capability treats every contact as the beginning of a relationship, not a conversion attempt. The goal of the first contact is a conversation. The goal of the conversation is to understand whether there is a genuine fit. The goal of the relationship is to be the obvious choice when a wealth management need crystallises. This takes longer than a campaign. It produces better clients, longer retention, and higher referral rates than any other approach in this market.",
       },
     ],
   },
@@ -198,7 +277,7 @@ const articles: Article[] = [
     slug: "b2b-textile-platform-buyer-acquisition",
     title: "How B2B Textile Platforms Solve the Buyer-Side Liquidity Problem",
     category: "B2B Platforms",
-    readTime: "8 min",
+    readTime: "12 min",
     image: "/blog/DUVqh5kW-R3HR4829-1200x800.jpg",
     imageAlt: "Textile sourcing platform",
     content: [
@@ -209,6 +288,9 @@ const articles: Article[] = [
       {
         heading: "Why Buyer-Side Liquidity Does Not Build Itself",
         body: "Every B2B textile platform has a version of this problem. Supplier acquisition is straightforward because suppliers are motivated to join. Buyer acquisition requires finding buyers who are not yet on the platform, understanding their sourcing requirements at a specific moment, and reaching them with a reason to engage that is compelling enough to displace their existing workflow. This is harder. It requires identifying the right buyers, understanding their sourcing calendars and requirements, and making contact at a moment when switching costs are low enough to warrant a conversation.",
+        image: "/blog/textile-fabric-swatches.webp",
+        imageAlt: "Fabric sourcing and textile swatch selection — the buyer decision process that platforms need to intercept",
+        imageCaption: "The decision to switch suppliers happens at the sample stage — platforms that reach buyers before that stage win.",
       },
       {
         heading: "The Buyer Profile Segmentation That Changes Outcomes",
@@ -218,8 +300,21 @@ const articles: Article[] = [
         imageCaption: "Buyer-side liquidity: the problem every textile marketplace faces at scale",
       },
       {
+        heading: "Reading the Sourcing Calendar",
+        body: "B2B textile buyers operate on predictable sourcing calendars tied to seasonal production cycles. Spring-summer collection sourcing begins in a specific window. Autumn-winter follows. A buyer who is about to enter a sourcing cycle for a category your platform serves well is not a cold prospect — they are an active need waiting for the right introduction. The platform that maps sourcing calendars across its target buyer base and reaches buyers at the start of their relevant cycle is making contact at the highest-possible moment of receptivity.",
+        image: "/blog/textile-sourcing-team.webp",
+        imageAlt: "Textile sourcing team reviewing fabric selections — the moment platforms need to be present",
+      },
+      {
         heading: "The Outreach That Works for B2B Sourcing Buyers",
         body: "Buyers at sourcing teams in brands, retailers, and trading companies respond to outreach that is specific about what they source and why the platform can serve that requirement better than their current process. Generic platform marketing — 'thousands of suppliers, competitive prices' — does not move a sourcing manager who has spent five years building their existing supplier relationships. Specific outreach — 'we have twelve verified manufacturers in your specific category, in the origin you require, at the price bands your current season suggests you are working at' — is a different conversation.",
+        image: "/blog/textile-manufacturing-threads.jpg",
+        imageAlt: "Textile manufacturing at scale — the supply-side depth that gives platforms a credible buyer proposition",
+        imageCaption: "A platform with genuine supply depth has a buyer proposition. The challenge is reaching the right buyer at the right moment.",
+      },
+      {
+        heading: "Converting the First Order into Repeat Volume",
+        body: "The economics of buyer acquisition in a textile platform are driven by repeat order rate. A buyer who places one sample order and returns to their existing suppliers has negative unit economics after the cost of acquisition. A buyer who integrates the platform into their regular sourcing workflow creates compounding value. The acquisition strategy must therefore prioritise buyers whose sourcing profile — category, volume, frequency — matches the platform's ability to serve them consistently at scale. The first order is the beginning of an audit. Platforms that treat it as the goal miss the point entirely.",
       },
     ],
   },
@@ -227,7 +322,7 @@ const articles: Article[] = [
     slug: "client-acquisition-cost-referral-dependency",
     title: "What Client Acquisition Actually Costs a Premium Brand Running on Referrals Alone",
     category: "Strategy",
-    readTime: "8 min",
+    readTime: "12 min",
     image: "/blog/SBftLgcgXSDqVmTwCyQwrxykDpA.webp",
     imageAlt: "Business strategy",
     content: [
@@ -243,12 +338,26 @@ const articles: Article[] = [
         imageCaption: "Pipeline visibility: the hidden cost of passive acquisition",
       },
       {
+        heading: "The Quarter With No Pipeline",
+        body: "Every referral-dependent business has experienced the same quarter. A significant client finishes. The referral pipeline that was expected to replace them has not materialised. The team is partially underutilised. The principal is spending time on business development activities that feel ad hoc because they are. This quarter is not bad luck. It is the predictable result of a model where acquisition is passive and therefore lumpy. The premium brand that has never built a systematic acquisition motion will experience this quarter repeatedly — with longer gaps and higher stakes as the business grows.",
+        image: "/blog/empty-boardroom-dark.jpg",
+        imageAlt: "Empty boardroom — the quiet quarter that follows referral-dependent pipeline collapse",
+        imageCaption: "The empty pipeline is not a surprise. It is the structural outcome of passive acquisition.",
+      },
+      {
         heading: "The Opportunity Cost of Passive Acquisition",
         body: "The most significant cost of referral dependency is the market that goes unreached. Every premium brand operates in a market where there are more qualified potential clients than the brand will ever serve. Most of these potential clients will never become aware of the brand, never refer the brand, and never be reached by a referral chain that includes an existing client. The entire segment of the market that sits outside the existing relationship network is permanently inaccessible unless the brand develops an active acquisition motion.",
       },
       {
+        heading: "The Compounding Cost Over Time",
+        body: "Referral dependency has a compounding cost that is easy to underestimate in the early years and difficult to ignore in year five. In year one, the brand has a tight network and a strong reputation — referrals are plentiful. In year three, the network has been largely exhausted at the relevant level and referral quality begins to decline. By year five, the brand is frequently accepting engagements below its preferred size or scope because the alternative is an empty pipeline. The business is not failing — but it is significantly below its potential because the acquisition ceiling has never been raised.",
+      },
+      {
         heading: "What the Transition From Passive to Active Acquisition Requires",
         body: "Moving from referral dependency to a systematic acquisition motion does not require abandoning the relationships and reputation that have driven growth to date. It requires adding a layer of deliberate outreach to the network that already exists. Identifying which potential clients in the target market are not yet in the relationship network. Researching those clients specifically. Making contact with communication that is specific enough to be taken seriously. And doing this consistently, as an ongoing operating function rather than a campaign with a start and end date.",
+        image: "/blog/founder-strategy-whiteboard.avif",
+        imageAlt: "Founder building a systematic acquisition strategy — the transition from passive referrals to active pipeline",
+        imageCaption: "The transition from referral dependency to systematic acquisition is a decision, not a circumstance.",
       },
     ],
   },
@@ -256,13 +365,16 @@ const articles: Article[] = [
     slug: "client-acquisition-system-vs-campaign",
     title: "The Difference Between a Client Acquisition System and a Client Acquisition Campaign",
     category: "Strategy",
-    readTime: "9 min",
+    readTime: "13 min",
     image: "/blog/20943871-marketing-scaled.jpg",
     imageAlt: "Client acquisition system",
     content: [
       {
         heading: "The Campaign Cycle and Why It Fails",
         body: "The word 'campaign' in business development implies a beginning, a middle, and an end. Most businesses acquire clients through a series of campaigns — a push at the start of the year, a trade fair effort, a targeted outreach in response to a quiet quarter. This is the campaign cycle. And it is structurally unable to produce the consistent, compounding pipeline that growing businesses need. Because campaigns end. And when they end, the pipeline empties. And when the pipeline empties, the business starts another campaign.",
+        image: "/blog/campaign-planning-whiteboard.webp",
+        imageAlt: "Campaign planning whiteboard — the annual planning mindset that keeps businesses in the campaign cycle",
+        imageCaption: "Campaign thinking produces campaign results. The whiteboard fills up. The pipeline empties when the campaign ends.",
       },
       {
         heading: "What a System Does That a Campaign Cannot",
@@ -271,10 +383,24 @@ const articles: Article[] = [
       {
         heading: "The Infrastructure a System Requires",
         body: "A client acquisition system requires three things a campaign does not: a continuous research function that keeps the prospect universe current, a relationship management layer that maintains contact with prospects across extended timelines, and a feedback mechanism that identifies which messages and channels are producing responses and refines the approach accordingly. Most businesses run campaigns because campaigns are simpler to design and easier to budget. Systems require ongoing investment and ongoing management. But the return on that investment is not a batch of leads — it is a permanent acquisition capability.",
+        image: "/blog/server-room-infrastructure.jpg",
+        imageAlt: "AI infrastructure — the technical foundation of a permanent client acquisition system",
+        imageCaption: "A system runs on infrastructure. Infrastructure does not have an end date.",
+      },
+      {
+        heading: "Why AI Changes the Economics of System Building",
+        body: "Until recently, building a genuine acquisition system required a significant headcount commitment — researchers, outreach specialists, relationship managers. For most premium brands, this cost made the campaign model the only practical option. AI changes this equation completely. The research layer that once required three full-time researchers can now be executed by an AI system monitoring signals across thousands of sources simultaneously. The outreach layer that required skilled copywriters producing individual messages can now be personalised at scale using AI-driven message architecture. The economics of the system are no longer prohibitive for operators who previously had no choice but to run campaigns.",
       },
       {
         heading: "The Compounding Advantage",
         body: "The most powerful argument for building a system rather than running campaigns is the compounding effect that arrives over time. In month one, a system produces a small number of qualified conversations. In month six, the number is larger because the early conversations have matured and new ones have been added. In year two, the system is producing more qualified pipeline than the business could have generated through any campaign approach, because every relationship built in the previous period is still active and every new prospect added is entering a proven engagement process. Campaigns reset. Systems compound.",
+        image: "/blog/growth-chart-compounding.jpg",
+        imageAlt: "Compounding growth chart — the output difference between campaign cycles and permanent acquisition systems",
+        imageCaption: "The compounding effect of a system versus the reset effect of a campaign. The gap widens every quarter.",
+      },
+      {
+        heading: "How to Make the Transition",
+        body: "The transition from campaign to system does not happen in a single decision. It begins with a commitment to continuous outreach rather than episodic outreach — a minimum volume of qualified contacts per month that does not pause between campaigns. It continues with the implementation of a research function that keeps the prospect universe current rather than refreshed at the start of each campaign. And it matures when the business has a relationship management layer that keeps the firm present in the minds of prospects across the months and years before they become ready to buy. Each of these layers can be built incrementally. But the decision to build them is a strategic one that changes the trajectory of the business.",
       },
     ],
   },

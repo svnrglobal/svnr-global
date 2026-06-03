@@ -76,6 +76,30 @@ const HOME_SCHEMA = [
           "@type": "Answer",
           "text": "SVNR Global works on a bespoke engagement model. Pricing depends on sector, campaign scope, and infrastructure complexity. Book a call to receive a tailored proposal for your business."
         }
+      },
+      {
+        "@type": "Question",
+        "name": "Is SVNR Global a lead generation agency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "SVNR Global operates as a B2B client acquisition agency, which goes beyond traditional lead generation. Rather than delivering raw lists or unqualified leads, SVNR builds the full outreach infrastructure — research, messaging, sequencing, and follow-up — and delivers warm, qualified conversations with decision-makers directly to the client."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does SVNR Global work with companies outside India?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. SVNR Global is headquartered in New Delhi but serves clients across Europe, North America, the Gulf, and Southeast Asia. Outreach is deployed in English and adapted for local market context. Geographic location of the client does not restrict the markets SVNR can target."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is SVNR Global different from a cold email agency?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "A cold email agency sends templated sequences at volume. SVNR builds sector-specific outreach infrastructure: ICP definition, prospect research using 50+ data signals, individually crafted messaging, multi-channel deployment across email and LinkedIn, and continuous optimisation. The result is a permanent acquisition asset, not a one-off campaign."
+        }
       }
     ]
   }
@@ -208,6 +232,20 @@ export default function Home() {
         >
           <ChevronDown size={20} className="text-white/30 animate-bounce" />
         </motion.div>
+      </section>
+
+      {/* SEO: keyword-rich intro — visible to crawlers and readers */}
+      <section className="relative z-10 bg-[#0A0A0B] py-10 md:py-14 px-6">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-white/45 text-sm md:text-base leading-relaxed"
+          >
+            SVNR Global is a <strong className="text-white/70 font-normal">B2B client acquisition agency</strong> based in New Delhi, India — operating globally across luxury, real estate, private equity, and high-ticket B2B. We design and run <strong className="text-white/70 font-normal">AI-powered outbound systems</strong> that identify ideal buyers and decision-makers, build multi-channel outreach sequences, and deliver warm, qualified conversations to premium operators — without paid advertising, content marketing, or referral dependency.
+          </motion.p>
+        </div>
       </section>
 
       {/* INFRASTRUCTURE LOGOS — auto-scroll marquee */}

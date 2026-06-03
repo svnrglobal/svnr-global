@@ -38,7 +38,7 @@ export default function LuxuryRugs() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Luxury Rugs & Home Textiles Client Acquisition | SVNR Global | SVNR Global"
+        title="Luxury Rugs & Home Textiles Client Acquisition | SVNR Global"
         description="Systematic B2B outreach for luxury rug and carpet brands building international distribution. We map the A&D community in your target markets and deliver qualified enquiries."
         canonical="/sectors/luxury-rugs-home-textiles"
         breadcrumbs={[

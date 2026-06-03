@@ -85,7 +85,7 @@ export default function Nav() {
             <Link
               key={l.href}
               to={l.href}
-              className="relative px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.16em] font-light transition-colors duration-200 hover:text-white"
+              className="relative px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.16em] font-light transition-colors duration-200 hover:text-white whitespace-nowrap"
               style={{ color: active ? "#fff" : "rgba(255,255,255,0.45)" }}
             >
               {active && (

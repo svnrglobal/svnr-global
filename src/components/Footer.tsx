@@ -9,6 +9,8 @@ const footerLinks: Record<string, { label: string; href: string }[]> = {
     { label: "Sector Workflows", href: "/services/sector-workflows" },
     { label: "Intelligence Research", href: "/services/intelligence-research" },
     { label: "Brand Outreach", href: "/services/brand-outreach" },
+    { label: "Deal Flow & Investors", href: "/services/dealflow-investor" },
+    { label: "Channel Partnership", href: "/services/channel-partnership" },
   ],
   Industries: [
     { label: "Luxury Rugs", href: "/sectors/luxury-rugs-home-textiles" },
@@ -16,10 +18,14 @@ const footerLinks: Record<string, { label: string; href: string }[]> = {
     { label: "Private Equity", href: "/sectors/private-equity-family-offices" },
     { label: "B2B Luxury Brands", href: "/sectors/b2b-luxury-brands" },
     { label: "Wealth Management", href: "/sectors/wealth-management" },
+    { label: "High-Ticket E-commerce", href: "/sectors/high-ticket-ecommerce" },
     { label: "Maritime & Logistics", href: "/sectors/maritime-logistics" },
+    { label: "Professional Services", href: "/sectors/professional-services" },
   ],
   Company: [
     { label: "About", href: "/about" },
+    { label: "How We Work", href: "/engagement" },
+    { label: "SVNR vs Alternatives", href: "/compare" },
     { label: "Results", href: "/results" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },

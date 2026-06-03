@@ -175,6 +175,33 @@ export default function AIReceptionist() {
         </div>
       </section>
 
+      
+      {/* RELATED INSIGHTS */}
+      <section className="relative z-10 bg-[#0A0A0B] pb-16 px-6 border-t border-white/8">
+        <div className="max-w-7xl mx-auto pt-16">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-3">Related Insights</p>
+            <h2 className="text-2xl font-medium text-white tracking-tight">From the SVNR blog</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 * 0.1 }}>
+              <Link to="/blog/what-is-outreach-infrastructure" className="block liquid-glass rounded-2xl p-5 hover:border-white/20 transition-all border border-white/8">
+                <p className="text-[9px] uppercase tracking-widest text-white/30 mb-2">Read</p>
+                <p className="text-white/80 text-sm font-medium leading-snug hover:text-white transition-colors">What Is Outreach Infrastructure</p>
+                <p className="text-white/30 text-[10px] mt-3 uppercase tracking-widest">→ svnrglobal.com/blog</p>
+              </Link>
+            </motion.div>
+            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1 * 0.1 }}>
+              <Link to="/blog/client-acquisition-system-vs-campaign" className="block liquid-glass rounded-2xl p-5 hover:border-white/20 transition-all border border-white/8">
+                <p className="text-[9px] uppercase tracking-widest text-white/30 mb-2">Read</p>
+                <p className="text-white/80 text-sm font-medium leading-snug hover:text-white transition-colors">System vs Campaign</p>
+                <p className="text-white/30 text-[10px] mt-3 uppercase tracking-widest">→ svnrglobal.com/blog</p>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto"><Footer /></div>
     </main>
   );

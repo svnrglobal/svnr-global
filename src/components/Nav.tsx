@@ -8,6 +8,7 @@ const links = [
   { label: "Industries", href: "/sectors" },
   { label: "Results",    href: "/results" },
   { label: "Blog",       href: "/blog" },
+  { label: "How We Work", href: "/engagement" },
   { label: "About",      href: "/about" },
 ];
 

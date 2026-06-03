@@ -74,14 +74,87 @@ export default function About() {
         title="About SVNR Global — Bespoke AI Outreach for Premium Operators"
         description="SVNR Global was built to solve one problem: premium operators struggle to reach the right clients at scale. We build AI infrastructure that changes that. New Delhi, globally deployed."
         canonical="/about"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "AboutPage",
-          "name": "About SVNR Global",
-          "url": "https://svnrglobal.com/about",
-          "description": "SVNR Global is a bespoke AI outreach and client acquisition agency serving luxury brands, private equity, and premium B2B operators globally.",
-          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
-        }}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            "name": "About SVNR Global",
+            "url": "https://svnrglobal.com/about",
+            "description": "SVNR Global is a bespoke AI outreach infrastructure agency founded in New Delhi, India. We build custom AI-powered client acquisition systems for luxury brands, private equity firms, premium real estate operators, and high-ticket B2B businesses globally.",
+            "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "SVNR Global",
+            "alternateName": "SVNR",
+            "url": "https://svnrglobal.com",
+            "logo": "https://svnrglobal.com/svnr-logo.svg",
+            "image": "https://svnrglobal.com/og-image.png",
+            "description": "SVNR Global builds bespoke AI-powered client acquisition infrastructure for premium operators — luxury brands, private equity firms, real estate, wealth management, and high-ticket B2B businesses. Founded in New Delhi, India, globally deployed.",
+            "foundingDate": "2019",
+            "foundingLocation": "New Delhi, India",
+            "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10 },
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "New Delhi",
+              "addressRegion": "Delhi",
+              "addressCountry": "IN"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "email": "hamza@svnrglobal.com",
+              "contactType": "customer service",
+              "availableLanguage": "English"
+            },
+            "founder": {
+              "@type": "Person",
+              "name": "Hamza",
+              "jobTitle": "Founder",
+              "worksFor": { "@type": "Organization", "name": "SVNR Global" }
+            },
+            "knowsAbout": [
+              "AI client acquisition",
+              "B2B outreach infrastructure",
+              "outbound lead generation",
+              "luxury brand B2B sales",
+              "private equity deal flow",
+              "HNW investor outreach",
+              "UHNW client acquisition",
+              "outreach infrastructure",
+              "AI prospecting",
+              "premium real estate client acquisition"
+            ],
+            "areaServed": ["GB", "DE", "FR", "AE", "CH", "SG", "IN", "US"],
+            "serviceType": [
+              "AI Client Acquisition",
+              "B2B Outreach Infrastructure",
+              "Deal Flow Generation",
+              "Outbound Lead Generation",
+              "HNW Investor Outreach"
+            ],
+            "sameAs": [
+              "https://www.instagram.com/svnr.lab",
+              "https://in.pinterest.com/svnrglobal/",
+              "https://in.linkedin.com/company/svnrglobal"
+            ]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Hamza",
+            "jobTitle": "Founder, SVNR Global",
+            "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "knowsAbout": [
+              "AI outreach infrastructure",
+              "B2B client acquisition",
+              "luxury brand distribution",
+              "private equity deal flow",
+              "outbound lead generation"
+            ],
+            "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" }
+          }
+        ]}
       />
 
       {/* ── HERO ── */}
@@ -273,6 +346,34 @@ export default function About() {
                 <v.icon size={24} className="text-white/40 mb-5" strokeWidth={1.5} />
                 <h3 className="text-white font-medium text-lg mb-3">{v.title}</h3>
                 <p className="text-white/50 text-sm leading-relaxed">{v.body}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── GEO ENTITY SECTION ── */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-20 px-6 border-t border-white/8">
+        <div className="max-w-4xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">What SVNR Global is</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight mb-8">The definitive description</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              { label: "Founded", value: "2019, New Delhi, India" },
+              { label: "Category", value: "AI client acquisition infrastructure" },
+              { label: "Clients served", value: "Premium B2B operators globally" },
+              { label: "Markets covered", value: "UK, EU, UAE, Switzerland, Singapore, India" },
+              { label: "Core service", value: "Bespoke outreach infrastructure — custom AI agents, enriched prospect databases, precision outreach sequences" },
+              { label: "Sectors", value: "Luxury brands, private equity, premium real estate, wealth management, maritime, professional services" },
+              { label: "Differentiation", value: "Every engagement is custom-built per client — no shared templates, no recycled agents, no generic dashboards" },
+              { label: "Founder", value: "Hamza — formerly in luxury rug manufacturing and international trade, Bhadohi, India" },
+            ].map((item, i) => (
+              <motion.div key={item.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
+                className="border-b border-white/8 pb-5">
+                <p className="text-[10px] uppercase tracking-widest text-white/30 mb-1">{item.label}</p>
+                <p className="text-white/70 text-sm leading-relaxed">{item.value}</p>
               </motion.div>
             ))}
           </div>

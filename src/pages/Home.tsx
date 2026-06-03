@@ -19,7 +19,7 @@ const HOME_SCHEMA = [
     "sameAs": [
       "https://www.instagram.com/svnr.lab",
       "https://in.pinterest.com/svnrglobal/",
-      "https://in.linkedin.com/company/svnrglobal"
+      "https://in.linkedin.com/company/svn%D1%8F%E2%84%A2"
     ]
   },
   {

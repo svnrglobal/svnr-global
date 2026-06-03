@@ -1072,7 +1072,7 @@ export default function BlogArticle() {
               "@type": "Person",
               "name": "Hamza",
               "url": "https://svnrglobal.com/about",
-              "sameAs": "https://in.linkedin.com/company/svnrglobal",
+              "sameAs": "https://in.linkedin.com/company/svn%D1%8F%E2%84%A2",
               "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
             },
             "publisher": {

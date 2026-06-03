@@ -497,7 +497,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     title: "How SVNR Increased Treatment Revenue by 287% While Reducing Consultation No-Shows by 64%",
     subtitle: "Aesthetic Clinic Patient Acquisition & Conversion · 4 Locations",
     summary: "A premium aesthetic clinic group generating 3,500+ monthly inquiries was losing 32% of prospects before consultations and watching high-ticket treatment conversion stall. SVNR deployed AI patient concierge technology, structured treatment education, and a standardised conversion framework — delivering a 287% treatment revenue increase across four clinic locations.",
-    heroImage: "/case-studies/skincare-aesthetics/Aesthetic-Clinic-Design.png",
+    heroImage: "/case-studies/skincare-aesthetics/aesthetic-clinic-treatment-room.jpg",
     images: [
       "/case-studies/skincare-aesthetics/clean-bright-interior-modern-medical-spa-dermatology-clinic-beige-upholstered-treatment-chair-headrest-footrest-396760382.jpg.webp",
       "/case-studies/skincare-aesthetics/female-patient-receiving-cosmetic-treatment-1.jpg",

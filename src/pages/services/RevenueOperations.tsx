@@ -41,6 +41,43 @@ export default function RevenueOperations() {
         title="Revenue Operations — Pipeline Management & Automation | SVNR Global"
         description="Full-funnel revenue ops built around your deal cycle. Every stage tracked. Every signal acted on. No more pipeline surprises."
         canonical="/services/revenue-operations"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Revenue Operations — Pipeline Management & Automation",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "Full-funnel revenue operations infrastructure for premium B2B operators. Pipeline stage tracking, deal signal monitoring, CRM automation, and reporting architecture built specifically for your deal cycle — no generic templates.",
+            "areaServed": ["Global"],
+            "serviceType": ["Revenue Operations", "Pipeline Management", "CRM Automation", "Sales Operations", "Deal Tracking"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is revenue operations for a premium B2B company?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Revenue operations is the infrastructure that tracks every deal relationship from first contact to signed client — monitoring stage progression, last contact dates, next action triggers, and conversion signals. It ensures no opportunity is lost to administrative gap, delayed follow-up, or pipeline blindness." }
+              },
+              {
+                "@type": "Question",
+                "name": "How does SVNR's revenue operations service differ from a standard CRM setup?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Standard CRM setups use off-the-shelf templates. SVNR builds revenue operations infrastructure specifically around your deal cycle — the stages, signals, and timeline relevant to your sector. A luxury real estate pipeline is structured differently from a PE deal sourcing pipeline, which is different from a wealth management client acquisition pipeline." }
+              },
+              {
+                "@type": "Question",
+                "name": "What tools does SVNR use for revenue operations?",
+                "acceptedAnswer": { "@type": "Answer", "text": "SVNR builds on the infrastructure stack appropriate to the client's existing setup — typically HubSpot, Notion, Airtable, or custom dashboards built in Make or n8n. The specific tool is less important than the architecture: stage definitions, signal logic, and reporting that gives the principal complete pipeline visibility." }
+              },
+              {
+                "@type": "Question",
+                "name": "Can revenue operations be integrated with SVNR's outreach infrastructure?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. Revenue operations is most powerful when connected to SVNR's outreach infrastructure — warm handoffs from the acquisition system feed directly into the pipeline tracking layer, and stage progression triggers automated follow-up sequences where appropriate." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },

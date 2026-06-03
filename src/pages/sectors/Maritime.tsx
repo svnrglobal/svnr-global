@@ -23,9 +23,46 @@ export default function Maritime() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Maritime & Logistics Business Development | SVNR Global | SVNR Global"
+        title="Maritime & Logistics Business Development | SVNR Global"
         description="Systematic B2B outreach for maritime operators, logistics firms, and freight specialists. We map your target market and build direct relationships with decision-makers."
         canonical="/sectors/maritime-logistics"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Maritime & Logistics Business Development",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "Systematic cargo owner identification, charterer outreach, and commercial client acquisition for shipping operators, freight forwarders, and port services providers. Trade-lane specific outreach that builds maritime commercial relationships at scale.",
+            "areaServed": ["Global", "Europe", "Middle East", "Asia", "West Africa", "Mediterranean"],
+            "serviceType": ["Maritime Business Development", "Freight Forwarder Client Acquisition", "Cargo Owner Outreach", "Port Services Commercial Development"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do shipping companies get new cargo clients systematically?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic outreach to logistics managers, supply chain directors, and procurement teams at companies whose cargo profile and trade lanes match the operator's capabilities — combined with tender intelligence to position before formal RFQ processes begin." }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the best business development strategy for freight forwarding?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Trade-lane specific outreach targeting shippers whose cargo requirements match the forwarder's network, combined with relationship building at the logistics manager level in mid-market manufacturers and retailers, and proactive positioning ahead of tender cycles." }
+              },
+              {
+                "@type": "Question",
+                "name": "How do maritime operators reach logistics decision-makers directly?",
+                "acceptedAnswer": { "@type": "Answer", "text": "By identifying logistics directors and supply chain managers at target companies through LinkedIn and industry association databases, then reaching them with messages that reference their specific trade lanes, cargo profile, and operational pressures — not generic freight service marketing." }
+              },
+              {
+                "@type": "Question",
+                "name": "What is tender intelligence in maritime and how does it help win new clients?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Tender intelligence is awareness of upcoming freight procurement processes before they are formally issued — allowing the operator to build a relationship with the procurement team in advance. Operators who arrive at the tender stage with an existing relationship win at a significantly higher rate than those arriving cold." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Sectors", url: "/sectors" },

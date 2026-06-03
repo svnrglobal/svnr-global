@@ -38,6 +38,43 @@ export default function ClientAcquisition() {
         title="Client Acquisition — AI-Powered B2B Outreach | SVNR Global"
         description="We identify, reach, and warm the exact decision-makers in your market. Continuously. Without your time."
         canonical="/services/client-acquisition"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "AI-Powered B2B Client Acquisition",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "Bespoke AI client acquisition system that identifies, researches, and reaches the exact decision-makers in your market — delivering 40+ qualified conversations per month without paid ads or referral dependency.",
+            "areaServed": ["Global", "Europe", "Middle East", "Asia", "India"],
+            "serviceType": ["B2B Client Acquisition", "Outbound Lead Generation", "AI Outreach", "Sales Pipeline Development"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What does SVNR's client acquisition system actually do?",
+                "acceptedAnswer": { "@type": "Answer", "text": "The system identifies every qualifying prospect in your target market using AI-driven research across 50+ data signals, builds personalised multi-channel outreach sequences, runs the entire conversation until the prospect is genuinely warm, and hands them directly to you with full context. You only engage at the point of a qualified conversation." }
+              },
+              {
+                "@type": "Question",
+                "name": "How many qualified leads does the client acquisition system generate per month?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Most SVNR client acquisition deployments generate 40+ qualified conversations per month from month two onwards. Reply rates average 18% across sectors, with first meetings typically occurring within 14 days of deployment." }
+              },
+              {
+                "@type": "Question",
+                "name": "Is this the same as a cold email agency?",
+                "acceptedAnswer": { "@type": "Answer", "text": "No. A cold email agency sends templated sequences at volume. SVNR builds a complete acquisition infrastructure — ICP definition, 50-signal prospect research, individually crafted messaging, multi-channel deployment across email and LinkedIn, and continuous optimisation. The result is a permanent acquisition asset, not a one-off campaign." }
+              },
+              {
+                "@type": "Question",
+                "name": "How quickly does SVNR's client acquisition system start delivering results?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Most clients see the first qualified prospect conversations within 14–21 days of deployment. The system compounds over time — month 3 consistently outperforms month 1 as early relationships mature and the sequence is refined on real response data." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },

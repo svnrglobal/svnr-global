@@ -21,6 +21,9 @@ type Article = {
   readTime: string;
   image: string;
   imageAlt: string;
+  datePublished: string;
+  seoDescription?: string;
+  howToSteps?: { name: string; text: string }[];
   content: ContentSection[];
   faqs?: FAQ[];
   related?: string[]; // slugs
@@ -44,6 +47,15 @@ const articles: Article[] = [
     readTime: "12 min",
     image: "/blog/sustainable-luxury-carpets.jpg",
     imageAlt: "Luxury carpet manufacturing",
+    datePublished: "2026-01-14T09:00:00Z",
+    seoDescription: "How luxury rug and carpet brands build international distribution by reaching interior designers and trade buyers directly — without trade fairs or showrooms.",
+    howToSteps: [
+      { name: "Map the A&D community in your target market", text: "Identify every qualifying interior designer and architect in the target geography by name, filtered by project type, price point, and material history." },
+      { name: "Build personalised outreach messages", text: "Write messages that reference each designer's specific portfolio and client sector — not a generic catalogue introduction." },
+      { name: "Deploy direct outreach across email and LinkedIn", text: "Send personalised sequences to the mapped A&D contacts on the channels they actually use for trade correspondence." },
+      { name: "Follow up with sample offers and project context", text: "Progress warm responses with sample offers, portfolio links, and references to their current project pipeline." },
+      { name: "Convert relationships to trade accounts", text: "Formalise the trade relationship with wholesale pricing, sample policy, and a dedicated contact — turning initial conversations into active stockist relationships." }
+    ],
     faqs: [
       { q: "How do luxury rug brands enter new markets without a showroom?", a: "By systematically identifying and reaching interior designers and trade buyers in the target market through direct outreach — mapping the A&D community by name, initiating contact with personalised messages, and building trade relationships before committing to permanent retail infrastructure." },
       { q: "What is the best distribution channel for luxury handmade rugs?", a: "The architecture and interior design community is the primary distribution channel for luxury rugs. Interior designers specify rugs for client projects at a level that drives consistent volume. Building direct trade relationships with designers in target markets is more efficient than relying on trade fairs or showrooms alone." },
@@ -106,6 +118,15 @@ const articles: Article[] = [
     readTime: "13 min",
     image: "/blog/blog-banner-10Jan2025.jpg",
     imageAlt: "Premium real estate",
+    datePublished: "2026-01-22T09:00:00Z",
+    seoDescription: "How premium real estate firms reach HNW investor buyers directly — bypassing portals through signal-driven outreach to principals before they formally enter the market.",
+    howToSteps: [
+      { name: "Define the principal buyer profile", text: "Identify the specific investor profile — HNW individual, family office, or institutional buyer — with capital capacity, geographic preference, and investment mandate matching your property." },
+      { name: "Monitor liquidity event signals", text: "Track business sales, company IPOs, and investment exits that create capital needing deployment — these are the strongest predictors of buyer readiness." },
+      { name: "Identify buyers by name before they enter the market", text: "Use AI-driven research across business press, LinkedIn, and company filings to name the principals most likely to be in or near the market for your property type." },
+      { name: "Reach principals directly on their preferred channel", text: "Contact qualified buyers directly via email or WhatsApp — not portal forms — with messages demonstrating specific knowledge of their investment profile." },
+      { name: "Progress the conversation to a viewing or meeting", text: "Handle the initial response with full context about the property and the buyer's stated investment criteria, converting contact into a qualified viewing." }
+    ],
     faqs: [
       { q: "How do premium real estate firms find investor buyers without portals?", a: "By identifying principal buyers directly — HNW individuals, family offices, and institutional investors — through signal monitoring and AI-driven research, then initiating direct contact through email, LinkedIn, or WhatsApp with messages specific to their investment profile." },
       { q: "What is the best way to reach HNW property buyers?", a: "Direct outreach through the channels principals actually use — primarily email and WhatsApp in European and Middle Eastern markets. The message must demonstrate specific knowledge of the buyer's investment profile and capital position, not a generic property introduction." },
@@ -159,6 +180,15 @@ const articles: Article[] = [
     title: "How Private Equity Firms Source Proprietary Deal Flow Before Companies Enter a Formal Process",
     category: "Private Equity",
     readTime: "14 min",
+    datePublished: "2026-02-03T09:00:00Z",
+    seoDescription: "How PE firms build proprietary deal flow by reaching founders before formal sale processes begin — using research-driven outreach and systematic relationship-building.",
+    howToSteps: [
+      { name: "Define a specific investment thesis", text: "Narrow your target universe to a researchable thesis — sector, EBITDA range, ownership structure, and succession signal — rather than a broad category." },
+      { name: "Map qualifying companies by name", text: "Use AI-driven research to identify every company in the target universe with a named founder, inferred ownership structure, and visible trigger signal." },
+      { name: "Monitor trigger events continuously", text: "Track succession signals, debt maturities, management hires, and sector consolidation events that predict a founder's readiness for a conversation." },
+      { name: "Reach founders with research-backed outreach", text: "Contact founders with messages that demonstrate specific knowledge of their business — not a generic fund introduction or pitch deck request." },
+      { name: "Maintain presence across a multi-year timeline", text: "Follow up intelligently across months and years — building the relationship long before a transaction is on anyone's radar, so the firm is the obvious first call when the timing arrives." }
+    ],
     faqs: [
       { q: "What is proprietary deal flow in private equity?", a: "Proprietary deal flow refers to investment opportunities a PE firm identifies and approaches directly — before the company enters a formal sale process or engages an investment bank. These deals are not seen by competing firms and typically command better entry terms." },
       { q: "How do PE firms find companies before they go to market?", a: "Through systematic outreach to founders, family-owned businesses, and management teams in target sectors — using AI-driven research to identify companies that match the fund's investment criteria, then building relationships before a sale process begins." },
@@ -214,6 +244,8 @@ const articles: Article[] = [
     readTime: "13 min",
     image: "/blog/GettyImages-1224893561.jpg",
     imageAlt: "Architecture studio",
+    datePublished: "2026-02-12T09:00:00Z",
+    seoDescription: "How architecture and interior design studios get new clients beyond referrals — using systematic direct outreach to developers, hospitality operators, and project commissioners.",
     faqs: [
       { q: "How do architecture and interior design studios get more clients?", a: "Through systematic direct outreach to developers, real estate companies, and premium hospitality groups — identifying the right decision-maker, demonstrating knowledge of their project pipeline, and initiating contact before a project brief goes out to multiple studios." },
       { q: "Why do design studios depend on referrals?", a: "Referrals are the default acquisition channel because they require no proactive effort and they work — to a point. The ceiling appears when the studio's growth ambitions exceed what its existing client network can deliver through word of mouth alone." },
@@ -272,6 +304,8 @@ const articles: Article[] = [
     readTime: "13 min",
     image: "/blog/istockphoto-1346853640-612x612.jpg",
     imageAlt: "Wealth management",
+    datePublished: "2026-02-20T09:00:00Z",
+    seoDescription: "How wealth management boutiques attract UHNW and HNW clients through trigger-driven outreach and AI-powered prospect identification — beyond referral dependency.",
     faqs: [
       { q: "How do wealth management firms attract high net worth clients?", a: "Through direct outreach to individuals at the moment of a liquidity event — a business sale, an exit, an inheritance — combined with systematic relationship-building with accountants, lawyers, and corporate advisors who work with HNW individuals regularly." },
       { q: "What is the best client acquisition strategy for a wealth management boutique?", a: "A combination of referral programme formalisation and systematic direct outreach targeting HNW individuals at trigger moments — liquidity events, succession planning, retirement — with messages that demonstrate specific knowledge of their situation." },
@@ -319,6 +353,8 @@ const articles: Article[] = [
     readTime: "12 min",
     image: "/blog/DUVqh5kW-R3HR4829-1200x800.jpg",
     imageAlt: "Textile sourcing platform",
+    datePublished: "2026-03-04T09:00:00Z",
+    seoDescription: "How B2B textile marketplaces solve buyer-side liquidity by reaching garment manufacturers and sourcing teams directly at the start of their seasonal buying cycle.",
     faqs: [
       { q: "How do B2B textile platforms find buyers?", a: "Through systematic outreach to garment manufacturers, fashion brands, and procurement managers — mapping the buyer universe by product category, sourcing geography, and order volume, then initiating direct contact with messages specific to their sourcing profile." },
       { q: "What is the best way to find garment manufacturer clients?", a: "Direct outreach to fashion brands and retailers at the buying or production level, combined with presence at relevant trade events and a systematic follow-up programme that maintains contact across the months of a seasonal buying cycle." },
@@ -371,6 +407,8 @@ const articles: Article[] = [
     readTime: "12 min",
     image: "/blog/SBftLgcgXSDqVmTwCyQwrxykDpA.webp",
     imageAlt: "Business strategy",
+    datePublished: "2026-03-14T09:00:00Z",
+    seoDescription: "The true hidden cost of referral dependency for premium brands — and how systematic outreach infrastructure replaces the referral ceiling with a compounding acquisition engine.",
     faqs: [
       { q: "What is referral dependency in business development?", a: "Referral dependency is when a business's primary client acquisition mechanism is word-of-mouth from existing clients. It works in early stages but creates an unreliable, unscalable pipeline that plateaus when the existing network is fully leveraged." },
       { q: "How do you reduce dependence on referrals for new clients?", a: "By building a systematic outreach infrastructure — a continuous function that identifies qualifying prospects, initiates contact, and maintains relationships across the months before a prospect is ready to engage — independent of what the existing network delivers." },
@@ -421,6 +459,8 @@ const articles: Article[] = [
     readTime: "13 min",
     image: "/blog/20943871-marketing-scaled.jpg",
     imageAlt: "Client acquisition system",
+    datePublished: "2026-03-24T09:00:00Z",
+    seoDescription: "Why a client acquisition system outperforms campaigns — the structural difference between episodic outreach that resets and permanent infrastructure that compounds.",
     faqs: [
       { q: "What is the difference between a client acquisition system and a campaign?", a: "A campaign has a defined start and end date — it produces leads in a window and then stops. A system runs continuously, identifying and reaching prospects on an ongoing basis, compounding results over time rather than resetting at the end of each campaign cycle." },
       { q: "Why do campaigns fail to produce consistent pipeline?", a: "Because they are episodic. When the campaign ends, outreach stops and the pipeline empties. The next campaign starts from a cold prospect universe. Systems maintain continuous contact with a defined prospect universe and compound rather than reset." },
@@ -471,6 +511,8 @@ const articles: Article[] = [
     readTime: "13 min",
     image: "/blog/pe-boardroom-entry.jpeg",
     imageAlt: "Family office boardroom — the decision-making environment AI prospecting must reach",
+    datePublished: "2026-04-07T09:00:00Z",
+    seoDescription: "How asset managers and fund GPs use AI prospecting to identify and reach family office principals — from signal monitoring to sequenced outreach designed for long-decision-cycle relationships.",
     faqs: [
       { q: "How do you find family office contacts?", a: "AI prospecting aggregates signals from company filings, charitable registrations, property records, and professional networks to identify family office principals who are not publicly listed as such — building a verified contact universe from public data rather than purchased lists." },
       { q: "What is the best way to approach a family office?", a: "Direct, brief, specifically researched outreach that demonstrates knowledge of the family office's mandate, investment history, and current strategic priorities. Generic pitch materials are filtered by professional gatekeepers before they reach principals." },
@@ -521,6 +563,8 @@ const articles: Article[] = [
     readTime: "12 min",
     image: "/blog/wealth-team-working.webp",
     imageAlt: "Wealth management team — the professionals who serve HNW clients",
+    datePublished: "2026-04-16T09:00:00Z",
+    seoDescription: "How real estate firms and wealth managers reach HNW investor principals directly — targeting triggers, personalising messages, and building multi-touch sequences that earn conversations.",
     faqs: [
       { q: "What is HNW investor outreach?", a: "HNW investor outreach is the systematic process of identifying high net worth individuals who match a defined investor profile and initiating direct contact through intelligent, personalised outreach — at the moment their circumstances make them likely to be open to a new investment relationship." },
       { q: "What is the best channel for reaching HNW investors?", a: "Direct email and LinkedIn for initial contact, followed by the channel the investor actually uses for professional correspondence — often WhatsApp in European and Middle Eastern markets. Generic mass channels like paid ads reach entirely the wrong audience." },
@@ -571,6 +615,8 @@ const articles: Article[] = [
     readTime: "13 min",
     image: "/blog/pe-reviewing-reports.jpeg",
     imageAlt: "UHNW client acquisition — the research and intelligence behind ultra high net worth outreach",
+    datePublished: "2026-04-24T09:00:00Z",
+    seoDescription: "UHNW client acquisition strategy for elite wealth managers — how to reach ultra high net worth individuals past gatekeepers with research-backed outreach and a multi-year relationship approach.",
     faqs: [
       { q: "What is UHNW client acquisition?", a: "UHNW client acquisition is the process of identifying, approaching, and building relationships with ultra high net worth individuals — those with investable assets typically exceeding $30 million — for wealth management, investment, or advisory services. It requires bespoke research and a long-cycle relationship approach." },
       { q: "How do wealth managers reach UHNW individuals?", a: "Through deeply researched direct outreach that reaches principals rather than gatekeepers, combined with a patient multi-touch relationship sequence designed around the 12–36 month timeline typical of UHNW investment decisions." },
@@ -622,6 +668,8 @@ const articles: Article[] = [
     readTime: "12 min",
     image: "/blog/founder-strategy-whiteboard.avif",
     imageAlt: "Strategic outreach planning — India-based global B2B client acquisition",
+    datePublished: "2026-05-02T09:00:00Z",
+    seoDescription: "How India-based B2B outreach agencies build global client acquisition infrastructure — the difference between BPO-style execution and bespoke AI-powered outreach systems for premium operators.",
     faqs: [
       { q: "What is a B2B outreach agency in India?", a: "An India-based B2B outreach agency builds client acquisition infrastructure for businesses targeting clients globally — using AI-powered research, personalised outreach sequences, and systematic relationship management to generate qualified pipeline in international markets." },
       { q: "Why do global companies use India-based B2B agencies?", a: "The combination of deep technical capability in AI infrastructure, time zone coverage across European and Asian markets, and access to highly educated talent makes India an increasingly strong location for building sophisticated global outreach operations." },
@@ -672,6 +720,8 @@ const articles: Article[] = [
     readTime: "14 min",
     image: "/blog/server-room-infrastructure.jpg",
     imageAlt: "Outreach infrastructure — the technical and strategic foundation of a permanent client acquisition system",
+    datePublished: "2026-05-10T09:00:00Z",
+    seoDescription: "What outreach infrastructure means — the four layers of a permanent B2B acquisition system and why it outperforms lead generation agencies and campaign-based outreach.",
     faqs: [
       { q: "What is outreach infrastructure?", a: "Outreach infrastructure is a permanent, AI-powered system for client acquisition — comprising research, data enrichment, outreach sequences, qualification logic, and reporting — that operates continuously rather than as a series of campaigns. It compounds over time rather than resetting." },
       { q: "How is outreach infrastructure different from a lead generation agency?", a: "A lead generation agency delivers a list of contacts. Outreach infrastructure delivers warm conversations — prospects who have been identified, researched, reached, engaged, and progressed to the point where a substantive business conversation is appropriate." },
@@ -726,6 +776,8 @@ const articles: Article[] = [
     readTime: "12 min",
     image: "/blog/maritime-container-port.webp",
     imageAlt: "Container port — the operational environment where maritime logistics business development decisions are made",
+    datePublished: "2026-05-16T09:00:00Z",
+    seoDescription: "Maritime logistics business development for shipping operators and freight forwarders — systematic cargo owner outreach, tender intelligence, and trade-lane-specific client acquisition.",
     faqs: [
       { q: "How do shipping companies get new clients?", a: "Through systematic outreach to logistics managers, supply chain directors, and procurement teams at companies whose cargo profile and trade lanes match the operator's capabilities — combined with tender intelligence to position the firm before formal RFQ processes begin." },
       { q: "What is the best business development strategy for freight forwarding?", a: "A combination of trade lane-specific outreach targeting shippers whose cargo requirements match the forwarder's network, relationship building with logistics managers at mid-market manufacturers and retailers, and proactive tender positioning." },
@@ -776,6 +828,8 @@ const articles: Article[] = [
     readTime: "11 min",
     image: "/blog/luxury-brand-showroom.jpg",
     imageAlt: "Luxury brand environment — the sector where cold email must operate at a completely different standard",
+    datePublished: "2026-05-21T09:00:00Z",
+    seoDescription: "Why cold email fails for luxury brands when generic — and the research-backed, individually written outreach standard that actually earns responses from premium retailers and buyers.",
     faqs: [
       { q: "Does cold email work for luxury brands?", a: "Yes — when the research standard is high enough. Cold email fails in luxury when it is generic. It works when it demonstrates specific knowledge of the recipient's business, their aesthetic direction, and why this particular brand belongs in their selection or specification." },
       { q: "What makes a good cold email for a luxury B2B brand?", a: "A message that references something specific about the recipient — a project they completed, a store they operate, a buyer brief they are known to follow — and connects it precisely to the brand's proposition. Specificity is the mechanism that earns responses." },
@@ -826,6 +880,8 @@ const articles: Article[] = [
     readTime: "13 min",
     image: "/blog/quiet-office-focus.jpg",
     imageAlt: "Professional services environment — the sector where client acquisition requires relationship-first thinking",
+    datePublished: "2026-05-26T09:00:00Z",
+    seoDescription: "How professional services firms — consultancies, law firms, and advisors — build consistent client pipeline through systematic trigger-driven outreach beyond referral dependency.",
     faqs: [
       { q: "How do professional services firms get new clients?", a: "The most systematic approach combines referral programme formalisation with direct outreach to target companies at the moment a trigger event creates a genuine need — a transaction, a leadership change, a regulatory development — and the firm's expertise becomes directly relevant." },
       { q: "What is the best client acquisition strategy for a consultancy?", a: "Systematic outreach to defined target companies in a specific sector, timed around the trigger events that create consulting needs — leadership changes, M&A activity, strategic reviews — combined with a credibility-building sequence that establishes expertise before a commercial conversation is proposed." },
@@ -876,6 +932,8 @@ const articles: Article[] = [
     readTime: "12 min",
     image: "/blog/luxury-interior-design-studio.jpg",
     imageAlt: "Luxury retail interior — the environment where premium brand buying decisions are made",
+    datePublished: "2026-05-29T09:00:00Z",
+    seoDescription: "Outbound lead generation for luxury retail — how premium brands reach department store buyers, boutique owners, and platform curators systematically before the trade fair season.",
     faqs: [
       { q: "What is outbound lead generation for luxury brands?", a: "A systematic programme of identifying, researching, and reaching premium retailers, boutiques, and platform buyers who match the brand's distribution profile — initiating direct contact with individually researched messages rather than waiting for buyers to discover the brand at trade fairs." },
       { q: "How do luxury brands reach retail buyers without trade fairs?", a: "Through direct outreach to the buying decision-maker — category buyers in department stores, owners in boutiques, curation directors in online platforms — using messages that demonstrate specific knowledge of their current selection and why this brand is a relevant addition." },
@@ -926,6 +984,15 @@ const articles: Article[] = [
     readTime: "12 min",
     image: "/blog/b2b-handshake-deal.jpg",
     imageAlt: "B2B client acquisition — the systematic approach that replaces referral dependency for luxury brands",
+    datePublished: "2026-06-03T09:00:00Z",
+    seoDescription: "How luxury brands get B2B clients systematically — defining the right buyer profile, building outreach infrastructure, and replacing referral dependency with a compounding acquisition system.",
+    howToSteps: [
+      { name: "Define the ideal B2B client profile", text: "Identify the precise characteristics of your best-fit B2B client — sector, project type, price architecture, geography, and decision-maker title — before any outreach begins." },
+      { name: "Map the qualifying universe", text: "Use AI-driven research to identify every qualifying retailer, designer, distributor, or buyer in your target markets — building a named, enriched prospect list." },
+      { name: "Research each prospect individually", text: "For each target, gather specific intelligence — their project portfolio, current brand mix, buying direction, and any signals indicating a specific need your brand addresses." },
+      { name: "Write individually targeted outreach messages", text: "Create messages that reference something specific about each prospect's business and connect it precisely to what your brand offers. No templates." },
+      { name: "Deploy and follow up systematically", text: "Initiate contact and follow up with value-adding touches across the 3–9 month luxury B2B relationship cycle — maintaining presence without pressure until the prospect is ready to engage." }
+    ],
     faqs: [
       { q: "How do luxury brands find B2B clients?", a: "Through systematic outreach to retailers, distributors, specifiers, and buyers whose profile matches the brand's positioning — using individually researched messages that demonstrate knowledge of the recipient's business rather than generic brand introductions." },
       { q: "What is the best way to get interior designer clients for a luxury brand?", a: "Direct outreach to interior designers in the target market, filtered by project type, price point, and material direction. The message must reference something specific about the designer's portfolio and connect it precisely to what the brand offers." },
@@ -980,7 +1047,8 @@ export default function BlogArticle() {
   const color = categoryColors[article.category] || "#ffffff";
   const related = articles.filter((a) => a.slug !== slug).slice(0, 3);
 
-  const articleDescription = article.content[0]?.body?.slice(0, 155).replace(/\s\S*$/, "…") ?? article.title;
+  const articleDescription = article.seoDescription ?? (article.content[0]?.body?.slice(0, 155).replace(/\s\S*$/, "…") ?? article.title);
+  const pubDate = article.datePublished ?? "2026-06-01T00:00:00Z";
 
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
@@ -990,7 +1058,7 @@ export default function BlogArticle() {
         canonical={`/blog/${article.slug}`}
         ogImage={`https://svnrglobal.com${article.image}`}
         ogType="article"
-        articlePublishedTime="2026-06-01T00:00:00Z"
+        articlePublishedTime={pubDate}
         schema={[
           {
             "@context": "https://schema.org",
@@ -998,12 +1066,13 @@ export default function BlogArticle() {
             "headline": article.title,
             "description": articleDescription,
             "image": `https://svnrglobal.com${article.image}`,
-            "datePublished": "2026-06-01T00:00:00Z",
-            "dateModified": "2026-06-03T00:00:00Z",
+            "datePublished": pubDate,
+            "dateModified": pubDate,
             "author": {
               "@type": "Person",
               "name": "Hamza",
               "url": "https://svnrglobal.com/about",
+              "sameAs": "https://in.linkedin.com/company/svnrglobal",
               "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
             },
             "publisher": {
@@ -1020,6 +1089,18 @@ export default function BlogArticle() {
               "@type": "Question",
               "name": faq.q,
               "acceptedAnswer": { "@type": "Answer", "text": faq.a }
+            }))
+          }] : []),
+          ...(article.howToSteps && article.howToSteps.length > 0 ? [{
+            "@context": "https://schema.org",
+            "@type": "HowTo",
+            "name": article.title,
+            "description": articleDescription,
+            "step": article.howToSteps.map((step, i) => ({
+              "@type": "HowToStep",
+              "position": i + 1,
+              "name": step.name,
+              "text": step.text
             }))
           }] : [])
         ]}

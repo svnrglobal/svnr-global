@@ -33,6 +33,43 @@ export default function BrandOutreach() {
         title="Brand Outreach — Hyper-Personalised B2B Messaging | SVNR Global"
         description="Every message we deploy is written specifically for your market and your buyer profile. No templates. No mass sends. Outreach that reads like a peer."
         canonical="/services/brand-outreach"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Brand Outreach — Hyper-Personalised B2B Messaging",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "Individually researched, hyper-personalised B2B outreach sequences for premium brands. Every message is written for the specific recipient — no templates, no mass sends. Outreach that earns a response because it reads like it came from a peer who did their homework.",
+            "areaServed": ["Global", "Europe", "Middle East", "Asia"],
+            "serviceType": ["Brand Outreach", "Personalised B2B Messaging", "Premium Outreach Sequences", "B2B Email Strategy"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What makes personalised brand outreach different from cold email?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Cold email sends templated messages at volume. Brand outreach means every message is researched and written for the specific recipient — referencing their business, their sector, and the specific reason the contact is relevant. SVNR's reply rates average 18–24%, against a 2–5% industry average for templated cold email." }
+              },
+              {
+                "@type": "Question",
+                "name": "How does SVNR personalise outreach at scale for premium brands?",
+                "acceptedAnswer": { "@type": "Answer", "text": "SVNR combines deep sector research with AI-assisted message architecture — each prospect is individually researched across 50+ data signals, and each message is built around specific observations about that prospect's business, portfolio, or buying history. The result is personalised outreach delivered at a scale no human team could match manually." }
+              },
+              {
+                "@type": "Question",
+                "name": "What channels does SVNR brand outreach cover?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Email is the primary channel, followed by LinkedIn for professional relationships and WhatsApp where culturally appropriate — particularly in European and Middle Eastern markets for HNW and trade relationships. Channel selection is determined by the sector and buyer profile." }
+              },
+              {
+                "@type": "Question",
+                "name": "Does brand outreach work for luxury brands targeting trade buyers?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes — and it is the most effective acquisition channel for luxury trade relationships. A message that demonstrates specific knowledge of an interior designer's project portfolio earns a response at a completely different rate than a catalogue introduction. SVNR has achieved 78% enquiry lifts for luxury brands within six weeks of deployment." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },

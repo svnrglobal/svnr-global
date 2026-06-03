@@ -33,6 +33,43 @@ export default function ChannelPartnership() {
         title="Channel Partnership — Trade Distribution Activation | SVNR Global"
         description="We build the system that finds, reaches, and activates the right architects, designers, and specifiers for your product. Trade distribution built through relationships."
         canonical="/services/channel-partnership"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Channel Partnership — Trade Distribution Activation",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "Systematic trade partner acquisition: finding, reaching, and activating the right architects, interior designers, specifiers, showrooms, and distributors for premium products. Channel partnership infrastructure that converts cold contacts into active distribution relationships.",
+            "areaServed": ["Global", "Europe", "Middle East", "Asia", "United Kingdom"],
+            "serviceType": ["Channel Partnership Development", "Trade Distribution Activation", "Showroom Partner Acquisition", "Specifier Outreach"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do premium brands build trade channel partnerships systematically?",
+                "acceptedAnswer": { "@type": "Answer", "text": "By mapping the universe of qualifying trade partners — architects, interior designers, showrooms, distributors — in target geographies, researching each partner's project type and client base, then initiating direct contact with messages that demonstrate knowledge of their practice and explain precisely why the partnership makes sense." }
+              },
+              {
+                "@type": "Question",
+                "name": "How many trade partners can SVNR activate in a new market?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A structured 90-day programme typically activates 10–20 qualified trade partner relationships in a new market. The first confirmed partner relationship typically arrives within 30 days of deployment." }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the difference between a stockist and a channel partner?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A stockist holds and sells inventory. A channel partner can include stockists, specifiers, showrooms, and interior designers who recommend or specify the product for client projects without holding inventory. SVNR builds programmes for both models depending on the brand's distribution strategy." }
+              },
+              {
+                "@type": "Question",
+                "name": "Does channel partnership development work for non-luxury product categories?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR deploys channel partnership programmes for any premium product with a defined trade buyer profile — architectural materials, home textiles, premium kitchen equipment, high-ticket wellness products, and others where the route to market runs through a specifier or trade buyer rather than direct to consumer." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },

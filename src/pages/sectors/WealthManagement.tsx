@@ -26,9 +26,46 @@ export default function WealthManagement() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Wealth Management Client Acquisition | SVNR Global | SVNR Global"
+        title="Wealth Management Client Acquisition | SVNR Global"
         description="We help wealth management boutiques and RIAs expand their UHNW client base with discretion. AI-driven prospect mapping and personalised outreach to qualified principals."
         canonical="/sectors/wealth-management"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Wealth Management Boutique Client Acquisition",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "AI-powered UHNW and HNW client acquisition for wealth management boutiques and independent financial advisors. Discreet, researched outreach to qualified principals at the moment of liquidity events and wealth transitions.",
+            "areaServed": ["Global", "Europe", "Middle East", "Switzerland", "United Kingdom", "Singapore"],
+            "serviceType": ["UHNW Client Acquisition", "HNW Investor Outreach", "Wealth Management Business Development", "Liquidity Event Targeting"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do wealth management boutiques attract UHNW clients?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Through direct outreach to individuals at the moment of a liquidity event — a business sale, an exit, an inheritance — combined with systematic relationship-building with accountants, lawyers, and advisors who work with HNW individuals. AI systems monitor trigger signals in real time to identify prospects at the right moment." }
+              },
+              {
+                "@type": "Question",
+                "name": "What triggers a high net worth individual to change wealth manager?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Most transitions happen after a liquidity event, a significant life change, or consistent underperformance in service. The firm that maintains contact with prospects across these trigger windows is positioned when the transition moment arrives." }
+              },
+              {
+                "@type": "Question",
+                "name": "How is SVNR different from a typical wealth management marketing agency?",
+                "acceptedAnswer": { "@type": "Answer", "text": "SVNR does not run marketing campaigns. We build acquisition infrastructure — AI-driven prospect identification, research-backed outreach, and relationship management — that operates continuously to deliver warm conversations with qualified prospects, not leads or impressions." }
+              },
+              {
+                "@type": "Question",
+                "name": "Can SVNR Global help wealth managers reach clients outside their home market?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR deploys outreach across European, Middle Eastern, and global markets from its New Delhi base. We identify and reach HNW and UHNW prospects in any geography where the client has regulatory permission to operate." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Sectors", url: "/sectors" },

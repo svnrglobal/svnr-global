@@ -23,9 +23,46 @@ export default function HighTicketEcommerce() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="High-Ticket E-commerce Client Acquisition | SVNR Global | SVNR Global"
+        title="High-Ticket E-commerce Client Acquisition | SVNR Global"
         description="For premium D2C and wholesale operators looking to grow average order value and trade buyer relationships. AI-powered outreach that converts."
         canonical="/sectors/high-ticket-ecommerce"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "High-Ticket E-commerce & Wholesale Buyer Acquisition",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "AI-powered wholesale buyer and trade account acquisition for premium D2C and high-ticket e-commerce operators. Systematic outreach that builds B2B distribution alongside D2C — delivering 312% average order value increase through trade channels.",
+            "areaServed": ["Global", "Europe", "United Kingdom", "United States", "Middle East"],
+            "serviceType": ["Wholesale Buyer Acquisition", "Trade Account Development", "High-Ticket E-commerce Distribution", "D2C to B2B Expansion"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do premium e-commerce brands build a wholesale channel?",
+                "acceptedAnswer": { "@type": "Answer", "text": "By systematically identifying wholesale buyers, boutique retailers, and trade accounts in target geographies — researching each buyer's category focus, price architecture, and order profile — then initiating direct contact with outreach specific to their purchasing profile." }
+              },
+              {
+                "@type": "Question",
+                "name": "Why does wholesale outperform D2C for high-ticket products?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Wholesale trade accounts order at larger volumes, return less frequently, and carry product at its correct brand positioning. SVNR client data shows a 312% average order value increase when premium operators add a trade distribution channel alongside D2C." }
+              },
+              {
+                "@type": "Question",
+                "name": "How many wholesale leads can SVNR generate per month for a premium brand?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Most programmes generate 25–35 qualified wholesale buyer contacts per month from month one. The conversion rate from contact to active trade account averages 41% across high-ticket e-commerce engagements." }
+              },
+              {
+                "@type": "Question",
+                "name": "Does SVNR work with D2C brands that have no existing wholesale experience?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR builds the trade distribution infrastructure from scratch — ICP definition, buyer mapping, wholesale outreach sequences, and trade account onboarding workflows — for brands entering B2B for the first time." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Sectors", url: "/sectors" },

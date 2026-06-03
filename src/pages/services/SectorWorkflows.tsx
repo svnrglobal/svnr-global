@@ -37,6 +37,43 @@ export default function SectorWorkflows() {
         title="Sector Workflows — Industry-Specific Automation | SVNR Global"
         description="Operations built for your vertical. We build workflow infrastructure specific to how your business actually runs — not generic automation."
         canonical="/services/sector-workflows"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Sector Workflows — Industry-Specific Automation",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "Custom AI workflow automation built for specific industry verticals — luxury brands, wealth management, real estate, maritime, and professional services. Not generic automation. Systems built around how your business actually operates.",
+            "areaServed": ["Global"],
+            "serviceType": ["Sector Workflow Automation", "Industry-Specific AI Automation", "Business Process Automation", "Operational AI Systems"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is sector-specific workflow automation?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Sector-specific workflow automation is AI-driven process automation built around the actual operational requirements of a defined industry — not generic automation tools applied generically. A luxury brand's wholesale enquiry workflow is different from a real estate firm's deal workflow, which is different from a wealth manager's client onboarding workflow. Each is built to match." }
+              },
+              {
+                "@type": "Question",
+                "name": "What workflows does SVNR typically automate for luxury and B2B companies?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Common automations include: wholesale enquiry handling and quote generation, trade partner onboarding sequences, inbound lead qualification and routing, deal stage tracking and follow-up triggers, report generation, and CRM data enrichment. Each is built specifically for the client's operational context." }
+              },
+              {
+                "@type": "Question",
+                "name": "What tools does SVNR use to build sector workflows?",
+                "acceptedAnswer": { "@type": "Answer", "text": "SVNR builds on Make, n8n, Airtable, Notion, HubSpot, and custom AI agents depending on the workflow requirements. The tools are selected for the task — not applied as a one-size-fits-all stack." }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does it take to deploy a custom sector workflow?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Simple workflow automations can be designed, built, and deployed within 1–2 weeks. Complex multi-system integrations typically take 3–4 weeks. All workflows are delivered with documentation and a testing phase before full deployment." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },

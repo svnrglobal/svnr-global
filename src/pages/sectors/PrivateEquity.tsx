@@ -33,9 +33,46 @@ export default function PrivateEquity() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Private Equity Deal Flow & Investor Relations | SVNR Global | SVNR Global"
+        title="Private Equity Deal Flow & Investor Relations | SVNR Global"
         description="Proprietary deal flow infrastructure for PE firms and family offices. We surface opportunities before they are formally marketed through relationship-driven outreach."
         canonical="/sectors/private-equity-family-offices"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Private Equity Proprietary Deal Flow & Investor Relations",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "AI-driven proprietary deal flow infrastructure for PE firms and family offices. We identify and reach founders before formal sale processes begin, delivering off-market opportunities and fund LP relationships.",
+            "areaServed": ["Global", "Europe", "Middle East", "United Kingdom", "India"],
+            "serviceType": ["Proprietary Deal Flow", "PE Founder Outreach", "LP Acquisition", "Family Office Prospecting"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is proprietary deal flow in private equity?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Proprietary deal flow refers to investment opportunities a PE firm identifies and approaches directly — before the company enters a formal sale process or engages an investment bank. These deals avoid competitive bidding and typically command better entry terms." }
+              },
+              {
+                "@type": "Question",
+                "name": "How do PE firms find companies before they go to market?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic outreach to founders and management teams in target sectors — using AI-driven research to identify companies matching the fund's investment thesis, then building relationships before a formal sale process begins. Trigger signals including succession planning, debt maturity, and sector consolidation are monitored continuously." }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does it take to build proprietary deal flow?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A structured 90-day programme identifies qualifying targets and initiates founder conversations. Meaningful deal flow from those relationships typically materialises within 6–18 months, as founders reach the moment of readiness for a transaction." }
+              },
+              {
+                "@type": "Question",
+                "name": "Can SVNR Global help family offices find new GPs and fund managers?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR builds GP-to-LP relationship infrastructure for family offices and institutional investors — mapping qualified fund managers by mandate, strategy, and track record, then facilitating introductions through systematic outreach." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Sectors", url: "/sectors" },

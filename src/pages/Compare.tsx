@@ -105,13 +105,41 @@ export default function Compare() {
           { name: "Home", url: "/" },
           { name: "Compare", url: "/compare" },
         ]}
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "SVNR Global vs Other Client Acquisition Approaches",
-          "url": "https://svnrglobal.com/compare",
-          "description": "A detailed comparison of SVNR Global against volume agencies, campaign retainers, self-serve AI tools, and in-house SDR teams — for premium B2B operators.",
-        }}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "SVNR Global vs Other Client Acquisition Approaches",
+            "url": "https://svnrglobal.com/compare",
+            "description": "A detailed comparison of SVNR Global against volume agencies, campaign retainers, self-serve AI tools, and in-house SDR teams — for premium B2B operators.",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How is SVNR Global different from a B2B outreach agency?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Volume agencies send high-frequency templated sequences to large contact lists. SVNR builds bespoke acquisition infrastructure — custom AI agents, individually researched prospects, sector-specific outreach — for a small number of premium clients at any time. The difference is precision vs volume, and permanent infrastructure vs one-off campaigns." }
+              },
+              {
+                "@type": "Question",
+                "name": "Is SVNR Global better than hiring an in-house SDR or BDR?",
+                "acceptedAnswer": { "@type": "Answer", "text": "An in-house SDR takes 3–6 months to ramp, requires management overhead, and typically uses generic tools and tactics not built for premium sectors. SVNR deploys in 2–3 weeks with sector-specific AI infrastructure, no management overhead, and results accountability built into the engagement." }
+              },
+              {
+                "@type": "Question",
+                "name": "How does SVNR compare to self-serve AI outreach tools like Clay or Apollo?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Clay, Apollo, and similar tools are platforms requiring internal expertise to configure, run, and optimise. SVNR uses these tools as components in a bespoke infrastructure built and operated for the client. You get the output — qualified conversations — without the operational overhead of running the tools yourself." }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do premium brands choose SVNR over cheaper outreach agencies?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Premium B2B acquisition cannot be done with generic templates. Luxury brands, PE firms, and wealth managers require outreach that demonstrates specific knowledge of the recipient's world — something high-volume agencies cannot deliver. SVNR's sector depth and individualised research are what make the difference in reply rates and relationship quality." }
+              }
+            ]
+          }
+        ]}
       />
 
       {/* HERO */}

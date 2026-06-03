@@ -38,6 +38,43 @@ export default function DealflowInvestors() {
         title="Dealflow for Investors — Proprietary PE Deal Sourcing | SVNR Global"
         description="We build the system that surfaces off-market deals before formal marketing begins — through relationship infrastructure designed for how deals originate."
         canonical="/services/dealflow-investor"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Dealflow for Investors — Proprietary PE Deal Sourcing",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "AI-powered proprietary deal flow infrastructure for private equity firms, venture capital funds, and family offices. We identify and reach founders, owner-operators, and management teams before formal sale processes begin — delivering off-market deal pipeline that competitive bidding never reaches.",
+            "areaServed": ["Global", "Europe", "Middle East", "India", "United Kingdom"],
+            "serviceType": ["Proprietary Deal Flow", "PE Deal Sourcing", "Off-Market Transaction Pipeline", "Founder Outreach", "LP Fundraising"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do PE firms source proprietary off-market deals?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic outreach to founders, owner-operators, and management teams in sectors matching the fund's thesis — using AI-driven research to identify companies at pre-transaction trigger points: succession planning, debt maturity, management transitions, and sector consolidation signals." }
+              },
+              {
+                "@type": "Question",
+                "name": "Why is proprietary deal flow better than auction processes for PE firms?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Proprietary deals avoid competitive bidding, which compresses returns. They allow deeper pre-LOI diligence, better founder trust before signing, and more favourable terms on price and structure. The most valuable transactions a PE firm executes are typically ones it sourced before any other firm knew they were available." }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does it take to build a proprietary deal flow pipeline?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A structured 90-day programme identifies qualifying targets and initiates founder conversations. Meaningful deal flow from those relationships typically materialises within 6–18 months, as founders reach their own moment of readiness for a transaction — which cannot be accelerated but can be anticipated." }
+              },
+              {
+                "@type": "Question",
+                "name": "Can SVNR help with LP fundraising as well as deal sourcing?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR builds LP acquisition infrastructure for emerging managers and established funds — mapping qualifying family offices and institutional LPs, researching their mandate fit, and deploying outreach that earns an introduction at the decision-maker level." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },

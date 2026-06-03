@@ -34,9 +34,46 @@ export default function PremiumRealEstate() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Premium Real Estate Client Acquisition | SVNR Global | SVNR Global"
+        title="Premium Real Estate Client Acquisition | SVNR Global"
         description="We help premium real estate firms reach HNW investors and off-market buyers directly — without portal dependency. Systematic outreach to qualified principals."
         canonical="/sectors/premium-real-estate"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Premium Real Estate Buyer & Investor Acquisition",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "AI-powered outreach to HNW investors, family offices, and principal buyers for premium and luxury real estate firms. Off-market buyer acquisition without portal dependency.",
+            "areaServed": ["Global", "Europe", "Middle East", "Switzerland", "United Kingdom", "UAE"],
+            "serviceType": ["Real Estate Buyer Acquisition", "HNW Investor Outreach", "Off-Market Deal Pipeline", "Principal Buyer Identification"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do premium real estate firms find HNW buyers without property portals?",
+                "acceptedAnswer": { "@type": "Answer", "text": "By identifying principal buyers — HNW individuals, family offices, and institutional investors — through AI-driven signal monitoring and business press, then initiating direct contact through email and WhatsApp with messages specific to their investment profile and capital position." }
+              },
+              {
+                "@type": "Question",
+                "name": "Why do luxury properties sit on the market for too long?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Most prime property is marketed to whoever is actively searching portals. This excludes international buyers, passive investors, and principals who would purchase if they knew the property existed. Off-market buyer acquisition expands the buyer pool beyond what portals can reach." }
+              },
+              {
+                "@type": "Question",
+                "name": "What channels do HNW property buyers actually use?",
+                "acceptedAnswer": { "@type": "Answer", "text": "In European and Middle Eastern prime markets, WhatsApp and direct email are the dominant channels for high-value buyer conversations. A qualified buyer in Switzerland, Germany, or the UAE does not manage significant financial decisions through a portal enquiry form." }
+              },
+              {
+                "@type": "Question",
+                "name": "How quickly can SVNR generate buyer pipeline for a premium real estate firm?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Most programmes produce the first qualified principal contact within 14 days of deployment. A recent engagement produced a qualified principal reply in 14 minutes. Speed of contact is determined by targeting precision and message quality." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Sectors", url: "/sectors" },

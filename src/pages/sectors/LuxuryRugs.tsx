@@ -41,6 +41,43 @@ export default function LuxuryRugs() {
         title="Luxury Rugs & Home Textiles Client Acquisition | SVNR Global"
         description="Systematic B2B outreach for luxury rug and carpet brands building international distribution. We map the A&D community in your target markets and deliver qualified enquiries."
         canonical="/sectors/luxury-rugs-home-textiles"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Luxury Rugs & Home Textiles B2B Distribution Development",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "Systematic A&D community outreach and trade buyer acquisition for luxury rug brands and handmade carpet manufacturers entering new international markets. 13 qualified B2B enquiries in 14 days — without trade fairs.",
+            "areaServed": ["Global", "Europe", "Germany", "United Kingdom", "United States", "UAE", "Japan"],
+            "serviceType": ["Luxury Rug Distribution", "A&D Community Outreach", "Trade Buyer Acquisition", "New Market Entry"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do luxury rug brands enter new markets without a showroom?",
+                "acceptedAnswer": { "@type": "Answer", "text": "By systematically identifying and reaching interior designers and trade buyers in the target market through direct outreach — mapping the A&D community by name, initiating contact with personalised messages, and building trade relationships before committing to permanent retail infrastructure." }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the best distribution channel for luxury handmade rugs?",
+                "acceptedAnswer": { "@type": "Answer", "text": "The architecture and interior design community is the primary distribution channel. Interior designers specify rugs for client projects at a level that drives consistent volume. Building direct trade relationships with designers in target markets is more efficient than relying on trade fairs or showrooms alone." }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does it take to build trade distribution in a new market for a rug brand?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A structured 90-day programme can identify qualifying designers and buyers, initiate contact with the most relevant targets, and produce active trade relationships in a new geography. SVNR's programmes have generated 13 qualified enquiries in the first 14 days without a showroom or trade fair." }
+              },
+              {
+                "@type": "Question",
+                "name": "What role do trade fairs play in luxury rug distribution?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Trade fairs are amplifiers, not acquisition channels. Brands that use direct outreach to build warm relationships before a fair opens use the same exhibition investment to advance existing conversations rather than make cold introductions in a crowded hall." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Sectors", url: "/sectors" },

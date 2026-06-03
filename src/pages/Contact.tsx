@@ -31,14 +31,31 @@ export default function Contact() {
         title="Book a Call — Work With SVNR Global"
         description="Ready to build a predictable client acquisition pipeline? Book a call with SVNR Global. We work with a small number of premium operators at any one time."
         canonical="/contact"
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "ContactPage",
-          "name": "Contact SVNR Global",
-          "url": "https://svnrglobal.com/contact",
-          "description": "Get in touch with SVNR Global to discuss AI-powered client acquisition for your premium brand or B2B operation.",
-          "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
-        }}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "ContactPage",
+            "name": "Contact SVNR Global",
+            "url": "https://svnrglobal.com/contact",
+            "description": "Get in touch with SVNR Global to discuss AI-powered client acquisition for your premium brand or B2B operation.",
+            "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "SVNR Global",
+            "url": "https://svnrglobal.com",
+            "logo": "https://svnrglobal.com/svnr-logo.svg",
+            "foundingDate": "2019",
+            "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
+            "contactPoint": { "@type": "ContactPoint", "email": "hamza@svnrglobal.com", "contactType": "sales" },
+            "sameAs": [
+              "https://www.instagram.com/svnr.lab",
+              "https://in.pinterest.com/svnrglobal/",
+              "https://in.linkedin.com/company/svnrglobal"
+            ]
+          }
+        ]}
       />
       <VideoHero src={VIDEOS.contact}>
         <div className="max-w-3xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">

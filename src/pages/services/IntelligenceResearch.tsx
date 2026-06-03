@@ -34,6 +34,43 @@ export default function IntelligenceResearch() {
         title="Intelligence Research — Prospect & Market Mapping | SVNR Global"
         description="We build the intelligence layer your team never had time to build. Who is buying, where they are buying from, and what signals predict when they move."
         canonical="/services/intelligence-research"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "Intelligence Research — Prospect & Market Mapping",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "AI-powered prospect intelligence and market mapping for premium B2B operators. We build the research layer that identifies every qualifying buyer, decision-maker, and opportunity in your market — enriched across 50+ data signals and delivered as actionable outreach intelligence.",
+            "areaServed": ["Global", "Europe", "Middle East", "Asia"],
+            "serviceType": ["Prospect Intelligence", "Market Mapping", "B2B Research", "Buyer Identification", "Signal Monitoring"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is AI prospect intelligence for B2B companies?",
+                "acceptedAnswer": { "@type": "Answer", "text": "AI prospect intelligence is the systematic process of identifying every qualifying buyer and decision-maker in your market by aggregating signals from 50+ data sources — company filings, business press, LinkedIn activity, property records, financial announcements — and producing an enriched, ranked prospect universe ready for outreach." }
+              },
+              {
+                "@type": "Question",
+                "name": "What data signals does SVNR monitor to identify prospects?",
+                "acceptedAnswer": { "@type": "Answer", "text": "SVNR monitors liquidity events, business sale announcements, company director changes, LinkedIn profile updates, trade association memberships, property transactions, funding rounds, debt maturities, sector consolidation announcements, and planning applications — depending on the target sector and buyer profile." }
+              },
+              {
+                "@type": "Question",
+                "name": "How many prospects can SVNR map for a new market entry?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A typical market mapping engagement produces 300–1,000 individually researched and ranked prospects in a defined geography within 30 days. Each record includes contact details, seniority, organisation profile, and a relevance score based on the client's ICP criteria." }
+              },
+              {
+                "@type": "Question",
+                "name": "Is intelligence research a one-off exercise or a continuous function?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Both models are available. A one-off market mapping engagement establishes the initial prospect universe. Ongoing intelligence monitoring continuously identifies new prospects as they enter the target profile and updates existing records with new signal data — keeping the outreach pipeline permanently current." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },

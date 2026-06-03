@@ -23,13 +23,50 @@ export default function B2BLuxury() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="B2B Luxury Brand Client Acquisition | SVNR Global | SVNR Global"
+        title="B2B Luxury Brand Client Acquisition | SVNR Global"
         description="For premium fashion, interiors, and lifestyle brands that need to build and activate trade buyer relationships at scale. Systematic stockist acquisition for luxury brands."
         canonical="/sectors/b2b-luxury-brands"
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Sectors", url: "/sectors" },
           { name: "B2B Luxury Brands", url: "/sectors/b2b-luxury-brands" },
+        ]}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "B2B Luxury Brand Client Acquisition",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "AI-powered stockist and trade buyer acquisition for premium fashion, interiors, and lifestyle brands. Systematic outreach to interior designers, retail buyers, and trade partners across target geographies.",
+            "areaServed": ["Global", "Europe", "Middle East", "United Kingdom", "United States"],
+            "serviceType": ["Trade Buyer Acquisition", "Stockist Outreach", "B2B Luxury Brand Development", "Channel Partnership"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "How do luxury brands find trade buyers and stockists?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic direct outreach to interior designers, boutique retailers, and trade buyers in target geographies — mapping the market by name, initiating contact with personalised outreach, and building relationships before committing to trade fair or showroom investment." }
+              },
+              {
+                "@type": "Question",
+                "name": "How long does it take to build a stockist pipeline for a luxury brand?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A structured 90-day programme can deliver 40+ qualified stockist leads, initiate trade conversations, and produce active relationships in a new geography. Most brands see the first confirmed stockist relationship within 60 days." }
+              },
+              {
+                "@type": "Question",
+                "name": "What is the best way to reach trade buyers for a luxury brand?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Direct outreach through email and LinkedIn, with messages that demonstrate specific knowledge of the buyer's project portfolio, client base, and material preferences. Generic catalogue introductions produce minimal response. Research-backed, personalised contact is the standard that earns a trade relationship." }
+              },
+              {
+                "@type": "Question",
+                "name": "Does SVNR Global work with luxury brands outside India?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR Global operates from New Delhi but deploys outreach programmes across Europe, the UK, the UAE, and North America. Our programmes target stockists and trade buyers in whatever geographies a brand wants to develop — regardless of where the brand is based." }
+              }
+            ]
+          }
         ]}
       />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">

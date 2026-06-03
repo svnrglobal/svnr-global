@@ -38,6 +38,43 @@ export default function AIReceptionist() {
         title="AI Receptionist — Instant Inbound Qualification | SVNR Global"
         description="A trained AI front desk that qualifies, responds, and routes every enquiry with precision — in under 60 seconds, 24/7."
         canonical="/services/ai-receptionist"
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "name": "AI Receptionist — Inbound Enquiry Qualification",
+            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "description": "A sector-trained AI front desk system that qualifies, responds to, and routes every inbound enquiry in under 60 seconds — 24/7. Deployed for luxury brands, wealth managers, real estate firms, and premium B2B operators.",
+            "areaServed": ["Global"],
+            "serviceType": ["AI Receptionist", "Inbound Lead Qualification", "Automated Enquiry Response", "AI Customer Service"]
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "What is an AI receptionist for B2B businesses?",
+                "acceptedAnswer": { "@type": "Answer", "text": "An AI receptionist is a trained AI system that responds to every inbound enquiry — from website forms, email, or WhatsApp — in under 60 seconds. It qualifies the enquiry against your defined criteria, collects relevant information, and routes it to the right person or next step, 24 hours a day." }
+              },
+              {
+                "@type": "Question",
+                "name": "How is SVNR's AI receptionist different from a chatbot?",
+                "acceptedAnswer": { "@type": "Answer", "text": "A chatbot follows decision trees. SVNR's AI receptionist is trained on your sector, service offering, and qualification criteria — it conducts natural, context-aware conversations that accurately qualify enquiries and never give generic responses." }
+              },
+              {
+                "@type": "Question",
+                "name": "How quickly does the AI receptionist respond to inbound enquiries?",
+                "acceptedAnswer": { "@type": "Answer", "text": "Under 60 seconds, 24/7 — including outside business hours, weekends, and across time zones. No inbound enquiry is ever missed or delayed." }
+              },
+              {
+                "@type": "Question",
+                "name": "What businesses is the AI receptionist suitable for?",
+                "acceptedAnswer": { "@type": "Answer", "text": "The AI receptionist is deployed across luxury brands, wealth management boutiques, premium real estate firms, private healthcare, dental clinics, legal practices, and any premium B2B operator where inbound enquiry quality and response speed directly affect conversion rates." }
+              }
+            ]
+          }
+        ]}
         breadcrumbs={[
           { name: "Home", url: "/" },
           { name: "Services", url: "/services" },

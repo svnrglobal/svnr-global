@@ -32,7 +32,7 @@ export default function CaseStudies() {
 
       {/* HERO */}
       <VideoHero src={VIDEOS.caseStudies}>
-        <div className="max-w-5xl mx-auto px-6 pt-32 pb-24 text-center">
+        <div className="max-w-5xl mx-auto px-6 pt-24 sm:pt-32 pb-16 sm:pb-24 text-center">
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
@@ -45,7 +45,7 @@ export default function CaseStudies() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.2 }}
-            className="text-4xl sm:text-6xl md:text-7xl font-medium text-white leading-[1.05] tracking-tight mb-6"
+            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-white leading-[1.05] tracking-tight mb-6"
           >
             Infrastructure that<br />
             <span className="shimmer-text">produces results.</span>
@@ -165,7 +165,7 @@ export default function CaseStudies() {
             viewport={{ once: true }}
           >
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-6">Your Industry</p>
-            <h2 className="text-4xl md:text-5xl font-medium text-white mb-6 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-6 tracking-tight">
               Every one of these started<br />with a single conversation.
             </h2>
             <p className="text-white/50 mb-10 max-w-xl mx-auto">

@@ -35,10 +35,10 @@ function ServiceDetailCard({ svc, index }: { svc: typeof SERVICES[0]; index: num
         style={{ background: svc.gradient }}
       />
       <div className="p-8 md:p-10">
-        <div className="flex items-start justify-between mb-6">
+        <div className="flex items-start justify-between mb-5">
           <div>
             <span className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-2 block">{svc.number}</span>
-            <h3 className="text-2xl font-medium text-white tracking-tight">{svc.label}</h3>
+            <h3 className="text-xl sm:text-2xl font-medium text-white tracking-tight">{svc.label}</h3>
             <p className="text-white/50 text-sm mt-2 max-w-sm">{svc.title}</p>
           </div>
         </div>
@@ -75,13 +75,13 @@ function ServiceDetailCard({ svc, index }: { svc: typeof SERVICES[0]; index: num
         </div>
 
         {/* Metrics */}
-        <div className="grid grid-cols-3 gap-4 mb-8">
+        <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-8">
           {svc.metrics.map((m) => (
             <div key={m.label} className="text-center">
-              <div className="text-xl font-medium text-white stat-number">
+              <div className="text-base sm:text-xl font-medium text-white stat-number">
                 {m.value}{m.unit}
               </div>
-              <div className="text-[10px] text-white/30 mt-1 leading-tight">{m.label}</div>
+              <div className="text-[9px] sm:text-[10px] text-white/30 mt-1 leading-tight">{m.label}</div>
             </div>
           ))}
         </div>
@@ -188,7 +188,7 @@ export default function Services() {
         <div className="max-w-4xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Not sure how we compare?</p>
-            <h2 className="text-2xl md:text-3xl font-medium text-white tracking-tight mb-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-white tracking-tight mb-4">
               See SVNR vs Agencies, Tools & In-House Teams
             </h2>
             <p className="text-white/40 text-sm mb-8 max-w-xl mx-auto leading-relaxed">

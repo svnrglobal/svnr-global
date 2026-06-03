@@ -139,7 +139,7 @@ export default function Blog() {
                 <img src={articles[0].image} alt={articles[0].imageAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                 <div className="absolute inset-0" style={{ background: "linear-gradient(to right, transparent, rgba(10,10,11,0.3))" }} />
               </div>
-              <div className="p-8 md:p-12 flex flex-col justify-between">
+              <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-between">
                 <div>
                   <div className="flex items-center gap-3 mb-5">
                     <span className="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full" style={{ background: `${categoryColors[articles[0].category]}22`, color: categoryColors[articles[0].category] }}>
@@ -147,7 +147,7 @@ export default function Blog() {
                     </span>
                     <span className="text-[10px] text-white/30 flex items-center gap-1"><Clock size={10} /> {articles[0].readTime} read</span>
                   </div>
-                  <h2 className="text-2xl md:text-3xl font-medium text-white tracking-tight mb-4 group-hover:text-white/90 transition-colors leading-snug">{articles[0].title}</h2>
+                  <h2 className="text-xl sm:text-2xl md:text-3xl font-medium text-white tracking-tight mb-4 group-hover:text-white/90 transition-colors leading-snug">{articles[0].title}</h2>
                   <p className="text-white/50 text-sm leading-relaxed">{articles[0].excerpt}</p>
                 </div>
                 <div className="flex items-center gap-2 text-sm text-white/40 group-hover:text-white transition-colors mt-6">
@@ -203,9 +203,9 @@ export default function Blog() {
 
       {/* CTA */}
       <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center liquid-glass rounded-3xl p-12 md:p-16">
+        <div className="max-w-4xl mx-auto text-center liquid-glass rounded-3xl p-8 sm:p-12 md:p-16">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tight mb-6">Ready to build the system, not the campaign?</h2>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white tracking-tight mb-6">Ready to build the system, not the campaign?</h2>
             <p className="text-white/50 mb-8 max-w-xl mx-auto">The firms that grow consistently have moved from campaign-driven acquisition to permanent operating infrastructure. We build that infrastructure.</p>
             <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black text-sm font-medium tracking-wide hover:bg-white/90 transition-all">
               Start the conversation <ArrowRight size={14} />

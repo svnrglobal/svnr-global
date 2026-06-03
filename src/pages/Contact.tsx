@@ -73,7 +73,7 @@ export default function Contact() {
 
       <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
         <div className="max-w-4xl mx-auto mb-10 md:mb-14">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+          <div className="grid grid-cols-3 gap-3 sm:gap-6">
             {[
               { value: "40+", label: "Qualified leads per month", sub: "Average across active clients" },
               { value: "14 min", label: "Time to first qualified reply", sub: "Premium real estate case study" },
@@ -87,9 +87,9 @@ export default function Contact() {
                 transition={{ delay: i * 0.1 }}
                 className="liquid-glass rounded-2xl px-6 py-5 text-center"
               >
-                <div className="text-3xl font-medium text-white mb-1">{s.value}</div>
-                <p className="text-white/60 text-sm mb-1">{s.label}</p>
-                <p className="text-[10px] uppercase tracking-widest text-white/25">{s.sub}</p>
+                <div className="text-xl sm:text-3xl font-medium text-white mb-1">{s.value}</div>
+                <p className="text-white/60 text-xs sm:text-sm mb-1">{s.label}</p>
+                <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-white/25">{s.sub}</p>
               </motion.div>
             ))}
           </div>
@@ -141,7 +141,7 @@ export default function Contact() {
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="liquid-glass rounded-3xl p-8 space-y-4"
+                className="liquid-glass rounded-3xl p-6 sm:p-8 space-y-4"
               >
                 {[
                   { field: "name", placeholder: "Your name", type: "text", required: true },

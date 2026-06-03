@@ -167,7 +167,7 @@ export default function Sectors() {
               className="liquid-glass rounded-3xl overflow-hidden"
             >
               <div className="h-1 w-full" style={{ background: s.gradient }} />
-              <div className="p-8">
+              <div className="p-5 sm:p-8">
                 <div className="flex items-start justify-between mb-4">
                   <div>
                     <span className="text-[10px] uppercase tracking-[0.3em] text-white/20 block mb-2">{s.number}</span>
@@ -192,11 +192,11 @@ export default function Sectors() {
                 </div>
 
                 {/* Metrics */}
-                <div className="grid grid-cols-3 gap-3">
+                <div className="grid grid-cols-3 gap-2 sm:gap-3">
                   {s.metrics.map((m) => (
                     <div key={m.label} className="text-center">
-                      <div className="text-lg font-medium text-white stat-number">{m.value}{m.unit}</div>
-                      <div className="text-[9px] text-white/30 mt-0.5 leading-tight">{m.label}</div>
+                      <div className="text-base sm:text-lg font-medium text-white stat-number">{m.value}{m.unit}</div>
+                      <div className="text-[8px] sm:text-[9px] text-white/30 mt-0.5 leading-tight">{m.label}</div>
                     </div>
                   ))}
                 </div>

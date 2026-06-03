@@ -55,6 +55,11 @@ const ROUTES = [
   "/blog/b2b-textile-platform-buyer-acquisition",
   "/blog/client-acquisition-cost-referral-dependency",
   "/blog/client-acquisition-system-vs-campaign",
+  "/blog/ai-prospecting-family-offices",
+  "/blog/hnw-investor-outreach-strategy",
+  "/blog/uhnw-client-acquisition-strategy",
+  "/blog/b2b-outreach-agency-india",
+  "/blog/what-is-outreach-infrastructure",
 ];
 
 function startServer() {

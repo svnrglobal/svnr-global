@@ -17,7 +17,10 @@ export default function VideoHero({ src, children, minHeight = "min-h-screen" }:
     if (!video) return;
     let hls: Hls | null = null;
 
-    const onReady = () => setReady(true);
+    // Fallback: always reveal content after 4s even if video fails
+    const fallbackTimer = setTimeout(() => setReady(true), 4000);
+
+    const onReady = () => { clearTimeout(fallbackTimer); setReady(true); };
     video.addEventListener("playing", onReady);
     video.addEventListener("canplay", onReady); // Safari HLS fallback
 
@@ -30,6 +33,12 @@ export default function VideoHero({ src, children, minHeight = "min-h-screen" }:
         hls.loadSource(src);
         hls.attachMedia(video);
         hls.on(Hls.Events.MANIFEST_PARSED, () => { video.play().catch(() => {}); });
+        hls.on(Hls.Events.ERROR, (_evt, data) => {
+          if (data.fatal) setReady(true); // reveal content on fatal HLS error
+        });
+      } else {
+        // HLS not supported at all — reveal immediately
+        setReady(true);
       }
     } else {
       video.src = src;
@@ -37,6 +46,7 @@ export default function VideoHero({ src, children, minHeight = "min-h-screen" }:
     }
 
     return () => {
+      clearTimeout(fallbackTimer);
       video.removeEventListener("playing", onReady);
       video.removeEventListener("canplay", onReady);
       if (hls) hls.destroy();

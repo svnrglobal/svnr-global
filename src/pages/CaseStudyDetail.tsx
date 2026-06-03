@@ -6,40 +6,6 @@ import SEO from "../components/SEO";
 import Footer from "../components/Footer";
 import { CASE_STUDIES } from "../data/caseStudies";
 
-function AnimatedNumber({ value, suffix = "" }: { value: string; suffix?: string }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true });
-  const isNumeric = /^[\d.]+/.test(value);
-  const num = isNumeric ? parseFloat(value.replace(/[^0-9.]/g, "")) : 0;
-  const prefix = isNumeric ? value.replace(/[\d.]+.*/, "") : "";
-  const displaySuffix = isNumeric ? value.replace(/^[\d.]+/, "").replace(/[^%MK×xBm+↑↓]/g, "") : "";
-
-  const spring = useRef(0);
-  const [display, setDisplay] = useState("0");
-
-  useRef(() => {
-    if (inView && isNumeric) {
-      let start = 0;
-      const end = num;
-      const duration = 1500;
-      const step = (timestamp: number) => {
-        if (!spring.current) spring.current = timestamp;
-        const progress = Math.min((timestamp - spring.current) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        const current = eased * end;
-        setDisplay(Number.isInteger(num) ? Math.round(current).toString() : current.toFixed(1));
-        if (progress < 1) requestAnimationFrame(step);
-      };
-      requestAnimationFrame(step);
-    }
-  });
-
-  return (
-    <span ref={ref} className="tabular-nums">
-      {prefix}{isNumeric && inView ? display : value.replace(/[\d.]+/, "0")}{displaySuffix}{suffix}
-    </span>
-  );
-}
 
 function CapabilityBar({ label, value, delay }: { label: string; value: number; delay: number }) {
   const ref = useRef(null);

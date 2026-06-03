@@ -7,61 +7,6 @@ import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
 
-const tiers = [
-  {
-    name: "Foundation",
-    tagline: "For operators building a pipeline from scratch.",
-    description:
-      "A full end-to-end outreach infrastructure built around your sector and ideal client profile. Designed for operators who have not yet systematised acquisition — or who are entering a new market.",
-    includes: [
-      "Ideal client profile definition and validation",
-      "Market mapping — identify every qualifying company in your target geography",
-      "Prospect database build and AI enrichment (50+ data signals)",
-      "Custom outreach sequences (email + LinkedIn) — written for your voice and sector",
-      "Multi-touch follow-up logic and response handling",
-      "Custom reporting dashboard with live pipeline visibility",
-      "Weekly performance review and optimisation",
-    ],
-    note: "Typically deployed within 2–3 weeks of engagement start.",
-    accent: "from-[#667eea] to-[#764ba2]",
-  },
-  {
-    name: "Infrastructure",
-    tagline: "For operators scaling into multiple markets or segments.",
-    description:
-      "Everything in Foundation, plus expanded market coverage, sector-specific AI agents, and advanced automation layers. Designed for operators who need acquisition running across more than one market simultaneously.",
-    includes: [
-      "All Foundation deliverables",
-      "Multi-market or multi-segment outreach — simultaneously active",
-      "Custom AI agents per market or persona (built and trained to your sector)",
-      "AI receptionist layer — qualifies and routes inbound responses 24/7",
-      "CRM integration and automated lead routing",
-      "Competitive intelligence briefings — what your target accounts are tracking",
-      "Monthly strategy session with full pipeline analysis",
-    ],
-    note: "Best suited for operators with an existing sales function to receive warm leads.",
-    accent: "from-[#f093fb] to-[#f5576c]",
-  },
-  {
-    name: "Full Stack",
-    tagline: "For operators who want the entire acquisition layer managed.",
-    description:
-      "The complete SVNR infrastructure stack. Custom agents, custom dashboards, custom visual design, intelligence research, channel partnership development, and revenue operations — all running as a unified system.",
-    includes: [
-      "All Infrastructure deliverables",
-      "Custom-designed visual dashboard (branded to your company)",
-      "Intelligence research — deep dossiers on priority target accounts",
-      "Channel and partnership development outreach",
-      "Deal flow sourcing (for PE/family office clients)",
-      "Revenue operations layer — pipeline forecasting and conversion tracking",
-      "Dedicated point of contact with weekly briefings",
-      "Quarterly infrastructure review and expansion planning",
-    ],
-    note: "Limited engagements available. We work with a small number of clients at this level at any one time.",
-    accent: "from-[#4facfe] to-[#00f2fe]",
-  },
-];
-
 const included = [
   {
     category: "Research & Intelligence",

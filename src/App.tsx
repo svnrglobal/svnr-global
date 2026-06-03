@@ -10,6 +10,8 @@ import Results from "./pages/Results";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import BlogArticle from "./pages/BlogArticle";
+import Compare from "./pages/Compare";
+import Engagement from "./pages/Engagement";
 
 // Service pages
 import ClientAcquisition from "./pages/services/ClientAcquisition";
@@ -51,6 +53,8 @@ export default function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/blog" element={<Blog />} />
         <Route path="/blog/:slug" element={<BlogArticle />} />
+        <Route path="/compare" element={<Compare />} />
+        <Route path="/engagement" element={<Engagement />} />
 
         {/* Service sub-pages */}
         <Route path="/services/client-acquisition" element={<ClientAcquisition />} />

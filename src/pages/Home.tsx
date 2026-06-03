@@ -1,5 +1,5 @@
 import { motion, useScroll, useTransform } from "motion/react";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { VIDEOS, SERVICES, SECTORS } from "../data/content";
@@ -140,6 +140,7 @@ export default function Home() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const [videoReady, setVideoReady] = useState(false);
 
   return (
     <main className="relative w-full min-h-screen bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
@@ -158,8 +159,18 @@ export default function Home() {
           loop
           muted
           playsInline
+          onPlaying={() => setVideoReady(true)}
+          onCanPlay={() => setVideoReady(true)}
         />
         <div className="video-overlay fixed inset-0 z-[1]" />
+        {/* Dark intro overlay — fades out when video plays */}
+        <motion.div
+          className="fixed inset-0 z-[5] bg-[#0A0A0B]"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: videoReady ? 0 : 1 }}
+          transition={{ duration: 1, ease: "easeOut" }}
+          style={{ pointerEvents: "none" }}
+        />
 
         <motion.div
           style={{ y: heroY, opacity: heroOpacity }}
@@ -168,7 +179,7 @@ export default function Home() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.4 }}
+            transition={{ duration: 1, delay: 1.1 }}
             className="text-[2.1rem] sm:text-5xl md:text-7xl lg:text-8xl font-medium text-white leading-[1.1] tracking-tight mb-6 md:mb-8"
           >
             We build the systems that bring the right{" "}
@@ -178,7 +189,7 @@ export default function Home() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.7 }}
+            transition={{ duration: 0.8, delay: 1.35 }}
             className="text-lg text-white/50 max-w-xl mx-auto mb-10"
           >
             Not campaigns. Not content. Infrastructure that runs.
@@ -187,8 +198,8 @@ export default function Home() {
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.9 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
+            transition={{ duration: 0.8, delay: 1.55 }}
+            className="flex flex-col sm:flex-row gap-3 justify-center"
           >
             <Link
               to="/contact"
@@ -201,6 +212,12 @@ export default function Home() {
               className="px-8 py-3.5 rounded-full border border-white/20 text-white text-sm tracking-wide hover:border-white/50 transition-all flex items-center justify-center gap-2"
             >
               View Systems <ArrowRight size={14} />
+            </Link>
+            <Link
+              to="/compare"
+              className="px-8 py-3.5 rounded-full border border-white/10 text-white/60 text-sm tracking-wide hover:border-white/30 hover:text-white transition-all flex items-center justify-center gap-2"
+            >
+              SVNR vs Alternatives <ArrowRight size={14} />
             </Link>
           </motion.div>
 

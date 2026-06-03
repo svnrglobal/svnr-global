@@ -53,7 +53,7 @@ export default function CaseStudies() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
+            transition={{ duration: 0.8, delay: 1.3 }}
             className="text-white/50 text-lg max-w-2xl mx-auto"
           >
             Nine industries. Nine transformations. Every result is real, documented, and replicable.

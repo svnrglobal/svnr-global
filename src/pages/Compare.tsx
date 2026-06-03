@@ -115,23 +115,23 @@ export default function Compare() {
       />
 
       {/* HERO */}
-      <VideoHero src={VIDEOS.main}>
+      <VideoHero src={VIDEOS.compare}>
         <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
           <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }}
             className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6"
           >
             SVNR vs Alternatives
           </motion.p>
           <motion.h1
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }}
+            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.3 }}
             className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6"
           >
             Not all client acquisition<br />
             <span className="shimmer-text">is built the same.</span>
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }}
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6 }}
             className="text-white/50 text-lg max-w-2xl mx-auto"
           >
             Volume agencies, one-off campaigns, AI tools, in-house teams — each has a use case.

@@ -183,6 +183,29 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Compare CTA */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6 border-t border-white/5">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Not sure how we compare?</p>
+            <h2 className="text-2xl md:text-3xl font-medium text-white tracking-tight mb-4">
+              See SVNR vs Agencies, Tools & In-House Teams
+            </h2>
+            <p className="text-white/40 text-sm mb-8 max-w-xl mx-auto leading-relaxed">
+              A clear breakdown of how our infrastructure differs from volume agencies, one-off campaigns, and self-serve AI tools.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link to="/contact" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-all">
+                Book a Consultation <ArrowRight size={14} />
+              </Link>
+              <Link to="/compare" className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-white text-sm hover:border-white/50 transition-all">
+                SVNR vs Alternatives <ArrowRight size={14} />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
       <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto">
         <Footer />
       </div>

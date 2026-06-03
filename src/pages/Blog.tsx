@@ -117,14 +117,14 @@ export default function Blog() {
       />
       <VideoHero src={VIDEOS.blog}>
         <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }} className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6">
             Pillar Thinking
           </motion.p>
-          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.5 }} className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6">
+          <motion.h1 initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.3 }} className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6">
             How premium operators<br />
             <span className="shimmer-text">build their pipelines.</span>
           </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.8 }} className="text-lg text-white/50 max-w-xl mx-auto">
+          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6 }} className="text-lg text-white/50 max-w-xl mx-auto">
             Eight sector-specific guides on client acquisition, deal flow, and systematic business development — written for operators, not marketers.
           </motion.p>
         </div>

@@ -495,6 +495,12 @@ export default function About() {
               >
                 Begin the conversation <ArrowRight size={14} />
               </Link>
+              <Link
+                to="/compare"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-white/15 text-white/55 text-sm hover:border-white/35 hover:text-white transition-all whitespace-nowrap"
+              >
+                SVNR vs Alternatives <ArrowRight size={13} />
+              </Link>
             </div>
           </motion.div>
         </div>

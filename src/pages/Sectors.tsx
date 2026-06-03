@@ -130,7 +130,7 @@ export default function Sectors() {
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
+            transition={{ delay: 1.1 }}
             className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6"
           >
             Industries
@@ -138,7 +138,7 @@ export default function Sectors() {
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.5 }}
+            transition={{ duration: 1, delay: 1.3 }}
             className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6"
           >
             We operate in<br />
@@ -147,7 +147,7 @@ export default function Sectors() {
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.9 }}
+            transition={{ delay: 1.7 }}
             className="text-white/50 text-lg"
           >
             Each industry has its own operating rhythm. We build accordingly.

@@ -25,8 +25,8 @@ const footerLinks: Record<string, { label: string; href: string }[]> = {
   Company: [
     { label: "About", href: "/about" },
     { label: "How We Work", href: "/engagement" },
+    { label: "Case Studies", href: "/case-studies" },
     { label: "SVNR vs Alternatives", href: "/compare" },
-    { label: "Results", href: "/results" },
     { label: "Blog", href: "/blog" },
     { label: "Contact", href: "/contact" },
   ],

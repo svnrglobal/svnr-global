@@ -30,8 +30,62 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/results</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/case-studies</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/luxury-real-estate-pipeline</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/hotel-direct-bookings</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/wealth-management-pipeline</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/law-firm-consultations</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/dental-clinic-revenue</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/private-healthcare-network</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/manufacturing-export-buyers</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/ecommerce-dtc-revenue</loc>
+    <lastmod>2026-06-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/aesthetic-clinic-revenue</loc>
+    <lastmod>2026-06-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

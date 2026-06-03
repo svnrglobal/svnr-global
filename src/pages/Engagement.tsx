@@ -1,6 +1,7 @@
-import { motion } from "motion/react";
+import { motion, AnimatePresence, useInView } from "motion/react";
 import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
+import { useRef, useState } from "react";
 import { VIDEOS } from "../data/content";
 import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
@@ -127,6 +128,242 @@ const faqs = [
   },
 ];
 
+const INFRA_TIERS = [
+  {
+    id: "foundation",
+    name: "Foundation",
+    tagline: "For operators building a pipeline from scratch.",
+    description: "A full end-to-end outreach infrastructure built around your sector and ideal client profile. Designed for operators who have not yet systematised acquisition — or who are entering a new market.",
+    note: "Typically deployed within 2–3 weeks of engagement start.",
+    gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    color: "#667eea",
+    capabilities: [
+      { label: "ICP Definition & Validation", value: 95 },
+      { label: "Market Mapping", value: 90 },
+      { label: "Prospect Enrichment (50+ signals)", value: 85 },
+      { label: "Custom Outreach Sequences", value: 95 },
+      { label: "Multi-Touch Follow-Up Logic", value: 88 },
+      { label: "Live Pipeline Dashboard", value: 80 },
+      { label: "Weekly Performance Review", value: 100 },
+    ],
+    includes: [
+      "Ideal client profile definition and validation",
+      "Market mapping — every qualifying company in your geography",
+      "Prospect database build and AI enrichment (50+ data signals)",
+      "Custom outreach sequences (email + LinkedIn)",
+      "Multi-touch follow-up logic and response handling",
+      "Custom reporting dashboard with live pipeline visibility",
+      "Weekly performance review and optimisation",
+    ],
+  },
+  {
+    id: "infrastructure",
+    name: "Infrastructure",
+    tagline: "For operators scaling into multiple markets or segments.",
+    description: "Everything in Foundation, plus expanded market coverage, sector-specific AI agents, and advanced automation layers. Designed for operators who need acquisition running across more than one market simultaneously.",
+    note: "Best suited for operators with an existing sales function to receive warm leads.",
+    gradient: "linear-gradient(135deg, #f093fb 0%, #f5576c 100%)",
+    color: "#f093fb",
+    capabilities: [
+      { label: "All Foundation Capabilities", value: 100 },
+      { label: "Multi-Market Outreach (Simultaneous)", value: 95 },
+      { label: "Custom AI Agents per Market", value: 90 },
+      { label: "AI Receptionist Layer (24/7)", value: 95 },
+      { label: "CRM Integration & Lead Routing", value: 88 },
+      { label: "Competitive Intelligence Briefings", value: 85 },
+      { label: "Monthly Strategy Session", value: 100 },
+    ],
+    includes: [
+      "All Foundation deliverables",
+      "Multi-market or multi-segment outreach — simultaneously active",
+      "Custom AI agents per market or persona (built and trained to your sector)",
+      "AI receptionist layer — qualifies and routes inbound responses 24/7",
+      "CRM integration and automated lead routing",
+      "Competitive intelligence briefings",
+      "Monthly strategy session with full pipeline analysis",
+    ],
+  },
+  {
+    id: "fullstack",
+    name: "Full Stack",
+    tagline: "For operators who want the entire acquisition layer managed.",
+    description: "The complete SVNR infrastructure stack. Custom agents, custom dashboards, custom visual design, intelligence research, channel partnership development, and revenue operations — all running as a unified system.",
+    note: "Limited engagements available. We work with a small number of clients at this level at any one time.",
+    gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
+    color: "#4facfe",
+    capabilities: [
+      { label: "All Infrastructure Capabilities", value: 100 },
+      { label: "Custom-Designed Visual Dashboard", value: 100 },
+      { label: "Intelligence Research (Deep Dossiers)", value: 95 },
+      { label: "Channel & Partnership Development", value: 90 },
+      { label: "Deal Flow Sourcing (PE/Family Office)", value: 88 },
+      { label: "Revenue Operations Layer", value: 95 },
+      { label: "Dedicated Point of Contact", value: 100 },
+    ],
+    includes: [
+      "All Infrastructure deliverables",
+      "Custom-designed visual dashboard (branded to your company)",
+      "Intelligence research — deep dossiers on priority target accounts",
+      "Channel and partnership development outreach",
+      "Deal flow sourcing (for PE/family office clients)",
+      "Revenue operations layer — pipeline forecasting and conversion tracking",
+      "Dedicated point of contact with weekly briefings",
+      "Quarterly infrastructure review and expansion planning",
+    ],
+  },
+];
+
+function CapBar({ label, value, color, delay }: { label: string; value: number; color: string; delay: number }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true });
+  return (
+    <div ref={ref} className="mb-3">
+      <div className="flex justify-between mb-1">
+        <span className="text-white/55 text-xs">{label}</span>
+        <span className="text-white/35 text-xs tabular-nums">{value}%</span>
+      </div>
+      <div className="h-1.5 rounded-full overflow-hidden" style={{ background: "rgba(255,255,255,0.07)" }}>
+        <motion.div
+          className="h-full rounded-full"
+          style={{ background: `linear-gradient(90deg, ${color}, ${color}88)` }}
+          initial={{ width: 0 }}
+          animate={{ width: inView ? `${value}%` : 0 }}
+          transition={{ duration: 1.1, delay: delay + 0.1, ease: [0.22, 1, 0.36, 1] }}
+        />
+      </div>
+    </div>
+  );
+}
+
+function DynamicInfrastructure() {
+  const [active, setActive] = useState(0);
+  const tier = INFRA_TIERS[active];
+
+  return (
+    <section className="relative z-10 bg-[#0A0A0B] py-20 px-6 border-t border-white/8">
+      <div className="max-w-6xl mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          className="mb-10 text-center"
+        >
+          <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Engagement scope</p>
+          <h2 className="text-3xl sm:text-4xl font-medium text-white tracking-tight mb-3">Three levels of infrastructure</h2>
+          <p className="text-white/40 text-sm max-w-xl mx-auto">
+            Each level is priced based on your market, sector complexity, and scope. Book a call to receive a tailored proposal.
+          </p>
+        </motion.div>
+
+        {/* Tab selector — styled like reference image */}
+        <div className="flex items-center gap-0 mb-8 rounded-2xl overflow-hidden p-1" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
+          {INFRA_TIERS.map((t, i) => (
+            <button
+              key={t.id}
+              onClick={() => setActive(i)}
+              className="relative flex-1 py-3 px-4 rounded-xl text-sm font-medium transition-all duration-300 text-center"
+              style={{ color: active === i ? "#fff" : "rgba(255,255,255,0.35)" }}
+            >
+              {active === i && (
+                <motion.div
+                  layoutId="infra-tab"
+                  className="absolute inset-0 rounded-xl"
+                  style={{ background: t.gradient, opacity: 0.15 }}
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
+                />
+              )}
+              <span className="relative z-10">{t.name}</span>
+            </button>
+          ))}
+        </div>
+
+        {/* Main panel */}
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -16 }}
+            transition={{ duration: 0.35 }}
+            className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+          >
+            {/* Left — capability bars */}
+            <div className="p-6 md:p-8 rounded-3xl" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
+              <div className="flex items-center justify-between mb-6">
+                <div>
+                  <h3 className="text-white font-medium text-lg">{tier.name}</h3>
+                  <p className="text-white/40 text-xs mt-0.5">{tier.tagline}</p>
+                </div>
+                <div className="w-8 h-8 rounded-full" style={{ background: tier.gradient }} />
+              </div>
+
+              <p className="text-[10px] uppercase tracking-[0.25em] text-white/25 mb-4">Capability Coverage</p>
+
+              {tier.capabilities.map((cap, i) => (
+                <CapBar
+                  key={cap.label}
+                  label={cap.label}
+                  value={cap.value}
+                  color={tier.color}
+                  delay={i * 0.08}
+                />
+              ))}
+
+              <p className="text-[10px] text-white/25 italic mt-5">{tier.note}</p>
+            </div>
+
+            {/* Right — includes + description */}
+            <div className="flex flex-col gap-4">
+              <div className="p-6 md:p-8 rounded-3xl flex-1" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
+                <p className="text-white/55 text-sm leading-relaxed mb-6">{tier.description}</p>
+
+                <p className="text-[10px] uppercase tracking-[0.25em] text-white/25 mb-4">Includes</p>
+                <div className="space-y-2.5">
+                  {tier.includes.map((item, i) => (
+                    <motion.div
+                      key={i}
+                      initial={{ opacity: 0, x: 10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.06 }}
+                      className="flex items-start gap-3"
+                    >
+                      <div className="w-4 h-4 rounded-full flex-shrink-0 flex items-center justify-center mt-0.5"
+                        style={{ background: tier.gradient }}>
+                        <Check size={9} className="text-white" />
+                      </div>
+                      <span className="text-white/55 text-sm leading-relaxed">{item}</span>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Tier navigation dots */}
+              <div className="flex items-center justify-center gap-2">
+                {INFRA_TIERS.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setActive(i)}
+                    className="w-2 h-2 rounded-full transition-all duration-300"
+                    style={{ background: active === i ? tier.color : "rgba(255,255,255,0.2)", transform: active === i ? "scale(1.4)" : "scale(1)" }}
+                  />
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+          className="mt-6 rounded-2xl px-8 py-5 text-center" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.06)" }}
+        >
+          <p className="text-white/45 text-sm">
+            Pricing is scoped per engagement. <Link to="/contact" className="text-white/80 hover:text-white transition-colors underline underline-offset-2">Book a call</Link> and we'll send a tailored proposal within 48 hours.
+          </p>
+        </motion.div>
+      </div>
+    </section>
+  );
+}
+
 export default function Engagement() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
@@ -148,7 +385,7 @@ export default function Engagement() {
       />
 
       {/* HERO */}
-      <VideoHero src={VIDEOS.main}>
+      <VideoHero src={VIDEOS.engagement}>
         <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}
@@ -237,65 +474,8 @@ export default function Engagement() {
         </div>
       </section>
 
-      {/* TIERS */}
-      <section className="relative z-10 bg-[#0A0A0B] py-20 px-6 border-t border-white/8">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="mb-14 text-center"
-          >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Engagement scope</p>
-            <h2 className="text-3xl sm:text-4xl font-medium text-white tracking-tight mb-4">Three levels of infrastructure</h2>
-            <p className="text-white/40 text-sm max-w-xl mx-auto">
-              Each level is priced based on your market, sector complexity, and scope. Book a call to receive a tailored proposal.
-            </p>
-          </motion.div>
-
-          <div className="space-y-6">
-            {tiers.map((tier, i) => (
-              <motion.div
-                key={tier.name}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.12 }}
-                className="liquid-glass rounded-2xl p-8 sm:p-10"
-              >
-                <div className="flex flex-col sm:flex-row sm:items-start gap-6 mb-8">
-                  <div className={`w-10 h-10 rounded-xl shrink-0 bg-gradient-to-br ${tier.accent}`} />
-                  <div>
-                    <h3 className="text-xl font-medium text-white mb-1">{tier.name}</h3>
-                    <p className="text-white/40 text-sm italic mb-3">{tier.tagline}</p>
-                    <p className="text-white/60 text-[15px] leading-relaxed max-w-2xl">{tier.description}</p>
-                  </div>
-                </div>
-
-                <div className="border-t border-white/8 pt-6">
-                  <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-4">Includes</p>
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-10 gap-y-3">
-                    {tier.includes.map((item) => (
-                      <div key={item} className="flex items-start gap-3">
-                        <div className="w-1 h-1 rounded-full bg-white/30 mt-2 shrink-0" />
-                        <span className="text-sm text-white/55 leading-relaxed">{item}</span>
-                      </div>
-                    ))}
-                  </div>
-                  <p className="text-[11px] text-white/25 italic mt-6">{tier.note}</p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="mt-8 liquid-glass rounded-2xl px-8 py-6 text-center"
-          >
-            <p className="text-white/50 text-sm">
-              Pricing is scoped per engagement. <span className="text-white/70">Book a call</span> and we'll send a tailored proposal within 48 hours.
-            </p>
-          </motion.div>
-        </div>
-      </section>
+      {/* DYNAMIC INFRASTRUCTURE LAYOUT */}
+      <DynamicInfrastructure />
 
       {/* BESPOKE CALLOUT */}
       <section className="relative z-10 bg-[#0A0A0B] py-16 px-6 border-t border-white/8">

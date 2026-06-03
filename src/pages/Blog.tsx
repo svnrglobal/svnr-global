@@ -115,7 +115,7 @@ export default function Blog() {
           "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
         }}
       />
-      <VideoHero src={VIDEOS.main}>
+      <VideoHero src={VIDEOS.blog}>
         <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }} className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6">
             Pillar Thinking

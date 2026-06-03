@@ -125,7 +125,7 @@ export default function Sectors() {
           "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
         }}
       />
-      <VideoHero src={VIDEOS.main}>
+      <VideoHero src={VIDEOS.sectors}>
         <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
           <motion.p
             initial={{ opacity: 0, y: 20 }}

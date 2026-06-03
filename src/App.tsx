@@ -8,12 +8,13 @@ const Home                = lazy(() => import("./pages/Home"));
 const About               = lazy(() => import("./pages/About"));
 const Services            = lazy(() => import("./pages/Services"));
 const Sectors             = lazy(() => import("./pages/Sectors"));
-const Results             = lazy(() => import("./pages/Results"));
 const Contact             = lazy(() => import("./pages/Contact"));
 const Blog                = lazy(() => import("./pages/Blog"));
 const BlogArticle         = lazy(() => import("./pages/BlogArticle"));
 const Compare             = lazy(() => import("./pages/Compare"));
 const Engagement          = lazy(() => import("./pages/Engagement"));
+const CaseStudies         = lazy(() => import("./pages/CaseStudies"));
+const CaseStudyDetail     = lazy(() => import("./pages/CaseStudyDetail"));
 
 // Service pages
 const ClientAcquisition   = lazy(() => import("./pages/services/ClientAcquisition"));
@@ -52,7 +53,8 @@ export default function App() {
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/sectors" element={<Sectors />} />
-          <Route path="/results" element={<Results />} />
+          <Route path="/case-studies" element={<CaseStudies />} />
+          <Route path="/case-studies/:slug" element={<CaseStudyDetail />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogArticle />} />

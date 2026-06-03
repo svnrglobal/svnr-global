@@ -5,6 +5,7 @@
 [build.environment]
   NODE_VERSION = "20"
   PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "false"
+  PUPPETEER_CACHE_DIR = "/opt/build/cache/puppeteer"
 
 # SPA fallback (belt-and-suspenders alongside _redirects)
 [[redirects]]

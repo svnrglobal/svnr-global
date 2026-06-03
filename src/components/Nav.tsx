@@ -116,12 +116,17 @@ export default function Nav() {
         </Link>
       </motion.nav>
 
-      {/* ── Mobile wordmark (replaces logo on mobile) ── */}
+      {/* ── Mobile logo ── */}
       <Link
         to="/"
-        className="md:hidden pointer-events-auto text-white text-[11px] font-medium tracking-[0.28em] uppercase mt-2 shrink-0"
+        className="md:hidden pointer-events-auto shrink-0"
       >
-        SVNR™
+        <img
+          src="/svnr-logo.svg"
+          alt="SVNR Global"
+          className="w-[56px] h-[56px]"
+          style={{ objectFit: "contain", mixBlendMode: "screen" }}
+        />
       </Link>
 
       {/* ── Mobile hamburger ── */}

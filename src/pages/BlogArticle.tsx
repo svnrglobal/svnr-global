@@ -624,6 +624,221 @@ const articles: Article[] = [
       },
     ],
   },
+  {
+    slug: "maritime-logistics-business-development",
+    title: "Maritime Logistics Business Development: How Shipping and Freight Operators Win New Clients Systematically",
+    category: "Strategy",
+    readTime: "12 min",
+    image: "/blog/maritime-container-port.webp",
+    imageAlt: "Container port — the operational environment where maritime logistics business development decisions are made",
+    content: [
+      {
+        heading: "The Business Development Problem Specific to Maritime",
+        body: "Maritime logistics — shipping, freight forwarding, port operations, ship management, and related services — has a business development culture built around relationships. Long-standing relationships. Relationships developed over years at industry conferences, through broker networks, and across the operational connections that form when vessels and cargo move through the same corridors repeatedly. This culture produces genuine loyalty and genuine value. It also produces a ceiling. The shipping operator or freight forwarder whose new business development depends entirely on the relationship network they have built over the past decade is exposed to a specific risk: the network that sustained their growth to this point may not be the network that sustains it over the next decade.",
+      },
+      {
+        heading: "Where New Maritime Clients Actually Come From",
+        body: "New client acquisition in maritime logistics follows a distribution that most operators recognise when they examine it honestly. A significant portion of new clients arrive through existing client referrals — a satisfied shipper recommends the operator to a peer. A smaller portion come through broker or intermediary introductions. A very small portion come through any form of systematic outreach. This distribution is not a strategic choice — it is the default outcome when no deliberate acquisition function exists. The operators who grow fastest in maritime are consistently those who add a systematic acquisition layer to the relationship-dependent baseline, reaching the shippers, charterers, and logistics managers who have no reason to discover them through the existing network.",
+        image: "/blog/maritime-port-logistics.jpg",
+        imageAlt: "Maritime logistics port operations — the industry where systematic business development creates sustainable growth",
+        imageCaption: "The next client is probably not in your existing network. Systematic acquisition finds them before a competitor does.",
+      },
+      {
+        heading: "The Target Universe in Maritime Business Development",
+        body: "Defining the right target universe is the foundation of any effective maritime business development programme. This means being specific about the type of cargo, the trade lane, the vessel size, the shipper profile, and the decision-maker profile that the operator is best positioned to serve. A maritime operator with deep expertise in refrigerated cargo on European short-sea routes is not competing for the same business as a global NVOCC with a full container offering. The outreach programme that works for one will not work for the other. Target definition is not a limitation — it is the mechanism that makes outreach precise enough to produce responses.",
+      },
+      {
+        heading: "Reaching the Shipping Manager and the Logistics Director",
+        body: "The decision-maker in maritime freight procurement varies by company size and cargo type. In mid-market manufacturing and retail businesses — often the most accessible and lucrative targets for regional maritime operators — the decision-maker is typically the logistics director or supply chain manager. They are identifiable on LinkedIn, visible in industry association memberships, and reachable through direct outreach that demonstrates knowledge of their trade lanes, cargo profile, and current operational pressures. The message that earns a response from this buyer is one that references something specific about their business — a trade lane they are known to serve, a sector challenge they are facing — and connects it to a concrete capability the operator brings.",
+        image: "/blog/office-meeting-professional.jpeg",
+        imageAlt: "Professional meeting in maritime logistics — the decision-making environment for shipping procurement",
+      },
+      {
+        heading: "Tender and RFQ Intelligence",
+        body: "Maritime logistics business development has a formal procurement layer that other sectors lack: the tender and RFQ process. Large shippers periodically go to market for freight services through formal procurement processes. The operators who win these tenders are not always the ones with the best rates — they are the ones who were already known to the procurement team before the tender was issued. The operator with an existing relationship, or at minimum a series of prior contacts that have established credibility, starts the tender process in a completely different position than the one arriving cold with a rate sheet. A systematic outreach programme that maintains contact with potential clients across the months before a tender cycle begins is an investment in tender competitiveness, not just in new business volume.",
+      },
+      {
+        heading: "Trade Lane Specific Outreach",
+        body: "The most effective maritime business development outreach is trade lane specific. A message that references the operator's specific capabilities on the Asia-Europe trade, or their expertise in project cargo out of West African ports, or their cold chain network across the Mediterranean, is in a different category from generic freight service marketing. It demonstrates that the outreach is not blanket activity — it is targeted at shippers whose cargo profile and trade lane requirements match exactly what the operator handles best. This specificity is the mechanism that separates the maritime operator doing serious business development from the one sending cold emails that read like brochures.",
+      },
+      {
+        heading: "Building a Maritime Client Acquisition Programme",
+        body: "A structured maritime business development programme has a defined architecture. A research phase that identifies qualifying shippers by cargo type, trade lane, and procurement profile. An outreach phase that initiates contact with the right decision-maker using messages specific to their situation. A follow-up phase designed around the long sales cycle typical of logistics procurement — multiple touches, each adding value, across a timeline of weeks or months. And a reporting layer that tracks where in the pipeline each prospect sits and what the next appropriate contact looks like. This architecture is not complicated. But it requires commitment to continuous activity rather than the episodic trade fair and conference approach that most maritime operators rely on.",
+      },
+    ],
+  },
+  {
+    slug: "cold-email-agency-luxury-brands",
+    title: "Cold Email for Luxury Brands: Why Generic Outreach Fails and What Works Instead",
+    category: "B2B Platforms",
+    readTime: "11 min",
+    image: "/blog/luxury-brand-showroom.jpg",
+    imageAlt: "Luxury brand environment — the sector where cold email must operate at a completely different standard",
+    content: [
+      {
+        heading: "The Problem With Cold Email in the Luxury Context",
+        body: "Cold email as a client acquisition channel has a legitimate place in B2B — and an almost entirely illegitimate reputation in the luxury sector. The reason is straightforward: most cold email is built for volume. It is templated, automated, optimised for open rates, and designed to produce a percentage of responses from a large population of contacts. This model is structurally incompatible with luxury B2B. A luxury brand's target buyer — the premium retailer, the high-end hospitality buyer, the exclusive distributor — receives a significant volume of supplier contact. They have finely calibrated filters for what is worth their time. A generic cold email, regardless of how well it is written, reads exactly like every other generic cold email. It gets deleted.",
+      },
+      {
+        heading: "What 'Cold' Actually Means in Luxury Outreach",
+        body: "The word cold in cold email refers to the state of the relationship at the point of first contact — not to the quality of the contact itself. A cold contact is simply one where no prior relationship exists. The temperature of the approach — the warmth, the intelligence, the relevance — is entirely within the control of the sender. Cold email that works in luxury is not cold in any meaningful sense. It is a precisely researched, individually written message that demonstrates specific knowledge of the recipient's business, their market, and why this particular contact is worth their time. The message is cold; the intelligence behind it is warm.",
+        image: "/blog/luxury-brand-strategy.jpg",
+        imageAlt: "Luxury brand strategy — the positioning intelligence that makes cold outreach warm",
+        imageCaption: "Cold email in luxury works when it demonstrates that you know their world. Generic outreach signals that you do not.",
+      },
+      {
+        heading: "The Research Standard for Luxury Outreach",
+        body: "The research standard required for effective luxury brand outreach is significantly higher than for mainstream B2B. Before contacting a premium retailer, the outreach needs to reflect knowledge of their current product mix, their price architecture, the aesthetic direction of their current buying season, and how the brand being introduced fits within — or usefully extends — their existing offering. Before contacting a luxury hospitality buyer, the outreach needs to demonstrate awareness of their property's positioning, their current supplier relationships where visible, and the specific gap the brand addresses. This level of research is not achievable manually at scale. It requires an AI-assisted research infrastructure that can aggregate signals from multiple sources before a single message is written.",
+      },
+      {
+        heading: "The Role of a Cold Email Agency in Luxury B2B",
+        body: "A cold email agency operating in the luxury sector is not running campaigns. It is building relationships — beginning with an initial contact that earns a response, progressing through a sequence that adds value at each touch, and handling the early stages of the buyer relationship until it is warm enough to hand to the brand's principal. The agency's role is not to close. It is to ensure that the right buyers are aware of the brand, have received enough context to form a qualified view, and are ready for a substantive conversation when the handoff happens. This is a fundamentally different operating model from a campaign agency running sequences on behalf of fifty clients simultaneously.",
+        image: "/blog/outreach-strategy-planning.jpg",
+        imageAlt: "Outreach strategy for luxury brands — the planning behind precision B2B contact",
+      },
+      {
+        heading: "Personalisation at Scale: The AI Advantage",
+        body: "The tension in luxury outreach has always been between personalisation — which works but does not scale — and automation — which scales but does not work. AI resolves this tension. AI-driven outreach systems can research a prospect at an individual level, synthesise the relevant signals from their professional profile and business context, and produce a message that reads as individually written because the intelligence behind it is individually assembled. The scale comes from the AI's ability to do this research and drafting across hundreds of prospects simultaneously. The quality comes from the depth of research each message is based on. Neither element is achievable with manual processes at any reasonable cost.",
+      },
+      {
+        heading: "Measuring What Matters in Luxury Outreach",
+        body: "The metrics that matter in luxury brand outreach are different from standard B2B cold email benchmarks. Open rates and click rates are noise. The metrics that matter are: qualified responses from the right buyers, meetings with decision-makers whose profile matches the ideal retail or distribution partner, and relationships progressed to sample request or range review stage. A luxury outreach programme that produces five qualified conversations with the right buyers in a month is performing better than one that produces a 30% open rate and fifty unqualified replies. The volume of activity is not the point. The quality of the relationships being initiated is the only measure that matters.",
+      },
+      {
+        heading: "Building the Luxury Outreach Programme",
+        body: "A luxury brand outreach programme begins with a precise definition of the ideal retail or distribution partner — not a broad category, but a specific profile defined by market, price architecture, product mix, and buyer profile. It continues with a mapped universe of qualifying targets, researched and enriched before any outreach begins. It deploys messages that are individually tailored to each target, demonstrating specific knowledge of their business and a clear connection to the brand's proposition. And it maintains contact across a sequence designed around the long decision cycles of luxury retail procurement — a relationship that typically matures over months, not days. This is the architecture of outreach that actually works for luxury brands.",
+      },
+    ],
+  },
+  {
+    slug: "professional-services-client-acquisition",
+    title: "Client Acquisition for Professional Services Firms: How Consultancies, Law Firms, and Advisors Build Consistent Pipeline",
+    category: "Professional Services",
+    readTime: "13 min",
+    image: "/blog/quiet-office-focus.jpg",
+    imageAlt: "Professional services environment — the sector where client acquisition requires relationship-first thinking",
+    content: [
+      {
+        heading: "The Referral Ceiling in Professional Services",
+        body: "Professional services firms — management consultancies, law firms, financial advisors, strategy boutiques, specialist recruiters — share a common growth pattern. The early years are built on the founding partners' networks. Clients come from former colleagues, ex-clients who followed the partner from a previous firm, and warm introductions through trusted intermediaries. This model works. It is also fundamentally limited. The network that sustains a firm through its first decade cannot sustain a firm through its second — not because the relationships decay, but because the firm's growth ambitions eventually exceed what any single network can deliver. The referral ceiling is not a failure. It is a prompt: build a deliberate acquisition function, or plateau.",
+      },
+      {
+        heading: "Why Professional Services Firms Resist Systematic Outreach",
+        body: "There is a cultural resistance to systematic outreach in most professional services environments. The professional norm is that good work speaks for itself, that direct solicitation is unseemly, and that the firm's reputation should generate its own pipeline. This norm has a legitimate basis — reputation is genuinely important in professional services, and aggressive or poorly targeted outreach can damage it. But the norm has been stretched into a rationale for not building any deliberate acquisition function at all. The result is a growth model that is entirely dependent on variables the firm does not control: the referral behaviour of existing clients, the market conditions that drive demand for the firm's services, and the health of the senior partners' personal networks.",
+        image: "/blog/office-meeting-professional.jpeg",
+        imageAlt: "Professional services meeting — the environment where client relationships are built and maintained",
+        imageCaption: "The firms growing fastest in professional services have a deliberate acquisition function. The ones plateauing are waiting for referrals.",
+      },
+      {
+        heading: "What Systematic Acquisition Looks Like in Professional Services",
+        body: "Systematic acquisition in professional services does not mean aggressive cold calling or mass email campaigns. It means building a defined, continuous function that identifies the right potential clients, initiates contact through intelligent and appropriate means, and maintains a warm presence over the long relationship cycles that professional services decisions operate on. A law firm targeting corporate clients in a specific sector. A management consultancy pursuing mid-market businesses in a defined industry vertical. A financial advisory firm reaching family-owned businesses approaching a succession event. In each case, the target is specific, the approach is intelligent, and the timeline is measured in months rather than days.",
+      },
+      {
+        heading: "Targeting the Right Trigger Events",
+        body: "Professional services mandates are triggered by specific events in a client organisation's life. A legal mandate begins when a transaction, a dispute, or a regulatory development creates a need. A consulting engagement begins when a strategic decision point, a performance challenge, or a leadership change creates the conditions for external support. A financial advisory relationship begins when a succession, a capital event, or a significant financial decision requires expertise the organisation does not have internally. These trigger events are identifiable in advance. Companies announcing acquisitions are creating M&A advisory needs. Companies announcing leadership changes are creating consulting entry points. AI-powered monitoring systems identify these signals as they occur and surface the right prospects at the right moment.",
+        image: "/blog/professional-working-desk.jpeg",
+        imageAlt: "Professional working environment — where client acquisition strategy meets execution",
+      },
+      {
+        heading: "The Seniority Question in Professional Services Outreach",
+        body: "Professional services outreach fails most often not because of poor targeting or poor messaging, but because it reaches the wrong level of the target organisation. In a mid-market company, the decision to engage an external advisor sits with the CEO, CFO, or General Counsel — not with a procurement manager or department head. In a large corporate, the relevant decision-maker may be a divisional MD or a specific functional director whose remit encompasses the service being offered. The outreach programme that targets the right person by name, demonstrates knowledge of their specific situation, and arrives at the right level of seniority is operating in a completely different environment from the one sending introductory materials to a general contact address.",
+      },
+      {
+        heading: "Building Credibility Before the First Meeting",
+        body: "One of the most effective mechanisms for professional services acquisition is the credibility-building sequence — a series of contacts with a target organisation that demonstrate the firm's expertise and insight before any commercial conversation is proposed. This might involve sharing a relevant piece of analysis, commenting specifically on a challenge the target organisation is known to face, or referencing a recent development in their industry and connecting it to the firm's perspective. Each touch builds a picture in the target's mind of a firm that understands their world deeply. By the time a meeting is proposed, it is not a cold meeting — it is a conversation with a firm the target already has a view on.",
+      },
+      {
+        heading: "The Professional Services Acquisition Programme",
+        body: "A structured professional services client acquisition programme has a defined set of components. A precisely mapped target universe — specific companies, specific decision-makers, filtered by the trigger events and characteristics that indicate a genuine need for the firm's services. An outreach approach calibrated to the norms of the sector — intelligent and value-adding rather than promotional. A long-cycle sequence that maintains contact over the months between first touch and mandate decision. And a reporting layer that gives the firm visibility into which relationships are progressing and where the next investment of time should be made. This architecture is not aggressive. It is systematic. And systematic, in professional services, is competitive advantage.",
+      },
+    ],
+  },
+  {
+    slug: "outbound-lead-generation-luxury-retail",
+    title: "Outbound Lead Generation for Luxury Retail: How Premium Brands Reach Buyers and Stockists Systematically",
+    category: "B2B Platforms",
+    readTime: "12 min",
+    image: "/blog/luxury-interior-design-studio.jpg",
+    imageAlt: "Luxury retail interior — the environment where premium brand buying decisions are made",
+    content: [
+      {
+        heading: "The Buyer Is Not Coming to You",
+        body: "Luxury retail buyers — the department store buying teams, the boutique owners, the premium online platform curators, the exclusive concept store directors — receive hundreds of brand introductions annually. They attend trade fairs where they are approached by dozens of brands in a single day. Their inbox contains a constant stream of brand decks and wholesale lookbooks. From this position, they are selective in a very specific way: they respond to what is already on their radar, and they filter out everything else. The luxury brand that waits to be discovered by the right buyer is competing in the most congested channel available. The brand that reaches the right buyer directly, with the right message, before the trade fair season starts, is operating in a different competitive environment entirely.",
+      },
+      {
+        heading: "What Outbound Means in the Luxury Retail Context",
+        body: "Outbound in luxury retail B2B is not what most people picture when they hear the term. It is not a volume cold email campaign blasting every buyer on a purchased list. It is a precision research and outreach programme: identifying the specific retailers and platforms whose positioning, customer profile, and price architecture align with the brand's distribution objectives, then initiating contact with the relevant buyer using a message that demonstrates specific knowledge of their store, their current mix, and why this brand belongs in their selection.",
+        image: "/blog/textile-fabric-swatches.webp",
+        imageAlt: "Luxury textile and fabric selection — the product calibre that earns premium retail placement",
+        imageCaption: "The product is the qualification. The outreach is the conversation starter. Both need to be right.",
+      },
+      {
+        heading: "Mapping the Right Retail Universe",
+        body: "The first step in a luxury retail outbound programme is building the right universe of target retailers — not a generic list of luxury stores, but a specifically filtered set of retailers defined by their positioning, their customer demographics, their current brand mix, their average price architecture, and their openness to new supplier relationships. This research produces a list of perhaps thirty to one hundred retailers per market who genuinely represent the right opportunity for the brand — not a volume list, but a precision list where every name is a real potential partner rather than a speculative contact.",
+      },
+      {
+        heading: "Reaching the Buying Decision-Maker",
+        body: "In luxury retail, the buying decision-maker varies by store format. In a large department store, the relevant contact is typically a category buyer or a head of buying with a specific product brief. In a boutique or concept store, it is usually the owner or founder. In an online platform, it is a curation director or brand partnerships manager. Each of these roles has a different communication preference, a different decision-making timeline, and a different set of selection criteria. The outreach programme that understands these differences and tailors the approach accordingly — including the channel, the message format, and the timing — produces dramatically better response rates than one treating all retail buyers as a homogeneous target.",
+        image: "/blog/luxury-hotel-lobby.jpg",
+        imageAlt: "Premium retail and hospitality environment — the contexts where luxury brand placement decisions are made",
+      },
+      {
+        heading: "The Pre-Trade Fair Outreach Window",
+        body: "The most valuable outreach window in luxury retail B2B is the period between six and twelve weeks before a major trade fair. Buyers are in planning mode, their budgets are being set, and their openness to new suppliers is highest before their schedule fills up with existing relationships. A brand that has been in contact with a buyer for two months before Maison & Objet or Ambiente opens has a scheduled meeting, not a booth walk-in. Their conversation begins where a warm relationship left off, not with a first introduction in a noisy exhibition hall. The economics of trade fair participation change completely when the outreach has been done in advance.",
+      },
+      {
+        heading: "Follow-Through After Initial Contact",
+        body: "The most common failure point in luxury retail outbound is not the initial contact — it is the follow-through. A buyer responds with interest but asks for a sample. The brand sends the sample and then hears nothing for six weeks. The buyer has moved on to the next decision on their list. A well-designed follow-up sequence maintains contact after the initial response with appropriate frequency, referencing the sample that was sent, asking a specific question about how the buyer's selection criteria for the season map to the brand's offer, and keeping the relationship warm across the procurement timeline. The brands that convert initial buyer interest into placement are the ones who do this consistently — not aggressively, but systematically.",
+      },
+      {
+        heading: "Building a Continuous Retail Acquisition Programme",
+        body: "A luxury brand that relies on trade fairs and buyer discovery as its primary retail acquisition channel has a growth model defined by the trade fair calendar and the limits of the exhibition floor. A brand with a continuous outbound retail acquisition programme has a growth model defined by the size of the opportunity in each target market and the capacity of its distribution infrastructure to handle what the outreach generates. The transition from the first model to the second is not complicated. It requires defining the right target universe, building the research capability to enrich that universe, and committing to systematic contact that does not pause between fair seasons. For most luxury brands, this transition represents the single highest-return distribution investment available.",
+      },
+    ],
+  },
+  {
+    slug: "how-to-get-b2b-clients-luxury-brand",
+    title: "How to Get B2B Clients for a Luxury Brand: The Systems That Replace Referral Dependency",
+    category: "B2B Platforms",
+    readTime: "12 min",
+    image: "/blog/b2b-handshake-deal.jpg",
+    imageAlt: "B2B client acquisition — the systematic approach that replaces referral dependency for luxury brands",
+    content: [
+      {
+        heading: "The Question Every Luxury Brand Reaches Eventually",
+        body: "At some point in the growth of every luxury brand, the same question surfaces. The product is right. The positioning is clear. The existing clients are satisfied and loyal. But growth has slowed. The next tier of clients — the ones who would take the brand into new markets, new retail channels, new geographies — is not arriving through the existing mechanisms. Trade fairs produce the same contacts they always have. The existing client network has been fully leveraged. Referrals come in ones and twos, not in the volume needed to sustain meaningful growth. The question is not: is there demand for what we make? The question is: how do we systematically reach the buyers who represent that demand?",
+      },
+      {
+        heading: "Why Luxury B2B Is a Relationship Business — and Why That Creates a Problem",
+        body: "Luxury B2B operates on relationships. The interior designer who specifies a rug brand does so because they trust the brand, know the quality, and have a relationship with the sales team that makes the specification process easy. The premium retailer who stocks a jewellery brand does so because a buyer has a relationship with the founder that began at a trade fair three years ago. Relationships drive luxury B2B. But relationships do not scale automatically. Building the next wave of relationships requires either waiting for them to develop organically — which is slow and unpredictable — or creating a systematic mechanism for initiating them. The second option is the one that produces growth.",
+        image: "/blog/luxury-brand-strategy.jpg",
+        imageAlt: "Luxury brand strategy — the planning behind systematic B2B client acquisition",
+        imageCaption: "Relationship-driven luxury B2B is the destination. Systematic outreach is how you get there at scale.",
+      },
+      {
+        heading: "Defining the Right B2B Client Profile",
+        body: "Before any outreach programme can be effective, the ideal B2B client profile must be defined with precision. For a luxury textile brand, this might be interior designers who specify for high-end residential projects at a defined project value, in specific geographies, with a material direction that matches the brand's offering. For a premium product brand, it might be retailers whose positioning, customer demographics, and average transaction value indicate they can successfully sell at the brand's price point. This precision matters because outreach programmes built on broad target definitions produce broad results — a large volume of contact with prospects who will never convert, and insufficient attention to the ones who will.",
+      },
+      {
+        heading: "The Research Layer: Knowing Before Reaching",
+        body: "Effective luxury B2B outreach begins with research — specific, individual research about each target prospect before any contact is made. What projects has this designer completed recently, and what materials did they specify? What does this retailer's current selection tell us about the direction they are taking their buying? What has this distribution manager said publicly about the kind of brands they are looking to add? AI-powered research systems can aggregate this intelligence from multiple sources — portfolio sites, industry press, LinkedIn activity, trade fair participation records — and synthesise it into a prospect profile that informs a genuinely targeted first contact. The message that references something specific about the recipient's work is not intrusive. It is flattering. And it earns responses that generic introductions do not.",
+        image: "/blog/professional-working-desk.jpeg",
+        imageAlt: "Research and strategy for luxury B2B outreach — the intelligence layer behind effective client acquisition",
+      },
+      {
+        heading: "Multi-Channel Presence in the B2B Luxury Space",
+        body: "Luxury B2B buyers — particularly in the interior design, premium retail, and high-end hospitality sectors — are not reached through a single channel. Email is the primary professional communication channel for most buyers and specifiers, but LinkedIn has become increasingly important for professional discovery and relationship building. Some sectors have WhatsApp as the dominant channel for trade relationships. A well-designed outreach programme uses multiple channels in a coordinated way: an email that opens the conversation, a LinkedIn connection that demonstrates the brand's presence, a follow-up that arrives through the channel the prospect actually uses for trade communication. The multi-channel approach is not aggressive — it is attentive to how the prospect actually communicates.",
+      },
+      {
+        heading: "The Timeline of a Luxury B2B Relationship",
+        body: "Luxury B2B relationships do not convert in a week. A premium retailer evaluating a new brand is thinking about how it fits into their next buying season, which may be several months away. An interior designer considering a new specification supplier is thinking about which projects coming up would suit the brand's aesthetic, which may be on a multi-month project timeline. The outreach programme that treats luxury B2B like a short-cycle transaction — one or two emails and an expectation of a quick response — will consistently underperform. The programme designed around the actual relationship timeline — multiple touches over several months, each adding value rather than restating the ask — converts at dramatically higher rates because it respects how luxury buying decisions are actually made.",
+      },
+      {
+        heading: "From First Contact to Long-Term Trade Relationship",
+        body: "The objective of luxury B2B outreach is not a single transaction. It is the beginning of a trade relationship — the kind of relationship where a designer specifies the brand repeatedly across multiple projects, or a retailer reorders season after season because the brand has become part of their permanent selection. Getting to this relationship requires more than a good first contact. It requires consistent follow-through, excellent product and service delivery in the early stages of the relationship, and ongoing communication that maintains the brand's presence in the buyer's awareness between transactions. The acquisition programme that initiates the relationship is the foundation. What the brand does with that relationship determines whether it compounds into long-term revenue or remains a single transaction.",
+      },
+    ],
+  },
 ];
 
 export default function BlogArticle() {

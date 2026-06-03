@@ -60,6 +60,11 @@ const ROUTES = [
   "/blog/uhnw-client-acquisition-strategy",
   "/blog/b2b-outreach-agency-india",
   "/blog/what-is-outreach-infrastructure",
+  "/blog/maritime-logistics-business-development",
+  "/blog/cold-email-agency-luxury-brands",
+  "/blog/professional-services-client-acquisition",
+  "/blog/outbound-lead-generation-luxury-retail",
+  "/blog/how-to-get-b2b-clients-luxury-brand",
 ];
 
 function startServer() {

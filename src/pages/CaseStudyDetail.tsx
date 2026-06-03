@@ -28,13 +28,14 @@ function CapabilityBar({ label, value, delay, gradient }: { label: string; value
   );
 }
 
-function SectionImage({ src, alt, className = "" }: { src: string; alt: string; className?: string }) {
+function SectionImage({ src, alt, className = "", objectPosition = "center" }: { src: string; alt: string; className?: string; objectPosition?: string }) {
   return (
     <div className={`relative rounded-2xl overflow-hidden ${className}`}>
       <img
         src={src}
         alt={alt}
         className="w-full h-full object-cover"
+        style={{ objectPosition }}
         onError={(e) => {
           const el = e.target as HTMLImageElement;
           el.parentElement!.style.display = "none";
@@ -331,10 +332,10 @@ export default function CaseStudyDetail() {
             >
               <div className="sticky top-28 space-y-4">
                 {cs.images[2] && (
-                  <SectionImage src={cs.images[2]} alt={`${cs.industry} — solution`} className="h-[260px] md:h-[300px]" />
+                  <SectionImage src={cs.images[2]} alt={`${cs.industry} — solution`} className="h-[260px] md:h-[300px]" objectPosition="top" />
                 )}
                 {cs.images[3] && (
-                  <SectionImage src={cs.images[3]} alt={`${cs.industry} — implementation`} className="h-[200px] md:h-[230px]" />
+                  <SectionImage src={cs.images[3]} alt={`${cs.industry} — implementation`} className="h-[200px] md:h-[230px]" objectPosition="top" />
                 )}
               </div>
             </motion.div>
@@ -412,7 +413,7 @@ export default function CaseStudyDetail() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <SectionImage src={cs.images[4]} alt={`${cs.industry} — results`} className="h-[220px] md:h-[260px]" />
+                  <SectionImage src={cs.images[4]} alt={`${cs.industry} — results`} className="h-[220px] md:h-[260px]" objectPosition="top" />
                 </motion.div>
               )}
             </div>

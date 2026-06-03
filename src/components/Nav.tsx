@@ -73,7 +73,7 @@ export default function Nav() {
           WebkitBackdropFilter: "blur(24px)",
           border: "1px solid rgba(255,255,255,0.10)",
           borderRadius: "9999px",
-          padding: "5px 6px",
+          padding: "5px 4px",
           boxShadow: "0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)",
         }}
       >
@@ -85,7 +85,7 @@ export default function Nav() {
             <Link
               key={l.href}
               to={l.href}
-              className="relative px-4 py-2 rounded-full text-[11px] uppercase tracking-[0.16em] font-light transition-colors duration-200 hover:text-white whitespace-nowrap"
+              className="relative px-3 py-2 rounded-full text-[11px] uppercase tracking-[0.12em] font-light transition-colors duration-200 hover:text-white whitespace-nowrap"
               style={{ color: active ? "#fff" : "rgba(255,255,255,0.45)" }}
             >
               {active && (

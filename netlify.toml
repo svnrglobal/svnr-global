@@ -4,8 +4,7 @@
 
 [build.environment]
   NODE_VERSION = "20"
-  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "true"
-  PUPPETEER_EXECUTABLE_PATH = "/usr/bin/google-chrome-stable"
+  PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "false"
 
 # SPA fallback (belt-and-suspenders alongside _redirects)
 [[redirects]]

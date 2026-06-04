@@ -4,6 +4,9 @@ import { ArrowRight } from "lucide-react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import SEO from "../components/SEO";
+import VideoHero from "../components/VideoHero";
+
+const FOUNDER_VIDEO = "https://stream.mux.com/tLkHO1qZoaaQOUeVWo8hEBeGQfySP02EPS02BmnNFyXys.m3u8";
 
 export default function Founder() {
   return (
@@ -30,20 +33,15 @@ export default function Founder() {
 
       <Nav />
 
-      {/* HERO */}
-      <section className="relative min-h-screen flex flex-col justify-end bg-[#0A0A0B] overflow-hidden">
-        {/* Subtle gradient bg */}
-        <div className="absolute inset-0 z-0" style={{
-          background: "radial-gradient(ellipse 80% 60% at 60% 40%, rgba(255,255,255,0.03) 0%, transparent 70%)"
-        }} />
-
-        <div className="relative z-10 max-w-7xl mx-auto px-6 pb-20 pt-40 grid grid-cols-1 md:grid-cols-2 gap-16 items-end">
+      {/* HERO — video background */}
+      <VideoHero src={FOUNDER_VIDEO} minHeight="min-h-screen">
+        <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-end min-h-screen">
           {/* Text */}
-          <div>
+          <div className="flex flex-col justify-end pb-4">
             <motion.p
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.6, delay: 1.1 }}
               className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-6"
             >
               Founder
@@ -51,16 +49,16 @@ export default function Founder() {
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="text-5xl sm:text-6xl md:text-7xl font-medium text-white leading-[1.0] tracking-tight mb-8"
+              transition={{ duration: 1, delay: 1.3 }}
+              className="text-5xl sm:text-6xl md:text-7xl font-medium text-white leading-[1.0] tracking-tight mb-6"
             >
               Hamza<br />Omair
             </motion.h1>
             <motion.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="text-white/40 text-lg leading-relaxed max-w-md"
+              transition={{ duration: 0.8, delay: 1.6 }}
+              className="text-white/40 text-base leading-relaxed max-w-sm"
             >
               Founder & CEO, SVNR Global.<br />
               New Delhi — operating globally.
@@ -69,29 +67,25 @@ export default function Founder() {
 
           {/* Photo */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, delay: 0.3 }}
-            className="flex justify-center md:justify-end"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.2, delay: 1.4 }}
+            className="flex justify-center md:justify-end items-end pb-4"
           >
-            <div className="relative w-72 sm:w-80 md:w-96">
-              <div className="absolute inset-0 rounded-3xl" style={{
-                background: "radial-gradient(ellipse at center, rgba(255,255,255,0.06) 0%, transparent 70%)",
-                transform: "scale(1.1)"
-              }} />
+            <div className="relative w-64 sm:w-72 md:w-80">
               <img
                 src="/hamza.jpg"
                 alt="Hamza Omair — Founder of SVNR Global"
-                className="relative w-full rounded-3xl object-cover"
+                className="w-full rounded-2xl object-cover"
                 style={{ aspectRatio: "1/1" }}
               />
+              {/* Subtle bottom fade to blend with page */}
+              <div className="absolute bottom-0 left-0 right-0 h-16 rounded-b-2xl"
+                style={{ background: "linear-gradient(to top, rgba(10,10,11,0.6), transparent)" }} />
             </div>
           </motion.div>
         </div>
-
-        {/* Bottom rule */}
-        <div className="absolute bottom-0 left-0 right-0 h-px bg-white/5" />
-      </section>
+      </VideoHero>
 
       {/* STORY */}
       <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
@@ -121,7 +115,6 @@ export default function Founder() {
             </div>
           </motion.div>
 
-          {/* Divider */}
           <div className="h-px bg-white/5 mb-20" />
 
           <motion.div
@@ -145,10 +138,8 @@ export default function Founder() {
             </div>
           </motion.div>
 
-          {/* Divider */}
           <div className="h-px bg-white/5 mb-20" />
 
-          {/* Stats */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -167,15 +158,13 @@ export default function Founder() {
             ))}
           </motion.div>
 
-          {/* Divider */}
           <div className="h-px bg-white/5 mb-20" />
 
-          {/* Links */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col sm:flex-row gap-4"
+            className="flex flex-wrap gap-4"
           >
             <a
               href="https://in.linkedin.com/in/hamza-omair-5434b1354"

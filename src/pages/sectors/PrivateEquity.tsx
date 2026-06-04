@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const pipelineData = [
@@ -29,12 +30,19 @@ const insights = [
   "Founders remember which firms have been intelligent and specific in their outreach. The firm they call when the moment arrives is the one they have had the most substantive conversations with, not the most recognisable name.",
 ];
 
+const PRIVATE_EQUITY_FAQS = [
+  { q: "What is proprietary deal flow in private equity?", a: "Proprietary deal flow refers to investment opportunities a PE firm identifies and approaches directly, before the company enters a formal sale process or engages an investment bank. These deals avoid competitive bidding and typically command better entry terms." },
+  { q: "How do PE firms find companies before they go to market?", a: "Through systematic outreach to founders and management teams in target sectors, using AI-driven research to identify companies matching the fund's investment thesis, then building relationships before a formal sale process begins. Trigger signals including succession planning, debt maturity, and sector consolidation are monitored continuously." },
+  { q: "How long does it take to build proprietary deal flow?", a: "A structured 90-day programme identifies qualifying targets and initiates founder conversations. Meaningful deal flow from those relationships typically materialises within 6–18 months, as founders reach the moment of readiness for a transaction." },
+  { q: "Can SVNR Global help family offices find new GPs and fund managers?", a: "Yes. SVNR builds GP-to-LP relationship infrastructure for family offices and institutional investors, mapping qualified fund managers by mandate, strategy, and track record, then facilitating introductions through systematic outreach." },
+];
+
 export default function PrivateEquity() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Private Equity Deal Flow & Investor Relations | SVNR Global"
-        description="Proprietary deal flow infrastructure for PE firms and family offices. We surface opportunities before they are formally marketed through relationship-driven outreach."
+        description="Proprietary deal flow for private equity firms and family offices. We reach founders before formal sale processes begin. Off-market pipeline, LP acquisition, and GP relationship infrastructure — built on AI-driven outreach."
         canonical="/sectors/private-equity-family-offices"
         schema={[
           {
@@ -191,6 +199,9 @@ export default function PrivateEquity() {
           </motion.div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={PRIVATE_EQUITY_FAQS} title="Common questions about private equity deal flow" />
 
       <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10"><div className="max-w-7xl mx-auto">
       {/* RELATED INSIGHTS */}

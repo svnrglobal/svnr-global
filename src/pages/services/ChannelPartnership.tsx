@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Network, Users, Award, TrendingUp, ArrowRight } from "lucide-react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const chartData = [
@@ -26,12 +27,19 @@ const steps = [
 
 const sectors = ["Luxury Rugs", "B2B Luxury Brands", "High-Ticket E-commerce", "Professional Services", "Maritime", "Real Estate"];
 
+const CHANNEL_PARTNERSHIP_FAQS = [
+  { q: "How do premium brands build trade channel partnerships systematically?", a: "By mapping the universe of qualifying trade partners — architects, interior designers, showrooms, distributors — in target geographies, researching each partner's project type and client base, then initiating direct contact with messages that demonstrate knowledge of their practice and explain precisely why the partnership makes sense." },
+  { q: "How many trade partners can SVNR activate in a new market?", a: "A structured 90-day programme typically activates 10–20 qualified trade partner relationships in a new market. The first confirmed partner relationship typically arrives within 30 days of deployment." },
+  { q: "What is the difference between a stockist and a channel partner?", a: "A stockist holds and sells inventory. A channel partner can include stockists, specifiers, showrooms, and interior designers who recommend or specify the product for client projects without holding inventory. SVNR builds programmes for both models depending on the brand's distribution strategy." },
+  { q: "Does channel partnership development work for non-luxury product categories?", a: "Yes. SVNR deploys channel partnership programmes for any premium product with a defined trade buyer profile — architectural materials, home textiles, premium kitchen equipment, high-ticket wellness products, and others where the route to market runs through a specifier or trade buyer." },
+];
+
 export default function ChannelPartnership() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Channel Partnership — Trade Distribution Activation | SVNR Global"
-        description="We build the system that finds, reaches, and activates the right architects, designers, and specifiers for your product. Trade distribution built through relationships."
+        description="Systematic trade channel and stockist acquisition for luxury and premium brands. We map, reach, and activate architects, designers, and retail buyers in your target markets. 10–20 partners per market in 90 days."
         canonical="/services/channel-partnership"
         schema={[
           {
@@ -214,6 +222,9 @@ export default function ChannelPartnership() {
           </div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={CHANNEL_PARTNERSHIP_FAQS} title="Common questions about Channel Partnership" />
 
       <Footer /></div>
       </div>

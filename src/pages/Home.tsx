@@ -4,6 +4,18 @@ import { Link } from "react-router-dom";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { VIDEOS, SERVICES, SECTORS } from "../data/content";
 import SEO from "../components/SEO";
+import FaqSection from "../components/FaqSection";
+
+const HOME_FAQS = [
+  { q: "What is AI outreach infrastructure?", a: "AI outreach infrastructure is a system of automated, AI-driven processes that identify ideal clients, craft personalised outreach sequences, qualify leads, and route them into a sales pipeline, without relying on inbound marketing, paid ads, or referrals." },
+  { q: "How does SVNR Global generate clients for premium brands?", a: "SVNR Global combines deep sector research, AI-enriched prospect data, and hyper-personalised multi-channel outreach to connect premium operators directly with their ideal buyers, investors, or partners, typically within 30–60 days of engagement." },
+  { q: "What industries does SVNR Global serve?", a: "SVNR Global specialises in luxury rugs and home textiles, premium real estate, private equity and family offices, B2B luxury brands, wealth management boutiques, maritime and logistics, high-ticket e-commerce, and professional services firms." },
+  { q: "Is SVNR Global's client acquisition service better than running ads?", a: "For high-ticket B2B and premium sectors, outbound acquisition consistently outperforms paid advertising because it targets decision-makers directly with personalised messaging, rather than waiting for inbound traffic. SVNR Global's AI systems compress the research and outreach cycle that would take a sales team months to execute manually." },
+  { q: "How much does it cost to hire SVNR Global?", a: "SVNR Global works on a bespoke engagement model. Pricing depends on sector, campaign scope, and infrastructure complexity. Book a call to receive a tailored proposal for your business." },
+  { q: "Is SVNR Global a lead generation agency?", a: "SVNR Global operates as a B2B client acquisition agency, which goes beyond traditional lead generation. Rather than delivering raw lists or unqualified leads, SVNR builds the full outreach infrastructure — research, messaging, sequencing, and follow-up — and delivers warm, qualified conversations with decision-makers directly to the client." },
+  { q: "Does SVNR Global work with companies outside India?", a: "Yes. SVNR Global is headquartered in New Delhi but serves clients across Europe, North America, the Gulf, and Southeast Asia. Outreach is deployed in English and adapted for local market context." },
+  { q: "How is SVNR Global different from a cold email agency?", a: "A cold email agency sends templated sequences at volume. SVNR builds sector-specific outreach infrastructure: ICP definition, prospect research using 50+ data signals, individually crafted messaging, multi-channel deployment across email and LinkedIn, and continuous optimisation. The result is a permanent acquisition asset, not a one-off campaign." },
+];
 
 const HOME_SCHEMA = [
   {
@@ -41,7 +53,7 @@ const HOME_SCHEMA = [
     "sameAs": [
       "https://www.instagram.com/svnr.lab",
       "https://in.pinterest.com/svnrglobal/",
-      "https://in.linkedin.com/company/svn%D1%8F%E2%84%A2"
+      "https://www.linkedin.com/company/svnrglobal"
     ]
   },
   {
@@ -53,73 +65,37 @@ const HOME_SCHEMA = [
   },
   {
     "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "SVNR Global",
+    "url": "https://svnrglobal.com",
+    "description": "SVNR Global builds bespoke AI-powered client acquisition systems for luxury brands, private equity, premium real estate, and high-ticket B2B operators globally.",
+    "priceRange": "$$$$",
+    "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
+    "areaServed": ["GB", "DE", "FR", "AE", "CH", "SG", "IN", "US"],
+    "contactPoint": { "@type": "ContactPoint", "email": "contact@svnrglobal.com", "contactType": "sales" },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "AI Client Acquisition Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Client Acquisition", "url": "https://svnrglobal.com/services/client-acquisition/" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Receptionist", "url": "https://svnrglobal.com/services/ai-receptionist/" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Intelligence Research", "url": "https://svnrglobal.com/services/intelligence-research/" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Brand Outreach", "url": "https://svnrglobal.com/services/brand-outreach/" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Revenue Operations", "url": "https://svnrglobal.com/services/revenue-operations/" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Deal Flow & Investor Relations", "url": "https://svnrglobal.com/services/dealflow-investor/" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Channel Partnership", "url": "https://svnrglobal.com/services/channel-partnership/" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Sector Workflows", "url": "https://svnrglobal.com/services/sector-workflows/" } }
+      ]
+    }
+  },
+  {
+    "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is AI outreach infrastructure?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AI outreach infrastructure is a system of automated, AI-driven processes that identify ideal clients, craft personalised outreach sequences, qualify leads, and route them into a sales pipeline, without relying on inbound marketing, paid ads, or referrals."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does SVNR Global generate clients for premium brands?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SVNR Global combines deep sector research, AI-enriched prospect data, and hyper-personalised multi-channel outreach to connect premium operators directly with their ideal buyers, investors, or partners, typically within 30–60 days of engagement."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What industries does SVNR Global serve?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SVNR Global specialises in luxury rugs and home textiles, premium real estate, private equity and family offices, B2B luxury brands, wealth management boutiques, maritime and logistics, high-ticket e-commerce, and professional services firms."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is SVNR Global's client acquisition service better than running ads?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "For high-ticket B2B and premium sectors, outbound acquisition consistently outperforms paid advertising because it targets decision-makers directly with personalised messaging, rather than waiting for inbound traffic. SVNR Global's AI systems compress the research and outreach cycle that would take a sales team months to execute manually."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How much does it cost to hire SVNR Global?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SVNR Global works on a bespoke engagement model. Pricing depends on sector, campaign scope, and infrastructure complexity. Book a call to receive a tailored proposal for your business."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Is SVNR Global a lead generation agency?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "SVNR Global operates as a B2B client acquisition agency, which goes beyond traditional lead generation. Rather than delivering raw lists or unqualified leads, SVNR builds the full outreach infrastructure, research, messaging, sequencing, and follow-up, and delivers warm, qualified conversations with decision-makers directly to the client."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Does SVNR Global work with companies outside India?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. SVNR Global is headquartered in New Delhi but serves clients across Europe, North America, the Gulf, and Southeast Asia. Outreach is deployed in English and adapted for local market context. Geographic location of the client does not restrict the markets SVNR can target."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How is SVNR Global different from a cold email agency?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A cold email agency sends templated sequences at volume. SVNR builds sector-specific outreach infrastructure: ICP definition, prospect research using 50+ data signals, individually crafted messaging, multi-channel deployment across email and LinkedIn, and continuous optimisation. The result is a permanent acquisition asset, not a one-off campaign."
-        }
-      }
-    ]
+    "mainEntity": HOME_FAQS.map(f => ({
+      "@type": "Question",
+      "name": f.q,
+      "acceptedAnswer": { "@type": "Answer", "text": f.a }
+    }))
   }
 ];
 
@@ -505,6 +481,8 @@ export default function Home() {
           </motion.div>
         </div>
       </section>
+
+      <FaqSection faqs={HOME_FAQS} title="Common questions about SVNR Global" />
 
       <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto">
         <Footer />

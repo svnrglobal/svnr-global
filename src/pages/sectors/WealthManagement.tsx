@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const aumData = [
@@ -22,12 +23,19 @@ const services = [
   { slug: "ai-receptionist", label: "AI Receptionist", desc: "Every inbound enquiry, from referrals, website, or introduced contacts, responded to with precision and routed appropriately." },
 ];
 
+const WEALTH_MGMT_FAQS = [
+  { q: "How do wealth management boutiques attract UHNW clients?", a: "Through direct outreach to individuals at the moment of a liquidity event — a business sale, an exit, an inheritance — combined with systematic relationship-building with accountants, lawyers, and advisors who work with HNW individuals. AI systems monitor trigger signals in real time to identify prospects at the right moment." },
+  { q: "What triggers a high net worth individual to change wealth manager?", a: "Most transitions happen after a liquidity event, a significant life change, or consistent underperformance in service. The firm that maintains contact with prospects across these trigger windows is positioned when the transition moment arrives." },
+  { q: "How is SVNR different from a typical wealth management marketing agency?", a: "SVNR does not run marketing campaigns. We build acquisition infrastructure — AI-driven prospect identification, research-backed outreach, and relationship management — that operates continuously to deliver warm conversations with qualified prospects, not leads or impressions." },
+  { q: "Can SVNR Global help wealth managers reach clients outside their home market?", a: "Yes. SVNR deploys outreach across European, Middle Eastern, and global markets. We identify and reach HNW and UHNW prospects in any geography where the client has regulatory permission to operate." },
+];
+
 export default function WealthManagement() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Wealth Management Client Acquisition | SVNR Global"
-        description="We help wealth management boutiques and RIAs expand their UHNW client base with discretion. AI-driven prospect mapping and personalised outreach to qualified principals."
+        description="UHNW and HNW client acquisition for wealth management boutiques and RIAs. AI-driven prospect mapping, trigger signal monitoring, and discreet personalised outreach. For firms expanding beyond referrals in Europe, the Gulf, and globally."
         canonical="/sectors/wealth-management"
         schema={[
           {
@@ -188,6 +196,9 @@ export default function WealthManagement() {
           </motion.div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={WEALTH_MGMT_FAQS} title="Common questions about wealth management client acquisition" />
 
       <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10"><div className="max-w-7xl mx-auto">
       {/* RELATED INSIGHTS */}

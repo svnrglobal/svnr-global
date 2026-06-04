@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, RadialBarChart, RadialBar, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const timelineData = [
@@ -30,12 +31,19 @@ const insights = [
   "The off-market buyer is not passive. They are a principal with capital, a geographic preference, and a clear sense of what a good transaction looks like. They are waiting for someone who understands their parameters.",
 ];
 
+const PREMIUM_RE_FAQS = [
+  { q: "How do premium real estate firms find HNW buyers without property portals?", a: "By identifying principal buyers — HNW individuals, family offices, and institutional investors — through AI-driven signal monitoring and business press, then initiating direct contact through email and WhatsApp with messages specific to their investment profile and capital position." },
+  { q: "Why do luxury properties sit on the market for too long?", a: "Most prime property is marketed to whoever is actively searching portals. This excludes international buyers, passive investors, and principals who would purchase if they knew the property existed. Off-market buyer acquisition expands the buyer pool beyond what portals can reach." },
+  { q: "What channels do HNW property buyers actually use?", a: "In European and Middle Eastern prime markets, WhatsApp and direct email are the dominant channels for high-value buyer conversations. A qualified buyer in Switzerland, Germany, or the UAE does not manage significant financial decisions through a portal enquiry form." },
+  { q: "How quickly can SVNR generate buyer pipeline for a premium real estate firm?", a: "Most programmes produce the first qualified principal contact within 14 days of deployment. A recent engagement produced a qualified principal reply in 14 minutes. Speed of contact is determined by targeting precision and message quality." },
+];
+
 export default function PremiumRealEstate() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Premium Real Estate Client Acquisition | SVNR Global"
-        description="We help premium real estate firms reach HNW investors and off-market buyers directly, without portal dependency. Systematic outreach to qualified principals."
+        description="Off-market buyer acquisition for premium real estate. We reach HNW investors, family offices, and principal buyers directly — no portal dependency. First qualified buyer contact within 14 days. Europe, Gulf, and global."
         canonical="/sectors/premium-real-estate"
         schema={[
           {
@@ -203,6 +211,9 @@ export default function PremiumRealEstate() {
           </motion.div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={PREMIUM_RE_FAQS} title="Common questions about premium real estate buyer acquisition" />
 
       <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10"><div className="max-w-7xl mx-auto">
       {/* RELATED INSIGHTS */}

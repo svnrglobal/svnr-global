@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { BarChart, Bar, AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const aovData = [
@@ -19,12 +20,19 @@ const services = [
   { slug: "sector-workflows", label: "Sector Workflows", desc: "B2B operations automated, trade pricing, wholesale enquiry handling, partner onboarding, and order logistics." },
 ];
 
+const ECOMMERCE_FAQS = [
+  { q: "How do premium e-commerce brands build a wholesale channel?", a: "By systematically identifying wholesale buyers, boutique retailers, and trade accounts in target geographies, researching each buyer's category focus, price architecture, and order profile, then initiating direct contact with outreach specific to their purchasing profile." },
+  { q: "Why does wholesale outperform D2C for high-ticket products?", a: "Wholesale trade accounts order at larger volumes, return less frequently, and carry product at its correct brand positioning. SVNR client data shows a 312% average order value increase when premium operators add a trade distribution channel alongside D2C." },
+  { q: "How many wholesale leads can SVNR generate per month for a premium brand?", a: "Most programmes generate 25–35 qualified wholesale buyer contacts per month from month one. The conversion rate from contact to active trade account averages 41% across high-ticket e-commerce engagements." },
+  { q: "Does SVNR work with D2C brands that have no existing wholesale experience?", a: "Yes. SVNR builds the trade distribution infrastructure from scratch — ICP definition, buyer mapping, wholesale outreach sequences, and trade account onboarding workflows — for brands entering B2B for the first time." },
+];
+
 export default function HighTicketEcommerce() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="High-Ticket E-commerce Client Acquisition | SVNR Global"
-        description="For premium D2C and wholesale operators looking to grow average order value and trade buyer relationships. AI-powered outreach that converts."
+        description="Wholesale and trade buyer acquisition for high-ticket e-commerce brands. We identify and reach boutique retailers and trade accounts in your target markets. 312% average AOV increase. 25–35 qualified wholesale leads per month."
         canonical="/sectors/high-ticket-ecommerce"
         schema={[
           {
@@ -182,6 +190,9 @@ export default function HighTicketEcommerce() {
           </motion.div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={ECOMMERCE_FAQS} title="Common questions about high-ticket e-commerce B2B acquisition" />
 
       <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10"><div className="max-w-7xl mx-auto">
       {/* RELATED INSIGHTS */}

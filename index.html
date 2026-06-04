@@ -49,6 +49,10 @@
 
     <!-- Preload critical assets -->
     <link rel="preload" href="/svnr-logo.svg" as="image" type="image/svg+xml" />
+    <!-- Preconnect to video CDN early to reduce LCP latency -->
+    <link rel="preconnect" href="https://image.mux.com" crossorigin />
+    <!-- og:image type (redundant with JS-injected but helps crawlers reading the shell) -->
+    <meta property="og:image:type" content="image/png" />
 
     <!-- Theme + feed discovery -->
     <meta name="theme-color" content="#0A0A0B" />

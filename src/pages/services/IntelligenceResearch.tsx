@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Search, Eye, BarChart2, Bell, ArrowRight } from "lucide-react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 
@@ -27,12 +28,19 @@ const steps = [
 
 const sectors = ["Private Equity", "Premium Real Estate", "Luxury Rugs", "Wealth Management", "Maritime", "Professional Services"];
 
+const INTELLIGENCE_FAQS = [
+  { q: "What is AI prospect intelligence for B2B companies?", a: "AI prospect intelligence is the systematic process of identifying every qualifying buyer and decision-maker in your market by aggregating signals from 50+ data sources — company filings, business press, LinkedIn activity, property records, financial announcements — and producing an enriched, ranked prospect universe ready for outreach." },
+  { q: "What data signals does SVNR monitor to identify prospects?", a: "SVNR monitors liquidity events, business sale announcements, company director changes, LinkedIn profile updates, trade association memberships, property transactions, funding rounds, debt maturities, sector consolidation announcements, and planning applications, depending on the target sector and buyer profile." },
+  { q: "How many prospects can SVNR map for a new market entry?", a: "A typical market mapping engagement produces 300–1,000 individually researched and ranked prospects in a defined geography within 30 days. Each record includes contact details, seniority, organisation profile, and a relevance score based on the client's ICP criteria." },
+  { q: "Is intelligence research a one-off exercise or a continuous function?", a: "Both models are available. A one-off market mapping engagement establishes the initial prospect universe. Ongoing intelligence monitoring continuously identifies new prospects as they enter the target profile and updates existing records with new signal data, keeping the outreach pipeline permanently current." },
+];
+
 export default function IntelligenceResearch() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Intelligence Research — Prospect & Market Mapping | SVNR Global"
-        description="We build the intelligence layer your team never had time to build. Who is buying, where they are buying from, and what signals predict when they move."
+        description="AI prospect intelligence and market mapping for luxury, private equity, real estate, and B2B. 300–1,000 qualified prospects mapped in 30 days. 50+ data signals per contact. Know your market before you reach it."
         canonical="/services/intelligence-research"
         schema={[
           {
@@ -227,6 +235,9 @@ export default function IntelligenceResearch() {
           </div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={INTELLIGENCE_FAQS} title="Common questions about Intelligence Research" />
 
       <Footer /></div>
       </div>

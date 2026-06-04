@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Workflow, Settings, Zap, Database, ArrowRight } from "lucide-react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 
@@ -30,12 +31,19 @@ const steps = [
 
 const sectors = ["Luxury Rugs", "Real Estate", "Private Equity", "Wealth Management", "High-Ticket E-commerce", "Maritime"];
 
+const SECTOR_WORKFLOWS_FAQS = [
+  { q: "What is sector-specific workflow automation?", a: "Sector-specific workflow automation is AI-driven process automation built around the actual operational requirements of a defined industry, not generic automation tools applied generically. A luxury brand's wholesale enquiry workflow is different from a real estate firm's deal workflow, which is different from a wealth manager's client onboarding workflow. Each is built to match." },
+  { q: "What workflows does SVNR typically automate for luxury and B2B companies?", a: "Common automations include: wholesale enquiry handling and quote generation, trade partner onboarding sequences, inbound lead qualification and routing, deal stage tracking and follow-up triggers, report generation, and CRM data enrichment. Each is built specifically for the client's operational context." },
+  { q: "What tools does SVNR use to build sector workflows?", a: "SVNR builds on Make, n8n, Airtable, Notion, HubSpot, and custom AI agents depending on the workflow requirements. The tools are selected for the task, not applied as a one-size-fits-all stack." },
+  { q: "How long does it take to deploy a custom sector workflow?", a: "Simple workflow automations can be designed, built, and deployed within 1–2 weeks. Complex multi-system integrations typically take 3–4 weeks. All workflows are delivered with documentation and a testing phase before full deployment." },
+];
+
 export default function SectorWorkflows() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Sector Workflows — Industry-Specific Automation | SVNR Global"
-        description="Operations built for your vertical. We build workflow infrastructure specific to how your business actually runs, not generic automation."
+        description="Sector-specific AI workflow automation for luxury brands, real estate, wealth management, maritime, and professional services. Built for how your industry actually operates — not generic templates. Deployed in 1–4 weeks."
         canonical="/services/sector-workflows"
         schema={[
           {
@@ -222,6 +230,9 @@ export default function SectorWorkflows() {
           </div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={SECTOR_WORKFLOWS_FAQS} title="Common questions about Sector Workflows" />
 
       <Footer /></div>
       </div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const enquiryData = [
@@ -19,12 +20,19 @@ const services = [
   { slug: "sector-workflows", label: "Sector Workflows", desc: "Wholesale operations automated, enquiry handling, quote generation, order tracking, and partner onboarding." },
 ];
 
+const B2B_LUXURY_FAQS = [
+  { q: "How do luxury brands find trade buyers and stockists?", a: "Through systematic direct outreach to interior designers, boutique retailers, and trade buyers in target geographies, mapping the market by name, initiating contact with personalised outreach, and building relationships before committing to trade fair or showroom investment." },
+  { q: "How long does it take to build a stockist pipeline for a luxury brand?", a: "A structured 90-day programme can deliver 40+ qualified stockist leads, initiate trade conversations, and produce active relationships in a new geography. Most brands see the first confirmed stockist relationship within 60 days." },
+  { q: "What is the best way to reach trade buyers for a luxury brand?", a: "Direct outreach through email and LinkedIn, with messages that demonstrate specific knowledge of the buyer's project portfolio, client base, and material preferences. Generic catalogue introductions produce minimal response. Research-backed, personalised contact is the standard that earns a trade relationship." },
+  { q: "Does SVNR Global work with luxury brands outside India?", a: "Yes. SVNR Global operates from New Delhi but deploys outreach programmes across Europe, the UK, the UAE, and North America. Our programmes target stockists and trade buyers in whatever geographies a brand wants to develop, regardless of where the brand is based." },
+];
+
 export default function B2BLuxury() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="B2B Luxury Brand Client Acquisition | SVNR Global"
-        description="For premium fashion, interiors, and lifestyle brands that need to build and activate trade buyer relationships at scale. Systematic stockist acquisition for luxury brands."
+        description="Stockist and trade buyer acquisition for B2B luxury brands. We map interior designers, retail buyers, and trade partners in your target markets and build relationships at scale. 40+ stockist leads per quarter."
         canonical="/sectors/b2b-luxury-brands"
         breadcrumbs={[
           { name: "Home", url: "/" },
@@ -182,6 +190,9 @@ export default function B2BLuxury() {
           </motion.div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={B2B_LUXURY_FAQS} title="Common questions about B2B luxury brand trade acquisition" />
 
       <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10"><div className="max-w-7xl mx-auto">
       {/* RELATED INSIGHTS */}

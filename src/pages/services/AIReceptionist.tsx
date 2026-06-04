@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, MessageSquare, CheckCircle, Calendar, RefreshCw } from "lucide-react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const gradient = "linear-gradient(135deg, #4facfe, #00f2fe)";
@@ -31,12 +32,19 @@ const steps = [
 
 const sectors = ["Premium Real Estate", "Wealth Management", "Professional Services", "High-Ticket Ecommerce"];
 
+const AI_RECEPTIONIST_FAQS = [
+  { q: "What is an AI receptionist for B2B businesses?", a: "An AI receptionist is a trained AI system that responds to every inbound enquiry, from website forms, email, or WhatsApp, in under 60 seconds. It qualifies the enquiry against your defined criteria, collects relevant information, and routes it to the right person or next step, 24 hours a day." },
+  { q: "How is SVNR's AI receptionist different from a chatbot?", a: "A chatbot follows decision trees. SVNR's AI receptionist is trained on your sector, service offering, and qualification criteria — it conducts natural, context-aware conversations that accurately qualify enquiries and never give generic responses." },
+  { q: "How quickly does the AI receptionist respond to inbound enquiries?", a: "Under 60 seconds, 24/7, including outside business hours, weekends, and across time zones. No inbound enquiry is ever missed or delayed." },
+  { q: "What businesses is the AI receptionist suitable for?", a: "The AI receptionist is deployed across luxury brands, wealth management boutiques, premium real estate firms, private healthcare, dental clinics, legal practices, and any premium B2B operator where inbound enquiry quality and response speed directly affect conversion rates." },
+];
+
 export default function AIReceptionist() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="AI Receptionist — Instant Inbound Qualification | SVNR Global"
-        description="A trained AI front desk that qualifies, responds, and routes every enquiry with precision, in under 60 seconds, 24/7."
+        description="AI Receptionist for luxury brands, wealth managers, and premium B2B: qualifies every inbound enquiry in under 60 seconds, 24/7. No missed leads, no delayed responses, no manual triage."
         canonical="/services/ai-receptionist"
         schema={[
           {
@@ -238,6 +246,9 @@ export default function AIReceptionist() {
           </div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={AI_RECEPTIONIST_FAQS} title="Common questions about the AI Receptionist" />
 
       <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto"><Footer /></div>
     </main>

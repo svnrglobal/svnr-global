@@ -12,6 +12,8 @@ interface SEOProps {
   ogImage?: string;
   ogType?: "website" | "article";
   articlePublishedTime?: string;
+  articleModifiedTime?: string;
+  articleAuthor?: string;
   schema?: object | object[];
   breadcrumbs?: BreadcrumbItem[];
   noindex?: boolean;
@@ -35,6 +37,8 @@ export default function SEO({
   ogImage = DEFAULT_OG_IMAGE,
   ogType = "website",
   articlePublishedTime,
+  articleModifiedTime,
+  articleAuthor,
   schema,
   breadcrumbs,
   noindex = false,
@@ -95,15 +99,24 @@ export default function SEO({
     setMeta("og:url", canonicalUrl, "property");
     setMeta("og:image", ogImage, "property");
     setMeta("og:image:width", "1200", "property");
-    setMeta("og:image:height", "1200", "property");
+    setMeta("og:image:height", ogType === "article" ? "628" : "1200", "property");
+    setMeta("og:image:type", ogImage.endsWith(".png") ? "image/png" : "image/jpeg", "property");
     setMeta("og:site_name", SITE_NAME, "property");
     setMeta("og:locale", "en_US", "property");
     if (articlePublishedTime) {
       setMeta("article:published_time", articlePublishedTime, "property");
     }
+    if (articleModifiedTime || articlePublishedTime) {
+      setMeta("article:modified_time", articleModifiedTime ?? articlePublishedTime!, "property");
+    }
+    if (articleAuthor) {
+      setMeta("article:author", articleAuthor, "property");
+      setMeta("author", articleAuthor);
+    }
 
-    // Twitter / X cards
-    setMeta("twitter:card", "summary_large_image");
+    // Twitter / X cards — article pages use landscape images so summary_large_image is correct;
+    // website pages use a square 1200×1200 og-image so summary avoids cropping.
+    setMeta("twitter:card", ogType === "article" ? "summary_large_image" : "summary");
     setMeta("twitter:site", TWITTER_HANDLE);
     setMeta("twitter:title", fullTitle);
     setMeta("twitter:description", description);
@@ -144,7 +157,7 @@ export default function SEO({
         i++;
       }
     }
-  }, [fullTitle, description, canonicalUrl, ogImage, ogType, articlePublishedTime, schema, breadcrumbs, noindex]);
+  }, [fullTitle, description, canonicalUrl, ogImage, ogType, articlePublishedTime, articleModifiedTime, articleAuthor, schema, breadcrumbs, noindex]);
 
   return null;
 }

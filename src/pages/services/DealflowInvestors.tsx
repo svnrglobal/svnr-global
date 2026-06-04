@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { TrendingUp, Map, MessageSquare, Clock, ArrowRight } from "lucide-react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, BarChart, Bar } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const chartData = [
@@ -31,12 +32,19 @@ const steps = [
 
 const sectors = ["Private Equity", "Family Offices", "Venture Capital", "Wealth Management", "Corporate M&A", "Growth Capital"];
 
+const DEALFLOW_FAQS = [
+  { q: "How do PE firms source proprietary off-market deals?", a: "Through systematic outreach to founders, owner-operators, and management teams in sectors matching the fund's thesis, using AI-driven research to identify companies at pre-transaction trigger points: succession planning, debt maturity, management transitions, and sector consolidation signals." },
+  { q: "Why is proprietary deal flow better than auction processes for PE firms?", a: "Proprietary deals avoid competitive bidding, which compresses returns. They allow deeper pre-LOI diligence, better founder trust before signing, and more favourable terms on price and structure. The most valuable transactions a PE firm executes are typically ones it sourced before any other firm knew they were available." },
+  { q: "How long does it take to build a proprietary deal flow pipeline?", a: "A structured 90-day programme identifies qualifying targets and initiates founder conversations. Meaningful deal flow from those relationships typically materialises within 6–18 months, as founders reach their own moment of readiness for a transaction." },
+  { q: "Can SVNR help with LP fundraising as well as deal sourcing?", a: "Yes. SVNR builds LP acquisition infrastructure for emerging managers and established funds, mapping qualifying family offices and institutional LPs, researching their mandate fit, and deploying outreach that earns an introduction at the decision-maker level." },
+];
+
 export default function DealflowInvestors() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Dealflow for Investors — Proprietary PE Deal Sourcing | SVNR Global"
-        description="We build the system that surfaces off-market deals before formal marketing begins, through relationship infrastructure designed for how deals originate."
+        description="Proprietary deal flow infrastructure for private equity firms and family offices. We reach founders before formal sale processes begin. Off-market pipeline built through systematic, AI-driven founder outreach."
         canonical="/services/dealflow-investor"
         schema={[
           {
@@ -239,6 +247,9 @@ export default function DealflowInvestors() {
           </div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={DEALFLOW_FAQS} title="Common questions about Deal Flow & Investor Relations" />
 
       <Footer /></div>
       </div>

@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Mail, User, TrendingUp, RefreshCw, ArrowRight } from "lucide-react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const chartData = [
@@ -26,12 +27,19 @@ const steps = [
 
 const sectors = ["Luxury Rugs", "B2B Luxury Brands", "Premium Real Estate", "Wealth Management", "Private Equity", "Professional Services"];
 
+const BRAND_OUTREACH_FAQS = [
+  { q: "What makes personalised brand outreach different from cold email?", a: "Cold email sends templated messages at volume. Brand outreach means every message is researched and written for the specific recipient, referencing their business, their sector, and the specific reason the contact is relevant. SVNR's reply rates average 18–24%, against a 2–5% industry average for templated cold email." },
+  { q: "How does SVNR personalise outreach at scale for premium brands?", a: "SVNR combines deep sector research with AI-assisted message architecture — each prospect is individually researched across 50+ data signals, and each message is built around specific observations about that prospect's business, portfolio, or buying history." },
+  { q: "What channels does SVNR brand outreach cover?", a: "Email is the primary channel, followed by LinkedIn for professional relationships and WhatsApp where culturally appropriate, particularly in European and Middle Eastern markets for HNW and trade relationships." },
+  { q: "Does brand outreach work for luxury brands targeting trade buyers?", a: "Yes, and it is the most effective acquisition channel for luxury trade relationships. A message that demonstrates specific knowledge of an interior designer's project portfolio earns a response at a completely different rate than a catalogue introduction. SVNR has achieved 78% enquiry lifts for luxury brands within six weeks of deployment." },
+];
+
 export default function BrandOutreach() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Brand Outreach — Hyper-Personalised B2B Messaging | SVNR Global"
-        description="Every message we deploy is written specifically for your market and your buyer profile. No templates. No mass sends. Outreach that reads like a peer."
+        description="AI-personalised brand outreach for luxury and premium B2B. Every message researched for the specific recipient. 18–24% average reply rates. For trade buyers, designers, and decision-makers who ignore templates."
         canonical="/services/brand-outreach"
         schema={[
           {
@@ -221,6 +229,9 @@ export default function BrandOutreach() {
           </div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={BRAND_OUTREACH_FAQS} title="Common questions about Brand Outreach" />
 
       <Footer /></div>
       </div>

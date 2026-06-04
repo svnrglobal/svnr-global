@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const mandateData = [
@@ -19,12 +20,19 @@ const services = [
   { slug: "revenue-operations", label: "Revenue Operations", desc: "Mandate pipeline tracked through pre-RFP, shortlist, proposal, and instruction stages. Every relationship stage measured." },
 ];
 
+const PROF_SERVICES_FAQS = [
+  { q: "How do law firms and consultancies get new clients without referrals?", a: "Through systematic direct outreach to corporate decision-makers, developers, and operators whose profile and project pipeline match the firm's practice area, reaching them before a formal procurement process begins and positioning the firm as a knowledgeable peer rather than an unsolicited vendor." },
+  { q: "What is the best client acquisition strategy for a boutique law firm?", a: "A combination of referral programme formalisation and systematic direct outreach — identifying the corporate clients and decision-makers most aligned with the firm's sector expertise, and maintaining presence through intelligent, low-frequency contact across the months before a mandate arises." },
+  { q: "How long does it take to convert a professional services prospect into a client?", a: "Professional services procurement cycles are typically 3–12 months from first contact to signed instruction. The outreach programme must be designed for this timeline, maintaining credibility and presence across multiple touches before a formal opportunity arises." },
+  { q: "Does outreach work for architecture studios and design consultancies?", a: "Yes. Architecture and design studios are among the most passive sectors in business development, which means systematic outreach faces almost no competition. A studio making disciplined, research-backed contact with developers and hospitality operators each month is operating in a market where almost no competitor does the same." },
+];
+
 export default function ProfessionalServices() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Professional Services Client Acquisition | SVNR Global"
-        description="For law firms, consultancies, accountancies, and advisory practices building a systematic client acquisition pipeline. Outreach that positions you as a peer, not a vendor."
+        description="Client acquisition for law firms, consultancies, architecture studios, and advisory practices. Systematic direct outreach that positions you as a peer, not a vendor. For professional services firms moving beyond referral dependency."
         canonical="/sectors/professional-services"
         schema={[
           {
@@ -178,6 +186,9 @@ export default function ProfessionalServices() {
           </motion.div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={PROF_SERVICES_FAQS} title="Common questions about professional services client acquisition" />
 
       <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10"><div className="max-w-7xl mx-auto">
       {/* RELATED INSIGHTS */}

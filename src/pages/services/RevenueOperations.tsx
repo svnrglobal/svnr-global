@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Database, Zap, TrendingUp, BarChart2 } from "lucide-react";
 import { BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const gradient = "linear-gradient(135deg, #f093fb, #f5576c)";
@@ -34,12 +35,19 @@ const steps = [
 
 const sectors = ["Private Equity", "B2B Luxury", "Professional Services", "High-Ticket Ecommerce"];
 
+const REVOPS_FAQS = [
+  { q: "What is revenue operations for a premium B2B company?", a: "Revenue operations is the infrastructure that tracks every deal relationship from first contact to signed client, monitoring stage progression, last contact dates, next action triggers, and conversion signals. It ensures no opportunity is lost to administrative gap, delayed follow-up, or pipeline blindness." },
+  { q: "How does SVNR's revenue operations service differ from a standard CRM setup?", a: "Standard CRM setups use off-the-shelf templates. SVNR builds revenue operations infrastructure specifically around your deal cycle — the stages, signals, and timeline relevant to your sector. A luxury real estate pipeline is structured differently from a PE deal sourcing pipeline, which is different from a wealth management client acquisition pipeline." },
+  { q: "What tools does SVNR use for revenue operations?", a: "SVNR builds on the infrastructure stack appropriate to the client's existing setup, typically HubSpot, Notion, Airtable, or custom dashboards built in Make or n8n. The specific tool is less important than the architecture: stage definitions, signal logic, and reporting that gives the principal complete pipeline visibility." },
+  { q: "Can revenue operations be integrated with SVNR's outreach infrastructure?", a: "Yes. Revenue operations is most powerful when connected to SVNR's outreach infrastructure — warm handoffs from the acquisition system feed directly into the pipeline tracking layer, and stage progression triggers automated follow-up sequences where appropriate." },
+];
+
 export default function RevenueOperations() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Revenue Operations — Pipeline Management & Automation | SVNR Global"
-        description="Full-funnel revenue ops built around your deal cycle. Every stage tracked. Every signal acted on. No more pipeline surprises."
+        description="Full-funnel revenue operations for premium B2B: pipeline tracking, deal signal monitoring, CRM automation, and reporting built specifically for your deal cycle — not generic templates. For luxury, PE, real estate, and advisory firms."
         canonical="/services/revenue-operations"
         schema={[
           {
@@ -233,6 +241,9 @@ export default function RevenueOperations() {
           </div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={REVOPS_FAQS} title="Common questions about Revenue Operations" />
 
       <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto"><Footer /></div>
     </main>

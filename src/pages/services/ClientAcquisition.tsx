@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight, Target, Map, Mail, Handshake } from "lucide-react";
 import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const gradient = "linear-gradient(135deg, #667eea, #764ba2)";
@@ -31,12 +32,19 @@ const steps = [
 
 const sectors = ["Luxury Rugs", "Premium Real Estate", "Private Equity", "Wealth Management", "B2B Luxury", "Professional Services"];
 
+const CLIENT_ACQUISITION_FAQS = [
+  { q: "What does SVNR's client acquisition system actually do?", a: "The system identifies every qualifying prospect in your target market using AI-driven research across 50+ data signals, builds personalised multi-channel outreach sequences, runs the entire conversation until the prospect is genuinely warm, and hands them directly to you with full context. You only engage at the point of a qualified conversation." },
+  { q: "How many qualified leads does the client acquisition system generate per month?", a: "Most SVNR client acquisition deployments generate 40+ qualified conversations per month from month two onwards. Reply rates average 18% across sectors, with first meetings typically occurring within 14 days of deployment." },
+  { q: "Is this the same as a cold email agency?", a: "No. A cold email agency sends templated sequences at volume. SVNR builds a complete acquisition infrastructure — ICP definition, 50-signal prospect research, individually crafted messaging, multi-channel deployment across email and LinkedIn, and continuous optimisation. The result is a permanent acquisition asset, not a one-off campaign." },
+  { q: "How quickly does SVNR's client acquisition system start delivering results?", a: "Most clients see the first qualified prospect conversations within 14–21 days of deployment. The system compounds over time — month 3 consistently outperforms month 1 as early relationships mature and the sequence is refined on real response data." },
+];
+
 export default function ClientAcquisition() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Client Acquisition — AI-Powered B2B Outreach | SVNR Global"
-        description="We identify, reach, and warm the exact decision-makers in your market. Continuously. Without your time."
+        description="AI-powered B2B client acquisition for luxury brands, private equity, real estate, and high-ticket operators. 40+ qualified conversations per month. First results in 14–21 days. No ads, no referrals."
         canonical="/services/client-acquisition"
         schema={[
           {
@@ -282,6 +290,9 @@ export default function ClientAcquisition() {
           </motion.div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={CLIENT_ACQUISITION_FAQS} title="Common questions about Client Acquisition" />
 
       <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto">
         <Footer />

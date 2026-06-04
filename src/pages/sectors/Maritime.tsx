@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 const leadsData = [
@@ -19,12 +20,19 @@ const services = [
   { slug: "sector-workflows", label: "Sector Workflows", desc: "Charter negotiation workflows, port call coordination, and commercial operations automated to reduce manual overhead." },
 ];
 
+const MARITIME_FAQS = [
+  { q: "How do shipping companies get new cargo clients systematically?", a: "Through systematic outreach to logistics managers, supply chain directors, and procurement teams at companies whose cargo profile and trade lanes match the operator's capabilities, combined with tender intelligence to position before formal RFQ processes begin." },
+  { q: "What is the best business development strategy for freight forwarding?", a: "Trade-lane specific outreach targeting shippers whose cargo requirements match the forwarder's network, combined with relationship building at the logistics manager level in mid-market manufacturers and retailers, and proactive positioning ahead of tender cycles." },
+  { q: "How do maritime operators reach logistics decision-makers directly?", a: "By identifying logistics directors and supply chain managers at target companies through LinkedIn and industry association databases, then reaching them with messages that reference their specific trade lanes, cargo profile, and operational pressures, not generic freight service marketing." },
+  { q: "What is tender intelligence in maritime and how does it help win new clients?", a: "Tender intelligence is awareness of upcoming freight procurement processes before they are formally issued, allowing the operator to build a relationship with the procurement team in advance. Operators who arrive at the tender stage with an existing relationship win at a significantly higher rate than those arriving cold." },
+];
+
 export default function Maritime() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Maritime & Logistics Business Development | SVNR Global"
-        description="Systematic B2B outreach for maritime operators, logistics firms, and freight specialists. We map your target market and build direct relationships with decision-makers."
+        description="Business development for maritime operators, shipping lines, and freight forwarders. We identify cargo owners and logistics decision-makers, build relationships before RFQs open, and deliver qualified commercial pipeline."
         canonical="/sectors/maritime-logistics"
         schema={[
           {
@@ -178,6 +186,9 @@ export default function Maritime() {
           </motion.div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={MARITIME_FAQS} title="Common questions about maritime business development" />
 
       <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10"><div className="max-w-7xl mx-auto">
       {/* RELATED INSIGHTS */}

@@ -1071,6 +1071,8 @@ export default function BlogArticle() {
         ogImage={`https://svnrglobal.com${article.image}`}
         ogType="article"
         articlePublishedTime={pubDate}
+        articleModifiedTime={pubDate}
+        articleAuthor="Hamza Omair"
         schema={[
           {
             "@context": "https://schema.org",

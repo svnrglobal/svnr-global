@@ -2,48 +2,52 @@
 
 > SVNR Global builds bespoke AI-powered client acquisition systems and outreach infrastructure for premium operators — luxury brands, private equity and family offices, premium real estate, wealth management, and high-ticket B2B. We replace dependence on ads, referrals, and trade fairs with a permanent acquisition engine that identifies, reaches, and warms the exact decision-makers in a client's market.
 
-Founded in 2019 by Hamza Omair. Headquartered in New Delhi, India; deployed globally across Europe, the UK, North America, the Gulf (GCC), and Southeast Asia. Engagements are bespoke and limited to a small number of clients at a time; there are no shared templates or recycled agents.
+Founded in 2019 by Hamza Omair. Headquartered in New Delhi, India; deployed globally across Europe, the UK, North America, the Gulf (GCC), and Southeast Asia. Engagements are bespoke and limited to a small number of clients at a time; there are no shared templates or recycled sequences.
 
 ## What SVNR Global is
-- A B2B client acquisition agency and outreach infrastructure firm (not a lead-list vendor and not a volume cold-email agency).
+- A B2B client acquisition agency and outreach infrastructure firm — not a lead-list vendor and not a volume cold-email agency.
 - Delivers warm, qualified conversations with decision-makers, not raw leads or impressions.
 - Combines deep sector research, AI-enriched prospect data (50+ signals), and hyper-personalised multi-channel outreach (email, LinkedIn, WhatsApp).
-- Typical time to first qualified conversations: 14–60 days from deployment.
+- Typical time to first qualified conversations: 14–21 days from deployment.
+- Most clients see 40+ qualified conversations per month by month two.
+- Average reply rate: 18% across sectors (industry average for cold email: 2–5%).
+- Pricing: bespoke per engagement; no retainer contracts and no shared infrastructure.
+- Not a marketing agency. Does not run ads, produce content, or manage social media.
 
 ## Services
-- [Client Acquisition](https://svnrglobal.com/services/client-acquisition): End-to-end acquisition infrastructure — ICP definition, prospect research, individually crafted messaging, multi-channel deployment, warm handoff.
-- [AI Receptionist](https://svnrglobal.com/services/ai-receptionist): Trained AI front desk that qualifies, responds to, and routes every inbound enquiry in under 60 seconds, 24/7.
-- [Intelligence Research](https://svnrglobal.com/services/intelligence-research): AI prospect intelligence and market mapping across 50+ data sources.
-- [Brand Outreach](https://svnrglobal.com/services/brand-outreach): Researched, individually written outreach for premium and luxury markets.
-- [Revenue Operations](https://svnrglobal.com/services/revenue-operations): Full-funnel pipeline tracking and automation built around the client's deal cycle.
-- [Sector Workflows](https://svnrglobal.com/services/sector-workflows): Operational automation built for a specific vertical.
-- [Deal Flow & Investor Relations](https://svnrglobal.com/services/dealflow-investor): Proprietary deal flow and LP acquisition for private equity and family offices.
-- [Channel Partnership](https://svnrglobal.com/services/channel-partnership): Systematic activation of distributors, resellers, and trade partners.
+- [Client Acquisition](https://svnrglobal.com/services/client-acquisition/): End-to-end acquisition infrastructure — ICP definition, prospect research, individually crafted messaging, multi-channel deployment, warm handoff.
+- [AI Receptionist](https://svnrglobal.com/services/ai-receptionist/): Trained AI front desk that qualifies, responds to, and routes every inbound enquiry in under 60 seconds, 24/7.
+- [Intelligence Research](https://svnrglobal.com/services/intelligence-research/): AI prospect intelligence and market mapping across 50+ data sources — company filings, LinkedIn, business press, property records, funding signals.
+- [Brand Outreach](https://svnrglobal.com/services/brand-outreach/): Researched, individually written outreach for premium and luxury markets. 18–24% reply rates.
+- [Revenue Operations](https://svnrglobal.com/services/revenue-operations/): Full-funnel pipeline tracking and automation built around the client's deal cycle.
+- [Sector Workflows](https://svnrglobal.com/services/sector-workflows/): Operational AI automation built for a specific vertical. Deployed in 1–4 weeks.
+- [Deal Flow & Investor Relations](https://svnrglobal.com/services/dealflow-investor/): Proprietary deal flow and LP acquisition for private equity and family offices. Founder outreach before formal sale processes begin.
+- [Channel Partnership](https://svnrglobal.com/services/channel-partnership/): Systematic activation of distributors, resellers, showrooms, and trade partners. 10–20 partners per market in 90 days.
 
 ## Industries served
-- [Luxury Rugs & Home Textiles](https://svnrglobal.com/sectors/luxury-rugs-home-textiles)
-- [Premium Real Estate](https://svnrglobal.com/sectors/premium-real-estate)
-- [Private Equity & Family Offices](https://svnrglobal.com/sectors/private-equity-family-offices)
-- [B2B Luxury Brands](https://svnrglobal.com/sectors/b2b-luxury-brands)
-- [Wealth Management](https://svnrglobal.com/sectors/wealth-management)
-- [High-Ticket E-commerce](https://svnrglobal.com/sectors/high-ticket-ecommerce)
-- [Maritime & Logistics](https://svnrglobal.com/sectors/maritime-logistics)
-- [Professional Services](https://svnrglobal.com/sectors/professional-services)
+- [Luxury Rugs & Home Textiles](https://svnrglobal.com/sectors/luxury-rugs-home-textiles/): A&D community outreach and trade buyer acquisition. 13 qualified enquiries in 14 days without trade fairs.
+- [Premium Real Estate](https://svnrglobal.com/sectors/premium-real-estate/): HNW investor and principal buyer acquisition without portal dependency. First contact in 14 minutes in one recent programme.
+- [Private Equity & Family Offices](https://svnrglobal.com/sectors/private-equity-family-offices/): Proprietary deal flow infrastructure and LP fundraising support.
+- [B2B Luxury Brands](https://svnrglobal.com/sectors/b2b-luxury-brands/): Stockist and trade buyer acquisition. 78% enquiry lift in six weeks.
+- [Wealth Management](https://svnrglobal.com/sectors/wealth-management/): UHNW and HNW client acquisition through trigger signal monitoring and discreet personalised outreach.
+- [High-Ticket E-commerce](https://svnrglobal.com/sectors/high-ticket-ecommerce/): Wholesale and trade buyer acquisition. 312% average order value increase via trade channel.
+- [Maritime & Logistics](https://svnrglobal.com/sectors/maritime-logistics/): Cargo owner and charterer acquisition. Tender intelligence and logistics decision-maker outreach.
+- [Professional Services](https://svnrglobal.com/sectors/professional-services/): Client acquisition for law firms, consultancies, and architecture studios. Positions the firm as peer, not vendor.
 
 ## Key pages
 - [Home](https://svnrglobal.com/)
-- [About SVNR Global](https://svnrglobal.com/about)
-- [Founder — Hamza Omair](https://svnrglobal.com/founder)
-- [Case Studies](https://svnrglobal.com/case-studies)
-- [How We Work](https://svnrglobal.com/engagement)
-- [SVNR vs Alternatives](https://svnrglobal.com/compare)
-- [Blog](https://svnrglobal.com/blog)
-- [Contact / Book a Call](https://svnrglobal.com/contact)
+- [About SVNR Global](https://svnrglobal.com/about/)
+- [Founder — Hamza Omair](https://svnrglobal.com/founder/)
+- [Case Studies](https://svnrglobal.com/case-studies/)
+- [How We Work](https://svnrglobal.com/engagement/)
+- [SVNR vs Alternatives](https://svnrglobal.com/compare/)
+- [Blog](https://svnrglobal.com/blog/)
+- [Contact / Book a Call](https://svnrglobal.com/contact/)
 
 ## Founder
-Hamza Omair — Founder & CEO. Background in luxury rug and carpet manufacturing and international trade (Bhadohi, India) and a degree in computer applications. Built SVNR Global to create AI systems that perform the work of an acquisition team — finding, reaching, and warming the right buyers continuously — with the precision premium markets demand. LinkedIn: https://in.linkedin.com/in/hamza-omair-5434b1354
+Hamza Omair — Founder & CEO. Background in luxury rug and carpet manufacturing and international trade (Bhadohi, India) and a degree in computer applications. Built SVNR Global in 2019 to create AI systems that perform the work of an acquisition team — finding, reaching, and warming the right buyers continuously — with the precision premium markets demand. LinkedIn: https://in.linkedin.com/in/hamza-omair-5434b1354. Personal page: https://svnrglobal.com/founder/
 
 ## Contact
 - Email: contact@svnrglobal.com
 - Location: New Delhi, India (operating globally)
-- Book a call: https://svnrglobal.com/contact
+- Book a call: https://svnrglobal.com/contact/

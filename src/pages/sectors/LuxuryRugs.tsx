@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 import Footer from "../../components/Footer";
+import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
 
 
@@ -34,12 +35,19 @@ const insights = [
   "The A&D community operates on its own timeline, not the trade fair calendar. The designer specifying for a hospitality project in June is not waiting for January to find a new supplier.",
 ];
 
+const LUXURY_RUGS_FAQS = [
+  { q: "How do luxury rug brands enter new markets without a showroom?", a: "By systematically identifying and reaching interior designers and trade buyers in the target market through direct outreach, mapping the A&D community by name, initiating contact with personalised messages, and building trade relationships before committing to permanent retail infrastructure." },
+  { q: "What is the best distribution channel for luxury handmade rugs?", a: "The architecture and interior design community is the primary distribution channel. Interior designers specify rugs for client projects at a level that drives consistent volume. Building direct trade relationships with designers in target markets is more efficient than relying on trade fairs or showrooms alone." },
+  { q: "How long does it take to build trade distribution in a new market for a rug brand?", a: "A structured 90-day programme can identify qualifying designers and buyers, initiate contact with the most relevant targets, and produce active trade relationships in a new geography. SVNR's programmes have generated 13 qualified enquiries in the first 14 days without a showroom or trade fair." },
+  { q: "What role do trade fairs play in luxury rug distribution?", a: "Trade fairs are amplifiers, not acquisition channels. Brands that use direct outreach to build warm relationships before a fair opens use the same exhibition investment to advance existing conversations rather than make cold introductions in a crowded hall." },
+];
+
 export default function LuxuryRugs() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Luxury Rugs & Home Textiles Client Acquisition | SVNR Global"
-        description="Systematic B2B outreach for luxury rug and carpet brands building international distribution. We map the A&D community in your target markets and deliver qualified enquiries."
+        description="B2B client acquisition for luxury rug and carpet brands. We map the A&D community in your target markets and deliver qualified trade enquiries. 13 qualified leads in 14 days — without trade fairs or showrooms."
         canonical="/sectors/luxury-rugs-home-textiles"
         schema={[
           {
@@ -248,6 +256,9 @@ export default function LuxuryRugs() {
           </motion.div>
         </div>
       </section>
+
+      
+      <FaqSection faqs={LUXURY_RUGS_FAQS} title="Common questions about luxury rug market entry" />
 
       <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10"><div className="max-w-7xl mx-auto"><Footer /></div></div>
     </main>

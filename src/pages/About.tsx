@@ -484,7 +484,7 @@ export default function About() {
             </div>
             <div className="flex flex-col gap-4 shrink-0 items-start md:items-end">
               <a
-                href="mailto:hamza@svnrglobal.com"
+                href="mailto:contact@svnrglobal.com"
                 className="text-sm text-white/40 hover:text-white transition-colors"
               >
                 hamza@svnrglobal.com

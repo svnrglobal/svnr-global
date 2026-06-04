@@ -15,6 +15,7 @@ const Compare             = lazy(() => import("./pages/Compare"));
 const Engagement          = lazy(() => import("./pages/Engagement"));
 const CaseStudies         = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail     = lazy(() => import("./pages/CaseStudyDetail"));
+const Founder             = lazy(() => import("./pages/Founder"));
 
 // Service pages
 const ClientAcquisition   = lazy(() => import("./pages/services/ClientAcquisition"));
@@ -60,6 +61,7 @@ export default function App() {
           <Route path="/blog/:slug" element={<BlogArticle />} />
           <Route path="/compare" element={<Compare />} />
           <Route path="/engagement" element={<Engagement />} />
+          <Route path="/founder" element={<Founder />} />
 
           {/* Service sub-pages */}
           <Route path="/services/client-acquisition" element={<ClientAcquisition />} />

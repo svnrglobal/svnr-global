@@ -50,7 +50,7 @@ export default function ChannelPartnership() {
               {
                 "@type": "Question",
                 "name": "How do premium brands build trade channel partnerships systematically?",
-                "acceptedAnswer": { "@type": "Answer", "text": "By mapping the universe of qualifying trade partners — architects, interior designers, showrooms, distributors — in target geographies, researching each partner's project type and client base, then initiating direct contact with messages that demonstrate knowledge of their practice and explain precisely why the partnership makes sense." }
+                "acceptedAnswer": { "@type": "Answer", "text": "By mapping the universe of qualifying trade partners, architects, interior designers, showrooms, distributors, in target geographies, researching each partner's project type and client base, then initiating direct contact with messages that demonstrate knowledge of their practice and explain precisely why the partnership makes sense." }
               },
               {
                 "@type": "Question",
@@ -65,7 +65,7 @@ export default function ChannelPartnership() {
               {
                 "@type": "Question",
                 "name": "Does channel partnership development work for non-luxury product categories?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR deploys channel partnership programmes for any premium product with a defined trade buyer profile — architectural materials, home textiles, premium kitchen equipment, high-ticket wellness products, and others where the route to market runs through a specifier or trade buyer rather than direct to consumer." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR deploys channel partnership programmes for any premium product with a defined trade buyer profile, architectural materials, home textiles, premium kitchen equipment, high-ticket wellness products, and others where the route to market runs through a specifier or trade buyer rather than direct to consumer." }
               }
             ]
           }

@@ -89,7 +89,7 @@ export default function SEO({
     setMeta("og:url", canonicalUrl, "property");
     setMeta("og:image", ogImage, "property");
     setMeta("og:image:width", "1200", "property");
-    setMeta("og:image:height", "630", "property");
+    setMeta("og:image:height", "1200", "property");
     setMeta("og:site_name", SITE_NAME, "property");
     setMeta("og:locale", "en_US", "property");
     if (articlePublishedTime) {

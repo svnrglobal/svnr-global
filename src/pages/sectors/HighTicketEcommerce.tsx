@@ -43,7 +43,7 @@ export default function HighTicketEcommerce() {
               {
                 "@type": "Question",
                 "name": "How do premium e-commerce brands build a wholesale channel?",
-                "acceptedAnswer": { "@type": "Answer", "text": "By systematically identifying wholesale buyers, boutique retailers, and trade accounts in target geographies — researching each buyer's category focus, price architecture, and order profile — then initiating direct contact with outreach specific to their purchasing profile." }
+                "acceptedAnswer": { "@type": "Answer", "text": "By systematically identifying wholesale buyers, boutique retailers, and trade accounts in target geographies, researching each buyer's category focus, price architecture, and order profile, then initiating direct contact with outreach specific to their purchasing profile." }
               },
               {
                 "@type": "Question",
@@ -58,7 +58,7 @@ export default function HighTicketEcommerce() {
               {
                 "@type": "Question",
                 "name": "Does SVNR work with D2C brands that have no existing wholesale experience?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR builds the trade distribution infrastructure from scratch — ICP definition, buyer mapping, wholesale outreach sequences, and trade account onboarding workflows — for brands entering B2B for the first time." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR builds the trade distribution infrastructure from scratch, ICP definition, buyer mapping, wholesale outreach sequences, and trade account onboarding workflows, for brands entering B2B for the first time." }
               }
             ]
           }

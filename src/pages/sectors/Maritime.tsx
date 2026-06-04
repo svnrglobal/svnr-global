@@ -43,7 +43,7 @@ export default function Maritime() {
               {
                 "@type": "Question",
                 "name": "How do shipping companies get new cargo clients systematically?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic outreach to logistics managers, supply chain directors, and procurement teams at companies whose cargo profile and trade lanes match the operator's capabilities — combined with tender intelligence to position before formal RFQ processes begin." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic outreach to logistics managers, supply chain directors, and procurement teams at companies whose cargo profile and trade lanes match the operator's capabilities, combined with tender intelligence to position before formal RFQ processes begin." }
               },
               {
                 "@type": "Question",
@@ -53,12 +53,12 @@ export default function Maritime() {
               {
                 "@type": "Question",
                 "name": "How do maritime operators reach logistics decision-makers directly?",
-                "acceptedAnswer": { "@type": "Answer", "text": "By identifying logistics directors and supply chain managers at target companies through LinkedIn and industry association databases, then reaching them with messages that reference their specific trade lanes, cargo profile, and operational pressures — not generic freight service marketing." }
+                "acceptedAnswer": { "@type": "Answer", "text": "By identifying logistics directors and supply chain managers at target companies through LinkedIn and industry association databases, then reaching them with messages that reference their specific trade lanes, cargo profile, and operational pressures, not generic freight service marketing." }
               },
               {
                 "@type": "Question",
                 "name": "What is tender intelligence in maritime and how does it help win new clients?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Tender intelligence is awareness of upcoming freight procurement processes before they are formally issued — allowing the operator to build a relationship with the procurement team in advance. Operators who arrive at the tender stage with an existing relationship win at a significantly higher rate than those arriving cold." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Tender intelligence is awareness of upcoming freight procurement processes before they are formally issued, allowing the operator to build a relationship with the procurement team in advance. Operators who arrive at the tender stage with an existing relationship win at a significantly higher rate than those arriving cold." }
               }
             ]
           }

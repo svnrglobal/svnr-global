@@ -1,5 +1,19 @@
 import { motion } from "motion/react";
-import * as Icons from "lucide-react";
+import {
+  Anchor, BarChart3, Briefcase, Building2, DollarSign, Layers, Mail,
+  MessageSquare, Network, Scale, Search, ShoppingBag, Star, Target,
+  TrendingUp, Workflow, ArrowRight,
+  type LucideIcon,
+} from "lucide-react";
+
+// Explicit map so the bundler tree-shakes Lucide down to only what we use.
+// (A wildcard `import * as Icons` pulls the entire ~150KB icon set into the
+//  homepage bundle.)
+const ICONS: Record<string, LucideIcon> = {
+  Anchor, BarChart3, Briefcase, Building2, DollarSign, Layers, Mail,
+  MessageSquare, Network, Scale, Search, ShoppingBag, Star, Target,
+  TrendingUp, Workflow,
+};
 
 interface FeatureCardProps {
   title: string;
@@ -20,7 +34,7 @@ export default function FeatureCard({
   number,
   onClick,
 }: FeatureCardProps) {
-  const IconComp = (Icons as unknown as Record<string, React.ComponentType<{ size?: number; strokeWidth?: number }>>)[icon] || Icons.Star;
+  const IconComp = ICONS[icon] || Star;
 
   return (
     <motion.div
@@ -57,7 +71,7 @@ export default function FeatureCard({
           </div>
           <div className="flex items-center gap-1 text-white/30 text-xs group-hover:text-white/60 transition-colors">
             <span>Learn more</span>
-            <Icons.ArrowRight size={12} />
+            <ArrowRight size={12} />
           </div>
         </div>
       </div>

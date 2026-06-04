@@ -54,7 +54,7 @@ export default function PremiumRealEstate() {
               {
                 "@type": "Question",
                 "name": "How do premium real estate firms find HNW buyers without property portals?",
-                "acceptedAnswer": { "@type": "Answer", "text": "By identifying principal buyers — HNW individuals, family offices, and institutional investors — through AI-driven signal monitoring and business press, then initiating direct contact through email and WhatsApp with messages specific to their investment profile and capital position." }
+                "acceptedAnswer": { "@type": "Answer", "text": "By identifying principal buyers, HNW individuals, family offices, and institutional investors, through AI-driven signal monitoring and business press, then initiating direct contact through email and WhatsApp with messages specific to their investment profile and capital position." }
               },
               {
                 "@type": "Question",

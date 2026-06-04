@@ -51,12 +51,12 @@ export default function IntelligenceResearch() {
               {
                 "@type": "Question",
                 "name": "What is AI prospect intelligence for B2B companies?",
-                "acceptedAnswer": { "@type": "Answer", "text": "AI prospect intelligence is the systematic process of identifying every qualifying buyer and decision-maker in your market by aggregating signals from 50+ data sources — company filings, business press, LinkedIn activity, property records, financial announcements — and producing an enriched, ranked prospect universe ready for outreach." }
+                "acceptedAnswer": { "@type": "Answer", "text": "AI prospect intelligence is the systematic process of identifying every qualifying buyer and decision-maker in your market by aggregating signals from 50+ data sources, company filings, business press, LinkedIn activity, property records, financial announcements, and producing an enriched, ranked prospect universe ready for outreach." }
               },
               {
                 "@type": "Question",
                 "name": "What data signals does SVNR monitor to identify prospects?",
-                "acceptedAnswer": { "@type": "Answer", "text": "SVNR monitors liquidity events, business sale announcements, company director changes, LinkedIn profile updates, trade association memberships, property transactions, funding rounds, debt maturities, sector consolidation announcements, and planning applications — depending on the target sector and buyer profile." }
+                "acceptedAnswer": { "@type": "Answer", "text": "SVNR monitors liquidity events, business sale announcements, company director changes, LinkedIn profile updates, trade association memberships, property transactions, funding rounds, debt maturities, sector consolidation announcements, and planning applications, depending on the target sector and buyer profile." }
               },
               {
                 "@type": "Question",
@@ -66,7 +66,7 @@ export default function IntelligenceResearch() {
               {
                 "@type": "Question",
                 "name": "Is intelligence research a one-off exercise or a continuous function?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Both models are available. A one-off market mapping engagement establishes the initial prospect universe. Ongoing intelligence monitoring continuously identifies new prospects as they enter the target profile and updates existing records with new signal data — keeping the outreach pipeline permanently current." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Both models are available. A one-off market mapping engagement establishes the initial prospect universe. Ongoing intelligence monitoring continuously identifies new prospects as they enter the target profile and updates existing records with new signal data, keeping the outreach pipeline permanently current." }
               }
             ]
           }

@@ -55,17 +55,17 @@ export default function AIReceptionist() {
               {
                 "@type": "Question",
                 "name": "What is an AI receptionist for B2B businesses?",
-                "acceptedAnswer": { "@type": "Answer", "text": "An AI receptionist is a trained AI system that responds to every inbound enquiry — from website forms, email, or WhatsApp — in under 60 seconds. It qualifies the enquiry against your defined criteria, collects relevant information, and routes it to the right person or next step, 24 hours a day." }
+                "acceptedAnswer": { "@type": "Answer", "text": "An AI receptionist is a trained AI system that responds to every inbound enquiry, from website forms, email, or WhatsApp, in under 60 seconds. It qualifies the enquiry against your defined criteria, collects relevant information, and routes it to the right person or next step, 24 hours a day." }
               },
               {
                 "@type": "Question",
                 "name": "How is SVNR's AI receptionist different from a chatbot?",
-                "acceptedAnswer": { "@type": "Answer", "text": "A chatbot follows decision trees. SVNR's AI receptionist is trained on your sector, service offering, and qualification criteria — it conducts natural, context-aware conversations that accurately qualify enquiries and never give generic responses." }
+                "acceptedAnswer": { "@type": "Answer", "text": "A chatbot follows decision trees. SVNR's AI receptionist is trained on your sector, service offering, and qualification criteria, it conducts natural, context-aware conversations that accurately qualify enquiries and never give generic responses." }
               },
               {
                 "@type": "Question",
                 "name": "How quickly does the AI receptionist respond to inbound enquiries?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Under 60 seconds, 24/7 — including outside business hours, weekends, and across time zones. No inbound enquiry is ever missed or delayed." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Under 60 seconds, 24/7, including outside business hours, weekends, and across time zones. No inbound enquiry is ever missed or delayed." }
               },
               {
                 "@type": "Question",

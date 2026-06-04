@@ -43,17 +43,17 @@ export default function ProfessionalServices() {
               {
                 "@type": "Question",
                 "name": "How do law firms and consultancies get new clients without referrals?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic direct outreach to corporate decision-makers, developers, and operators whose profile and project pipeline match the firm's practice area — reaching them before a formal procurement process begins and positioning the firm as a knowledgeable peer rather than an unsolicited vendor." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic direct outreach to corporate decision-makers, developers, and operators whose profile and project pipeline match the firm's practice area, reaching them before a formal procurement process begins and positioning the firm as a knowledgeable peer rather than an unsolicited vendor." }
               },
               {
                 "@type": "Question",
                 "name": "What is the best client acquisition strategy for a boutique law firm?",
-                "acceptedAnswer": { "@type": "Answer", "text": "A combination of referral programme formalisation and systematic direct outreach — identifying the corporate clients and decision-makers most aligned with the firm's sector expertise, and maintaining presence through intelligent, low-frequency contact across the months before a mandate arises." }
+                "acceptedAnswer": { "@type": "Answer", "text": "A combination of referral programme formalisation and systematic direct outreach, identifying the corporate clients and decision-makers most aligned with the firm's sector expertise, and maintaining presence through intelligent, low-frequency contact across the months before a mandate arises." }
               },
               {
                 "@type": "Question",
                 "name": "How long does it take to convert a professional services prospect into a client?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Professional services procurement cycles are typically 3–12 months from first contact to signed instruction. The outreach programme must be designed for this timeline — maintaining credibility and presence across multiple touches before a formal opportunity arises." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Professional services procurement cycles are typically 3–12 months from first contact to signed instruction. The outreach programme must be designed for this timeline, maintaining credibility and presence across multiple touches before a formal opportunity arises." }
               },
               {
                 "@type": "Question",

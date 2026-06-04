@@ -65,12 +65,12 @@ export default function ClientAcquisition() {
               {
                 "@type": "Question",
                 "name": "Is this the same as a cold email agency?",
-                "acceptedAnswer": { "@type": "Answer", "text": "No. A cold email agency sends templated sequences at volume. SVNR builds a complete acquisition infrastructure — ICP definition, 50-signal prospect research, individually crafted messaging, multi-channel deployment across email and LinkedIn, and continuous optimisation. The result is a permanent acquisition asset, not a one-off campaign." }
+                "acceptedAnswer": { "@type": "Answer", "text": "No. A cold email agency sends templated sequences at volume. SVNR builds a complete acquisition infrastructure, ICP definition, 50-signal prospect research, individually crafted messaging, multi-channel deployment across email and LinkedIn, and continuous optimisation. The result is a permanent acquisition asset, not a one-off campaign." }
               },
               {
                 "@type": "Question",
                 "name": "How quickly does SVNR's client acquisition system start delivering results?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Most clients see the first qualified prospect conversations within 14–21 days of deployment. The system compounds over time — month 3 consistently outperforms month 1 as early relationships mature and the sequence is refined on real response data." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Most clients see the first qualified prospect conversations within 14–21 days of deployment. The system compounds over time, month 3 consistently outperforms month 1 as early relationships mature and the sequence is refined on real response data." }
               }
             ]
           }

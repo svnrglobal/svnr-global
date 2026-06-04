@@ -53,12 +53,12 @@ export default function PrivateEquity() {
               {
                 "@type": "Question",
                 "name": "What is proprietary deal flow in private equity?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Proprietary deal flow refers to investment opportunities a PE firm identifies and approaches directly — before the company enters a formal sale process or engages an investment bank. These deals avoid competitive bidding and typically command better entry terms." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Proprietary deal flow refers to investment opportunities a PE firm identifies and approaches directly, before the company enters a formal sale process or engages an investment bank. These deals avoid competitive bidding and typically command better entry terms." }
               },
               {
                 "@type": "Question",
                 "name": "How do PE firms find companies before they go to market?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic outreach to founders and management teams in target sectors — using AI-driven research to identify companies matching the fund's investment thesis, then building relationships before a formal sale process begins. Trigger signals including succession planning, debt maturity, and sector consolidation are monitored continuously." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic outreach to founders and management teams in target sectors, using AI-driven research to identify companies matching the fund's investment thesis, then building relationships before a formal sale process begins. Trigger signals including succession planning, debt maturity, and sector consolidation are monitored continuously." }
               },
               {
                 "@type": "Question",
@@ -68,7 +68,7 @@ export default function PrivateEquity() {
               {
                 "@type": "Question",
                 "name": "Can SVNR Global help family offices find new GPs and fund managers?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR builds GP-to-LP relationship infrastructure for family offices and institutional investors — mapping qualified fund managers by mandate, strategy, and track record, then facilitating introductions through systematic outreach." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR builds GP-to-LP relationship infrastructure for family offices and institutional investors, mapping qualified fund managers by mandate, strategy, and track record, then facilitating introductions through systematic outreach." }
               }
             ]
           }

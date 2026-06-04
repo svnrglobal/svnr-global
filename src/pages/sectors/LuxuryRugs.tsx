@@ -58,7 +58,7 @@ export default function LuxuryRugs() {
               {
                 "@type": "Question",
                 "name": "How do luxury rug brands enter new markets without a showroom?",
-                "acceptedAnswer": { "@type": "Answer", "text": "By systematically identifying and reaching interior designers and trade buyers in the target market through direct outreach — mapping the A&D community by name, initiating contact with personalised messages, and building trade relationships before committing to permanent retail infrastructure." }
+                "acceptedAnswer": { "@type": "Answer", "text": "By systematically identifying and reaching interior designers and trade buyers in the target market through direct outreach, mapping the A&D community by name, initiating contact with personalised messages, and building trade relationships before committing to permanent retail infrastructure." }
               },
               {
                 "@type": "Question",

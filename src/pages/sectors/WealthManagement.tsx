@@ -46,7 +46,7 @@ export default function WealthManagement() {
               {
                 "@type": "Question",
                 "name": "How do wealth management boutiques attract UHNW clients?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Through direct outreach to individuals at the moment of a liquidity event — a business sale, an exit, an inheritance — combined with systematic relationship-building with accountants, lawyers, and advisors who work with HNW individuals. AI systems monitor trigger signals in real time to identify prospects at the right moment." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Through direct outreach to individuals at the moment of a liquidity event, a business sale, an exit, an inheritance, combined with systematic relationship-building with accountants, lawyers, and advisors who work with HNW individuals. AI systems monitor trigger signals in real time to identify prospects at the right moment." }
               },
               {
                 "@type": "Question",
@@ -56,7 +56,7 @@ export default function WealthManagement() {
               {
                 "@type": "Question",
                 "name": "How is SVNR different from a typical wealth management marketing agency?",
-                "acceptedAnswer": { "@type": "Answer", "text": "SVNR does not run marketing campaigns. We build acquisition infrastructure — AI-driven prospect identification, research-backed outreach, and relationship management — that operates continuously to deliver warm conversations with qualified prospects, not leads or impressions." }
+                "acceptedAnswer": { "@type": "Answer", "text": "SVNR does not run marketing campaigns. We build acquisition infrastructure, AI-driven prospect identification, research-backed outreach, and relationship management, that operates continuously to deliver warm conversations with qualified prospects, not leads or impressions." }
               },
               {
                 "@type": "Question",

@@ -54,7 +54,7 @@ export default function SectorWorkflows() {
               {
                 "@type": "Question",
                 "name": "What is sector-specific workflow automation?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Sector-specific workflow automation is AI-driven process automation built around the actual operational requirements of a defined industry — not generic automation tools applied generically. A luxury brand's wholesale enquiry workflow is different from a real estate firm's deal workflow, which is different from a wealth manager's client onboarding workflow. Each is built to match." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Sector-specific workflow automation is AI-driven process automation built around the actual operational requirements of a defined industry, not generic automation tools applied generically. A luxury brand's wholesale enquiry workflow is different from a real estate firm's deal workflow, which is different from a wealth manager's client onboarding workflow. Each is built to match." }
               },
               {
                 "@type": "Question",
@@ -64,7 +64,7 @@ export default function SectorWorkflows() {
               {
                 "@type": "Question",
                 "name": "What tools does SVNR use to build sector workflows?",
-                "acceptedAnswer": { "@type": "Answer", "text": "SVNR builds on Make, n8n, Airtable, Notion, HubSpot, and custom AI agents depending on the workflow requirements. The tools are selected for the task — not applied as a one-size-fits-all stack." }
+                "acceptedAnswer": { "@type": "Answer", "text": "SVNR builds on Make, n8n, Airtable, Notion, HubSpot, and custom AI agents depending on the workflow requirements. The tools are selected for the task, not applied as a one-size-fits-all stack." }
               },
               {
                 "@type": "Question",

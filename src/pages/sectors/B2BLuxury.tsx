@@ -48,7 +48,7 @@ export default function B2BLuxury() {
               {
                 "@type": "Question",
                 "name": "How do luxury brands find trade buyers and stockists?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic direct outreach to interior designers, boutique retailers, and trade buyers in target geographies — mapping the market by name, initiating contact with personalised outreach, and building relationships before committing to trade fair or showroom investment." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic direct outreach to interior designers, boutique retailers, and trade buyers in target geographies, mapping the market by name, initiating contact with personalised outreach, and building relationships before committing to trade fair or showroom investment." }
               },
               {
                 "@type": "Question",
@@ -63,7 +63,7 @@ export default function B2BLuxury() {
               {
                 "@type": "Question",
                 "name": "Does SVNR Global work with luxury brands outside India?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR Global operates from New Delhi but deploys outreach programmes across Europe, the UK, the UAE, and North America. Our programmes target stockists and trade buyers in whatever geographies a brand wants to develop — regardless of where the brand is based." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR Global operates from New Delhi but deploys outreach programmes across Europe, the UK, the UAE, and North America. Our programmes target stockists and trade buyers in whatever geographies a brand wants to develop, regardless of where the brand is based." }
               }
             ]
           }

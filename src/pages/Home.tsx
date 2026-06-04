@@ -10,11 +10,33 @@ const HOME_SCHEMA = [
     "@context": "https://schema.org",
     "@type": "Organization",
     "name": "SVNR Global",
+    "alternateName": "SVNR",
     "url": "https://svnrglobal.com",
     "logo": "https://svnrglobal.com/svnr-logo.svg",
+    "slogan": "AI client acquisition infrastructure for premium operators.",
     "description": "SVNR Global builds bespoke AI-powered client acquisition systems and outreach infrastructure for premium operators, luxury brands, private equity, real estate, and high-ticket B2B.",
     "foundingDate": "2019",
+    "founder": {
+      "@type": "Person",
+      "name": "Hamza Omair",
+      "jobTitle": "Founder & CEO",
+      "url": "https://svnrglobal.com/founder",
+      "sameAs": "https://in.linkedin.com/in/hamza-omair-5434b1354"
+    },
     "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
+    "areaServed": ["GB", "DE", "FR", "AE", "CH", "SG", "IN", "US"],
+    "knowsAbout": [
+      "AI client acquisition",
+      "B2B outreach infrastructure",
+      "outbound lead generation",
+      "luxury brand B2B sales",
+      "private equity deal flow",
+      "HNW investor outreach",
+      "UHNW client acquisition",
+      "premium real estate client acquisition",
+      "wealth management client acquisition",
+      "AI prospecting"
+    ],
     "contactPoint": { "@type": "ContactPoint", "email": "contact@svnrglobal.com", "contactType": "sales" },
     "sameAs": [
       "https://www.instagram.com/svnr.lab",

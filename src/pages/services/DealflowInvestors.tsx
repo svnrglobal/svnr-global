@@ -55,7 +55,7 @@ export default function DealflowInvestors() {
               {
                 "@type": "Question",
                 "name": "How do PE firms source proprietary off-market deals?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic outreach to founders, owner-operators, and management teams in sectors matching the fund's thesis — using AI-driven research to identify companies at pre-transaction trigger points: succession planning, debt maturity, management transitions, and sector consolidation signals." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Through systematic outreach to founders, owner-operators, and management teams in sectors matching the fund's thesis, using AI-driven research to identify companies at pre-transaction trigger points: succession planning, debt maturity, management transitions, and sector consolidation signals." }
               },
               {
                 "@type": "Question",
@@ -65,12 +65,12 @@ export default function DealflowInvestors() {
               {
                 "@type": "Question",
                 "name": "How long does it take to build a proprietary deal flow pipeline?",
-                "acceptedAnswer": { "@type": "Answer", "text": "A structured 90-day programme identifies qualifying targets and initiates founder conversations. Meaningful deal flow from those relationships typically materialises within 6–18 months, as founders reach their own moment of readiness for a transaction — which cannot be accelerated but can be anticipated." }
+                "acceptedAnswer": { "@type": "Answer", "text": "A structured 90-day programme identifies qualifying targets and initiates founder conversations. Meaningful deal flow from those relationships typically materialises within 6–18 months, as founders reach their own moment of readiness for a transaction, which cannot be accelerated but can be anticipated." }
               },
               {
                 "@type": "Question",
                 "name": "Can SVNR help with LP fundraising as well as deal sourcing?",
-                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR builds LP acquisition infrastructure for emerging managers and established funds — mapping qualifying family offices and institutional LPs, researching their mandate fit, and deploying outreach that earns an introduction at the decision-maker level." }
+                "acceptedAnswer": { "@type": "Answer", "text": "Yes. SVNR builds LP acquisition infrastructure for emerging managers and established funds, mapping qualifying family offices and institutional LPs, researching their mandate fit, and deploying outreach that earns an introduction at the decision-maker level." }
               }
             ]
           }

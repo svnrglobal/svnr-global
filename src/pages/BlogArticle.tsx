@@ -1070,9 +1070,10 @@ export default function BlogArticle() {
             "dateModified": pubDate,
             "author": {
               "@type": "Person",
-              "name": "Hamza",
-              "url": "https://svnrglobal.com/about",
-              "sameAs": "https://in.linkedin.com/company/svn%D1%8F%E2%84%A2",
+              "name": "Hamza Omair",
+              "jobTitle": "Founder & CEO",
+              "url": "https://svnrglobal.com/founder",
+              "sameAs": "https://in.linkedin.com/in/hamza-omair-5434b1354",
               "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
             },
             "publisher": {

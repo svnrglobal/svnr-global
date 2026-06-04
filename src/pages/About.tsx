@@ -109,8 +109,10 @@ export default function About() {
             },
             "founder": {
               "@type": "Person",
-              "name": "Hamza",
-              "jobTitle": "Founder",
+              "name": "Hamza Omair",
+              "jobTitle": "Founder & CEO",
+              "url": "https://svnrglobal.com/founder",
+              "sameAs": "https://in.linkedin.com/in/hamza-omair-5434b1354",
               "worksFor": { "@type": "Organization", "name": "SVNR Global" }
             },
             "knowsAbout": [
@@ -142,8 +144,10 @@ export default function About() {
           {
             "@context": "https://schema.org",
             "@type": "Person",
-            "name": "Hamza",
-            "jobTitle": "Founder, SVNR Global",
+            "name": "Hamza Omair",
+            "jobTitle": "Founder & CEO, SVNR Global",
+            "url": "https://svnrglobal.com/founder",
+            "sameAs": "https://in.linkedin.com/in/hamza-omair-5434b1354",
             "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
             "knowsAbout": [
               "AI outreach infrastructure",
@@ -368,7 +372,7 @@ export default function About() {
               { label: "Core service", value: "Bespoke outreach infrastructure, custom AI agents, enriched prospect databases, precision outreach sequences" },
               { label: "Sectors", value: "Luxury brands, private equity, premium real estate, wealth management, maritime, professional services" },
               { label: "Differentiation", value: "Every engagement is custom-built per client, no shared templates, no recycled agents, no generic dashboards" },
-              { label: "Founder", value: "Hamza, formerly in luxury rug manufacturing and international trade, Bhadohi, India" },
+              { label: "Founder", value: "Hamza Omair, formerly in luxury rug manufacturing and international trade, Bhadohi, India" },
             ].map((item, i) => (
               <motion.div key={item.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
                 className="border-b border-white/8 pb-5">

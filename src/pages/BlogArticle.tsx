@@ -1084,7 +1084,7 @@ export default function BlogArticle() {
               "@type": "Person",
               "name": "Hamza Omair",
               "jobTitle": "Founder & CEO",
-              "url": "https://svnrglobal.com/founder",
+              "url": "https://svnrglobal.com/founder/",
               "sameAs": "https://in.linkedin.com/in/hamza-omair-5434b1354",
               "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
             },
@@ -1093,7 +1093,7 @@ export default function BlogArticle() {
               "name": "SVNR Global",
               "logo": { "@type": "ImageObject", "url": "https://svnrglobal.com/og-image.png" }
             },
-            "mainEntityOfPage": { "@type": "WebPage", "@id": `https://svnrglobal.com/blog/${article.slug}` }
+            "mainEntityOfPage": { "@type": "WebPage", "@id": `https://svnrglobal.com/blog/${article.slug}/` }
           },
           ...(article.faqs && article.faqs.length > 0 ? [{
             "@context": "https://schema.org",

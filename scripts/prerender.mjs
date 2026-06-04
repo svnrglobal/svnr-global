@@ -143,9 +143,16 @@ function changefreqFor(route) {
   return "monthly";
 }
 
+// Netlify serves prerendered pages at a trailing-slash URL (200); the no-slash
+// form 301-redirects. List the canonical 200 URL so crawlers skip the hop.
+function canonicalLoc(route) {
+  if (route === "/") return SITE + "/";
+  return SITE + (route.endsWith("/") ? route : route + "/");
+}
+
 function writeSitemap(pages) {
   const body = pages.map((p) => {
-    const loc = SITE + (p.route === "/" ? "/" : p.route);
+    const loc = canonicalLoc(p.route);
     const lastmod = p.date ? p.date.slice(0, 10) : TODAY;
     const hasUniqueImage = p.image && !p.image.endsWith("og-image.png");
     const imageBlock = hasUniqueImage
@@ -163,7 +170,7 @@ function writeRss(pages) {
     .filter((p) => p.route.startsWith("/blog/"))
     .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
   const items = posts.map((p) => {
-    const link = SITE + p.route;
+    const link = canonicalLoc(p.route);
     const pub = p.date ? new Date(p.date).toUTCString() : new Date().toUTCString();
     return `    <item>\n      <title>${xmlEsc(p.title)}</title>\n      <link>${xmlEsc(link)}</link>\n      <guid isPermaLink="true">${xmlEsc(link)}</guid>\n      <pubDate>${pub}</pubDate>\n      <description>${xmlEsc(p.description)}</description>\n    </item>`;
   }).join("\n");

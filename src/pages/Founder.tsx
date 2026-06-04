@@ -23,7 +23,7 @@ export default function Founder() {
             "name": "Hamza Omair",
             "jobTitle": "Founder & CEO",
             "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "url": "https://svnrglobal.com/founder",
+            "url": "https://svnrglobal.com/founder/",
             "image": "https://svnrglobal.com/hamza.jpg",
             "sameAs": ["https://in.linkedin.com/in/hamza-omair-5434b1354"],
             "description": "Hamza Omair is the founder of SVNR Global, an AI-powered client acquisition infrastructure firm serving luxury brands, premium real estate, private equity, and high-ticket B2B operators globally.",

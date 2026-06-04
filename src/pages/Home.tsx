@@ -20,7 +20,7 @@ const HOME_SCHEMA = [
       "@type": "Person",
       "name": "Hamza Omair",
       "jobTitle": "Founder & CEO",
-      "url": "https://svnrglobal.com/founder",
+      "url": "https://svnrglobal.com/founder/",
       "sameAs": "https://in.linkedin.com/in/hamza-omair-5434b1354"
     },
     "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },

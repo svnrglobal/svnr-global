@@ -22,6 +22,12 @@ const SITE_URL = "https://svnrglobal.com";
 const DEFAULT_OG_IMAGE = `${SITE_URL}/og-image.png`;
 const TWITTER_HANDLE = "@svnrglobal";
 
+// Netlify serves prerendered pages with a trailing slash (e.g. /about/), so
+// canonical + og:url + breadcrumb URLs must match that exact 200 URL to avoid
+// pointing crawlers at a 301 redirect.
+const withTrailingSlash = (path: string) =>
+  !path || path === "/" ? "/" : path.endsWith("/") ? path : `${path}/`;
+
 export default function SEO({
   title,
   description,
@@ -34,7 +40,7 @@ export default function SEO({
   noindex = false,
 }: SEOProps) {
   const fullTitle = title.includes(SITE_NAME) ? title : `${title} | ${SITE_NAME}`;
-  const canonicalUrl = canonical ? `${SITE_URL}${canonical}` : SITE_URL;
+  const canonicalUrl = `${SITE_URL}${withTrailingSlash(canonical || "/")}`;
 
   useEffect(() => {
     // Title
@@ -112,7 +118,7 @@ export default function SEO({
             "@type": "ListItem",
             "position": idx + 1,
             "name": item.name,
-            "item": `${SITE_URL}${item.url}`,
+            "item": `${SITE_URL}${withTrailingSlash(item.url)}`,
           })),
         }
       : null;

@@ -15,7 +15,7 @@ const checks = {
 const comparisonRows = [
   { label: "Sector-specific expertise", svnr: "yes", generic: "no", inhouse: "partial", tools: "no" },
   { label: "Custom AI agents per client", svnr: "yes", generic: "no", inhouse: "no", tools: "no" },
-  { label: "Bespoke outreach — no shared templates", svnr: "yes", generic: "no", inhouse: "partial", tools: "no" },
+  { label: "Bespoke outreach, no shared templates", svnr: "yes", generic: "no", inhouse: "partial", tools: "no" },
   { label: "Permanent infrastructure (not a campaign)", svnr: "yes", generic: "no", inhouse: "yes", tools: "no" },
   { label: "Custom dashboards & reporting", svnr: "yes", generic: "no", inhouse: "partial", tools: "partial" },
   { label: "Decision-maker level targeting", svnr: "yes", generic: "partial", inhouse: "partial", tools: "partial" },
@@ -30,8 +30,8 @@ const angles = [
     title: "SVNR vs Volume B2B Agencies",
     subtitle: "Premium operators vs mass-market lead gen",
     body: [
-      "Volume outreach agencies — Belkins, Martal Group, CIENCE — are built for one thing: throughput. They run the same templated sequences across hundreds of clients at once, optimised for quantity of contacts, not quality of conversation.",
-      "The problem is obvious the moment you operate in luxury, private equity, or high-ticket B2B. Your prospect — a family office principal, a premium retailer's MD, a wealth manager's partner — receives the same automated email as every other target in a mass campaign. They delete it. Your brand suffers.",
+      "Volume outreach agencies, Belkins, Martal Group, CIENCE, are built for one thing: throughput. They run the same templated sequences across hundreds of clients at once, optimised for quantity of contacts, not quality of conversation.",
+      "The problem is obvious the moment you operate in luxury, private equity, or high-ticket B2B. Your prospect, a family office principal, a premium retailer's MD, a wealth manager's partner, receives the same automated email as every other target in a mass campaign. They delete it. Your brand suffers.",
       "SVNR Global operates with a fundamentally different model. We take on a small number of engagements at any one time. Every outreach sequence is written specifically for your sector, your target profile, and your brand voice. There are no shared templates. There is no recycled messaging.",
       "The result: your prospects feel approached with intelligence, not sprayed with automation.",
     ],
@@ -41,9 +41,9 @@ const angles = [
     title: "SVNR vs Campaign-Based Agencies",
     subtitle: "Permanent infrastructure vs one-off campaigns",
     body: [
-      "Most outreach agencies sell campaigns. A fixed duration, a fixed scope, a fixed set of contacts — and when the campaign ends, so does your pipeline. You are back to square one.",
-      "This model was designed for agencies, not for clients. It creates recurring dependency: you need another campaign, another invoice, another onboarding. The results are episodic — spikes of activity followed by silence.",
-      "SVNR builds outreach infrastructure. Not a campaign. Not a retainer for 'ongoing outreach.' A system — custom AI agents, enriched prospect databases, automated qualification and routing — that runs continuously and compounds over time. The longer it operates, the better it performs.",
+      "Most outreach agencies sell campaigns. A fixed duration, a fixed scope, a fixed set of contacts, and when the campaign ends, so does your pipeline. You are back to square one.",
+      "This model was designed for agencies, not for clients. It creates recurring dependency: you need another campaign, another invoice, another onboarding. The results are episodic, spikes of activity followed by silence.",
+      "SVNR builds outreach infrastructure. Not a campaign. Not a retainer for 'ongoing outreach.' A system, custom AI agents, enriched prospect databases, automated qualification and routing, that runs continuously and compounds over time. The longer it operates, the better it performs.",
       "Think of it like the difference between renting water and building a well. Campaigns rent you water. Infrastructure gives you the well.",
     ],
     tags: ["System vs Campaign", "Outreach Infrastructure", "Long-term Pipeline"],
@@ -52,9 +52,9 @@ const angles = [
     title: "SVNR vs Generic AI Outreach Tools",
     subtitle: "Bespoke deployment vs self-serve platforms",
     body: [
-      "Apollo.io, Instantly, Lemlist, Smartlead — these are tools. Powerful tools, in the right hands. But they require a team to configure, a copywriter to write the sequences, a strategist to define targeting, a data analyst to interpret results, and a RevOps operator to maintain the infrastructure.",
+      "Apollo.io, Instantly, Lemlist, Smartlead, these are tools. Powerful tools, in the right hands. But they require a team to configure, a copywriter to write the sequences, a strategist to define targeting, a data analyst to interpret results, and a RevOps operator to maintain the infrastructure.",
       "What most premium operators discover when they try these platforms is that the tool is the smallest part of the problem. The hard work is everything around it: knowing which data sources to combine, how to enrich a prospect with sector-specific signals, how to write outreach that sounds human to a sceptical MD, how to structure follow-up sequences that escalate without irritating.",
-      "SVNR does all of that. You get the outcome — qualified conversations in your calendar — not the tool.",
+      "SVNR does all of that. You get the outcome, qualified conversations in your calendar, not the tool.",
     ],
     tags: ["Apollo Alternative", "AI Outreach", "Done-For-You vs DIY"],
   },
@@ -64,8 +64,8 @@ const angles = [
     body: [
       "Hiring an SDR, a BDR, or a head of sales is the natural instinct when the pipeline feels thin. The logic makes sense: internal control, brand ownership, cultural fit.",
       "But the economics rarely hold up for premium operators. A mid-level SDR in London or New York costs £50–80k base before commission, management overhead, tools, and ramp time. Six months to hire. Three months to ramp. Nine months before you know if it was the right hire.",
-      "SVNR deploys in weeks. The infrastructure includes data enrichment, AI-assisted research, multi-channel outreach, and a reporting layer — none of which a single SDR brings with them. And unlike a full-time hire, our engagement scales with your pipeline, not your headcount budget.",
-      "This is not an argument against ever hiring in-house. It's an argument for having infrastructure operational before the hire arrives — so they close, not prospect.",
+      "SVNR deploys in weeks. The infrastructure includes data enrichment, AI-assisted research, multi-channel outreach, and a reporting layer, none of which a single SDR brings with them. And unlike a full-time hire, our engagement scales with your pipeline, not your headcount budget.",
+      "This is not an argument against ever hiring in-house. It's an argument for having infrastructure operational before the hire arrives, so they close, not prospect.",
     ],
     tags: ["SDR Alternative", "In-House vs Agency", "Sales Infrastructure"],
   },
@@ -73,9 +73,9 @@ const angles = [
     title: "SVNR vs Paid Advertising",
     subtitle: "Direct outreach vs waiting for inbound",
     body: [
-      "Paid advertising works for consumer products, SaaS with high trial volume, and businesses where unit economics allow for broad top-of-funnel spend. For premium B2B — private equity deal flow, wealth management client acquisition, luxury brand distribution — it almost never works.",
+      "Paid advertising works for consumer products, SaaS with high trial volume, and businesses where unit economics allow for broad top-of-funnel spend. For premium B2B, private equity deal flow, wealth management client acquisition, luxury brand distribution, it almost never works.",
       "Your buyer is a specific person, not a demographic segment. A family office principal does not discover their next GP relationship through a Google ad. A premium retailer's head of buying does not click a LinkedIn campaign when selecting new suppliers.",
-      "Direct outreach — intelligent, personalised, sector-specific — is how premium deals get started. SVNR's infrastructure identifies those specific people, researches their context, and initiates a conversation that feels earned rather than broadcast.",
+      "Direct outreach, intelligent, personalised, sector-specific, is how premium deals get started. SVNR's infrastructure identifies those specific people, researches their context, and initiates a conversation that feels earned rather than broadcast.",
     ],
     tags: ["B2B vs B2C", "Outbound vs Paid Ads", "High-Ticket Acquisition"],
   },
@@ -111,7 +111,7 @@ export default function Compare() {
             "@type": "WebPage",
             "name": "SVNR Global vs Other Client Acquisition Approaches",
             "url": "https://svnrglobal.com/compare",
-            "description": "A detailed comparison of SVNR Global against volume agencies, campaign retainers, self-serve AI tools, and in-house SDR teams — for premium B2B operators.",
+            "description": "A detailed comparison of SVNR Global against volume agencies, campaign retainers, self-serve AI tools, and in-house SDR teams, for premium B2B operators.",
           },
           {
             "@context": "https://schema.org",
@@ -162,7 +162,7 @@ export default function Compare() {
             initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6 }}
             className="text-white/50 text-lg max-w-2xl mx-auto"
           >
-            Volume agencies, one-off campaigns, AI tools, in-house teams — each has a use case.
+            Volume agencies, one-off campaigns, AI tools, in-house teams, each has a use case.
             Here is why premium operators choose infrastructure over any of them.
           </motion.p>
         </div>
@@ -266,7 +266,7 @@ export default function Compare() {
             </h2>
             <p className="text-white/50 mb-10 max-w-xl mx-auto leading-relaxed">
               Volume agencies dilute your brand. Campaigns create dependency. Tools require expertise you don't have.
-              In-house teams ramp slowly. SVNR deploys infrastructure that runs — built specifically for your market,
+              In-house teams ramp slowly. SVNR deploys infrastructure that runs, built specifically for your market,
               your sector, and the calibre of client you want to attract.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

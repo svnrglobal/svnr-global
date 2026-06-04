@@ -33,7 +33,7 @@ export default function Founder() {
 
       <Nav />
 
-      {/* HERO — video background */}
+      {/* HERO, video background */}
       <VideoHero src={FOUNDER_VIDEO} minHeight="min-h-screen">
         <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-end min-h-screen">
           {/* Text */}
@@ -61,7 +61,7 @@ export default function Founder() {
               className="text-white/40 text-base leading-relaxed max-w-sm"
             >
               Founder & CEO, SVNR Global.<br />
-              New Delhi — operating globally.
+              New Delhi, operating globally.
             </motion.p>
           </div>
 
@@ -75,7 +75,7 @@ export default function Founder() {
             <div className="relative w-64 sm:w-72 md:w-80">
               <img
                 src="/hamza.jpg"
-                alt="Hamza Omair — Founder of SVNR Global"
+                alt="Hamza Omair, Founder of SVNR Global"
                 className="w-full rounded-2xl object-cover"
                 style={{ aspectRatio: "1/1" }}
               />
@@ -100,17 +100,17 @@ export default function Founder() {
           >
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/25 mb-8">The beginning</p>
             <p className="text-white text-2xl sm:text-3xl font-medium leading-snug tracking-tight mb-8">
-              I wanted to build employees for myself — without hiring employees.
+              I wanted to build employees for myself, without hiring employees.
             </p>
             <div className="space-y-5 text-white/50 text-base leading-relaxed">
               <p>
-                I was finishing my degree in computer applications when I started building what would become SVNR. Technology and AI had always been close to how I thought — but the problem I was trying to solve was very practical.
+                I was finishing my degree in computer applications when I started building what would become SVNR. Technology and AI had always been close to how I thought, but the problem I was trying to solve was very practical.
               </p>
               <p>
-                I grew up around my family's business in the luxury rug and carpet trade — one of the oldest and most craft-intensive industries in India. I watched exceptional work struggle to reach the buyers it deserved. Not because of quality. Because acquisition was either one relationship, one trade fair, or one lucky introduction away from falling apart.
+                I grew up around my family's business in the luxury rug and carpet trade, one of the oldest and most craft-intensive industries in India. I watched exceptional work struggle to reach the buyers it deserved. Not because of quality. Because acquisition was either one relationship, one trade fair, or one lucky introduction away from falling apart.
               </p>
               <p>
-                I didn't want to build an agency. I wanted to build infrastructure — systems that could do the work of finding, reaching, and warming the right people, running continuously, without constant human input. Employees without the overhead of employees.
+                I didn't want to build an agency. I wanted to build infrastructure, systems that could do the work of finding, reaching, and warming the right people, running continuously, without constant human input. Employees without the overhead of employees.
               </p>
             </div>
           </motion.div>
@@ -130,10 +130,10 @@ export default function Founder() {
             </p>
             <div className="space-y-5 text-white/50 text-base leading-relaxed">
               <p>
-                Most acquisition businesses optimise for volume. More outreach, more contacts, more campaigns. We optimise for speed at the right moment — reaching the right person with the right context before anyone else does.
+                Most acquisition businesses optimise for volume. More outreach, more contacts, more campaigns. We optimise for speed at the right moment, reaching the right person with the right context before anyone else does.
               </p>
               <p>
-                That's what AI makes possible when it's built correctly. Not automation for automation's sake. Infrastructure that moves faster than any team could manually — and does it with the precision that premium markets demand.
+                That's what AI makes possible when it's built correctly. Not automation for automation's sake. Infrastructure that moves faster than any team could manually, and does it with the precision that premium markets demand.
               </p>
             </div>
           </motion.div>

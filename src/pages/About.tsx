@@ -18,7 +18,7 @@ const values = [
   {
     icon: Target,
     title: "Precision over volume",
-    body: "We identify fewer targets, but the right ones. Every name in a sequence has been selected by role, timing signal, and fit — not pulled from a list.",
+    body: "We identify fewer targets, but the right ones. Every name in a sequence has been selected by role, timing signal, and fit, not pulled from a list.",
   },
   {
     icon: Layers,
@@ -33,7 +33,7 @@ const values = [
   {
     icon: Zap,
     title: "AI that serves craft",
-    body: "We use AI to find, qualify, and reach the right people faster — not to replace the human relationships that close premium deals.",
+    body: "We use AI to find, qualify, and reach the right people faster, not to replace the human relationships that close premium deals.",
   },
   {
     icon: Users,
@@ -43,7 +43,7 @@ const values = [
   {
     icon: BarChart2,
     title: "Measured by outcomes",
-    body: "We report on warm conversations generated, meetings booked, and revenue influenced — not impressions, clicks, or open rates.",
+    body: "We report on warm conversations generated, meetings booked, and revenue influenced, not impressions, clicks, or open rates.",
   },
 ];
 
@@ -60,7 +60,7 @@ const verticals = [
 
 const timeline = [
   { year: "~1930s", label: "Craft lineage begins", desc: "Our family begins manufacturing handmade rugs in Bhadohi, the heart of India's carpet belt." },
-  { year: "2019",   label: "Global trade opens",   desc: "We start placing Bhadohi product in international markets — design houses, interior specifiers, contract buyers across Europe and the Gulf." },
+  { year: "2019",   label: "Global trade opens",   desc: "We start placing Bhadohi product in international markets, design houses, interior specifiers, contract buyers across Europe and the Gulf." },
   { year: "2022",   label: "Outreach systematised", desc: "We build the outreach methodology in-house for our own carpet business. It works. We start running it for other premium operators." },
   { year: "2024",   label: "SVNR Global launches",  desc: "Formalised as a full-service AI outreach infrastructure practice serving eight specialist verticals globally." },
 ];
@@ -91,7 +91,7 @@ export default function About() {
             "url": "https://svnrglobal.com",
             "logo": "https://svnrglobal.com/svnr-logo.svg",
             "image": "https://svnrglobal.com/og-image.png",
-            "description": "SVNR Global builds bespoke AI-powered client acquisition infrastructure for premium operators — luxury brands, private equity firms, real estate, wealth management, and high-ticket B2B businesses. Founded in New Delhi, India, globally deployed.",
+            "description": "SVNR Global builds bespoke AI-powered client acquisition infrastructure for premium operators, luxury brands, private equity firms, real estate, wealth management, and high-ticket B2B businesses. Founded in New Delhi, India, globally deployed.",
             "foundingDate": "2019",
             "foundingLocation": "New Delhi, India",
             "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 1, "maxValue": 10 },
@@ -189,7 +189,7 @@ export default function About() {
             transition={{ delay: 0.9 }}
             className="text-lg text-white/40 max-w-xl mx-auto"
           >
-            Not campaigns. Not content. Autonomous outreach infrastructure — permanently running, continuously refined.
+            Not campaigns. Not content. Autonomous outreach infrastructure, permanently running, continuously refined.
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 12 }}
@@ -264,7 +264,7 @@ export default function About() {
               Our family has manufactured handmade rugs and carpets in Bhadohi, India for nearly a century. We know what a hand-knotted pile costs to produce, how a trade certification changes a buyer conversation in Cologne versus Dubai, and what it takes to build lasting relationships with interior designers who specify everything.
             </p>
             <p className="text-white/55 leading-relaxed">
-              That fluency carries into every vertical we operate in. When we write outreach for a luxury rug house, a boutique PE firm, or a premium real estate principal — the prospect reads it as someone already inside their world, not a vendor who researched the category last week.
+              That fluency carries into every vertical we operate in. When we write outreach for a luxury rug house, a boutique PE firm, or a premium real estate principal, the prospect reads it as someone already inside their world, not a vendor who researched the category last week.
             </p>
           </motion.div>
 
@@ -311,7 +311,7 @@ export default function About() {
           >
             <p className="text-xl sm:text-2xl md:text-4xl font-medium text-white leading-[1.45] tracking-tight mb-6 md:mb-8">
               "The operators we work with do not run campaigns and hope.<br className="hidden md:block" />
-              They run infrastructure — and close."
+              They run infrastructure, and close."
             </p>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/25">The SVNR philosophy</p>
           </motion.div>
@@ -365,10 +365,10 @@ export default function About() {
               { label: "Category", value: "AI client acquisition infrastructure" },
               { label: "Clients served", value: "Premium B2B operators globally" },
               { label: "Markets covered", value: "UK, EU, UAE, Switzerland, Singapore, India" },
-              { label: "Core service", value: "Bespoke outreach infrastructure — custom AI agents, enriched prospect databases, precision outreach sequences" },
+              { label: "Core service", value: "Bespoke outreach infrastructure, custom AI agents, enriched prospect databases, precision outreach sequences" },
               { label: "Sectors", value: "Luxury brands, private equity, premium real estate, wealth management, maritime, professional services" },
-              { label: "Differentiation", value: "Every engagement is custom-built per client — no shared templates, no recycled agents, no generic dashboards" },
-              { label: "Founder", value: "Hamza — formerly in luxury rug manufacturing and international trade, Bhadohi, India" },
+              { label: "Differentiation", value: "Every engagement is custom-built per client, no shared templates, no recycled agents, no generic dashboards" },
+              { label: "Founder", value: "Hamza, formerly in luxury rug manufacturing and international trade, Bhadohi, India" },
             ].map((item, i) => (
               <motion.div key={item.label} initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.06 }}
                 className="border-b border-white/8 pb-5">
@@ -432,19 +432,19 @@ export default function About() {
                 n: "01",
                 label: "Research",
                 accent: "text-amber-400",
-                body: "Every target is identified by name, role, and timing signal — before a single message is written. We know your market before we move in it. ICP workshops, buyer signal mapping, and account prioritisation complete this phase.",
+                body: "Every target is identified by name, role, and timing signal, before a single message is written. We know your market before we move in it. ICP workshops, buyer signal mapping, and account prioritisation complete this phase.",
               },
               {
                 n: "02",
                 label: "Outreach",
                 accent: "text-sky-400",
-                body: "Precision sequences deployed across the channels your buyers actually use. Every message is written as if you wrote it yourself — no templates, no noise. Multi-channel, fully branded, continuously A/B tested.",
+                body: "Precision sequences deployed across the channels your buyers actually use. Every message is written as if you wrote it yourself, no templates, no noise. Multi-channel, fully branded, continuously A/B tested.",
               },
               {
                 n: "03",
                 label: "Infrastructure",
                 accent: "text-emerald-400",
-                body: "Unlike a campaign, the system does not stop. It runs continuously, refines automatically, and surfaces warm conversations to your team every month — while you focus on closing.",
+                body: "Unlike a campaign, the system does not stop. It runs continuously, refines automatically, and surfaces warm conversations to your team every month, while you focus on closing.",
               },
             ].map((p, i) => (
               <motion.div

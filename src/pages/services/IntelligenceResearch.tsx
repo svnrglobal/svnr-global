@@ -13,15 +13,15 @@ const chartData = [
 
 const capabilities = [
   { icon: Search, title: "Market Segmentation", desc: "Every qualifying company in your target market mapped, ranked, and profiled before a single message is sent." },
-  { icon: Eye, title: "Decision-Maker Mapping", desc: "Named individuals, titles, contact vectors, and seniority — built from 80+ signal sources updated weekly." },
+  { icon: Eye, title: "Decision-Maker Mapping", desc: "Named individuals, titles, contact vectors, and seniority, built from 80+ signal sources updated weekly." },
   { icon: Bell, title: "Signal Monitoring", desc: "Funding rounds, leadership hires, product launches, and public statements tracked continuously for intent signals." },
   { icon: BarChart2, title: "Weekly Intelligence Brief", desc: "A structured brief delivered weekly with the highest-signal contacts and market movements in your target vertical." },
 ];
 
 const steps = [
-  { n: "01", title: "Market segmentation", desc: "We define the exact universe of companies and contacts relevant to your mandate — no noise, no padding." },
+  { n: "01", title: "Market segmentation", desc: "We define the exact universe of companies and contacts relevant to your mandate, no noise, no padding." },
   { n: "02", title: "Data build & enrichment", desc: "Each target is researched across professional databases, press, LinkedIn, and public filings to build a complete profile." },
-  { n: "03", title: "Signal layer", desc: "We overlay intent and timing signals — funding, hiring, leadership change — to rank by likelihood of engagement." },
+  { n: "03", title: "Signal layer", desc: "We overlay intent and timing signals, funding, hiring, leadership change, to rank by likelihood of engagement." },
   { n: "04", title: "Intelligence delivery", desc: "Weekly briefs and a live dashboard give your team a real-time view of where to focus outreach effort." },
 ];
 
@@ -38,9 +38,9 @@ export default function IntelligenceResearch() {
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Intelligence Research — Prospect & Market Mapping",
+            "name": "Intelligence Research, Prospect & Market Mapping",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "description": "AI-powered prospect intelligence and market mapping for premium B2B operators. We build the research layer that identifies every qualifying buyer, decision-maker, and opportunity in your market — enriched across 50+ data signals and delivered as actionable outreach intelligence.",
+            "description": "AI-powered prospect intelligence and market mapping for premium B2B operators. We build the research layer that identifies every qualifying buyer, decision-maker, and opportunity in your market, enriched across 50+ data signals and delivered as actionable outreach intelligence.",
             "areaServed": ["Global", "Europe", "Middle East", "Asia"],
             "serviceType": ["Prospect Intelligence", "Market Mapping", "B2B Research", "Buyer Identification", "Signal Monitoring"]
           },
@@ -102,7 +102,7 @@ export default function IntelligenceResearch() {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The Problem</p>
             <h2 className="text-4xl font-medium text-white tracking-tight mb-6">Most teams move on incomplete information.</h2>
-            <p className="text-white/60 leading-relaxed mb-6">Your outreach is only as good as the intelligence behind it. Teams that win in competitive markets do not move faster. They move with more precision — because they know who is likely to respond, when, and why. We build that precision layer.</p>
+            <p className="text-white/60 leading-relaxed mb-6">Your outreach is only as good as the intelligence behind it. Teams that win in competitive markets do not move faster. They move with more precision, because they know who is likely to respond, when, and why. We build that precision layer.</p>
             <p className="text-white/60 leading-relaxed">500+ prospect profiles. 80+ signal sources. A weekly intelligence brief that tells you exactly where to focus. Built as infrastructure, not a one-off research project.</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>

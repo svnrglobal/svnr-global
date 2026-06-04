@@ -54,7 +54,7 @@ export default function Footer() {
           <p className="text-sm leading-relaxed max-w-xs text-white/50">
             Bespoke AI infrastructure for premium operators. We build the systems that bring the right clients to you.
           </p>
-          <p className="text-xs text-white/30 mt-4">New Delhi — globally deployed.</p>
+          <p className="text-xs text-white/30 mt-4">New Delhi, globally deployed.</p>
           <a
             href="mailto:contact@svnrglobal.com"
             className="text-xs text-white/50 hover:text-white transition-colors mt-2 block"

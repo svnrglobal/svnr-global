@@ -11,15 +11,15 @@ const chartData = [
 ];
 
 const capabilities = [
-  { icon: Network, title: "Channel Audit", desc: "We map your current distribution relationships — architects, designers, specifiers, agents — and identify the gaps your product should be filling." },
+  { icon: Network, title: "Channel Audit", desc: "We map your current distribution relationships, architects, designers, specifiers, agents, and identify the gaps your product should be filling." },
   { icon: Users, title: "Partner ICP", desc: "The exact profile of the right trade partner for your product: project type, client profile, geography, and purchasing authority." },
   { icon: Award, title: "Outreach Build", desc: "Targeted outreach to the specific studios, agencies, and specifiers who match your ideal partner profile. Personal, specific, and branded." },
-  { icon: TrendingUp, title: "Activation Programme", desc: "Onboarding new partners into active relationships — sample programmes, briefing packs, and the first project introductions." },
+  { icon: TrendingUp, title: "Activation Programme", desc: "Onboarding new partners into active relationships, sample programmes, briefing packs, and the first project introductions." },
 ];
 
 const steps = [
   { n: "01", title: "Channel audit", desc: "Current distribution mapped. Gap analysis completed. Target partner profile defined before outreach begins." },
-  { n: "02", title: "Partner ICP", desc: "The right partner profile built — firm type, project category, geographic focus, and qualification criteria." },
+  { n: "02", title: "Partner ICP", desc: "The right partner profile built, firm type, project category, geographic focus, and qualification criteria." },
   { n: "03", title: "Outreach build", desc: "Specific, branded outreach deployed to the studios and specifiers who match your product positioning." },
   { n: "04", title: "Activation programme", desc: "New partners activated with samples, briefing materials, and introduction pathways to their first specification." },
 ];
@@ -37,7 +37,7 @@ export default function ChannelPartnership() {
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Channel Partnership — Trade Distribution Activation",
+            "name": "Channel Partnership, Trade Distribution Activation",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
             "description": "Systematic trade partner acquisition: finding, reaching, and activating the right architects, interior designers, specifiers, showrooms, and distributors for premium products. Channel partnership infrastructure that converts cold contacts into active distribution relationships.",
             "areaServed": ["Global", "Europe", "Middle East", "Asia", "United Kingdom"],
@@ -101,7 +101,7 @@ export default function ChannelPartnership() {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The Problem</p>
             <h2 className="text-4xl font-medium text-white tracking-tight mb-6">Trade distribution is won through relationships, not marketing.</h2>
-            <p className="text-white/60 leading-relaxed mb-6">The architect who specifies your product, the interior designer who recommends it, the purchasing agent who sources it — these are not won through advertising. They are won through a structured programme of finding, reaching, and activating the right people in the right way. We build that programme.</p>
+            <p className="text-white/60 leading-relaxed mb-6">The architect who specifies your product, the interior designer who recommends it, the purchasing agent who sources it, these are not won through advertising. They are won through a structured programme of finding, reaching, and activating the right people in the right way. We build that programme.</p>
             <p className="text-white/60 leading-relaxed">25+ partner leads per month. 44% activation rate. 60% of revenue attributable to the channel layer within 12 months of programme launch.</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>

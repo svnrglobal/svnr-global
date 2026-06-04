@@ -11,14 +11,14 @@ const chartData = [
 ];
 
 const capabilities = [
-  { icon: User, title: "ICP Definition", desc: "We define the exact profile of the person worth reaching — title, sector, company size, intent signals — before the first message is written." },
+  { icon: User, title: "ICP Definition", desc: "We define the exact profile of the person worth reaching, title, sector, company size, intent signals, before the first message is written." },
   { icon: Mail, title: "Message Architecture", desc: "Every sequence built from the recipient's perspective. No templates. No spray-and-pray. Each message written as if you wrote it yourself." },
-  { icon: TrendingUp, title: "Sequence Build", desc: "Multi-touch, multi-channel sequences deployed across email, LinkedIn, and direct channels — timed to each target's engagement pattern." },
+  { icon: TrendingUp, title: "Sequence Build", desc: "Multi-touch, multi-channel sequences deployed across email, LinkedIn, and direct channels, timed to each target's engagement pattern." },
   { icon: RefreshCw, title: "Send and Optimise", desc: "Continuous testing of subject lines, message frames, and send timing. Every cycle of outreach improves on the last." },
 ];
 
 const steps = [
-  { n: "01", title: "ICP definition", desc: "Exact buyer profile built — sector, title, company profile, intent signals. The quality of outreach is determined before a word is written." },
+  { n: "01", title: "ICP definition", desc: "Exact buyer profile built, sector, title, company profile, intent signals. The quality of outreach is determined before a word is written." },
   { n: "02", title: "Message architecture", desc: "We write outreach that reads like it came from a senior person in your firm. No AI-sounding phrases. No generic value props." },
   { n: "03", title: "Sequence build", desc: "Four to six touch sequence deployed across the right channels, with correct timing between contacts and specific follow-up framing." },
   { n: "04", title: "Send and optimise", desc: "Weekly review of open rates, reply rates, and positive response rate. Continuous iteration to maintain performance over time." },
@@ -37,9 +37,9 @@ export default function BrandOutreach() {
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Brand Outreach — Hyper-Personalised B2B Messaging",
+            "name": "Brand Outreach, Hyper-Personalised B2B Messaging",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "description": "Individually researched, hyper-personalised B2B outreach sequences for premium brands. Every message is written for the specific recipient — no templates, no mass sends. Outreach that earns a response because it reads like it came from a peer who did their homework.",
+            "description": "Individually researched, hyper-personalised B2B outreach sequences for premium brands. Every message is written for the specific recipient, no templates, no mass sends. Outreach that earns a response because it reads like it came from a peer who did their homework.",
             "areaServed": ["Global", "Europe", "Middle East", "Asia"],
             "serviceType": ["Brand Outreach", "Personalised B2B Messaging", "Premium Outreach Sequences", "B2B Email Strategy"]
           },
@@ -101,7 +101,7 @@ export default function BrandOutreach() {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The Problem</p>
             <h2 className="text-4xl font-medium text-white tracking-tight mb-6">Generic outreach damages premium brands.</h2>
-            <p className="text-white/60 leading-relaxed mb-6">A template is a template. The interior designer, the fund manager, and the family office principal who receives it knows immediately. And the message your brand sends with that template is that your brand is generic. We build outreach that operates at the level of the people you are trying to reach — specific, researched, and written as if you wrote it yourself.</p>
+            <p className="text-white/60 leading-relaxed mb-6">A template is a template. The interior designer, the fund manager, and the family office principal who receives it knows immediately. And the message your brand sends with that template is that your brand is generic. We build outreach that operates at the level of the people you are trying to reach, specific, researched, and written as if you wrote it yourself.</p>
             <p className="text-white/60 leading-relaxed">52% open rate. 21% positive reply rate. 0.4% unsubscribe rate. These are the numbers a premium brand earns with outreach that respects its audience.</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>

@@ -16,10 +16,10 @@ const segmentData = [
 const COLORS = ["#11998e", "#38ef7d", "#A8E063", "#56ab2f"];
 
 const services = [
-  { slug: "client-acquisition", label: "Client Acquisition", desc: "Direct outreach to UHNW individuals, founders post-exit, and NextGen inheritors — before they have formalised a wealth management relationship." },
+  { slug: "client-acquisition", label: "Client Acquisition", desc: "Direct outreach to UHNW individuals, founders post-exit, and NextGen inheritors, before they have formalised a wealth management relationship." },
   { slug: "intelligence-research", label: "Intelligence Research", desc: "HNWI prospect profiles built from business press, M&A announcements, director filings, and professional network signals." },
   { slug: "brand-outreach", label: "Brand Outreach", desc: "Discreet, specific outreach at the standard a HNWI prospect expects. Never intrusive. Never generic." },
-  { slug: "ai-receptionist", label: "AI Receptionist", desc: "Every inbound enquiry — from referrals, website, or introduced contacts — responded to with precision and routed appropriately." },
+  { slug: "ai-receptionist", label: "AI Receptionist", desc: "Every inbound enquiry, from referrals, website, or introduced contacts, responded to with precision and routed appropriately." },
 ];
 
 export default function WealthManagement() {
@@ -107,12 +107,12 @@ export default function WealthManagement() {
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The Market</p>
             <h2 className="text-4xl font-medium text-white tracking-tight mb-6">The referral model that built the book cannot reach the next generation of wealth.</h2>
             <p className="text-white/60 text-sm leading-relaxed mb-4">The wealth European boutiques have stewarded since the 1990s is transferring. The clients they built their books around are in their 70s. The next generation has different advisors, different communication habits, and different loyalty patterns. They are not staying with the boutique because their father did.</p>
-            <p className="text-white/60 text-sm leading-relaxed mb-4">The wealth being created today — from founder exits, private equity proceeds, and the professional class — is not entering the referral networks of established boutiques. It is reachable, but through a different acquisition motion.</p>
-            <p className="text-white/60 text-sm leading-relaxed">200+ UHNW contacts reached per month. AUM threshold of $5M+. Every outreach calibrated to the specific individual's circumstances — not a category pitch.</p>
+            <p className="text-white/60 text-sm leading-relaxed mb-4">The wealth being created today, from founder exits, private equity proceeds, and the professional class, is not entering the referral networks of established boutiques. It is reachable, but through a different acquisition motion.</p>
+            <p className="text-white/60 text-sm leading-relaxed">200+ UHNW contacts reached per month. AUM threshold of $5M+. Every outreach calibrated to the specific individual's circumstances, not a category pitch.</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="space-y-6">
             <div className="liquid-glass rounded-3xl p-8">
-              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">UHNW contacts reached — cumulative</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">UHNW contacts reached, cumulative</p>
               <div className="h-44">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={aumData}>

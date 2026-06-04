@@ -19,14 +19,14 @@ const radialData = [
 const services = [
   { slug: "client-acquisition", label: "Client Acquisition", desc: "Direct outreach to HNW principals, family offices, and institutional investors before they enter formal search processes." },
   { slug: "intelligence-research", label: "Intelligence Research", desc: "Principal buyer profiles built from business press, LinkedIn exits, family office mandates, and liquidity signals." },
-  { slug: "brand-outreach", label: "Brand Outreach", desc: "Messages that reach principals on the channels they actually use — WhatsApp, direct email — not portal enquiry forms." },
+  { slug: "brand-outreach", label: "Brand Outreach", desc: "Messages that reach principals on the channels they actually use, WhatsApp, direct email, not portal enquiry forms." },
   { slug: "ai-receptionist", label: "AI Receptionist", desc: "Every inbound enquiry qualified and responded to within 60 seconds. No missed opportunity after hours." },
 ];
 
 const insights = [
   "The buyer for a prime residential property or investment asset is not on Rightmove at midnight. They are a principal making a capital allocation decision. Portal-dependent acquisition by definition cannot reach them.",
   "In European and Middle Eastern prime markets, WhatsApp is the dominant channel for high-value buyer conversations. The firm that reaches a qualified buyer directly on the right channel is operating in a different competitive environment.",
-  "Days on market is a diagnostic. When a prime property sits beyond its typical transaction window, the buyer pool is too small — and that is a structural problem that portal optimisation cannot solve.",
+  "Days on market is a diagnostic. When a prime property sits beyond its typical transaction window, the buyer pool is too small, and that is a structural problem that portal optimisation cannot solve.",
   "The off-market buyer is not passive. They are a principal with capital, a geographic preference, and a clear sense of what a good transaction looks like. They are waiting for someone who understands their parameters.",
 ];
 
@@ -35,7 +35,7 @@ export default function PremiumRealEstate() {
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Premium Real Estate Client Acquisition | SVNR Global"
-        description="We help premium real estate firms reach HNW investors and off-market buyers directly — without portal dependency. Systematic outreach to qualified principals."
+        description="We help premium real estate firms reach HNW investors and off-market buyers directly, without portal dependency. Systematic outreach to qualified principals."
         canonical="/sectors/premium-real-estate"
         schema={[
           {
@@ -110,7 +110,7 @@ export default function PremiumRealEstate() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="liquid-glass rounded-3xl p-8 md:p-12">
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Proof</p>
-            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">A Zurich real estate firm. A qualified principal replied in fourteen minutes — reached directly on WhatsApp with a message specific to their investment profile, before any competitor had made contact.</p>
+            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">A Zurich real estate firm. A qualified principal replied in fourteen minutes, reached directly on WhatsApp with a message specific to their investment profile, before any competitor had made contact.</p>
           </motion.div>
         </div>
       </section>
@@ -146,7 +146,7 @@ export default function PremiumRealEstate() {
               </div>
             </div>
             <div className="liquid-glass rounded-3xl p-8">
-              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Deal sourcing — off-market vs. portal</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Deal sourcing, off-market vs. portal</p>
               <div className="h-40 flex items-center justify-center">
                 <ResponsiveContainer width="100%" height="100%">
                   <RadialBarChart innerRadius="40%" outerRadius="90%" data={radialData} startAngle={90} endAngle={-270}>

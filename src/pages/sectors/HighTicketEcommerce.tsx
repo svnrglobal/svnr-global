@@ -14,9 +14,9 @@ const pipelineData = [
 
 const services = [
   { slug: "client-acquisition", label: "Client Acquisition", desc: "Systematic identification of wholesale buyers, retail partners, and trade accounts in your target geographies." },
-  { slug: "channel-partnership", label: "Channel Partnership", desc: "Trade distribution built alongside D2C — finding, reaching, and activating the stockists who carry your product correctly." },
+  { slug: "channel-partnership", label: "Channel Partnership", desc: "Trade distribution built alongside D2C, finding, reaching, and activating the stockists who carry your product correctly." },
   { slug: "revenue-operations", label: "Revenue Operations", desc: "Wholesale pipeline tracked end-to-end: lead to order, order to repeat. Every stage measured and managed." },
-  { slug: "sector-workflows", label: "Sector Workflows", desc: "B2B operations automated — trade pricing, wholesale enquiry handling, partner onboarding, and order logistics." },
+  { slug: "sector-workflows", label: "Sector Workflows", desc: "B2B operations automated, trade pricing, wholesale enquiry handling, partner onboarding, and order logistics." },
 ];
 
 export default function HighTicketEcommerce() {
@@ -32,7 +32,7 @@ export default function HighTicketEcommerce() {
             "@type": "Service",
             "name": "High-Ticket E-commerce & Wholesale Buyer Acquisition",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "description": "AI-powered wholesale buyer and trade account acquisition for premium D2C and high-ticket e-commerce operators. Systematic outreach that builds B2B distribution alongside D2C — delivering 312% average order value increase through trade channels.",
+            "description": "AI-powered wholesale buyer and trade account acquisition for premium D2C and high-ticket e-commerce operators. Systematic outreach that builds B2B distribution alongside D2C, delivering 312% average order value increase through trade channels.",
             "areaServed": ["Global", "Europe", "United Kingdom", "United States", "Middle East"],
             "serviceType": ["Wholesale Buyer Acquisition", "Trade Account Development", "High-Ticket E-commerce Distribution", "D2C to B2B Expansion"]
           },
@@ -93,7 +93,7 @@ export default function HighTicketEcommerce() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="liquid-glass rounded-3xl p-8 md:p-12">
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Proof</p>
-            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">A premium product operator. 312% increase in average order value through the B2B channel — built through systematic wholesale outreach that D2C marketing could not have produced.</p>
+            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">A premium product operator. 312% increase in average order value through the B2B channel, built through systematic wholesale outreach that D2C marketing could not have produced.</p>
           </motion.div>
         </div>
       </section>
@@ -103,13 +103,13 @@ export default function HighTicketEcommerce() {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The Opportunity</p>
             <h2 className="text-4xl font-medium text-white tracking-tight mb-6">The B2B channel produces 312% higher AOV than D2C alone.</h2>
-            <p className="text-white/60 text-sm leading-relaxed mb-4">High-ticket product operators with a strong D2C channel often underestimate the wholesale opportunity available to them. The trade buyer — an interior designer, a boutique retailer, a property developer specifying for multiple units — orders at a scale and frequency that transforms unit economics.</p>
+            <p className="text-white/60 text-sm leading-relaxed mb-4">High-ticket product operators with a strong D2C channel often underestimate the wholesale opportunity available to them. The trade buyer, an interior designer, a boutique retailer, a property developer specifying for multiple units, orders at a scale and frequency that transforms unit economics.</p>
             <p className="text-white/60 text-sm leading-relaxed mb-4">Reaching these buyers requires a different motion than consumer advertising. They need to be identified, reached on the right channel, and activated through a trade onboarding process that reflects the quality of the product they are considering.</p>
             <p className="text-white/60 text-sm leading-relaxed">30+ wholesale leads per month. 41% trade buyer activation rate. Built as a parallel channel alongside D2C, not as a replacement for it.</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="space-y-6">
             <div className="liquid-glass rounded-3xl p-8">
-              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">AOV index — D2C vs. trade channel</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">AOV index, D2C vs. trade channel</p>
               <div className="h-44">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={aovData} barSize={28}>

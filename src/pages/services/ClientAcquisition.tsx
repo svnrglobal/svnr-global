@@ -22,10 +22,10 @@ const capabilities = [
 ];
 
 const steps = [
-  { n: "01", title: "Define ideal client profile", desc: "We work with you to map the precise characteristics of your best-fit client — sector, size, geography, decision-maker title." },
+  { n: "01", title: "Define ideal client profile", desc: "We work with you to map the precise characteristics of your best-fit client, sector, size, geography, decision-maker title." },
   { n: "02", title: "Map the target universe", desc: "Using proprietary data infrastructure, we identify every qualifying company and decision-maker in your market." },
   { n: "03", title: "Research & qualify", desc: "Each prospect is individually researched and scored. Only the highest-signal targets enter the outreach sequence." },
-  { n: "04", title: "Deploy outreach sequences", desc: "Multi-touch, multi-channel sequences are deployed. Every message is personalised to the individual — no templates." },
+  { n: "04", title: "Deploy outreach sequences", desc: "Multi-touch, multi-channel sequences are deployed. Every message is personalised to the individual, no templates." },
   { n: "05", title: "Warm handoff to principal", desc: "When a prospect responds with genuine interest, we hand them directly to you with full context for the conversation." },
 ];
 
@@ -44,7 +44,7 @@ export default function ClientAcquisition() {
             "@type": "Service",
             "name": "AI-Powered B2B Client Acquisition",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "description": "Bespoke AI client acquisition system that identifies, researches, and reaches the exact decision-makers in your market — delivering 40+ qualified conversations per month without paid ads or referral dependency.",
+            "description": "Bespoke AI client acquisition system that identifies, researches, and reaches the exact decision-makers in your market, delivering 40+ qualified conversations per month without paid ads or referral dependency.",
             "areaServed": ["Global", "Europe", "Middle East", "Asia", "India"],
             "serviceType": ["B2B Client Acquisition", "Outbound Lead Generation", "AI Outreach", "Sales Pipeline Development"]
           },
@@ -93,7 +93,7 @@ export default function ClientAcquisition() {
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-4">Service 01</p>
             <h1 className="text-5xl md:text-7xl font-medium text-white tracking-tight mb-4">Client Acquisition</h1>
-            <p className="text-xl text-white/60 max-w-xl">We build the pipeline that brings the right clients to you — consistently.</p>
+            <p className="text-xl text-white/60 max-w-xl">We build the pipeline that brings the right clients to you, consistently.</p>
           </motion.div>
         </div>
       </section>

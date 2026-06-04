@@ -110,7 +110,7 @@ export default function Contact() {
               </div>
               <div className="flex items-center gap-3">
                 <MapPin size={16} className="text-white/30" />
-                <span className="text-white/60 text-sm">New Delhi — globally deployed.</span>
+                <span className="text-white/60 text-sm">New Delhi, globally deployed.</span>
               </div>
             </div>
             <div className="space-y-4">

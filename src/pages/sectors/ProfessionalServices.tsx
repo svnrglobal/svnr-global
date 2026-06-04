@@ -15,7 +15,7 @@ const clientData = [
 const services = [
   { slug: "client-acquisition", label: "Client Acquisition", desc: "Pre-RFP client identification: developers, operators, and asset owners in the project pipeline before formal procurement begins." },
   { slug: "intelligence-research", label: "Intelligence Research", desc: "Planning applications, development finance announcements, hotel expansion plans, and project pipeline signals monitored continuously." },
-  { slug: "brand-outreach", label: "Brand Outreach", desc: "Principal-level outreach to the developers and operators most likely to commission your studio — specific, researched, peer-level." },
+  { slug: "brand-outreach", label: "Brand Outreach", desc: "Principal-level outreach to the developers and operators most likely to commission your studio, specific, researched, peer-level." },
   { slug: "revenue-operations", label: "Revenue Operations", desc: "Mandate pipeline tracked through pre-RFP, shortlist, proposal, and instruction stages. Every relationship stage measured." },
 ];
 
@@ -93,7 +93,7 @@ export default function ProfessionalServices() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="liquid-glass rounded-3xl p-8 md:p-12">
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Proof</p>
-            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">An architecture studio. Six qualified mandate introductions in the first quarter — from developers and operators the studio had no prior relationship with, reached before any RFP was issued.</p>
+            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">An architecture studio. Six qualified mandate introductions in the first quarter, from developers and operators the studio had no prior relationship with, reached before any RFP was issued.</p>
           </motion.div>
         </div>
       </section>

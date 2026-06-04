@@ -19,14 +19,14 @@ const services = [
   { slug: "dealflow-investor", label: "Dealflow for Investors", desc: "Proprietary deal flow infrastructure: mandate defined, targets mapped, founders reached before the banker deck arrives." },
   { slug: "intelligence-research", label: "Intelligence Research", desc: "Sector maps built to investment thesis depth. Company profiles, ownership structure, succession signals, EBITDA inference." },
   { slug: "brand-outreach", label: "Brand Outreach", desc: "Founder-appropriate outreach that does not read like a financial pitch. Written for the individual, not the category." },
-  { slug: "revenue-operations", label: "Revenue Operations", desc: "Full pipeline visibility across all active deal relationships — stage, last contact, next action, and conversion signal." },
+  { slug: "revenue-operations", label: "Revenue Operations", desc: "Full pipeline visibility across all active deal relationships, stage, last contact, next action, and conversion signal." },
 ];
 
 const insights = [
-  "The most valuable transaction a PE firm executes is the one it sourced before anyone else knew it was available. Not because the company was hidden — because the firm had a relationship with the founder three months before the formal process.",
+  "The most valuable transaction a PE firm executes is the one it sourced before anyone else knew it was available. Not because the company was hidden, because the firm had a relationship with the founder three months before the formal process.",
   "A thesis specific enough to generate a researchable target universe is the foundation of proprietary deal flow. 'B2B services in Western Europe' is a category. 'Founder-led industrial maintenance businesses with 8-20M EBITDA and no succession plan' is a thesis.",
   "The volume trap: 500 generic emails to founders produce no relationships. 50 thoughtful, research-anchored contacts produce 50 first steps toward genuine conversations. The pipeline that generates proprietary deals is deep, not wide.",
-  "Founders remember which firms have been intelligent and specific in their outreach. The firm they call when the moment arrives is the one they have had the most substantive conversations with — not the most recognisable name.",
+  "Founders remember which firms have been intelligent and specific in their outreach. The firm they call when the moment arrives is the one they have had the most substantive conversations with, not the most recognisable name.",
 ];
 
 export default function PrivateEquity() {
@@ -133,7 +133,7 @@ export default function PrivateEquity() {
               </div>
             </div>
             <div className="liquid-glass rounded-3xl p-8">
-              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Deal trigger signals — distribution</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Deal trigger signals, distribution</p>
               <div className="h-40">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>

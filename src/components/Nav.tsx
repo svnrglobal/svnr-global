@@ -61,7 +61,7 @@ export default function Nav() {
         </Link>
       </motion.div>
 
-      {/* ── Floating glass pill — desktop ── */}
+      {/* ── Floating glass pill, desktop ── */}
       <motion.nav
         initial={{ opacity: 0, y: -14 }}
         animate={{ opacity: 1, y: 0 }}

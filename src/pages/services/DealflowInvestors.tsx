@@ -17,7 +17,7 @@ const barData = [
 
 const capabilities = [
   { icon: Map, title: "Mandate Definition", desc: "We translate your investment thesis into a research-ready profile: sector, EBITDA range, geography, ownership type, and succession signals." },
-  { icon: TrendingUp, title: "Target Mapping", desc: "Every qualifying company in your target universe mapped, researched, and ranked by fit and transaction readiness — before any contact." },
+  { icon: TrendingUp, title: "Target Mapping", desc: "Every qualifying company in your target universe mapped, researched, and ranked by fit and transaction readiness, before any contact." },
   { icon: MessageSquare, title: "Outreach Programme", desc: "Specific, founder-appropriate outreach deployed at scale. No generic pitches. No mass sends. Every message written to the individual." },
   { icon: Clock, title: "Ongoing Deal Flow", desc: "A sustained programme that maintains active relationships with the right founders over the 12-24 month window that matters." },
 ];
@@ -36,15 +36,15 @@ export default function DealflowInvestors() {
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Dealflow for Investors — Proprietary PE Deal Sourcing | SVNR Global"
-        description="We build the system that surfaces off-market deals before formal marketing begins — through relationship infrastructure designed for how deals originate."
+        description="We build the system that surfaces off-market deals before formal marketing begins, through relationship infrastructure designed for how deals originate."
         canonical="/services/dealflow-investor"
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Dealflow for Investors — Proprietary PE Deal Sourcing",
+            "name": "Dealflow for Investors, Proprietary PE Deal Sourcing",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "description": "AI-powered proprietary deal flow infrastructure for private equity firms, venture capital funds, and family offices. We identify and reach founders, owner-operators, and management teams before formal sale processes begin — delivering off-market deal pipeline that competitive bidding never reaches.",
+            "description": "AI-powered proprietary deal flow infrastructure for private equity firms, venture capital funds, and family offices. We identify and reach founders, owner-operators, and management teams before formal sale processes begin, delivering off-market deal pipeline that competitive bidding never reaches.",
             "areaServed": ["Global", "Europe", "Middle East", "India", "United Kingdom"],
             "serviceType": ["Proprietary Deal Flow", "PE Deal Sourcing", "Off-Market Transaction Pipeline", "Founder Outreach", "LP Fundraising"]
           },
@@ -106,7 +106,7 @@ export default function DealflowInvestors() {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The Problem</p>
             <h2 className="text-4xl font-medium text-white tracking-tight mb-6">By the time the banker deck arrives, you are already behind.</h2>
-            <p className="text-white/60 leading-relaxed mb-6">When a founder engages an investment bank, 30-60 potential buyers receive the same information on the same day. The competitive dynamic shifts immediately. The firms that consistently see the best transactions see them before this moment — because they built a relationship with the founder three months earlier.</p>
+            <p className="text-white/60 leading-relaxed mb-6">When a founder engages an investment bank, 30-60 potential buyers receive the same information on the same day. The competitive dynamic shifts immediately. The firms that consistently see the best transactions see them before this moment, because they built a relationship with the founder three months earlier.</p>
             <p className="text-white/60 leading-relaxed">75% of our clients' deals are sourced pre-process. 12 sectors mapped. 8+ GP introductions per quarter. That is what systematic proprietary sourcing looks like.</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>

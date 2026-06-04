@@ -10,7 +10,7 @@ const articles = [
   {
     slug: "luxury-rug-brand-distribution-strategy",
     title: "How Luxury Rug and Carpet Brands Build Distribution in New Markets Without a Showroom",
-    excerpt: "There is a pattern that repeats itself across the handmade rug and carpet industry. A brand spends years building a product with genuine craft behind it. And then growth stops — not because the product got worse, but because the distribution model has a hard ceiling.",
+    excerpt: "There is a pattern that repeats itself across the handmade rug and carpet industry. A brand spends years building a product with genuine craft behind it. And then growth stops, not because the product got worse, but because the distribution model has a hard ceiling.",
     category: "Luxury Rugs",
     readTime: "8 min",
     image: "/blog/sustainable-luxury-carpets.jpg",
@@ -30,7 +30,7 @@ const articles = [
   {
     slug: "private-equity-proprietary-deal-flow",
     title: "How Private Equity Firms Source Proprietary Deal Flow Before Companies Enter a Formal Process",
-    excerpt: "The most valuable transaction a private equity firm executes is the one it sourced before anyone else knew it was available — because the firm had a relationship with the founder three months before they decided to sell.",
+    excerpt: "The most valuable transaction a private equity firm executes is the one it sourced before anyone else knew it was available, because the firm had a relationship with the founder three months before they decided to sell.",
     category: "Private Equity",
     readTime: "10 min",
     image: "/blog/Founder-Syndrome-1024x614.jpg.webp",
@@ -50,7 +50,7 @@ const articles = [
   {
     slug: "wealth-management-boutique-client-acquisition",
     title: "How Wealth Management Boutiques Reach the Next Generation of HNWI Clients",
-    excerpt: "The business model of a wealth management boutique has not changed in its essentials for thirty years. It is now facing two simultaneous pressures that it was not designed to handle — generational transfer and structural acquisition failure.",
+    excerpt: "The business model of a wealth management boutique has not changed in its essentials for thirty years. It is now facing two simultaneous pressures that it was not designed to handle, generational transfer and structural acquisition failure.",
     category: "Wealth Management",
     readTime: "9 min",
     image: "/blog/istockphoto-1346853640-612x612.jpg",
@@ -60,7 +60,7 @@ const articles = [
   {
     slug: "b2b-textile-platform-buyer-acquisition",
     title: "How B2B Textile Platforms Solve the Buyer-Side Liquidity Problem",
-    excerpt: "Two-sided marketplace businesses in textile sourcing share a structural pattern that repeats regardless of geography. The supply side gets built first. Then it stalls — not because the supply is wrong, but because buyer-side liquidity is structurally harder to build.",
+    excerpt: "Two-sided marketplace businesses in textile sourcing share a structural pattern that repeats regardless of geography. The supply side gets built first. Then it stalls, not because the supply is wrong, but because buyer-side liquidity is structurally harder to build.",
     category: "B2B Platforms",
     readTime: "8 min",
     image: "/blog/DUVqh5kW-R3HR4829-1200x800.jpg",
@@ -80,7 +80,7 @@ const articles = [
   {
     slug: "client-acquisition-system-vs-campaign",
     title: "The Difference Between a Client Acquisition System and a Client Acquisition Campaign",
-    excerpt: "The word 'campaign' in business development implies a beginning, a middle, and an end. Most businesses acquire clients through a series of campaigns. This is the campaign cycle — and it is structurally unable to produce the consistent, compounding pipeline that growing businesses need.",
+    excerpt: "The word 'campaign' in business development implies a beginning, a middle, and an end. Most businesses acquire clients through a series of campaigns. This is the campaign cycle, and it is structurally unable to produce the consistent, compounding pipeline that growing businesses need.",
     category: "Strategy",
     readTime: "9 min",
     image: "/blog/20943871-marketing-scaled.jpg",
@@ -125,7 +125,7 @@ export default function Blog() {
             <span className="shimmer-text">build their pipelines.</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6 }} className="text-lg text-white/50 max-w-xl mx-auto">
-            Eight sector-specific guides on client acquisition, deal flow, and systematic business development — written for operators, not marketers.
+            Eight sector-specific guides on client acquisition, deal flow, and systematic business development, written for operators, not marketers.
           </motion.p>
         </div>
       </VideoHero>

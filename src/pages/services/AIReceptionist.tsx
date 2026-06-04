@@ -36,15 +36,15 @@ export default function AIReceptionist() {
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="AI Receptionist — Instant Inbound Qualification | SVNR Global"
-        description="A trained AI front desk that qualifies, responds, and routes every enquiry with precision — in under 60 seconds, 24/7."
+        description="A trained AI front desk that qualifies, responds, and routes every enquiry with precision, in under 60 seconds, 24/7."
         canonical="/services/ai-receptionist"
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "AI Receptionist — Inbound Enquiry Qualification",
+            "name": "AI Receptionist, Inbound Enquiry Qualification",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "description": "A sector-trained AI front desk system that qualifies, responds to, and routes every inbound enquiry in under 60 seconds — 24/7. Deployed for luxury brands, wealth managers, real estate firms, and premium B2B operators.",
+            "description": "A sector-trained AI front desk system that qualifies, responds to, and routes every inbound enquiry in under 60 seconds, 24/7. Deployed for luxury brands, wealth managers, real estate firms, and premium B2B operators.",
             "areaServed": ["Global"],
             "serviceType": ["AI Receptionist", "Inbound Lead Qualification", "Automated Enquiry Response", "AI Customer Service"]
           },

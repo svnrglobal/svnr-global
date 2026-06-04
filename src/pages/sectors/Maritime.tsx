@@ -13,9 +13,9 @@ const sectorData = [
 ];
 
 const services = [
-  { slug: "client-acquisition", label: "Client Acquisition", desc: "Cargo owner identification, charterer outreach, and port services acquisition — researched and deployed systematically." },
+  { slug: "client-acquisition", label: "Client Acquisition", desc: "Cargo owner identification, charterer outreach, and port services acquisition, researched and deployed systematically." },
   { slug: "intelligence-research", label: "Intelligence Research", desc: "Cargo owner databases, fleet movement data, and commercial signal monitoring built into a continuous intelligence layer." },
-  { slug: "brand-outreach", label: "Brand Outreach", desc: "Commercial outreach written for the shipping industry — specific, professional, and calibrated to how principals communicate." },
+  { slug: "brand-outreach", label: "Brand Outreach", desc: "Commercial outreach written for the shipping industry, specific, professional, and calibrated to how principals communicate." },
   { slug: "sector-workflows", label: "Sector Workflows", desc: "Charter negotiation workflows, port call coordination, and commercial operations automated to reduce manual overhead." },
 ];
 
@@ -93,7 +93,7 @@ export default function Maritime() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="liquid-glass rounded-3xl p-8 md:p-12">
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Proof</p>
-            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">Commercial outreach infrastructure built for a European maritime operator — cargo owner contacts mapped, outreach deployed, and 15+ qualified commercial leads generated in the first quarter of operations.</p>
+            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">Commercial outreach infrastructure built for a European maritime operator, cargo owner contacts mapped, outreach deployed, and 15+ qualified commercial leads generated in the first quarter of operations.</p>
           </motion.div>
         </div>
       </section>

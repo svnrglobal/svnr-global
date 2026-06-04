@@ -16,7 +16,7 @@ const services = [
   { slug: "client-acquisition", label: "Client Acquisition", desc: "Systematic identification and outreach to trade buyers, stockists, and B2B clients across your target geographies." },
   { slug: "brand-outreach", label: "Brand Outreach", desc: "Outreach that positions your brand at the level the trade buyer expects. Researched, specific, and premium in execution." },
   { slug: "channel-partnership", label: "Channel Partnership", desc: "Trade partner acquisition programme: the right stockists, showrooms, and distributors identified and activated." },
-  { slug: "sector-workflows", label: "Sector Workflows", desc: "Wholesale operations automated — enquiry handling, quote generation, order tracking, and partner onboarding." },
+  { slug: "sector-workflows", label: "Sector Workflows", desc: "Wholesale operations automated, enquiry handling, quote generation, order tracking, and partner onboarding." },
 ];
 
 export default function B2BLuxury() {
@@ -109,7 +109,7 @@ export default function B2BLuxury() {
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="space-y-6">
             <div className="liquid-glass rounded-3xl p-8">
-              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Trade enquiry growth — weeks 1-6</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Trade enquiry growth, weeks 1-6</p>
               <div className="h-44">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={enquiryData}>

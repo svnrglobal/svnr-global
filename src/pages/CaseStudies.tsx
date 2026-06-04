@@ -10,7 +10,7 @@ import { CASE_STUDIES } from "../data/caseStudies";
 const schema = {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Case Studies — SVNR Global",
+  "name": "Case Studies, SVNR Global",
   "description": "Real results across luxury real estate, wealth management, law firms, dental clinics, hotels, healthcare, manufacturing, e-commerce, and aesthetic clinics.",
   "url": "https://svnrglobal.com/case-studies",
   "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },

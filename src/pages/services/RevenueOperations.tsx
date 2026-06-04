@@ -18,7 +18,7 @@ const chartData = [
 ];
 
 const capabilities = [
-  { icon: Database, title: "CRM Architecture", desc: "We design and deploy a CRM that reflects how you actually sell — not how a software vendor thinks you should." },
+  { icon: Database, title: "CRM Architecture", desc: "We design and deploy a CRM that reflects how you actually sell, not how a software vendor thinks you should." },
   { icon: Zap, title: "Pipeline Automation", desc: "Every stage of your pipeline is automated: follow-ups, task creation, deal stage movement, and alerts." },
   { icon: TrendingUp, title: "Deal Velocity Tracking", desc: "See exactly where deals stall, which rep closes fastest, and which channels produce the best outcomes." },
   { icon: BarChart2, title: "Conversion Analytics", desc: "Full-funnel reporting from first touch to closed revenue. Understand your numbers, not just your feelings." },
@@ -45,9 +45,9 @@ export default function RevenueOperations() {
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Revenue Operations — Pipeline Management & Automation",
+            "name": "Revenue Operations, Pipeline Management & Automation",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "description": "Full-funnel revenue operations infrastructure for premium B2B operators. Pipeline stage tracking, deal signal monitoring, CRM automation, and reporting architecture built specifically for your deal cycle — no generic templates.",
+            "description": "Full-funnel revenue operations infrastructure for premium B2B operators. Pipeline stage tracking, deal signal monitoring, CRM automation, and reporting architecture built specifically for your deal cycle, no generic templates.",
             "areaServed": ["Global"],
             "serviceType": ["Revenue Operations", "Pipeline Management", "CRM Automation", "Sales Operations", "Deal Tracking"]
           },
@@ -199,7 +199,7 @@ export default function RevenueOperations() {
         <div className="max-w-3xl mx-auto text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-medium text-white mb-6 tracking-tight">Turn conversations into revenue.</h2>
-            <p className="text-white/50 mb-10">Infrastructure that tracks, follows up, and closes — without manual effort.</p>
+            <p className="text-white/50 mb-10">Infrastructure that tracks, follows up, and closes, without manual effort.</p>
             <Link to="/contact" className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-all">
               Book a Consultation <ArrowRight size={14} />
             </Link>

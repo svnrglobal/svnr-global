@@ -12,7 +12,7 @@ const HOME_SCHEMA = [
     "name": "SVNR Global",
     "url": "https://svnrglobal.com",
     "logo": "https://svnrglobal.com/svnr-logo.svg",
-    "description": "SVNR Global builds bespoke AI-powered client acquisition systems and outreach infrastructure for premium operators — luxury brands, private equity, real estate, and high-ticket B2B.",
+    "description": "SVNR Global builds bespoke AI-powered client acquisition systems and outreach infrastructure for premium operators, luxury brands, private equity, real estate, and high-ticket B2B.",
     "foundingDate": "2019",
     "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
     "contactPoint": { "@type": "ContactPoint", "email": "contact@svnrglobal.com", "contactType": "sales" },
@@ -77,7 +77,7 @@ const HOME_SCHEMA = [
         "name": "What is AI outreach infrastructure?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "AI outreach infrastructure is a system of automated, AI-driven processes that identify ideal clients, craft personalised outreach sequences, qualify leads, and route them into a sales pipeline — without relying on inbound marketing, paid ads, or referrals."
+          "text": "AI outreach infrastructure is a system of automated, AI-driven processes that identify ideal clients, craft personalised outreach sequences, qualify leads, and route them into a sales pipeline, without relying on inbound marketing, paid ads, or referrals."
         }
       },
       {
@@ -85,7 +85,7 @@ const HOME_SCHEMA = [
         "name": "How does SVNR Global generate clients for premium brands?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SVNR Global combines deep sector research, AI-enriched prospect data, and hyper-personalised multi-channel outreach to connect premium operators directly with their ideal buyers, investors, or partners — typically within 30–60 days of engagement."
+          "text": "SVNR Global combines deep sector research, AI-enriched prospect data, and hyper-personalised multi-channel outreach to connect premium operators directly with their ideal buyers, investors, or partners, typically within 30–60 days of engagement."
         }
       },
       {
@@ -117,7 +117,7 @@ const HOME_SCHEMA = [
         "name": "Is SVNR Global a lead generation agency?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "SVNR Global operates as a B2B client acquisition agency, which goes beyond traditional lead generation. Rather than delivering raw lists or unqualified leads, SVNR builds the full outreach infrastructure — research, messaging, sequencing, and follow-up — and delivers warm, qualified conversations with decision-makers directly to the client."
+          "text": "SVNR Global operates as a B2B client acquisition agency, which goes beyond traditional lead generation. Rather than delivering raw lists or unqualified leads, SVNR builds the full outreach infrastructure, research, messaging, sequencing, and follow-up, and delivers warm, qualified conversations with decision-makers directly to the client."
         }
       },
       {
@@ -198,7 +198,7 @@ export default function Home() {
           onCanPlay={() => setVideoReady(true)}
         />
         <div className="video-overlay fixed inset-0 z-[1]" />
-        {/* Dark intro overlay — fades out when video plays */}
+        {/* Dark intro overlay, fades out when video plays */}
         <motion.div
           className="fixed inset-0 z-[5] bg-[#0A0A0B]"
           initial={{ opacity: 1 }}
@@ -286,7 +286,7 @@ export default function Home() {
         </motion.div>
       </section>
 
-      {/* SEO: keyword-rich intro — visible to crawlers and readers */}
+      {/* SEO: keyword-rich intro, visible to crawlers and readers */}
       <section className="relative z-10 bg-[#0A0A0B] py-10 md:py-14 px-6">
         <div className="max-w-4xl mx-auto text-center">
           <motion.p
@@ -295,12 +295,12 @@ export default function Home() {
             viewport={{ once: true }}
             className="text-white/45 text-sm md:text-base leading-relaxed"
           >
-            SVNR Global is a <strong className="text-white/70 font-normal">B2B client acquisition agency</strong> based in New Delhi, India — operating globally across luxury, real estate, private equity, and high-ticket B2B. We design and run <strong className="text-white/70 font-normal">AI-powered outbound systems</strong> that identify ideal buyers and decision-makers, build multi-channel outreach sequences, and deliver warm, qualified conversations to premium operators — without paid advertising, content marketing, or referral dependency.
+            SVNR Global is a <strong className="text-white/70 font-normal">B2B client acquisition agency</strong> based in New Delhi, India, operating globally across luxury, real estate, private equity, and high-ticket B2B. We design and run <strong className="text-white/70 font-normal">AI-powered outbound systems</strong> that identify ideal buyers and decision-makers, build multi-channel outreach sequences, and deliver warm, qualified conversations to premium operators, without paid advertising, content marketing, or referral dependency.
           </motion.p>
         </div>
       </section>
 
-      {/* INFRASTRUCTURE LOGOS — auto-scroll marquee */}
+      {/* INFRASTRUCTURE LOGOS, auto-scroll marquee */}
       <section className="relative z-10 bg-[#0A0A0B] py-16 overflow-hidden">
         <motion.p
           initial={{ opacity: 0 }}

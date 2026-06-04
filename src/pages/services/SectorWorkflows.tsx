@@ -15,9 +15,9 @@ const beforeAfter = [
 ];
 
 const capabilities = [
-  { icon: Settings, title: "Process Audit", desc: "We map every manual step in your current operations — quoting, follow-up, onboarding, reporting — and identify what to automate first." },
+  { icon: Settings, title: "Process Audit", desc: "We map every manual step in your current operations, quoting, follow-up, onboarding, reporting, and identify what to automate first." },
   { icon: Workflow, title: "Flow Design", desc: "Custom automation flows built specifically for how your sector operates. No generic templates. No mis-fit processes." },
-  { icon: Zap, title: "Integration Build", desc: "We wire together your existing tools — CRM, email, communication channels, data sources — into flows that run without human input." },
+  { icon: Zap, title: "Integration Build", desc: "We wire together your existing tools, CRM, email, communication channels, data sources, into flows that run without human input." },
   { icon: Database, title: "Live Deployment", desc: "Flows deployed, tested, and handed over with documentation. Your team trains in hours, not weeks." },
 ];
 
@@ -35,15 +35,15 @@ export default function SectorWorkflows() {
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Sector Workflows — Industry-Specific Automation | SVNR Global"
-        description="Operations built for your vertical. We build workflow infrastructure specific to how your business actually runs — not generic automation."
+        description="Operations built for your vertical. We build workflow infrastructure specific to how your business actually runs, not generic automation."
         canonical="/services/sector-workflows"
         schema={[
           {
             "@context": "https://schema.org",
             "@type": "Service",
-            "name": "Sector Workflows — Industry-Specific Automation",
+            "name": "Sector Workflows, Industry-Specific Automation",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "description": "Custom AI workflow automation built for specific industry verticals — luxury brands, wealth management, real estate, maritime, and professional services. Not generic automation. Systems built around how your business actually operates.",
+            "description": "Custom AI workflow automation built for specific industry verticals, luxury brands, wealth management, real estate, maritime, and professional services. Not generic automation. Systems built around how your business actually operates.",
             "areaServed": ["Global"],
             "serviceType": ["Sector Workflow Automation", "Industry-Specific AI Automation", "Business Process Automation", "Operational AI Systems"]
           },
@@ -105,12 +105,12 @@ export default function SectorWorkflows() {
           <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The Problem</p>
             <h2 className="text-4xl font-medium text-white tracking-tight mb-6">Generic automation breaks in specialist businesses.</h2>
-            <p className="text-white/60 leading-relaxed mb-6">A rug house quotes differently than a PE firm. A wealth boutique onboards clients differently than a maritime operator. Generic workflow tools give you the building blocks. We build the actual structure — specific to your vertical, your operating logic, and how your clients expect to be handled.</p>
+            <p className="text-white/60 leading-relaxed mb-6">A rug house quotes differently than a PE firm. A wealth boutique onboards clients differently than a maritime operator. Generic workflow tools give you the building blocks. We build the actual structure, specific to your vertical, your operating logic, and how your clients expect to be handled.</p>
             <p className="text-white/60 leading-relaxed">70% process time reduction. 0.2% error rate. 3 FTEs worth of manual work returned to your team for higher-value activities.</p>
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }}>
             <div className="liquid-glass rounded-3xl p-8">
-              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Process hours — before vs. after</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Process hours, before vs. after</p>
               <div className="h-48">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={beforeAfter}>
@@ -187,7 +187,7 @@ export default function SectorWorkflows() {
         <div className="max-w-4xl mx-auto text-center liquid-glass rounded-3xl p-12 md:p-16">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tight mb-6">Ready to reclaim the time your team spends on process?</h2>
-            <p className="text-white/50 mb-8 max-w-xl mx-auto">We audit your current workflows, design the automation, and deploy it — specific to your vertical.</p>
+            <p className="text-white/50 mb-8 max-w-xl mx-auto">We audit your current workflows, design the automation, and deploy it, specific to your vertical.</p>
             <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black text-sm font-medium tracking-wide hover:bg-white/90 transition-all">
               Book a workflow audit <ArrowRight size={14} />
             </Link>

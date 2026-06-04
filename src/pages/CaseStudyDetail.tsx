@@ -210,7 +210,7 @@ export default function CaseStudyDetail() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               {cs.images[0] && (
-                <SectionImage src={cs.images[0]} alt={`${cs.industry} — overview`} className="h-[340px] md:h-[440px]" />
+                <SectionImage src={cs.images[0]} alt={`${cs.industry}, overview`} className="h-[340px] md:h-[440px]" />
               )}
             </motion.div>
           </div>
@@ -221,7 +221,7 @@ export default function CaseStudyDetail() {
       <section className="relative z-10 bg-[#0A0A0B] py-20 md:py-28 px-6 border-t border-white/5">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
-            {/* Image 2 — left */}
+            {/* Image 2, left */}
             <motion.div
               className="lg:col-span-2 order-2 lg:order-1"
               initial={{ opacity: 0, x: -30 }}
@@ -230,7 +230,7 @@ export default function CaseStudyDetail() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               {cs.images[1] && (
-                <SectionImage src={cs.images[1]} alt={`${cs.industry} — challenges`} className="h-[340px] md:h-[460px]" />
+                <SectionImage src={cs.images[1]} alt={`${cs.industry}, challenges`} className="h-[340px] md:h-[460px]" />
               )}
             </motion.div>
             {/* Challenges */}
@@ -238,7 +238,7 @@ export default function CaseStudyDetail() {
               <motion.div initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                 <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-6">The Challenges</p>
                 <h2 className="text-2xl md:text-3xl font-medium text-white tracking-tight mb-8 leading-tight">
-                  What wasn't working — and why it mattered.
+                  What wasn't working, and why it mattered.
                 </h2>
                 <div className="space-y-5">
                   {cs.challenges.map((c, i) => (
@@ -280,7 +280,7 @@ export default function CaseStudyDetail() {
                 Five phases.<br />One unified infrastructure.
               </h2>
               <p className="text-white/40 text-sm max-w-sm leading-relaxed">
-                Every engagement follows a structured deployment sequence — from intelligence build to live pipeline — adapted precisely for your sector and market.
+                Every engagement follows a structured deployment sequence, from intelligence build to live pipeline, adapted precisely for your sector and market.
               </p>
             </div>
           </motion.div>
@@ -322,7 +322,7 @@ export default function CaseStudyDetail() {
                 </div>
               </div>
             </div>
-            {/* Image 3 — right */}
+            {/* Image 3, right */}
             <motion.div
               className="lg:col-span-2"
               initial={{ opacity: 0, x: 30 }}
@@ -332,10 +332,10 @@ export default function CaseStudyDetail() {
             >
               <div className="sticky top-28 space-y-4">
                 {cs.images[2] && (
-                  <SectionImage src={cs.images[2]} alt={`${cs.industry} — solution`} className="h-[260px] md:h-[300px]" objectPosition="top" />
+                  <SectionImage src={cs.images[2]} alt={`${cs.industry}, solution`} className="h-[260px] md:h-[300px]" objectPosition="top" />
                 )}
                 {cs.images[3] && (
-                  <SectionImage src={cs.images[3]} alt={`${cs.industry} — implementation`} className="h-[200px] md:h-[230px]" objectPosition="top" />
+                  <SectionImage src={cs.images[3]} alt={`${cs.industry}, implementation`} className="h-[200px] md:h-[230px]" objectPosition="top" />
                 )}
               </div>
             </motion.div>
@@ -365,7 +365,7 @@ export default function CaseStudyDetail() {
                     return (
                       <CapabilityBar
                         key={i}
-                        label={`${r.value} — ${r.label}`}
+                        label={`${r.value}, ${r.label}`}
                         value={barVal}
                         delay={i * 0.15}
                         gradient={cs.gradient}
@@ -413,7 +413,7 @@ export default function CaseStudyDetail() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
-                  <SectionImage src={cs.images[4]} alt={`${cs.industry} — results`} className="h-[220px] md:h-[260px]" objectPosition="top" />
+                  <SectionImage src={cs.images[4]} alt={`${cs.industry}, results`} className="h-[220px] md:h-[260px]" objectPosition="top" />
                 </motion.div>
               )}
             </div>
@@ -478,7 +478,7 @@ export default function CaseStudyDetail() {
               transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
             >
               {cs.images[5] && (
-                <SectionImage src={cs.images[5]} alt={`${cs.industry} — outcome`} className="h-[280px] md:h-[340px]" />
+                <SectionImage src={cs.images[5]} alt={`${cs.industry}, outcome`} className="h-[280px] md:h-[340px]" />
               )}
               <div
                 className="p-6 rounded-2xl"
@@ -493,7 +493,7 @@ export default function CaseStudyDetail() {
         </div>
       </section>
 
-      {/* ── SECTION 6: FAQ — AEO ── */}
+      {/* ── SECTION 6: FAQ, AEO ── */}
       <section className="relative z-10 bg-[#0A0A0B] py-20 px-6 border-t border-white/5">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16 items-start">
@@ -637,7 +637,7 @@ export default function CaseStudyDetail() {
               Ready to build this<br />infrastructure for your business?
             </h2>
             <p className="text-white/40 mb-10 text-sm leading-relaxed max-w-xl mx-auto">
-              Book a call. We'll map what this looks like for your sector, your market, and your specific acquisition challenge — with no generic frameworks.
+              Book a call. We'll map what this looks like for your sector, your market, and your specific acquisition challenge, with no generic frameworks.
             </p>
             <Link
               to="/contact"

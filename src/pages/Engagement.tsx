@@ -20,7 +20,7 @@ const included = [
   {
     category: "Outreach & Execution",
     items: [
-      "Custom outreach sequences — email and LinkedIn",
+      "Custom outreach sequences, email and LinkedIn",
       "Personalisation at the individual level (not merge-tag personalisation)",
       "Multi-touch follow-up logic",
       "Response handling and conversation management",
@@ -49,19 +49,19 @@ const included = [
 const faqs = [
   {
     q: "Do you publish fixed prices?",
-    a: "No. Every SVNR engagement is scoped and priced around the specific client — the sector, the target geography, the complexity of the market, and the scope of infrastructure required. Publishing a flat rate would be dishonest: a luxury rug brand entering the UK trade market requires a fundamentally different build than a private equity firm sourcing proprietary deal flow across Europe.",
+    a: "No. Every SVNR engagement is scoped and priced around the specific client, the sector, the target geography, the complexity of the market, and the scope of infrastructure required. Publishing a flat rate would be dishonest: a luxury rug brand entering the UK trade market requires a fundamentally different build than a private equity firm sourcing proprietary deal flow across Europe.",
   },
   {
     q: "How long before we see results?",
-    a: "Most clients see first qualified conversations within 30–60 days of infrastructure deployment. The first 2–3 weeks are build and calibration. From week 4, outreach is live. The pipeline compounds over time — month three typically outperforms month one by a significant margin.",
+    a: "Most clients see first qualified conversations within 30–60 days of infrastructure deployment. The first 2–3 weeks are build and calibration. From week 4, outreach is live. The pipeline compounds over time, month three typically outperforms month one by a significant margin.",
   },
   {
     q: "Is this a campaign or an ongoing retainer?",
-    a: "Neither. It is infrastructure. We build systems that run continuously — not campaigns with an end date, and not a retainer for 'managed outreach.' The distinction matters: campaigns stop when the budget runs out. Infrastructure compounds as long as it operates.",
+    a: "Neither. It is infrastructure. We build systems that run continuously, not campaigns with an end date, and not a retainer for 'managed outreach.' The distinction matters: campaigns stop when the budget runs out. Infrastructure compounds as long as it operates.",
   },
   {
     q: "How many clients do you work with at once?",
-    a: "A small number. We do not scale by volume — we scale by depth of engagement per client. Every client's infrastructure is built specifically for them. Taking on too many clients simultaneously would compromise that. We are selective about who we engage with.",
+    a: "A small number. We do not scale by volume, we scale by depth of engagement per client. Every client's infrastructure is built specifically for them. Taking on too many clients simultaneously would compromise that. We are selective about who we engage with.",
   },
   {
     q: "What makes each engagement bespoke?",
@@ -69,7 +69,7 @@ const faqs = [
   },
   {
     q: "Do we need to be involved day-to-day?",
-    a: "No. Once the infrastructure is deployed and calibrated, it runs without your daily input. You receive a weekly briefing and a live dashboard. When a prospect reaches a warm handoff point, we surface them to you with full context. Your time is spent closing — not prospecting.",
+    a: "No. Once the infrastructure is deployed and calibrated, it runs without your daily input. You receive a weekly briefing and a live dashboard. When a prospect reaches a warm handoff point, we surface them to you with full context. Your time is spent closing, not prospecting.",
   },
 ];
 
@@ -78,7 +78,7 @@ const INFRA_TIERS = [
     id: "foundation",
     name: "Foundation",
     tagline: "For operators building a pipeline from scratch.",
-    description: "A full end-to-end outreach infrastructure built around your sector and ideal client profile. Designed for operators who have not yet systematised acquisition — or who are entering a new market.",
+    description: "A full end-to-end outreach infrastructure built around your sector and ideal client profile. Designed for operators who have not yet systematised acquisition, or who are entering a new market.",
     note: "Typically deployed within 2–3 weeks of engagement start.",
     gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
     color: "#667eea",
@@ -93,7 +93,7 @@ const INFRA_TIERS = [
     ],
     includes: [
       "Ideal client profile definition and validation",
-      "Market mapping — every qualifying company in your geography",
+      "Market mapping, every qualifying company in your geography",
       "Prospect database build and AI enrichment (50+ data signals)",
       "Custom outreach sequences (email + LinkedIn)",
       "Multi-touch follow-up logic and response handling",
@@ -120,9 +120,9 @@ const INFRA_TIERS = [
     ],
     includes: [
       "All Foundation deliverables",
-      "Multi-market or multi-segment outreach — simultaneously active",
+      "Multi-market or multi-segment outreach, simultaneously active",
       "Custom AI agents per market or persona (built and trained to your sector)",
-      "AI receptionist layer — qualifies and routes inbound responses 24/7",
+      "AI receptionist layer, qualifies and routes inbound responses 24/7",
       "CRM integration and automated lead routing",
       "Competitive intelligence briefings",
       "Monthly strategy session with full pipeline analysis",
@@ -132,7 +132,7 @@ const INFRA_TIERS = [
     id: "fullstack",
     name: "Full Stack",
     tagline: "For operators who want the entire acquisition layer managed.",
-    description: "The complete SVNR infrastructure stack. Custom agents, custom dashboards, custom visual design, intelligence research, channel partnership development, and revenue operations — all running as a unified system.",
+    description: "The complete SVNR infrastructure stack. Custom agents, custom dashboards, custom visual design, intelligence research, channel partnership development, and revenue operations, all running as a unified system.",
     note: "Limited engagements available. We work with a small number of clients at this level at any one time.",
     gradient: "linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)",
     color: "#4facfe",
@@ -148,10 +148,10 @@ const INFRA_TIERS = [
     includes: [
       "All Infrastructure deliverables",
       "Custom-designed visual dashboard (branded to your company)",
-      "Intelligence research — deep dossiers on priority target accounts",
+      "Intelligence research, deep dossiers on priority target accounts",
       "Channel and partnership development outreach",
       "Deal flow sourcing (for PE/family office clients)",
-      "Revenue operations layer — pipeline forecasting and conversion tracking",
+      "Revenue operations layer, pipeline forecasting and conversion tracking",
       "Dedicated point of contact with weekly briefings",
       "Quarterly infrastructure review and expansion planning",
     ],
@@ -199,7 +199,7 @@ function DynamicInfrastructure() {
           </p>
         </motion.div>
 
-        {/* Tab selector — styled like reference image */}
+        {/* Tab selector, styled like reference image */}
         <div className="flex items-center gap-0 mb-8 rounded-2xl overflow-hidden p-1" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
           {INFRA_TIERS.map((t, i) => (
             <button
@@ -231,7 +231,7 @@ function DynamicInfrastructure() {
             transition={{ duration: 0.35 }}
             className="grid grid-cols-1 lg:grid-cols-2 gap-6"
           >
-            {/* Left — capability bars */}
+            {/* Left, capability bars */}
             <div className="p-6 md:p-8 rounded-3xl" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
               <div className="flex items-center justify-between mb-6">
                 <div>
@@ -256,7 +256,7 @@ function DynamicInfrastructure() {
               <p className="text-[10px] text-white/25 italic mt-5">{tier.note}</p>
             </div>
 
-            {/* Right — includes + description */}
+            {/* Right, includes + description */}
             <div className="flex flex-col gap-4">
               <div className="p-6 md:p-8 rounded-3xl flex-1" style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.07)" }}>
                 <p className="text-white/55 text-sm leading-relaxed mb-6">{tier.description}</p>
@@ -325,7 +325,7 @@ export default function Engagement() {
           "@type": "WebPage",
           "name": "SVNR Global Engagement Model",
           "url": "https://svnrglobal.com/engagement",
-          "description": "SVNR Global's bespoke engagement model — custom AI agents, outreach infrastructure, and reporting dashboards built specifically for each client.",
+          "description": "SVNR Global's bespoke engagement model, custom AI agents, outreach infrastructure, and reporting dashboards built specifically for each client.",
         }}
       />
 
@@ -350,7 +350,7 @@ export default function Engagement() {
             className="text-white/50 text-lg max-w-2xl mx-auto"
           >
             No shared templates. No recycled agents. No generic dashboards.
-            Your infrastructure is built specifically for your market — from the first data point to the final dashboard.
+            Your infrastructure is built specifically for your market, from the first data point to the final dashboard.
           </motion.p>
         </div>
       </VideoHero>
@@ -430,9 +430,9 @@ export default function Engagement() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-6"
           >
             {[
-              { label: "Custom AI agents", desc: "Built and trained per client — never shared or recycled across engagements." },
+              { label: "Custom AI agents", desc: "Built and trained per client, never shared or recycled across engagements." },
               { label: "Custom dashboards", desc: "Designed to your brand and reporting needs. Not a generic CRM view." },
-              { label: "Custom visual design", desc: "Every deliverable — from sequence templates to client-facing assets — is designed specifically for you." },
+              { label: "Custom visual design", desc: "Every deliverable, from sequence templates to client-facing assets, is designed specifically for you." },
             ].map((item, i) => (
               <motion.div
                 key={item.label}

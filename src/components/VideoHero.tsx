@@ -37,7 +37,7 @@ export default function VideoHero({ src, children, minHeight = "min-h-screen" }:
           if (data.fatal) setReady(true); // reveal content on fatal HLS error
         });
       } else {
-        // HLS not supported at all — reveal immediately
+        // HLS not supported at all, reveal immediately
         setReady(true);
       }
     } else {
@@ -67,7 +67,7 @@ export default function VideoHero({ src, children, minHeight = "min-h-screen" }:
       />
       {/* Permanent gradient overlay */}
       <div className="video-overlay absolute inset-0 z-[1]" />
-      {/* Dark intro overlay — fades out once video is playing */}
+      {/* Dark intro overlay, fades out once video is playing */}
       <motion.div
         className="absolute inset-0 z-[5] bg-[#0A0A0B]"
         initial={{ opacity: 1 }}

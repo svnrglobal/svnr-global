@@ -21,7 +21,7 @@ const geoData = [
 ];
 
 const services = [
-  { slug: "client-acquisition", label: "Client Acquisition", desc: "Systematic outreach to A&D studios and trade buyers in new geographies — mapped, researched, and personalised." },
+  { slug: "client-acquisition", label: "Client Acquisition", desc: "Systematic outreach to A&D studios and trade buyers in new geographies, mapped, researched, and personalised." },
   { slug: "brand-outreach", label: "Brand Outreach", desc: "Messages written at the level of the interior designer or architect you are trying to reach. No templates." },
   { slug: "channel-partnership", label: "Channel Partnership", desc: "Structured programme to find and activate the right showrooms, specifiers, and trade partners in your target markets." },
   { slug: "intelligence-research", label: "Intelligence Research", desc: "A&D community mapped by city, project type, and material history. Know who to reach before you reach them." },
@@ -29,7 +29,7 @@ const services = [
 
 const insights = [
   "The A&D community is the primary distribution channel for luxury rug brands. Interior designers specify product. Their specification drives purchase. The relationship is a wholesale relationship, not a consumer marketing one.",
-  "Geographic gaps in distribution are almost always the result of opportunistic rather than systematic development. A brand strong in Germany but absent in the Netherlands has not failed — it has simply not yet reached that market with a structured programme.",
+  "Geographic gaps in distribution are almost always the result of opportunistic rather than systematic development. A brand strong in Germany but absent in the Netherlands has not failed, it has simply not yet reached that market with a structured programme.",
   "Trade fairs are amplifiers, not acquisition channels. The brand that arrives at Domotex with 10 warm relationships already in place has a fundamentally different experience than the brand arriving cold.",
   "The A&D community operates on its own timeline, not the trade fair calendar. The designer specifying for a hospitality project in June is not waiting for January to find a new supplier.",
 ];
@@ -47,7 +47,7 @@ export default function LuxuryRugs() {
             "@type": "Service",
             "name": "Luxury Rugs & Home Textiles B2B Distribution Development",
             "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-            "description": "Systematic A&D community outreach and trade buyer acquisition for luxury rug brands and handmade carpet manufacturers entering new international markets. 13 qualified B2B enquiries in 14 days — without trade fairs.",
+            "description": "Systematic A&D community outreach and trade buyer acquisition for luxury rug brands and handmade carpet manufacturers entering new international markets. 13 qualified B2B enquiries in 14 days, without trade fairs.",
             "areaServed": ["Global", "Europe", "Germany", "United Kingdom", "United States", "UAE", "Japan"],
             "serviceType": ["Luxury Rug Distribution", "A&D Community Outreach", "Trade Buyer Acquisition", "New Market Entry"]
           },
@@ -117,7 +117,7 @@ export default function LuxuryRugs() {
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="liquid-glass rounded-3xl p-8 md:p-12">
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Proof</p>
-            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">A German carpet house. Thirteen qualified B2B enquiries in under two weeks — from interior designers and trade buyers across four geographies the brand had no prior presence in.</p>
+            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">A German carpet house. Thirteen qualified B2B enquiries in under two weeks, from interior designers and trade buyers across four geographies the brand had no prior presence in.</p>
           </motion.div>
         </div>
       </section>
@@ -136,7 +136,7 @@ export default function LuxuryRugs() {
           </motion.div>
           <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="space-y-6">
             <div className="liquid-glass rounded-3xl p-8">
-              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Enquiry trajectory — first 6 weeks</p>
+              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Enquiry trajectory, first 6 weeks</p>
               <div className="h-44">
                 <ResponsiveContainer width="100%" height="100%">
                   <AreaChart data={enquiryData}>

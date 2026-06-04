@@ -596,6 +596,38 @@ export default function CaseStudyDetail() {
         </div>
       </section>
 
+      {/* ── Related Sector & Services ── */}
+      {(cs.relatedSector || cs.relatedServices) && (
+        <section className="relative z-10 bg-[#0A0A0B] py-12 px-6 border-t border-white/5">
+          <div className="max-w-4xl mx-auto">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-6">Explore Further</p>
+            <div className="flex flex-wrap gap-3">
+              {cs.relatedSector && (
+                <Link
+                  to={`/sectors/${cs.relatedSector.slug}`}
+                  className="flex items-center gap-2 px-5 py-3 rounded-full border border-white/15 text-white/60 hover:text-white hover:border-white/40 transition-all text-sm"
+                >
+                  <span className="text-[9px] uppercase tracking-widest text-white/30">Industry</span>
+                  {cs.relatedSector.label}
+                  <ArrowRight size={12} />
+                </Link>
+              )}
+              {cs.relatedServices?.map((svc) => (
+                <Link
+                  key={svc.slug}
+                  to={`/services/${svc.slug}`}
+                  className="flex items-center gap-2 px-5 py-3 rounded-full border border-white/15 text-white/60 hover:text-white hover:border-white/40 transition-all text-sm"
+                >
+                  <span className="text-[9px] uppercase tracking-widest text-white/30">Service</span>
+                  {svc.label}
+                  <ArrowRight size={12} />
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── CTA ── */}
       <section className="relative z-10 bg-[#0A0A0B] py-20 px-6 border-t border-white/5">
         <div className="max-w-3xl mx-auto text-center">

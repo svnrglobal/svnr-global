@@ -153,7 +153,7 @@ export default function WealthManagement() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           {["/sectors/wealth-photo-1444653614773-995cb1ef9efa.avif", "/sectors/wealth-photo-1454165804606-c3d57bc86b40.avif"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Wealth management" />
+              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Wealth management UHNW client acquisition and trigger-driven outreach" />
             </motion.div>
           ))}
         </div>

@@ -147,7 +147,7 @@ export default function B2BLuxury() {
         <div className="max-w-7xl mx-auto grid grid-cols-3 gap-4">
           {["/sectors/b2b-luxury-photo-1514179974491-a7885781ed87.avif", "/sectors/b2b-luxury-photo-1598452963314-b09f397a5c48.avif", "/sectors/b2b-luxury-premium_photo-1724862979245-71e659b98366.avif"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-square">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="B2B luxury" />
+              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="B2B luxury brand client acquisition and trade buyer outreach" />
             </motion.div>
           ))}
         </div>

@@ -174,10 +174,10 @@ export default function LuxuryRugs() {
       <section className="relative z-10 bg-[#0A0A0B] py-12 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-            <img src="/sectors/luxury-rugs-photo-1600166930985-a86f7295dd99.avif" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Luxury rugs" />
+            <img src="/sectors/luxury-rugs-photo-1600166930985-a86f7295dd99.avif" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Luxury rug and carpet brand distribution strategy for new markets" />
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-            <img src="/sectors/luxury-rugs-premium_photo-1664114727312-cf38fd519315.avif" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Premium textiles" />
+            <img src="/sectors/luxury-rugs-premium_photo-1664114727312-cf38fd519315.avif" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Premium handmade textile trade buyer outreach and stockist acquisition" />
           </motion.div>
         </div>
       </section>

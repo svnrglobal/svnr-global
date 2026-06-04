@@ -147,7 +147,7 @@ export default function ProfessionalServices() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           {["/sectors/professional-A015474D-5AE6-4690-B0C0-35613EAEE95D.JPG", "/sectors/professional-IMG_3168.JPG"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Professional services" />
+              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Professional services firm client acquisition and pre-RFP outreach" />
             </motion.div>
           ))}
         </div>

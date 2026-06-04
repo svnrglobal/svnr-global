@@ -37,6 +37,8 @@ export interface CaseStudy {
   seoDescription: string;
   keywords: string[];
   faqs: { q: string; a: string }[];
+  relatedSector?: { label: string; slug: string };
+  relatedServices?: { label: string; slug: string }[];
 }
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -96,6 +98,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       { q: "What was the ROI of the 8-month engagement?", a: "The brokerage generated $32.8M in qualified pipeline with a 41% increase in closed transaction value and a 37% increase in average deal size — significantly outperforming the previous referral-dependent model." },
       { q: "Can SVNR replicate this for smaller property firms?", a: "Yes. The infrastructure is scalable from boutique agencies to multi-office operations. SVNR adapts the system to your team size, markets, and client profiles." },
     ],
+    relatedSector: { label: "Premium Real Estate", slug: "premium-real-estate" },
+    relatedServices: [
+      { label: "Client Acquisition", slug: "client-acquisition" },
+      { label: "AI Receptionist", slug: "ai-receptionist" },
+    ],
   },
   {
     slug: "hotel-direct-bookings",
@@ -151,6 +158,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       { q: "What did the AI booking concierge actually do?", a: "It operated 24/7, answering booking questions, recommending room types, handling availability requests, and scheduling consultations for weddings and corporate events — all without staff involvement." },
       { q: "How long did the 287% direct booking increase take to achieve?", a: "The results were measured at the 10-month mark. Meaningful improvement in direct bookings was visible within the first 60–90 days as the new infrastructure came online." },
       { q: "Can a boutique hotel implement this system?", a: "Yes. The infrastructure scales from single properties to multi-location groups. The approach is adapted to your property type, target guest segments, and booking channels." },
+    ],
+    relatedSector: { label: "Professional Services", slug: "professional-services" },
+    relatedServices: [
+      { label: "AI Receptionist", slug: "ai-receptionist" },
+      { label: "Brand Outreach", slug: "brand-outreach" },
     ],
   },
   {
@@ -209,6 +221,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       { q: "What does a $480M pipeline mean in practice?", a: "These were qualified prospects with verified investable assets in the firm's target range ($2M–$100M+), who had expressed genuine interest in advisory services and been matched to appropriate advisors." },
       { q: "Is this approach suitable for independent financial advisors?", a: "The intelligence-led approach works for firms of all sizes. The infrastructure is adapted to your AUM target, client profile, and geographic focus." },
     ],
+    relatedSector: { label: "Wealth Management", slug: "wealth-management" },
+    relatedServices: [
+      { label: "Client Acquisition", slug: "client-acquisition" },
+      { label: "Intelligence Research", slug: "intelligence-research" },
+    ],
   },
   {
     slug: "law-firm-consultations",
@@ -264,6 +281,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       { q: "Did this approach work for all practice areas?", a: "Yes. The system was configured for M&A, corporate law, commercial contracts, international transactions, joint ventures, and regulatory advisory — each with tailored qualification criteria." },
       { q: "How long did it take to see the first 300+ consultations?", a: "Meaningful consultation volume increases were visible within the first 60 days of deployment. The 1,200 consultation figure represents the cumulative 8-month result." },
       { q: "Is this relevant for smaller law firms with fewer than 20 lawyers?", a: "Absolutely. The infrastructure is equally effective for boutique practices — often more so, because smaller firms benefit most from eliminating administrative overhead." },
+    ],
+    relatedSector: { label: "Professional Services", slug: "professional-services" },
+    relatedServices: [
+      { label: "Client Acquisition", slug: "client-acquisition" },
+      { label: "AI Receptionist", slug: "ai-receptionist" },
     ],
   },
   {
@@ -322,6 +344,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       { q: "Was this implemented across all six locations simultaneously?", a: "Yes. The system was deployed organisation-wide to create consistency in patient experience and ensure all locations benefited from the same infrastructure." },
       { q: "Does this work for single-location dental practices?", a: "Yes. The infrastructure is sized to your clinic's inquiry volume and patient capacity. Single-location practices often see faster results because the implementation is simpler." },
     ],
+    relatedSector: { label: "Professional Services", slug: "professional-services" },
+    relatedServices: [
+      { label: "AI Receptionist", slug: "ai-receptionist" },
+      { label: "Client Acquisition", slug: "client-acquisition" },
+    ],
   },
   {
     slug: "private-healthcare-network",
@@ -377,6 +404,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       { q: "Did the system integrate with existing hospital management software?", a: "Yes. SVNR built integration layers that connected the AI navigator with existing scheduling, CRM, and clinical systems — without requiring the hospital to replace its core infrastructure." },
       { q: "How did you handle patient data privacy requirements?", a: "All patient data processing was implemented in compliance with applicable healthcare privacy regulations. The system was designed with data minimisation and access controls as primary requirements." },
       { q: "Is this relevant for smaller private clinics?", a: "Yes. The core patient navigation and scheduling automation components are effective for single-location clinics handling more than 100 inquiries per week." },
+    ],
+    relatedSector: { label: "Professional Services", slug: "professional-services" },
+    relatedServices: [
+      { label: "AI Receptionist", slug: "ai-receptionist" },
+      { label: "Revenue Operations", slug: "revenue-operations" },
     ],
   },
   {
@@ -434,6 +466,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       { q: "Did SVNR replace the existing distributor relationships?", a: "No. The system supplemented distributors by building direct buyer relationships in markets where distribution was thin or non-existent — giving the manufacturer greater ownership of its demand generation." },
       { q: "How were different languages and markets handled?", a: "Outreach was adapted for local market context and cultural norms. The system operated in English as the primary B2B trade language, with market-specific adaptations where relevant." },
     ],
+    relatedSector: { label: "B2B Luxury Brands", slug: "b2b-luxury-brands" },
+    relatedServices: [
+      { label: "Intelligence Research", slug: "intelligence-research" },
+      { label: "Brand Outreach", slug: "brand-outreach" },
+    ],
   },
   {
     slug: "ecommerce-dtc-revenue",
@@ -488,6 +525,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       { q: "What does predictive customer segmentation actually do?", a: "It automatically categorises customers based on their purchase behaviour and predicted future value — so VIP customers get loyalty treatment, at-risk customers get re-engagement offers, and first-time buyers get onboarding sequences. Each segment gets what it needs." },
       { q: "How long does it take to see meaningful results for an e-commerce brand?", a: "Repeat purchase rate improvements are typically visible within 60–90 days of retention infrastructure going live. The 340% revenue figure represents the cumulative 10-month result." },
       { q: "Does this work for luxury or premium-only product ranges?", a: "Premium DTC brands benefit the most from this approach — their customers have higher lifetime value potential and respond strongly to personalised, non-discounted retention strategies." },
+    ],
+    relatedSector: { label: "High-Ticket E-Commerce", slug: "high-ticket-ecommerce" },
+    relatedServices: [
+      { label: "Client Acquisition", slug: "client-acquisition" },
+      { label: "Revenue Operations", slug: "revenue-operations" },
     ],
   },
   {
@@ -544,6 +586,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       { q: "How was consultation conversion improved across four different locations?", a: "SVNR standardised the consultation framework across all four clinics — covering patient concerns, desired outcomes, treatment suitability, and financing — so performance was consistent regardless of which practitioner conducted the consultation." },
       { q: "What types of treatments saw the biggest revenue increases?", a: "The 74% increase in high-ticket procedure sales was driven primarily by dental implant equivalents in aesthetics — laser treatments, full-face rejuvenation programs, and hair restoration — where the educational pre-qualification made the biggest difference." },
       { q: "Can this work for a single-location aesthetic clinic?", a: "Yes. The AI concierge and consultation conversion framework are particularly impactful for single locations handling 200+ monthly inquiries — often producing results faster than multi-location implementations." },
+    ],
+    relatedSector: { label: "Professional Services", slug: "professional-services" },
+    relatedServices: [
+      { label: "AI Receptionist", slug: "ai-receptionist" },
+      { label: "Brand Outreach", slug: "brand-outreach" },
     ],
   },
 ];

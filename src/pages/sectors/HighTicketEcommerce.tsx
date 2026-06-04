@@ -147,7 +147,7 @@ export default function HighTicketEcommerce() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           {["/sectors/ecommerce-EA694261-B27B-44EA-9C9C-02F22C06A07B.jpg", "/sectors/ecommerce-IMG_3162.JPG"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="High-ticket ecommerce" />
+              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="High-ticket e-commerce wholesale buyer acquisition and AOV growth" />
             </motion.div>
           ))}
         </div>

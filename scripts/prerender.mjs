@@ -97,6 +97,79 @@ async function saveRoute(page, route) {
   const dir = route === "/" ? DIST : join(DIST, ...route.split("/").filter(Boolean));
   mkdirSync(dir, { recursive: true });
   writeFileSync(join(dir, "index.html"), html, "utf8");
+
+  // Collect metadata (for sitemap + RSS generation)
+  return page.evaluate(() => {
+    const attr = (sel, a) => {
+      const el = document.querySelector(sel);
+      return el ? el.getAttribute(a) : null;
+    };
+    let date = null;
+    document.querySelectorAll('script[type="application/ld+json"]').forEach((s) => {
+      try {
+        const json = JSON.parse(s.textContent);
+        (Array.isArray(json) ? json : [json]).forEach((o) => {
+          if (o && o["@type"] === "Article" && o.datePublished) date = o.datePublished;
+        });
+      } catch { /* ignore */ }
+    });
+    return {
+      title: document.title || null,
+      description: attr('meta[name="description"]', "content"),
+      image: attr('meta[property="og:image"]', "content"),
+      date,
+    };
+  });
+}
+
+const SITE = "https://svnrglobal.com";
+const TODAY = new Date().toISOString().slice(0, 10);
+
+function xmlEsc(s) {
+  return String(s || "")
+    .replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;").replace(/'/g, "&apos;");
+}
+
+function priorityFor(route) {
+  if (route === "/") return "1.0";
+  if (/^\/(about|services|sectors|case-studies|blog|founder|engagement|compare|contact)$/.test(route)) return "0.9";
+  if (route.startsWith("/services/") || route.startsWith("/sectors/")) return "0.8";
+  return "0.7"; // case-study + blog detail pages
+}
+
+function changefreqFor(route) {
+  if (route === "/" || route === "/blog") return "weekly";
+  return "monthly";
+}
+
+function writeSitemap(pages) {
+  const body = pages.map((p) => {
+    const loc = SITE + (p.route === "/" ? "/" : p.route);
+    const lastmod = p.date ? p.date.slice(0, 10) : TODAY;
+    const hasUniqueImage = p.image && !p.image.endsWith("og-image.png");
+    const imageBlock = hasUniqueImage
+      ? `\n    <image:image>\n      <image:loc>${xmlEsc(p.image)}</image:loc>\n      <image:title>${xmlEsc(p.title)}</image:title>\n    </image:image>`
+      : "";
+    return `  <url>\n    <loc>${xmlEsc(loc)}</loc>\n    <lastmod>${lastmod}</lastmod>\n    <changefreq>${changefreqFor(p.route)}</changefreq>\n    <priority>${priorityFor(p.route)}</priority>${imageBlock}\n  </url>`;
+  }).join("\n");
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">\n${body}\n</urlset>\n`;
+  writeFileSync(join(DIST, "sitemap.xml"), xml, "utf8");
+  console.log(`✅ sitemap.xml — ${pages.length} URLs (with image entries)`);
+}
+
+function writeRss(pages) {
+  const posts = pages
+    .filter((p) => p.route.startsWith("/blog/"))
+    .sort((a, b) => new Date(b.date || 0) - new Date(a.date || 0));
+  const items = posts.map((p) => {
+    const link = SITE + p.route;
+    const pub = p.date ? new Date(p.date).toUTCString() : new Date().toUTCString();
+    return `    <item>\n      <title>${xmlEsc(p.title)}</title>\n      <link>${xmlEsc(link)}</link>\n      <guid isPermaLink="true">${xmlEsc(link)}</guid>\n      <pubDate>${pub}</pubDate>\n      <description>${xmlEsc(p.description)}</description>\n    </item>`;
+  }).join("\n");
+  const xml = `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n  <channel>\n    <title>SVNR Global Blog</title>\n    <link>${SITE}/blog</link>\n    <atom:link href="${SITE}/rss.xml" rel="self" type="application/rss+xml" />\n    <description>AI client acquisition and outreach infrastructure insights for premium operators.</description>\n    <language>en</language>\n    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n${items}\n  </channel>\n</rss>\n`;
+  writeFileSync(join(DIST, "rss.xml"), xml, "utf8");
+  console.log(`✅ rss.xml — ${posts.length} blog posts`);
 }
 
 async function main() {
@@ -111,9 +184,11 @@ async function main() {
   await page.setViewport({ width: 1280, height: 900 });
 
   let done = 0;
+  const pages = [];
   for (const route of ROUTES) {
     try {
-      await saveRoute(page, route);
+      const meta = await saveRoute(page, route);
+      pages.push({ route, ...meta });
       done++;
       console.log(`✅  prerendered ${done}/${ROUTES.length} (${route})`);
     } catch (err) {
@@ -123,6 +198,15 @@ async function main() {
 
   await browser.close();
   server.close();
+
+  // Generate sitemap + RSS from the rendered metadata
+  try {
+    writeSitemap(pages);
+    writeRss(pages);
+  } catch (err) {
+    console.warn(`⚠️  sitemap/rss generation failed: ${err.message}`);
+  }
+
   console.log(`\n✅ Prerendering complete — ${done}/${ROUTES.length} pages.\n`);
 }
 

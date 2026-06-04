@@ -31,6 +31,7 @@ export default function Contact() {
         title="Book a Call — Work With SVNR Global"
         description="Ready to build a predictable client acquisition pipeline? Book a call with SVNR Global. We work with a small number of premium operators at any one time."
         canonical="/contact"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Contact", url: "/contact" }]}
         schema={[
           {
             "@context": "https://schema.org",

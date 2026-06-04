@@ -15,6 +15,7 @@ export default function Founder() {
         title="Hamza Omair — Founder, SVNR Global"
         description="Hamza Omair founded SVNR Global to build AI-powered acquisition infrastructure for premium operators. Rooted in manufacturing, built on technology."
         canonical="/founder"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Founder", url: "/founder" }]}
         schema={[
           {
             "@context": "https://schema.org",

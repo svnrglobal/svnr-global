@@ -116,6 +116,7 @@ export default function Services() {
         title="AI Client Acquisition & Outreach Services — SVNR Global"
         description="SVNR Global offers AI-powered client acquisition, AI receptionist, revenue operations, brand outreach, deal flow generation, and sector-specific workflow automation for premium B2B operators."
         canonical="/services"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Services", url: "/services" }]}
         schema={{
           "@context": "https://schema.org",
           "@type": "Service",

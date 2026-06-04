@@ -106,6 +106,7 @@ export default function Blog() {
         title="Blog — AI Outreach, Client Acquisition & B2B Growth Insights | SVNR Global"
         description="Practical playbooks on AI client acquisition, outbound outreach strategy, deal flow generation, and revenue operations for luxury brands, real estate firms, and premium B2B operators."
         canonical="/blog"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }]}
         schema={{
           "@context": "https://schema.org",
           "@type": "Blog",

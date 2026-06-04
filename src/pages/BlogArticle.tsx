@@ -39,6 +39,18 @@ const categoryColors: Record<string, string> = {
   "Strategy": "#FC466B",
 };
 
+// Contextual internal links: each blog category points to its pillar page
+// (boosts topical authority and funnels readers to a conversion page).
+const categoryLinks: Record<string, { label: string; href: string }> = {
+  "Luxury Rugs": { label: "Luxury Rugs & Home Textiles", href: "/sectors/luxury-rugs-home-textiles" },
+  "Premium Real Estate": { label: "Premium Real Estate", href: "/sectors/premium-real-estate" },
+  "Private Equity": { label: "Private Equity & Family Offices", href: "/sectors/private-equity-family-offices" },
+  "Professional Services": { label: "Professional Services", href: "/sectors/professional-services" },
+  "Wealth Management": { label: "Wealth Management", href: "/sectors/wealth-management" },
+  "B2B Platforms": { label: "B2B Luxury Brands", href: "/sectors/b2b-luxury-brands" },
+  "Strategy": { label: "Client Acquisition", href: "/services/client-acquisition" },
+};
+
 const articles: Article[] = [
   {
     slug: "luxury-rug-brand-distribution-strategy",
@@ -1201,6 +1213,26 @@ export default function BlogArticle() {
         </section>
       )}
 
+      {/* CONTEXTUAL PILLAR LINK */}
+      {categoryLinks[article.category] && (
+        <section className="relative z-10 bg-[#0A0A0B] px-6 pb-12">
+          <div className="max-w-3xl mx-auto">
+            <Link
+              to={categoryLinks[article.category].href}
+              className="flex items-center justify-between gap-4 liquid-glass rounded-2xl p-5 sm:p-6 border border-white/8 hover:border-white/20 transition-all group"
+            >
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-1">Related solution</p>
+                <p className="text-white/85 text-sm sm:text-base font-medium group-hover:text-white transition-colors">
+                  How SVNR Global works with {categoryLinks[article.category].label}
+                </p>
+              </div>
+              <ArrowRight size={16} className="text-white/40 group-hover:text-white group-hover:translate-x-1 transition-all shrink-0" />
+            </Link>
+          </div>
+        </section>
+      )}
+
       {/* RELATED ARTICLES */}
       {article.related && article.related.length > 0 && (() => {
         const relatedArticles = article.related!.map(s => articles.find(a => a.slug === s)).filter(Boolean) as Article[];
@@ -1244,10 +1276,10 @@ export default function BlogArticle() {
               H
             </div>
             <div>
-              <p className="text-white font-medium text-sm mb-1">Written by Hamza</p>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-3">Founder, SVNR Global</p>
+              <Link to="/founder" className="text-white font-medium text-sm mb-1 hover:text-white/80 transition-colors inline-block">Written by Hamza Omair</Link>
+              <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-3">Founder &amp; CEO, SVNR Global</p>
               <p className="text-white/50 text-sm leading-relaxed">
-                Hamza leads SVNR Global's client acquisition infrastructure practice. He works with premium operators across luxury, private equity, real estate, and high-ticket B2B to build systematic outreach systems that generate qualified pipeline, without ads, referrals, or trade fair dependency.
+                Hamza Omair leads SVNR Global's client acquisition infrastructure practice. He works with premium operators across luxury, private equity, real estate, and high-ticket B2B to build systematic outreach systems that generate qualified pipeline, without ads, referrals, or trade fair dependency.
               </p>
             </div>
           </motion.div>

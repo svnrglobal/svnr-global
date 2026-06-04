@@ -48,47 +48,8 @@ const HOME_SCHEMA = [
     "@context": "https://schema.org",
     "@type": "WebSite",
     "name": "SVNR Global",
-    "url": "https://svnrglobal.com"
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "name": "SVNR Global Client Testimonials",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "item": {
-          "@type": "Review",
-          "reviewBody": "Thirteen qualified B2B enquiries in under two weeks. We had tried trade fairs for years and never moved this fast into a new market.",
-          "author": { "@type": "Person", "name": "Director, German Carpet House" },
-          "itemReviewed": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "item": {
-          "@type": "Review",
-          "reviewBody": "A qualified principal replied in fourteen minutes. The message read like it came from someone who understood the off-market world we operate in.",
-          "author": { "@type": "Person", "name": "Principal, Zurich Real Estate Firm" },
-          "itemReviewed": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-        }
-      },
-      {
-        "@type": "ListItem",
-        "position": 3,
-        "item": {
-          "@type": "Review",
-          "reviewBody": "They mapped 500 UHNW profiles before we sent a single message. The quality of intelligence was unlike anything we had built internally.",
-          "author": { "@type": "Person", "name": "Managing Partner, Wealth Boutique" },
-          "itemReviewed": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-        }
-      }
-    ]
+    "url": "https://svnrglobal.com",
+    "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
   },
   {
     "@context": "https://schema.org",

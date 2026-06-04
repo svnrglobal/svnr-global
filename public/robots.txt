@@ -1,9 +1,52 @@
+# SVNR Global — https://svnrglobal.com
+# AI overview for assistants: https://svnrglobal.com/llms.txt
+
 User-agent: *
 Allow: /
-
-# Sitemap location
-Sitemap: https://svnrglobal.com/sitemap.xml
-
-# Block irrelevant crawl paths
 Disallow: /src/
 Disallow: /.git/
+
+# Explicitly welcome AI answer & search engines (generative engine optimization)
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+User-agent: Amazonbot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: DuckAssistBot
+Allow: /
+
+User-agent: meta-externalagent
+Allow: /
+
+Sitemap: https://svnrglobal.com/sitemap.xml

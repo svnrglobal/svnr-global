@@ -116,6 +116,7 @@ export default function Sectors() {
         title="Industries We Serve — Luxury, Real Estate, Private Equity & More | SVNR Global"
         description="SVNR Global delivers AI client acquisition systems tailored to luxury rug brands, premium real estate firms, private equity, wealth management, maritime, B2B luxury, and high-ticket e-commerce operators."
         canonical="/sectors"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "Industries", url: "/sectors" }]}
         schema={{
           "@context": "https://schema.org",
           "@type": "CollectionPage",

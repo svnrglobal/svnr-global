@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "motion/react";
-import Hls from "hls.js";
+import type Hls from "hls.js";
 
 interface VideoHeroProps {
   src: string;
@@ -16,6 +16,7 @@ export default function VideoHero({ src, children, minHeight = "min-h-screen" }:
     const video = videoRef.current;
     if (!video) return;
     let hls: Hls | null = null;
+    let cancelled = false;
 
     // Fallback: always reveal content after 4s even if video fails
     const fallbackTimer = setTimeout(() => setReady(true), 4000);
@@ -26,19 +27,25 @@ export default function VideoHero({ src, children, minHeight = "min-h-screen" }:
 
     if (src.includes(".m3u8")) {
       if (video.canPlayType("application/vnd.apple.mpegurl")) {
+        // Safari / iOS: native HLS — no hls.js needed, so it never downloads.
         video.src = src;
         video.play().catch(() => {});
-      } else if (Hls.isSupported()) {
-        hls = new Hls({ autoStartLoad: true, startLevel: -1 });
-        hls.loadSource(src);
-        hls.attachMedia(video);
-        hls.on(Hls.Events.MANIFEST_PARSED, () => { video.play().catch(() => {}); });
-        hls.on(Hls.Events.ERROR, (_evt, data) => {
-          if (data.fatal) setReady(true); // reveal content on fatal HLS error
-        });
       } else {
-        // HLS not supported at all, reveal immediately
-        setReady(true);
+        // Chrome / Firefox / Edge: load hls.js on demand only.
+        import("hls.js").then(({ default: Hls }) => {
+          if (cancelled || !videoRef.current) return;
+          if (Hls.isSupported()) {
+            hls = new Hls({ autoStartLoad: true, startLevel: -1 });
+            hls.loadSource(src);
+            hls.attachMedia(video);
+            hls.on(Hls.Events.MANIFEST_PARSED, () => { video.play().catch(() => {}); });
+            hls.on(Hls.Events.ERROR, (_evt, data) => {
+              if (data.fatal) setReady(true); // reveal content on fatal HLS error
+            });
+          } else {
+            setReady(true); // HLS unsupported, reveal immediately
+          }
+        }).catch(() => setReady(true));
       }
     } else {
       video.src = src;
@@ -46,6 +53,7 @@ export default function VideoHero({ src, children, minHeight = "min-h-screen" }:
     }
 
     return () => {
+      cancelled = true;
       clearTimeout(fallbackTimer);
       video.removeEventListener("playing", onReady);
       video.removeEventListener("canplay", onReady);

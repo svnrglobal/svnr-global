@@ -74,6 +74,7 @@ export default function About() {
         title="About SVNR Global — Bespoke AI Outreach for Premium Operators"
         description="SVNR Global was built to solve one problem: premium operators struggle to reach the right clients at scale. We build AI infrastructure that changes that. New Delhi, globally deployed."
         canonical="/about"
+        breadcrumbs={[{ name: "Home", url: "/" }, { name: "About", url: "/about" }]}
         schema={[
           {
             "@context": "https://schema.org",
@@ -381,6 +382,12 @@ export default function About() {
               </motion.div>
             ))}
           </div>
+          <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mt-10">
+            <Link to="/founder" className="inline-flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors group">
+              Meet the founder, Hamza Omair
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
         </div>
       </section>
 

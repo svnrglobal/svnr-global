@@ -15,7 +15,7 @@ const HOME_SCHEMA = [
     "description": "SVNR Global builds bespoke AI-powered client acquisition systems and outreach infrastructure for premium operators — luxury brands, private equity, real estate, and high-ticket B2B.",
     "foundingDate": "2019",
     "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
-    "contactPoint": { "@type": "ContactPoint", "email": "hamza@svnrglobal.com", "contactType": "sales" },
+    "contactPoint": { "@type": "ContactPoint", "email": "contact@svnrglobal.com", "contactType": "sales" },
     "sameAs": [
       "https://www.instagram.com/svnr.lab",
       "https://in.pinterest.com/svnrglobal/",

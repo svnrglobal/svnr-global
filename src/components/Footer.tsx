@@ -55,10 +55,10 @@ export default function Footer() {
           </p>
           <p className="text-xs text-white/30 mt-4">New Delhi — globally deployed.</p>
           <a
-            href="mailto:hamza@svnrglobal.com"
+            href="mailto:contact@svnrglobal.com"
             className="text-xs text-white/50 hover:text-white transition-colors mt-2 block"
           >
-            hamza@svnrglobal.com
+            contact@svnrglobal.com
           </a>
         </div>
 

@@ -103,7 +103,7 @@ export default function About() {
             },
             "contactPoint": {
               "@type": "ContactPoint",
-              "email": "hamza@svnrglobal.com",
+              "email": "contact@svnrglobal.com",
               "contactType": "customer service",
               "availableLanguage": "English"
             },

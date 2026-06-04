@@ -48,7 +48,7 @@ export default function Contact() {
             "logo": "https://svnrglobal.com/svnr-logo.svg",
             "foundingDate": "2019",
             "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
-            "contactPoint": { "@type": "ContactPoint", "email": "hamza@svnrglobal.com", "contactType": "sales" },
+            "contactPoint": { "@type": "ContactPoint", "email": "contact@svnrglobal.com", "contactType": "sales" },
             "sameAs": [
               "https://www.instagram.com/svnr.lab",
               "https://in.pinterest.com/svnrglobal/",

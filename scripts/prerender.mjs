@@ -40,6 +40,7 @@ const ROUTES = [
   "/contact",
   "/compare",
   "/engagement",
+  "/founder",
   "/services/client-acquisition",
   "/services/ai-receptionist",
   "/services/revenue-operations",

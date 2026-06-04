@@ -10,6 +10,7 @@ const links = [
   { label: "Blog",       href: "/blog" },
   { label: "How We Work", href: "/engagement" },
   { label: "About",      href: "/about" },
+  { label: "Founder",    href: "/founder" },
 ];
 
 export default function Nav() {

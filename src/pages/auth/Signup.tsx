@@ -19,7 +19,7 @@ export default function Signup() {
       return;
     }
     setBusy(true);
-    const { error } = await supabase.auth.signUp({
+    const { data, error } = await supabase.auth.signUp({
       email: f.email,
       password: f.password,
       options: {
@@ -32,7 +32,9 @@ export default function Signup() {
       setErr(error.message);
       return;
     }
-    nav("/verify");
+    // If email confirmation is off, Supabase returns a session immediately —
+    // go straight to the dashboard. Otherwise, send them to verify their email.
+    nav(data.session ? "/dashboard" : "/verify");
   };
 
   return (

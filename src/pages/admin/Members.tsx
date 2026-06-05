@@ -40,8 +40,12 @@ export default function Members() {
       body: JSON.stringify({ action: m.prose_access_granted ? "revoke" : "grant", user_id: m.id }),
     });
     setBusyId(null);
-    if (res.ok) void load();
-    else alert("Update failed.");
+    if (res.ok) {
+      void load();
+      return;
+    }
+    const info = await res.json().catch(() => ({}));
+    alert(`Update failed (${res.status}): ${info.error ?? "unknown error"}`);
   };
 
   return (

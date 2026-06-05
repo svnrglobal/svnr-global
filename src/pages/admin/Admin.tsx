@@ -54,8 +54,12 @@ export default function Admin() {
       body: JSON.stringify({ action: "grant", user_id: a.user_id }),
     });
     setBusyId(null);
-    if (res.ok) void load();
-    else alert("Grant failed. Confirm you are an admin and try again.");
+    if (res.ok) {
+      void load();
+      return;
+    }
+    const info = await res.json().catch(() => ({}));
+    alert(`Grant failed (${res.status}): ${info.error ?? "unknown error"}`);
   };
 
   const ignore = async (a: App) => {

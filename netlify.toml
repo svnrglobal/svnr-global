@@ -7,6 +7,16 @@
   PUPPETEER_SKIP_CHROMIUM_DOWNLOAD = "false"
   PUPPETEER_CACHE_DIR = "/opt/build/cache/puppeteer"
 
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+# PROSE assistant API → serverless function (must precede the SPA catch-all)
+[[redirects]]
+  from = "/api/prose"
+  to = "/.netlify/functions/prose"
+  status = 200
+
 # SPA fallback (belt-and-suspenders alongside _redirects)
 [[redirects]]
   from = "/*"

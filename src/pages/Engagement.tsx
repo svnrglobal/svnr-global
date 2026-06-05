@@ -180,8 +180,195 @@ function CapBar({ label, value, color, delay }: { label: string; value: number; 
   );
 }
 
+// Handle centre position for each of the three tiers (0..1 across the track).
+const TIER_POS = [1 / 6, 0.5, 5 / 6];
+
+/**
+ * Dot-matrix engagement slider — inspired by the "Faster / Smarter" effort
+ * control. Drag (or use arrow keys) to move between Foundation and Full Stack.
+ * The dotted track fills with a lilac→white gradient toward the handle.
+ */
+function DotMatrixSlider({
+  tiers,
+  active,
+  onChange,
+}: {
+  tiers: typeof INFRA_TIERS;
+  active: number;
+  onChange: (i: number) => void;
+}) {
+  const trackRef = useRef<HTMLDivElement>(null);
+  const [drag, setDrag] = useState<number | null>(null);
+  const tier = tiers[active];
+  const fill = drag ?? TIER_POS[active];
+
+  const COLS = 30;
+  const ROWS = 6;
+
+  const fracFromX = (clientX: number) => {
+    const el = trackRef.current;
+    if (!el) return 0;
+    const rect = el.getBoundingClientRect();
+    return Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
+  };
+  const nearestTier = (f: number) => {
+    let best = 0;
+    let bd = Infinity;
+    TIER_POS.forEach((p, i) => {
+      const d = Math.abs(p - f);
+      if (d < bd) {
+        bd = d;
+        best = i;
+      }
+    });
+    return best;
+  };
+
+  const onDown = (e: React.PointerEvent) => {
+    (e.currentTarget as HTMLElement).setPointerCapture?.(e.pointerId);
+    setDrag(fracFromX(e.clientX));
+  };
+  const onMove = (e: React.PointerEvent) => {
+    if (drag === null) return;
+    setDrag(fracFromX(e.clientX));
+  };
+  const onUp = () => {
+    if (drag === null) return;
+    onChange(nearestTier(drag));
+    setDrag(null);
+  };
+  const onKey = (e: React.KeyboardEvent) => {
+    if (e.key === "ArrowRight" || e.key === "ArrowUp") {
+      e.preventDefault();
+      onChange(Math.min(2, active + 1));
+    } else if (e.key === "ArrowLeft" || e.key === "ArrowDown") {
+      e.preventDefault();
+      onChange(Math.max(0, active - 1));
+    }
+  };
+
+  const dots = [];
+  for (let r = 0; r < ROWS; r++) {
+    for (let c = 0; c < COLS; c++) {
+      const colFrac = c / (COLS - 1);
+      const on = colFrac <= fill + 0.0001;
+      const t = on ? colFrac / Math.max(fill, 0.0001) : 0;
+      const cr = Math.round(198 + 57 * t);
+      const cg = Math.round(188 + 12 * t);
+      const cb = Math.round(255 - 16 * t);
+      const a = on ? 0.18 + 0.82 * t : 0.07;
+      dots.push(
+        <span
+          key={`${r}-${c}`}
+          style={{ background: `rgba(${cr},${cg},${cb},${a})`, borderRadius: 2 }}
+        />
+      );
+    }
+  }
+
+  return (
+    <div
+      className="mb-8 rounded-3xl p-5 sm:p-6 select-none"
+      style={{
+        background: "rgba(255,255,255,0.03)",
+        border: "1px solid rgba(255,255,255,0.08)",
+      }}
+    >
+      <div className="flex items-center justify-between mb-1">
+        <span className="text-white/85 text-sm font-medium">
+          Engagement depth{" "}
+          <span className="text-white/45 font-normal">· {tier.name}</span>
+        </span>
+        <span className="text-white/30 text-xs">drag to compare</span>
+      </div>
+      <div className="flex items-center justify-between mb-3">
+        <span className="text-white/40 text-xs">Leaner</span>
+        <span className="text-white/40 text-xs">Full stack</span>
+      </div>
+
+      <div
+        ref={trackRef}
+        role="slider"
+        tabIndex={0}
+        aria-valuemin={1}
+        aria-valuemax={3}
+        aria-valuenow={active + 1}
+        aria-label="Engagement depth"
+        onPointerDown={onDown}
+        onPointerMove={onMove}
+        onPointerUp={onUp}
+        onKeyDown={onKey}
+        className="relative cursor-pointer rounded-2xl p-2.5 outline-none focus-visible:ring-1 focus-visible:ring-white/30"
+        style={{
+          background: "rgba(255,255,255,0.04)",
+          border: "1px solid rgba(255,255,255,0.07)",
+        }}
+      >
+        <div
+          className="grid gap-[3px]"
+          style={{ gridTemplateColumns: `repeat(${COLS}, 1fr)`, gridAutoRows: "6px" }}
+        >
+          {dots}
+        </div>
+
+        {/* shimmer sheen over the filled region */}
+        <div
+          aria-hidden
+          className="absolute top-0 bottom-0 left-0 pointer-events-none rounded-2xl overflow-hidden"
+          style={{ width: `${fill * 100}%` }}
+        >
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background:
+                "linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent)",
+              backgroundSize: "45% 100%",
+              backgroundRepeat: "no-repeat",
+            }}
+            animate={{ backgroundPositionX: ["-45%", "145%"] }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: "linear" }}
+          />
+        </div>
+
+        {/* handle */}
+        <motion.div
+          className="absolute top-1/2 pointer-events-none"
+          initial={false}
+          animate={{ left: `calc(${fill * 100}% - 13px)`, y: "-50%" }}
+          transition={
+            drag === null
+              ? { type: "spring", bounce: 0.2, duration: 0.5 }
+              : { duration: 0 }
+          }
+        >
+          <div
+            className="w-[26px] h-[30px] rounded-xl bg-white"
+            style={{
+              boxShadow:
+                "0 2px 12px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.25)",
+            }}
+          />
+        </motion.div>
+      </div>
+
+      <div className="flex items-center justify-between mt-3 px-0.5">
+        {tiers.map((t, i) => (
+          <button
+            key={t.id}
+            onClick={() => onChange(i)}
+            className="text-[11px] sm:text-xs transition-colors"
+            style={{ color: active === i ? "#fff" : "rgba(255,255,255,0.32)" }}
+          >
+            {t.name}
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function DynamicInfrastructure() {
-  const [active, setActive] = useState(0);
+  const [active, setActive] = useState(1); // default to the middle (Infrastructure) tier
   const tier = INFRA_TIERS[active];
 
   return (
@@ -199,27 +386,8 @@ function DynamicInfrastructure() {
           </p>
         </motion.div>
 
-        {/* Tab selector, styled like reference image */}
-        <div className="flex items-center gap-0 mb-8 rounded-2xl overflow-hidden p-1" style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}>
-          {INFRA_TIERS.map((t, i) => (
-            <button
-              key={t.id}
-              onClick={() => setActive(i)}
-              className="relative flex-1 py-3 px-4 rounded-xl text-sm font-medium transition-all duration-300 text-center"
-              style={{ color: active === i ? "#fff" : "rgba(255,255,255,0.35)" }}
-            >
-              {active === i && (
-                <motion.div
-                  layoutId="infra-tab"
-                  className="absolute inset-0 rounded-xl"
-                  style={{ background: t.gradient, opacity: 0.15 }}
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-                />
-              )}
-              <span className="relative z-10">{t.name}</span>
-            </button>
-          ))}
-        </div>
+        {/* Dot-matrix engagement-depth slider (reference-inspired) */}
+        <DotMatrixSlider tiers={INFRA_TIERS} active={active} onChange={setActive} />
 
         {/* Main panel */}
         <AnimatePresence mode="wait">
@@ -281,17 +449,6 @@ function DynamicInfrastructure() {
                 </div>
               </div>
 
-              {/* Tier navigation dots */}
-              <div className="flex items-center justify-center gap-2">
-                {INFRA_TIERS.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActive(i)}
-                    className="w-2 h-2 rounded-full transition-all duration-300"
-                    style={{ background: active === i ? tier.color : "rgba(255,255,255,0.2)", transform: active === i ? "scale(1.4)" : "scale(1)" }}
-                  />
-                ))}
-              </div>
             </div>
           </motion.div>
         </AnimatePresence>

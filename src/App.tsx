@@ -2,6 +2,9 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 import "./index.css";
 import Nav from "./components/Nav";
+import ProseLauncher from "./components/prose/ProseLauncher";
+import { AuthProvider } from "./lib/useAuth";
+import ProtectedRoute from "./components/auth/ProtectedRoute";
 
 // Lazy-load all pages for code splitting
 const Home                = lazy(() => import("./pages/Home"));
@@ -16,6 +19,11 @@ const Engagement          = lazy(() => import("./pages/Engagement"));
 const CaseStudies         = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail     = lazy(() => import("./pages/CaseStudyDetail"));
 const Founder             = lazy(() => import("./pages/Founder"));
+const Prose               = lazy(() => import("./pages/Prose"));
+const Signup              = lazy(() => import("./pages/auth/Signup"));
+const Login               = lazy(() => import("./pages/auth/Login"));
+const Verify              = lazy(() => import("./pages/auth/Verify"));
+const Dashboard           = lazy(() => import("./pages/member/Dashboard"));
 
 // Service pages
 const ClientAcquisition   = lazy(() => import("./pages/services/ClientAcquisition"));
@@ -46,6 +54,7 @@ function ScrollToTop() {
 export default function App() {
   return (
     <BrowserRouter>
+      <AuthProvider>
       <ScrollToTop />
       <Nav />
       <Suspense fallback={null}>
@@ -62,6 +71,13 @@ export default function App() {
           <Route path="/compare" element={<Compare />} />
           <Route path="/engagement" element={<Engagement />} />
           <Route path="/founder" element={<Founder />} />
+          <Route path="/prose" element={<Prose />} />
+
+          {/* Member platform (private, noindex) */}
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/verify" element={<Verify />} />
+          <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
 
           {/* Service sub-pages */}
           <Route path="/services/client-acquisition" element={<ClientAcquisition />} />
@@ -84,6 +100,8 @@ export default function App() {
           <Route path="/sectors/professional-services" element={<ProfessionalServices />} />
         </Routes>
       </Suspense>
+      <ProseLauncher />
+      </AuthProvider>
     </BrowserRouter>
   );
 }

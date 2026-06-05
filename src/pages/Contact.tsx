@@ -53,7 +53,7 @@ export default function Contact() {
             "sameAs": [
               "https://www.instagram.com/svnr.lab",
               "https://in.pinterest.com/svnrglobal/",
-              "https://in.linkedin.com/company/svn%D1%8F%E2%84%A2"
+              "https://www.linkedin.com/company/svnrglobal"
             ]
           }
         ]}

@@ -37,6 +37,9 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const HIDE = ["/login", "/signup", "/verify", "/dashboard", "/admin", "/settings", "/member"];
+  if (HIDE.some((p) => location.pathname.startsWith(p))) return null;
+
   return (
     <motion.div
       animate={{ y: visible ? 0 : -120, opacity: visible ? 1 : 0 }}

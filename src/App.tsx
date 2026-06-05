@@ -24,6 +24,8 @@ const Signup              = lazy(() => import("./pages/auth/Signup"));
 const Login               = lazy(() => import("./pages/auth/Login"));
 const Verify              = lazy(() => import("./pages/auth/Verify"));
 const Dashboard           = lazy(() => import("./pages/member/Dashboard"));
+const Admin               = lazy(() => import("./pages/admin/Admin"));
+const Members             = lazy(() => import("./pages/admin/Members"));
 
 // Service pages
 const ClientAcquisition   = lazy(() => import("./pages/services/ClientAcquisition"));
@@ -78,6 +80,8 @@ export default function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/admin" element={<ProtectedRoute admin><Admin /></ProtectedRoute>} />
+          <Route path="/admin/members" element={<ProtectedRoute admin><Members /></ProtectedRoute>} />
 
           {/* Service sub-pages */}
           <Route path="/services/client-acquisition" element={<ClientAcquisition />} />

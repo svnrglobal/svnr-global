@@ -1,2 +1,3 @@
 /api/prose  /.netlify/functions/prose  200
+/api/admin-access  /.netlify/functions/admin-access  200
 /*  /index.html  200

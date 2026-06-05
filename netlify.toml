@@ -17,6 +17,12 @@
   to = "/.netlify/functions/prose"
   status = 200
 
+# Admin grant/revoke access → serverless function
+[[redirects]]
+  from = "/api/admin-access"
+  to = "/.netlify/functions/admin-access"
+  status = 200
+
 # SPA fallback (belt-and-suspenders alongside _redirects)
 [[redirects]]
   from = "/*"

@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from "motion/react";
 import { Menu, X } from "lucide-react";
 
 const links = [
+  { label: "Home",       href: "/" },
   { label: "Services",   href: "/services" },
   { label: "Industries", href: "/sectors" },
   { label: "Case Studies", href: "/case-studies" },
@@ -37,7 +38,7 @@ export default function Nav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const HIDE = ["/login", "/signup", "/verify", "/dashboard", "/admin", "/settings", "/member"];
+  const HIDE = ["/login", "/signup", "/verify", "/dashboard", "/admin", "/settings", "/member", "/chat"];
   if (HIDE.some((p) => location.pathname.startsWith(p))) return null;
 
   return (
@@ -76,7 +77,7 @@ export default function Nav() {
           WebkitBackdropFilter: "blur(24px)",
           border: "1px solid rgba(255,255,255,0.10)",
           borderRadius: "9999px",
-          padding: "5px 4px",
+          padding: "5px 6px",
           boxShadow: "0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)",
         }}
       >
@@ -88,7 +89,7 @@ export default function Nav() {
             <Link
               key={l.href}
               to={l.href}
-              className="relative px-3 py-2 rounded-full text-[11px] uppercase tracking-[0.12em] font-light transition-colors duration-200 hover:text-white whitespace-nowrap"
+              className="relative px-3 py-2 rounded-full text-[10.5px] uppercase tracking-[0.14em] font-light transition-colors duration-200 hover:text-white whitespace-nowrap"
               style={{ color: active ? "#fff" : "rgba(255,255,255,0.45)" }}
             >
               {active && (
@@ -113,7 +114,7 @@ export default function Nav() {
         {/* CTA button inside pill */}
         <Link
           to="/contact"
-          className="flex items-center gap-1 px-5 py-2 rounded-full text-[11px] uppercase tracking-[0.16em] font-medium text-[#0A0A0B] transition-all hover:opacity-90 shrink-0"
+          className="flex items-center gap-1 px-4 py-2 rounded-full text-[10.5px] uppercase tracking-[0.12em] font-medium text-[#0A0A0B] transition-all hover:opacity-90 shrink-0"
           style={{ background: "#ffffff" }}
         >
           Book a Call <span className="text-[10px]">↗</span>

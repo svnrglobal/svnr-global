@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
 import "./index.css";
 import Nav from "./components/Nav";
-import ProseLauncher from "./components/prose/ProseLauncher";
+import AetherLauncher from "./components/aether/AetherLauncher";
 import { AuthProvider } from "./lib/useAuth";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 
@@ -19,11 +19,12 @@ const Engagement          = lazy(() => import("./pages/Engagement"));
 const CaseStudies         = lazy(() => import("./pages/CaseStudies"));
 const CaseStudyDetail     = lazy(() => import("./pages/CaseStudyDetail"));
 const Founder             = lazy(() => import("./pages/Founder"));
-const Prose               = lazy(() => import("./pages/Prose"));
+const Aether              = lazy(() => import("./pages/Aether"));
 const Signup              = lazy(() => import("./pages/auth/Signup"));
 const Login               = lazy(() => import("./pages/auth/Login"));
 const Verify              = lazy(() => import("./pages/auth/Verify"));
 const Dashboard           = lazy(() => import("./pages/member/Dashboard"));
+const Chat                = lazy(() => import("./pages/member/Chat"));
 const Admin               = lazy(() => import("./pages/admin/Admin"));
 const Members             = lazy(() => import("./pages/admin/Members"));
 
@@ -73,13 +74,16 @@ export default function App() {
           <Route path="/compare" element={<Compare />} />
           <Route path="/engagement" element={<Engagement />} />
           <Route path="/founder" element={<Founder />} />
-          <Route path="/prose" element={<Prose />} />
+          <Route path="/aether" element={<Aether />} />
+          {/* old PROSE links → Aether */}
+          <Route path="/prose" element={<Navigate to="/aether" replace />} />
 
           {/* Member platform (private, noindex) */}
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/verify" element={<Verify />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
+          <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute admin><Admin /></ProtectedRoute>} />
           <Route path="/admin/members" element={<ProtectedRoute admin><Members /></ProtectedRoute>} />
 
@@ -104,7 +108,7 @@ export default function App() {
           <Route path="/sectors/professional-services" element={<ProfessionalServices />} />
         </Routes>
       </Suspense>
-      <ProseLauncher />
+      <AetherLauncher />
       </AuthProvider>
     </BrowserRouter>
   );

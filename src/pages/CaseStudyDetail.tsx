@@ -4,6 +4,7 @@ import { useRef } from "react";
 import { ArrowRight, ArrowLeft, ChevronDown } from "lucide-react";
 import SEO from "../components/SEO";
 import Footer from "../components/Footer";
+import BlogHeroArt, { type HeroKind } from "../components/blog/BlogHeroArt";
 import { CASE_STUDIES } from "../data/caseStudies";
 
 function CapabilityBar({ label, value, delay, gradient }: { label: string; value: number; delay: number; gradient: string }) {
@@ -100,12 +101,16 @@ export default function CaseStudyDetail() {
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative w-full min-h-[92vh] flex flex-col justify-end overflow-hidden">
         <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0">
-          <img
-            src={cs.heroImage}
-            alt={cs.industry}
-            className="w-full h-full object-cover"
-            onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-          />
+          {cs.heroArt ? (
+            <BlogHeroArt kind={cs.heroArt.kind as HeroKind} color={cs.heroArt.color} className="absolute inset-0" />
+          ) : (
+            <img
+              src={cs.heroImage}
+              alt={cs.industry}
+              className="w-full h-full object-cover"
+              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+            />
+          )}
           <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,10,11,0.2) 0%, rgba(10,10,11,0.45) 40%, rgba(10,10,11,0.97) 100%)" }} />
         </motion.div>
 

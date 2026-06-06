@@ -29,7 +29,7 @@ const footerLinks: Record<string, { label: string; href: string }[]> = {
     { label: "Case Studies", href: "/case-studies" },
     { label: "SVNR vs Alternatives", href: "/compare" },
     { label: "Blog", href: "/blog" },
-    { label: "Ask PROSE", href: "/prose" },
+    { label: "Ask Aether", href: "/aether" },
     { label: "Contact", href: "/contact" },
   ],
 };

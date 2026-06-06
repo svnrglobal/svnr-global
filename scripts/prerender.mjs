@@ -36,12 +36,13 @@ const ROUTES = [
   "/case-studies/manufacturing-export-buyers",
   "/case-studies/ecommerce-dtc-revenue",
   "/case-studies/aesthetic-clinic-revenue",
+  "/case-studies/aether-autonomous-ecommerce-cofounder",
   "/blog",
   "/contact",
   "/compare",
   "/engagement",
   "/founder",
-  "/prose",
+  "/aether",
   "/services/client-acquisition",
   "/services/ai-receptionist",
   "/services/revenue-operations",
@@ -76,6 +77,38 @@ const ROUTES = [
   "/blog/professional-services-client-acquisition",
   "/blog/outbound-lead-generation-luxury-retail",
   "/blog/how-to-get-b2b-clients-luxury-brand",
+  "/blog/aether-ai-for-premium-acquisition",
+  "/blog/ora-free-ai-model-svnr",
+  "/blog/soleth-ai-model-advisory",
+  "/blog/aether-flagship-model",
+  "/blog/ora-soleth-aether-comparison",
+  "/blog/how-aether-learns-your-market",
+  "/blog/aether-data-privacy",
+  "/blog/ai-vs-marketing-agency-acquisition",
+  "/blog/ai-prospect-research-aether",
+  "/blog/ai-draft-outreach-soleth",
+  "/blog/ai-qualify-inbound-enquiries",
+  "/blog/ai-market-mapping-aether",
+  "/blog/ai-buyer-signal-monitoring",
+  "/blog/ai-pipeline-review-aether",
+  "/blog/ai-client-acquisition-luxury-brands",
+  "/blog/ai-deal-flow-private-equity",
+  "/blog/ai-outreach-premium-real-estate",
+  "/blog/ai-client-acquisition-wealth-management",
+  "/blog/ai-distribution-luxury-rugs",
+  "/blog/ai-business-development-maritime",
+  "/blog/ai-client-acquisition-professional-services",
+  "/blog/ai-wholesale-high-ticket-ecommerce",
+  "/blog/luxury-hotels-direct-bookings",
+  "/blog/superyacht-brokerage-client-acquisition",
+  "/blog/private-aviation-charter-clients",
+  "/blog/art-gallery-collector-acquisition",
+  "/blog/fine-jewellery-watch-client-acquisition",
+  "/blog/fine-wine-spirits-trade-buyers",
+  "/blog/commercial-real-estate-institutional-buyers",
+  "/blog/enterprise-saas-outbound",
+  "/blog/boutique-consulting-mandates",
+  "/blog/luxury-furniture-design-distribution",
 ];
 
 function startServer() {
@@ -134,7 +167,7 @@ function xmlEsc(s) {
 
 function priorityFor(route) {
   if (route === "/") return "1.0";
-  if (/^\/(about|services|sectors|case-studies|blog|founder|engagement|compare|contact|prose)$/.test(route)) return "0.9";
+  if (/^\/(about|services|sectors|case-studies|blog|founder|engagement|compare|contact|aether)$/.test(route)) return "0.9";
   if (route.startsWith("/services/") || route.startsWith("/sectors/")) return "0.8";
   return "0.7"; // case-study + blog detail pages
 }

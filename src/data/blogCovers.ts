@@ -1,0 +1,95 @@
+// Per-post cover art: a unique (motif, background) for every post, Claude-style.
+const P = {
+  lavender: "#c9c7ec",
+  periwinkle: "#bcbfe9",
+  sky: "#aecbe8",
+  mint: "#a9d6bf",
+  sage: "#9aa873",
+  butter: "#e7d493",
+  peach: "#ecc8a6",
+  terracotta: "#d2674a",
+  rose: "#e3a7b5",
+};
+
+export const COVER_BY_SLUG: Record<string, { motif: string; bg: string }> = {
+  // Aether / models
+  "aether-ai-for-premium-acquisition": { motif: "spark", bg: P.lavender },
+  "ora-free-ai-model-svnr": { motif: "chat", bg: P.sky },
+  "soleth-ai-model-advisory": { motif: "doc", bg: P.periwinkle },
+  "aether-flagship-model": { motif: "network", bg: P.lavender },
+  "ora-soleth-aether-comparison": { motif: "bars", bg: P.mint },
+  "how-aether-learns-your-market": { motif: "orbit", bg: P.sky },
+  "aether-data-privacy": { motif: "lock", bg: P.periwinkle },
+  "ai-vs-marketing-agency-acquisition": { motif: "compass", bg: P.terracotta },
+  // Use cases
+  "ai-prospect-research-aether": { motif: "search", bg: P.sky },
+  "ai-draft-outreach-soleth": { motif: "envelope", bg: P.rose },
+  "ai-qualify-inbound-enquiries": { motif: "inbox", bg: P.mint },
+  "ai-market-mapping-aether": { motif: "map", bg: P.butter },
+  "ai-buyer-signal-monitoring": { motif: "signal", bg: P.rose },
+  "ai-pipeline-review-aether": { motif: "bars", bg: P.sage },
+  // Pillar posts
+  "luxury-rug-brand-distribution-strategy": { motif: "layers", bg: P.butter },
+  "real-estate-investor-buyer-acquisition": { motif: "building", bg: P.sky },
+  "private-equity-proprietary-deal-flow": { motif: "briefcase", bg: P.periwinkle },
+  "architecture-interior-design-studio-client-acquisition": { motif: "columns", bg: P.butter },
+  "wealth-management-boutique-client-acquisition": { motif: "coins", bg: P.mint },
+  "b2b-textile-platform-buyer-acquisition": { motif: "layers", bg: P.rose },
+  "client-acquisition-cost-referral-dependency": { motif: "target", bg: P.terracotta },
+  "client-acquisition-system-vs-campaign": { motif: "bricks", bg: P.peach },
+  "ai-prospecting-family-offices": { motif: "search", bg: P.periwinkle },
+  "hnw-investor-outreach-strategy": { motif: "envelope", bg: P.sky },
+  "uhnw-client-acquisition-strategy": { motif: "coins", bg: P.butter },
+  "b2b-outreach-agency-india": { motif: "globe", bg: P.sage },
+  "what-is-outreach-infrastructure": { motif: "network", bg: P.peach },
+  "maritime-logistics-business-development": { motif: "anchor", bg: P.sky },
+  "cold-email-agency-luxury-brands": { motif: "envelope", bg: P.rose },
+  "professional-services-client-acquisition": { motif: "columns", bg: P.mint },
+  "outbound-lead-generation-luxury-retail": { motif: "target", bg: P.peach },
+  "how-to-get-b2b-clients-luxury-brand": { motif: "star", bg: P.butter },
+  // New industries
+  "luxury-hotels-direct-bookings": { motif: "bed", bg: P.butter },
+  "superyacht-brokerage-client-acquisition": { motif: "anchor", bg: P.sky },
+  "private-aviation-charter-clients": { motif: "plane", bg: P.periwinkle },
+  "art-gallery-collector-acquisition": { motif: "frame", bg: P.rose },
+  "fine-jewellery-watch-client-acquisition": { motif: "gem", bg: P.lavender },
+  "fine-wine-spirits-trade-buyers": { motif: "wine", bg: P.terracotta },
+  "commercial-real-estate-institutional-buyers": { motif: "building", bg: P.sky },
+  "enterprise-saas-outbound": { motif: "cloud", bg: P.mint },
+  "boutique-consulting-mandates": { motif: "compass", bg: P.peach },
+  "luxury-furniture-design-distribution": { motif: "sofa", bg: P.sage },
+  // Pre-existing industry posts
+  "ai-client-acquisition-luxury-brands": { motif: "star", bg: P.rose },
+  "ai-deal-flow-private-equity": { motif: "target", bg: P.periwinkle },
+  "ai-outreach-premium-real-estate": { motif: "building", bg: P.mint },
+  "ai-client-acquisition-wealth-management": { motif: "coins", bg: P.sky },
+  "ai-distribution-luxury-rugs": { motif: "layers", bg: P.peach },
+  "ai-business-development-maritime": { motif: "anchor", bg: P.periwinkle },
+  "ai-client-acquisition-professional-services": { motif: "columns", bg: P.sage },
+  "ai-wholesale-high-ticket-ecommerce": { motif: "cart", bg: P.peach },
+};
+
+const CAT_DEFAULT: Record<string, { motif: string; bg: string }> = {
+  Aether: { motif: "spark", bg: P.lavender },
+  "Use Cases": { motif: "network", bg: P.sky },
+  Strategy: { motif: "compass", bg: P.terracotta },
+  "Luxury Rugs": { motif: "layers", bg: P.butter },
+  "Premium Real Estate": { motif: "building", bg: P.sky },
+  "Private Equity": { motif: "briefcase", bg: P.periwinkle },
+  "Wealth Management": { motif: "coins", bg: P.mint },
+  "B2B Platforms": { motif: "star", bg: P.rose },
+  "Professional Services": { motif: "columns", bg: P.mint },
+  "High-Ticket E-commerce": { motif: "cart", bg: P.peach },
+  "Maritime & Logistics": { motif: "anchor", bg: P.sky },
+  Hospitality: { motif: "bed", bg: P.butter },
+  "Yachting & Aviation": { motif: "plane", bg: P.periwinkle },
+  "Art & Luxury Goods": { motif: "frame", bg: P.rose },
+  "Commercial Real Estate": { motif: "building", bg: P.sky },
+  "B2B SaaS": { motif: "cloud", bg: P.mint },
+  Consulting: { motif: "compass", bg: P.peach },
+  "Design & Furniture": { motif: "sofa", bg: P.sage },
+};
+
+export function getCover(slug: string, category: string): { motif: string; bg: string } {
+  return COVER_BY_SLUG[slug] ?? CAT_DEFAULT[category] ?? { motif: "spark", bg: P.lavender };
+}

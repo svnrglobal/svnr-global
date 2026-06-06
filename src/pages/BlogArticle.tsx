@@ -3,55 +3,14 @@ import { Link, useParams, Navigate } from "react-router-dom";
 import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
+import BlogHeroArt from "../components/blog/BlogHeroArt";
+import BlogCover from "../components/blog/BlogCover";
+import { getCover } from "../data/blogCovers";
+import { HERO_BY_SLUG } from "../data/blogHeroes";
+import { AETHER_POSTS } from "../data/aetherPosts";
+import { categoryColors, categoryLinks, type Article } from "../data/blogShared";
 
-type ContentSection = {
-  heading: string;
-  body: string;
-  image?: string;
-  imageAlt?: string;
-  imageCaption?: string;
-};
-
-type FAQ = { q: string; a: string };
-
-type Article = {
-  slug: string;
-  title: string;
-  category: string;
-  readTime: string;
-  image: string;
-  imageAlt: string;
-  datePublished: string;
-  seoDescription?: string;
-  howToSteps?: { name: string; text: string }[];
-  content: ContentSection[];
-  faqs?: FAQ[];
-  related?: string[]; // slugs
-};
-
-const categoryColors: Record<string, string> = {
-  "Luxury Rugs": "#F5A623",
-  "Premium Real Estate": "#0071E3",
-  "Private Equity": "#667eea",
-  "Professional Services": "#ffd200",
-  "Wealth Management": "#11998e",
-  "B2B Platforms": "#f953c6",
-  "Strategy": "#FC466B",
-};
-
-// Contextual internal links: each blog category points to its pillar page
-// (boosts topical authority and funnels readers to a conversion page).
-const categoryLinks: Record<string, { label: string; href: string }> = {
-  "Luxury Rugs": { label: "Luxury Rugs & Home Textiles", href: "/sectors/luxury-rugs-home-textiles" },
-  "Premium Real Estate": { label: "Premium Real Estate", href: "/sectors/premium-real-estate" },
-  "Private Equity": { label: "Private Equity & Family Offices", href: "/sectors/private-equity-family-offices" },
-  "Professional Services": { label: "Professional Services", href: "/sectors/professional-services" },
-  "Wealth Management": { label: "Wealth Management", href: "/sectors/wealth-management" },
-  "B2B Platforms": { label: "B2B Luxury Brands", href: "/sectors/b2b-luxury-brands" },
-  "Strategy": { label: "Client Acquisition", href: "/services/client-acquisition" },
-};
-
-const articles: Article[] = [
+const localArticles: Article[] = [
   {
     slug: "luxury-rug-brand-distribution-strategy",
     title: "How Luxury Rug and Carpet Brands Build Distribution in New Markets Without a Showroom",
@@ -1050,6 +1009,9 @@ const articles: Article[] = [
   },
 ];
 
+// Existing pillar posts + the Aether-era posts, combined for routing + index.
+export const articles: Article[] = [...localArticles, ...AETHER_POSTS];
+
 export default function BlogArticle() {
   const { slug } = useParams<{ slug: string }>();
   const article = articles.find((a) => a.slug === slug);
@@ -1057,6 +1019,7 @@ export default function BlogArticle() {
   if (!article) return <Navigate to="/blog" replace />;
 
   const color = categoryColors[article.category] || "#ffffff";
+  const hero = HERO_BY_SLUG[article.slug] ?? (article.bloom ? { kind: "bloom" as const, color: "#bc4a30", light: true } : null);
   const related = articles.filter((a) => a.slug !== slug).slice(0, 3);
 
   const articleDescription = article.seoDescription ?? (article.content[0]?.body?.slice(0, 155).replace(/\s\S*$/, "…") ?? article.title);
@@ -1072,7 +1035,7 @@ export default function BlogArticle() {
         ogType="article"
         articlePublishedTime={pubDate}
         articleModifiedTime={pubDate}
-        articleAuthor="Hamza Omair"
+        articleAuthor="SVNR Global"
         schema={[
           {
             "@context": "https://schema.org",
@@ -1083,12 +1046,9 @@ export default function BlogArticle() {
             "datePublished": pubDate,
             "dateModified": pubDate,
             "author": {
-              "@type": "Person",
-              "name": "Hamza Omair",
-              "jobTitle": "Founder & CEO",
-              "url": "https://svnrglobal.com/founder/",
-              "sameAs": "https://in.linkedin.com/in/hamza-omair-5434b1354",
-              "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
+              "@type": "Organization",
+              "name": "SVNR Global",
+              "url": "https://svnrglobal.com"
             },
             "publisher": {
               "@type": "Organization",
@@ -1126,9 +1086,28 @@ export default function BlogArticle() {
         ]}
       />
       {/* HERO */}
-      <section className="relative w-full h-[70vh] flex items-end overflow-hidden">
-        <img src={article.image} alt={article.imageAlt} className="absolute inset-0 w-full h-full object-cover z-0" />
-        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.6) 50%, rgba(10,10,11,0.2) 100%)" }} />
+      <section
+        className="relative w-full h-[70vh] flex items-end overflow-hidden"
+        style={hero?.light ? { background: "#efe9df" } : undefined}
+      >
+        {hero ? (
+          <>
+            <BlogHeroArt kind={hero.kind} color={hero.color} className="absolute inset-0 z-0" />
+            <div
+              className="absolute inset-0 z-[1]"
+              style={{
+                background: hero.light
+                  ? "linear-gradient(to top, #0A0A0B 0%, rgba(10,10,11,0.5) 42%, rgba(10,10,11,0) 80%)"
+                  : "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.45) 55%, rgba(10,10,11,0.1) 100%)",
+              }}
+            />
+          </>
+        ) : (
+          <>
+            <img src={article.image} alt={article.imageAlt} className="absolute inset-0 w-full h-full object-cover z-0" />
+            <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.6) 50%, rgba(10,10,11,0.2) 100%)" }} />
+          </>
+        )}
         <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-10 pb-16 w-full">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
             <Link to="/blog" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/40 hover:text-white/70 transition-colors mb-6">
@@ -1249,9 +1228,7 @@ export default function BlogArticle() {
                   return (
                     <Link key={rel.slug} to={`/blog/${rel.slug}`}
                       className="liquid-glass rounded-2xl overflow-hidden group hover:border-white/20 transition-all border border-white/8">
-                      <div className="h-32 overflow-hidden">
-                        <img src={rel.image} alt={rel.imageAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                      </div>
+                      <BlogCover {...getCover(rel.slug, rel.category)} className="h-32" />
                       <div className="p-4">
                         <span className="text-[9px] uppercase tracking-widest mb-2 block" style={{ color: relColor }}>{rel.category}</span>
                         <p className="text-white/80 text-sm font-medium leading-snug group-hover:text-white transition-colors">{rel.title}</p>
@@ -1265,28 +1242,6 @@ export default function BlogArticle() {
         );
       })()}
 
-      {/* AUTHOR BIO */}
-      <section className="relative z-10 bg-[#0A0A0B] px-6 pb-10">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex items-start gap-5 liquid-glass rounded-2xl p-6"
-          >
-            <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0 text-white font-medium text-lg">
-              H
-            </div>
-            <div>
-              <Link to="/founder" className="text-white font-medium text-sm mb-1 hover:text-white/80 transition-colors inline-block">Written by Hamza Omair</Link>
-              <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-3">Founder &amp; CEO, SVNR Global</p>
-              <p className="text-white/50 text-sm leading-relaxed">
-                Hamza Omair leads SVNR Global's client acquisition infrastructure practice. He works with premium operators across luxury, private equity, real estate, and high-ticket B2B to build systematic outreach systems that generate qualified pipeline, without ads, referrals, or trade fair dependency.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* DIVIDER */}
       <div className="relative z-10 bg-[#0A0A0B] px-6">

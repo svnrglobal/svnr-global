@@ -39,6 +39,7 @@ export interface CaseStudy {
   faqs: { q: string; a: string }[];
   relatedSector?: { label: string; slug: string };
   relatedServices?: { label: string; slug: string }[];
+  heroArt?: { kind: string; color: string; light?: boolean };
 }
 
 export const CASE_STUDIES: CaseStudy[] = [
@@ -592,5 +593,61 @@ export const CASE_STUDIES: CaseStudy[] = [
       { label: "AI Receptionist", slug: "ai-receptionist" },
       { label: "Brand Outreach", slug: "brand-outreach" },
     ],
+  },
+  {
+    slug: "aether-autonomous-ecommerce-cofounder",
+    industry: "AI-Operated E-Commerce",
+    industryCode: "10",
+    title: "How Aether Ran a Premium E-Commerce Brand as an Autonomous Cofounder",
+    subtitle: "Aether Flagship Model · Autonomous Internet Operations · DTC",
+    summary: "The founder had the hard part covered. Product, sourcing, and fulfilment were already in motion. Everything that happened on the internet, the storefront, the marketing, the messages, the follow-up, was the bottleneck a single person could not hold. SVNR put the flagship Aether model in as an autonomous cofounder. Aether built and ran the agents that operated the entire online side of the business end to end, while the founder stayed on the physical groundwork.",
+    heroImage: "/og-image.png",
+    images: [],
+    duration: "Ongoing",
+    location: "Remote · Autonomous",
+    keyMetrics: [
+      { value: "100%", label: "Internet Operations Automated" },
+      { value: "24/7", label: "Autonomous Operation" },
+      { value: "1", label: "Human Cofounder Needed" },
+      { value: "9", label: "Agents Built and Run by Aether" },
+    ],
+    challenges: [
+      { title: "One Person, Every Online Job", description: "The founder was the storefront manager, the marketer, the copywriter, the support desk, and the analyst all at once. The internet side never got the attention it needed." },
+      { title: "Demand With No One to Catch It", description: "Inbound messages, abandoned carts, and questions arrived around the clock. Most went unanswered for hours, and a slow reply to a high-intent buyer is a lost sale." },
+      { title: "No Time for Marketing or Outreach", description: "Campaigns, listings, and partner outreach were always the thing that would happen next week. Growth stalled because the online engine was never actually run." },
+      { title: "Decisions Made on Gut, Not Signal", description: "With no time to read the data, pricing, promotions, and restocks were guesses. The numbers existed, but nobody was watching them." },
+    ],
+    phases: [
+      { number: "01", title: "Aether as Cofounder", description: "The flagship Aether model was given the online side of the business as its remit, with the founder as the human cofounder it reports to and checks with on the calls that matter." },
+      { number: "02", title: "Agents for Every Online Job", description: "Aether built and ran agents for the storefront, customer messages, content and listings, email and retention, and partner outreach, each operating continuously." },
+      { number: "03", title: "Voice and Chat Front Desk", description: "A voice and chat agent answered every customer instantly, day or night, qualified intent, recovered carts, and handed genuine escalations to the founder with full context." },
+      { number: "04", title: "Marketing and Outreach on Autopilot", description: "Aether planned and shipped campaigns, refreshed listings, ran lifecycle email, and reached out to stockists and partners without waiting on the founder's calendar." },
+      { number: "05", title: "Signal-Driven Decisions", description: "Aether watched the numbers in real time, flagged what needed a human call, and acted autonomously on the rest: pricing, promotions, restock timing, and budget shifts." },
+    ],
+    results: [
+      { value: "100%", label: "Online Ops Run by Aether" },
+      { value: "Seconds", label: "Customer Response Time" },
+      { value: "24/7", label: "Marketing and Support" },
+      { value: "Founder", label: "Freed for Groundwork" },
+      { value: "Always-On", label: "Compounding Pipeline" },
+      { value: "Higher", label: "Conversion and Retention" },
+    ],
+    resultsSummary: "The business ran as if it had a full online team, because it did, operated by Aether. The founder kept doing the physical groundwork that was already working, and everything that happened on the internet was handled continuously by an autonomous cofounder.",
+    gradient: "linear-gradient(137deg, #8b7dff 0%, #c4b5fd 50%, #4c1d95 100%)",
+    seoTitle: "Aether AI Cofounder Case Study, Autonomous E-Commerce Operations | SVNR Global",
+    seoDescription: "How SVNR's flagship Aether model ran a premium e-commerce brand as an autonomous cofounder, building and operating the agents behind the storefront, marketing, support, and outreach end to end.",
+    keywords: ["ai cofounder", "autonomous ecommerce operations", "ai agents for ecommerce", "aether ai model", "ai run business", "autonomous online store"],
+    faqs: [
+      { q: "What does it mean that Aether acted as a cofounder?", a: "Aether took ownership of the entire online side of the business, building and running the agents that operate the storefront, marketing, support, and outreach, and reporting to the human founder on the decisions that genuinely need a person." },
+      { q: "Did the founder still do anything?", a: "Yes. The founder kept doing the physical groundwork that was already working, product, sourcing, and fulfilment, while Aether handled everything that happens on the internet." },
+      { q: "Which model was used?", a: "The flagship Aether model. It is the most capable in the family, built to create and run AI agents and voice agents and to operate autonomously across the tools a business already uses." },
+      { q: "Can Aether do this for my business?", a: "If your groundwork is in place and the bottleneck is everything online, this is exactly what the flagship model is for. The fastest way to find out is to book a call." },
+    ],
+    relatedSector: { label: "High-Ticket E-Commerce", slug: "high-ticket-ecommerce" },
+    relatedServices: [
+      { label: "Client Acquisition", slug: "client-acquisition" },
+      { label: "Revenue Operations", slug: "revenue-operations" },
+    ],
+    heroArt: { kind: "network", color: "#8b7dff" },
   },
 ];

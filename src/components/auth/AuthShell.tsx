@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "motion/react";
-import ProseMark from "../prose/ProseMark";
+import AetherLogo from "../aether/AetherLogo";
 
 export const authInput =
   "glass-input w-full rounded-xl px-3.5 py-2.5 text-white text-sm focus:outline-none";
@@ -31,8 +31,8 @@ export default function AuthShell({
         className="relative z-10 w-full max-w-sm"
       >
         <Link to="/" className="flex items-center justify-center gap-2 mb-8 text-white">
-          <ProseMark size={22} />
-          <span className="font-medium tracking-tight text-[15px]">PROSE</span>
+          <AetherLogo size={24} />
+          <span className="font-medium tracking-tight text-[15px]">Aether</span>
         </Link>
 
         <div className="glass glass-sheen rounded-3xl p-7">

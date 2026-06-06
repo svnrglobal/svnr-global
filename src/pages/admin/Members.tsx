@@ -50,7 +50,7 @@ export default function Members() {
 
   return (
     <AdminShell>
-      <SEO title="Admin — Members" description="PROSE admin members." canonical="/admin/members" noindex />
+      <SEO title="Admin — Members" description="Aether admin members." canonical="/admin/members" noindex />
       <h1 className="text-white text-xl font-medium mb-6">Members</h1>
       {loading ? (
         <p className="text-white/40 text-sm">Loading…</p>

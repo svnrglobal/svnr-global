@@ -202,8 +202,8 @@ function DotMatrixSlider({
   const tier = tiers[active];
   const fill = drag ?? TIER_POS[active];
 
-  const COLS = 30;
-  const ROWS = 6;
+  const COLS = 46;
+  const ROWS = 4;
 
   const fracFromX = (clientX: number) => {
     const el = trackRef.current;
@@ -247,22 +247,19 @@ function DotMatrixSlider({
     }
   };
 
+  const SPACING = Math.max(4, Math.round(COLS / 6));
   const dots = [];
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const colFrac = c / (COLS - 1);
-      const on = colFrac <= fill + 0.0001;
-      const t = on ? colFrac / Math.max(fill, 0.0001) : 0;
-      const cr = Math.round(198 + 57 * t);
-      const cg = Math.round(188 + 12 * t);
-      const cb = Math.round(255 - 16 * t);
-      const a = on ? 0.18 + 0.82 * t : 0.07;
-      dots.push(
-        <span
-          key={`${r}-${c}`}
-          style={{ background: `rgba(${cr},${cg},${cb},${a})`, borderRadius: 2 }}
-        />
-      );
+      let bg = "transparent";
+      if (colFrac <= fill + 0.0001) {
+        const t = colFrac / Math.max(fill, 0.0001);
+        bg = `rgba(180,150,255,${(0.4 + 0.55 * t).toFixed(2)})`;
+      } else if (c % SPACING === 0) {
+        bg = "rgba(255,255,255,0.12)";
+      }
+      dots.push(<span key={`${r}-${c}`} style={{ background: bg, borderRadius: 1.5 }} />);
     }
   }
 
@@ -306,7 +303,7 @@ function DotMatrixSlider({
       >
         <div
           className="grid gap-[3px]"
-          style={{ gridTemplateColumns: `repeat(${COLS}, 1fr)`, gridAutoRows: "6px" }}
+          style={{ gridTemplateColumns: `repeat(${COLS}, 1fr)`, gridAutoRows: "5px" }}
         >
           {dots}
         </div>
@@ -334,7 +331,7 @@ function DotMatrixSlider({
         <motion.div
           className="absolute top-1/2 pointer-events-none"
           initial={false}
-          animate={{ left: `calc(${fill * 100}% - 13px)`, y: "-50%" }}
+          animate={{ left: `calc(${fill * 100}% - 6px)`, y: "-50%" }}
           transition={
             drag === null
               ? { type: "spring", bounce: 0.2, duration: 0.5 }
@@ -342,10 +339,10 @@ function DotMatrixSlider({
           }
         >
           <div
-            className="w-[26px] h-[30px] rounded-xl bg-white"
+            className="w-[12px] h-[26px] rounded-full bg-white"
             style={{
               boxShadow:
-                "0 2px 12px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.25)",
+                "0 2px 12px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.3)",
             }}
           />
         </motion.div>

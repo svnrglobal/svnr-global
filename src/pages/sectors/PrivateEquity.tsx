@@ -5,6 +5,7 @@ import { BarChart, Bar, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, XAxis
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import EngagementTimeline from "../../components/EngagementTimeline";
 
 const pipelineData = [
   { q: "Q1", pre: 3, banker: 1 }, { q: "Q2", pre: 5, banker: 2 },
@@ -49,7 +50,7 @@ export default function PrivateEquity() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Private Equity Proprietary Deal Flow & Investor Relations",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "AI-driven proprietary deal flow infrastructure for PE firms and family offices. We identify and reach founders before formal sale processes begin, delivering off-market opportunities and fund LP relationships.",
             "areaServed": ["Global", "Europe", "Middle East", "United Kingdom", "India"],
             "serviceType": ["Proprietary Deal Flow", "PE Founder Outreach", "LP Acquisition", "Family Office Prospecting"]
@@ -88,7 +89,7 @@ export default function PrivateEquity() {
         ]}
       />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <img src="/sectors/private-equity-photo-1504711434969-e33886168f5c.avif" alt="Private Equity" className="absolute inset-0 w-full h-full object-cover z-0" />
+        <img fetchPriority="high" decoding="async" src="/sectors/private-equity-photo-1504711434969-e33886168f5c.avif" alt="Private Equity" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
@@ -164,9 +165,20 @@ export default function PrivateEquity() {
         <div className="max-w-7xl mx-auto grid grid-cols-3 gap-4">
           {["/sectors/private-equity-photo-1504711434969-e33886168f5c.avif", "/sectors/private-equity-photo-1506787497326-c2736dde1bef.avif", "/sectors/private-equity-premium_photo-1679456904325-19ca215974a7.avif"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-square">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Private equity proprietary deal flow and founder outreach infrastructure" />
+              <img loading="lazy" decoding="async" src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Private equity proprietary deal flow and founder outreach infrastructure" />
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* THE 90-DAY PATH: engagement timeline */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The 90-day path</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">From engagement to active pipeline.</h2>
+          </motion.div>
+          <EngagementTimeline accent="#38ef7d" milestones={[{"when":"Week 0","label":"Founder universe mapped"},{"when":"Week 2 to 3","label":"Signal monitoring live"},{"when":"Day 30 to 60","label":"First proprietary conversations"},{"when":"Day 90","label":"Meaningful starting position"}]} />
         </div>
       </section>
 

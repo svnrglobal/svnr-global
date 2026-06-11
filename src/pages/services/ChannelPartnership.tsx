@@ -5,6 +5,10 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import Counter from "../../components/Counter";
+import SystemFlow from "../../components/SystemFlow";
+
+const flowGradient = "linear-gradient(135deg, #00c6ff, #0072ff)";
 
 const chartData = [
   { m: "M1", partners: 5 }, { m: "M2", partners: 12 },
@@ -46,7 +50,7 @@ export default function ChannelPartnership() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Channel Partnership, Trade Distribution Activation",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "Systematic trade partner acquisition: finding, reaching, and activating the right architects, interior designers, specifiers, showrooms, and distributors for premium products. Channel partnership infrastructure that converts cold contacts into active distribution relationships.",
             "areaServed": ["Global", "Europe", "Middle East", "Asia", "United Kingdom"],
             "serviceType": ["Channel Partnership Development", "Trade Distribution Activation", "Showroom Partner Acquisition", "Specifier Outreach"]
@@ -99,7 +103,7 @@ export default function ChannelPartnership() {
       <section className="relative z-10 bg-[#0A0A0B] pt-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="rounded-2xl overflow-hidden border border-white/10">
-            <img src="/services/channel-partnership.png" alt="Channel Partnership Dashboard" className="w-full h-auto object-cover" />
+            <img loading="lazy" decoding="async" src="/services/channel-partnership.png" alt="Channel Partnership Dashboard" className="w-full h-auto object-cover" />
           </motion.div>
         </div>
       </section>
@@ -131,12 +135,29 @@ export default function ChannelPartnership() {
                 </ResponsiveContainer>
               </div>
               <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-white/10">
-                <div className="text-center"><div className="text-2xl font-medium text-white">25+</div><div className="text-[10px] text-white/30 mt-1">Partner leads / mo</div></div>
-                <div className="text-center"><div className="text-2xl font-medium text-white">44%</div><div className="text-[10px] text-white/30 mt-1">Activation rate</div></div>
-                <div className="text-center"><div className="text-2xl font-medium text-white">60%</div><div className="text-[10px] text-white/30 mt-1">Revenue from partners</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="25+" /></div><div className="text-[10px] text-white/30 mt-1">Partner leads / mo</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="44%" /></div><div className="text-[10px] text-white/30 mt-1">Activation rate</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="60%" /></div><div className="text-[10px] text-white/30 mt-1">Revenue from partners</div></div>
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* HOW IT RUNS: system flow infographic */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">How it runs</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">Markets in. Active partners out.</h2>
+          </motion.div>
+          <SystemFlow
+            inputs={["Partner mapping", "Distributor signals", "Showroom network", "Activation outreach"]}
+            engine="Channel Partnership System"
+            engineIcon={Network}
+            output={{ value: "25+", label: "partner leads per month" }}
+            gradient={flowGradient}
+          />
         </div>
       </section>
 

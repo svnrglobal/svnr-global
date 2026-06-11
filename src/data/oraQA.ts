@@ -1,6 +1,6 @@
-// Ora's curated knowledge bank. Ora is the free Aether model: it answers
+// Ora's curated knowledge bank. Ora is the free Cassian model: it answers
 // questions about SVNR, the services, sector fit, pricing, process and the
-// Aether models themselves. Answers are written in SVNR's voice: direct,
+// Cassian models themselves. Answers are written in SVNR's voice: direct,
 // specific, no em dashes, no exclamation points. Grounded in the real site
 // content so Ora is accurate rather than invented.
 
@@ -75,78 +75,78 @@ export const ORA_QA: QA[] = [
     keywords: ["ai", "automation", "how ai", "technology", "tools"],
   },
 
-  // ── Aether and the three models ────────────────────────────────────
+  // ── Cassian and the three models ───────────────────────────────────
   {
     id: "what-is-aether",
-    category: "Aether & models",
-    q: "What is Aether?",
-    a: "Aether is SVNR's intelligence layer, an AI you can talk to about your pipeline, your market, and how SVNR would build for you. It comes in three models: Ora, Soleth, and Aether.",
-    keywords: ["aether", "what is aether", "ai", "assistant", "chat"],
+    category: "Cassian & models",
+    q: "What is Cassian?",
+    a: "Cassian is SVNR's intelligence layer, an AI you can talk to about your pipeline, your market, and how SVNR would build for you. It comes in three models: Ora, Prose, and Soleth.",
+    keywords: ["cassian", "what is cassian", "aether", "ai", "assistant", "chat"],
     featured: true,
   },
   {
     id: "three-models",
-    category: "Aether & models",
-    q: "What are Ora, Soleth and Aether?",
-    a: "They are the three Aether models. Ora is the free model, focused on clear answers about SVNR. Soleth adds advisory conversation, file uploads, and drafting in your voice. Aether is the flagship: it builds and runs AI agents and voice agents and operates your acquisition autonomously. You start on Ora and upgrade when you are ready.",
-    keywords: ["ora", "soleth", "aether", "models", "difference", "tiers"],
+    category: "Cassian & models",
+    q: "What are Ora, Prose and Soleth?",
+    a: "They are the three Cassian models. Ora is the free model, focused on clear answers about SVNR. Prose connects to your company's documents and knows your business at scale, then researches and drafts in your voice. Soleth is the flagship: it builds and runs AI agents and voice agents and operates your acquisition autonomously. You start on Ora and upgrade when you are ready.",
+    keywords: ["ora", "prose", "soleth", "models", "difference", "tiers", "cassian"],
     featured: true,
   },
   {
     id: "what-ora-does",
-    category: "Aether & models",
+    category: "Cassian & models",
     q: "What can Ora do?",
     a: "Ora answers questions about SVNR, the services, your sector fit, pricing, and how to get started. It is the free model, so it stays focused on answers and is limited to 20 questions every five hours.",
     keywords: ["ora", "free", "limited", "what can ora do"],
   },
   {
-    id: "what-soleth-does",
-    category: "Aether & models",
-    q: "What can Soleth do?",
-    a: "Soleth is a paid model that goes beyond answers into advice. It researches across multiple steps, reasons over your own documents and files, and drafts outreach and plans in your voice. It unlocks once your team grants access.",
-    keywords: ["soleth", "paid", "files", "advice", "what can soleth do", "drafting", "research"],
+    id: "what-prose-does",
+    category: "Cassian & models",
+    q: "What can Prose do?",
+    a: "Prose is a paid model that connects to your company's documents and knowledge. It reads your files, learns how your business actually works, reasons over everything you give it, and drafts outreach, plans, and positioning grounded in your real context. It unlocks once your team grants access.",
+    keywords: ["prose", "paid", "files", "documents", "knows my company", "what can prose do", "drafting", "research", "soleth"],
   },
   {
-    id: "what-aether-model-does",
-    category: "Aether & models",
-    q: "What can the Aether model do?",
-    a: "Aether is the flagship model. It builds and runs AI agents and voice agents, and can operate your acquisition autonomously across your tools: outreach, calls, follow-up, and pipeline handled end to end, alongside your team. It has the highest limits and priority and is granted to members on the top tier.",
-    keywords: ["aether model", "flagship", "best model", "top tier", "most capable", "agents", "voice agents", "autonomous", "automate"],
+    id: "what-soleth-does",
+    category: "Cassian & models",
+    q: "What can Soleth do?",
+    a: "Soleth is the flagship model. It builds and runs AI agents and voice agents, and can operate your acquisition autonomously across your tools: outreach, calls, follow-up, and pipeline handled end to end, alongside your team. It also watches markets, policy, and global risk and moves early to keep you ahead of it. It has the highest limits and priority and is granted to members on the top tier.",
+    keywords: ["soleth", "flagship", "best model", "top tier", "most capable", "agents", "voice agents", "autonomous", "automate", "aether"],
   },
   {
     id: "model-access",
-    category: "Aether & models",
-    q: "How do I get access to Aether?",
-    a: "Create a free account and apply. Our team reviews each application and grants access to Ora, with Soleth and Aether available as you upgrade.",
+    category: "Cassian & models",
+    q: "How do I get access to Cassian?",
+    a: "Create a free account and apply. Our team reviews each application and grants access to Ora, with Prose and Soleth available as you upgrade.",
     keywords: ["access", "apply", "sign up", "get in", "join", "request"],
     featured: true,
   },
   {
     id: "model-cost",
-    category: "Aether & models",
+    category: "Cassian & models",
     q: "How much do the models cost?",
-    a: "Ora is free once you are approved. Soleth and Aether are paid tiers. There is no checkout to click through right now: when you are ready to upgrade, our team sets it up with you. Use the upgrade button or book a call.",
+    a: "Ora is free once you are approved. Prose and Soleth are paid tiers. There is no checkout to click through right now: when you are ready to upgrade, our team sets it up with you. Use the upgrade button or book a call.",
     keywords: ["cost", "price", "pricing", "models cost", "subscription", "upgrade"],
   },
   {
     id: "file-upload",
-    category: "Aether & models",
+    category: "Cassian & models",
     q: "Can I upload files?",
-    a: "Uploading files is a paid feature on Soleth and Aether. Ora stays focused on answering questions and does not take file uploads.",
+    a: "Uploading files is a paid feature on Prose and Soleth. Ora stays focused on answering questions and does not take file uploads.",
     keywords: ["upload", "files", "documents", "attach", "pdf"],
   },
   {
     id: "switch-models",
-    category: "Aether & models",
+    category: "Cassian & models",
     q: "How do I switch between models?",
-    a: "Once you have access to more than one model, you switch between them from the model menu at the top of the chat.",
+    a: "Once you have access to more than one model, you switch between them from the model menu at the top of the chat or next to the composer.",
     keywords: ["switch", "change model", "model menu", "select model"],
   },
   {
     id: "ora-limit",
-    category: "Aether & models",
+    category: "Cassian & models",
     q: "What is Ora's question limit?",
-    a: "Ora is limited to 20 questions every five hours, on a rolling window, so the count refills over time. Soleth and Aether have higher limits.",
+    a: "Ora is limited to 20 questions every five hours, on a rolling window, so the count refills over time. Prose and Soleth have higher limits.",
     keywords: ["limit", "20 questions", "5 hours", "quota", "cap", "reset"],
   },
 
@@ -413,7 +413,7 @@ export const ORA_QA: QA[] = [
     id: "get-started",
     category: "Getting started",
     q: "How do I get started?",
-    a: "Create a free account and apply for Aether access, or book a call directly. Our team reviews each application and gets you set up.",
+    a: "Create a free account and apply for Cassian access, or book a call directly. Our team reviews each application and gets you set up.",
     keywords: ["get started", "begin", "start", "sign up", "next step"],
     featured: true,
   },
@@ -445,7 +445,7 @@ export const ORA_QA: QA[] = [
 export const ORA_CATEGORIES: string[] = Array.from(new Set(ORA_QA.map((x) => x.category)));
 
 export const ORA_FALLBACK =
-  "I do not have a confident answer to that one yet. I can cover SVNR, the services, your sector fit, pricing, how it works, and the Aether models. For anything specific, the fastest path is to book a call and the team will answer directly.";
+  "I do not have a confident answer to that one yet. I can cover SVNR, the services, your sector fit, pricing, how it works, and the Cassian models. For anything specific, the fastest path is to book a call and the team will answer directly.";
 
 function norm(s: string): string {
   return s
@@ -488,13 +488,170 @@ export function searchOra(query: string, limit = 6): QA[] {
     .map((s) => s.qa);
 }
 
-/** Best answer for a free-text query, or a graceful fallback. */
+// ── Conversational layer ─────────────────────────────────────────────
+// Ora answers casual and off-topic messages in character so the experience
+// never feels like a fixed FAQ. No em dashes, no exclamation points, and never
+// the word "AI" (Ora is "the free Cassian model"). Replies are chosen at random
+// and many fold in a couple of live suggestions of what to ask.
+
+const ASK_POOL = ORA_QA.filter((x) => x.featured).map((x) => x.q);
+
+function pick<T>(arr: T[]): T {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+function pickAsks(n: number): string[] {
+  const pool = [...ASK_POOL];
+  const out: string[] = [];
+  while (out.length < n && pool.length) {
+    out.push(pool.splice(Math.floor(Math.random() * pool.length), 1)[0]);
+  }
+  return out;
+}
+function asksSentence(n = 2): string {
+  const a = pickAsks(n);
+  if (a.length === 0) return "";
+  if (a.length === 1) return `You could ask me, "${a[0]}"`;
+  const last = a.pop() as string;
+  return `A couple of places to start: ${a.map((s) => `"${s}"`).join(", ")} or "${last}"`;
+}
+
+interface Smalltalk {
+  test: RegExp;
+  replies: string[];
+  asks?: boolean;
+}
+
+const SMALLTALK: Smalltalk[] = [
+  {
+    test: /^(hi+|hey+|hello+|yo+|sup|hiya|heya|howdy|hola|good (morning|afternoon|evening|day))\b/,
+    replies: ["Hey, good to have you here.", "Hi there.", "Hey, welcome."],
+    asks: true,
+  },
+  {
+    test: /how (are|r|'re) (you|u|ya)|how(s| is| are) (it|things|life)|you (doing )?(good|ok|alright|well)|how'?s it going|how do you do|what'?s up|wh?assup/,
+    replies: [
+      "Running smooth, and always on. Thanks for asking.",
+      "Doing well on my end. Ready when you are.",
+      "All good here. More to the point, what brings you in.",
+    ],
+    asks: true,
+  },
+  {
+    test: /who are you|what are you|your name|introduce yourself|tell me about yourself/,
+    replies: [
+      "I'm Ora, the free Cassian model. I know SVNR end to end: the systems, the sectors, the pricing. For anything deeper, I'll point you to the team.",
+    ],
+  },
+  {
+    test: /are you (a |an )?(ai|bot|robot|human|real|person|machine)|are you alive|are you sentient/,
+    replies: [
+      "I'm Ora, the free Cassian model. Think of me as SVNR's front desk: I know the work cold, and I hand you to a human for anything that needs one.",
+      "I'm Ora, the lightest Cassian model. I know SVNR inside out. The heavier lifting is what Prose, Soleth, and the team are for.",
+    ],
+  },
+  {
+    test: /\b(thanks|thank you|thx|ty|appreciate it|cheers)\b/,
+    replies: ["Anytime.", "Of course.", "Happy to help."],
+    asks: true,
+  },
+  {
+    test: /\b(bye|goodbye|see ya|see you|later|gtg|cya)\b/,
+    replies: [
+      "Take care. When you want to go deeper, book a call and the team picks it up.",
+      "See you around. The door is open whenever you are ready.",
+    ],
+  },
+  {
+    test: /\b(ok|okay|cool|nice|great|got it|makes sense|gotcha|alright)\b/,
+    replies: ["Good.", "Glad that lands.", "Anything else on your mind."],
+    asks: true,
+  },
+  {
+    test: /\b(lol|lmao|haha+|hehe|funny)\b/,
+    replies: ["Glad that landed.", "I will be here all week.", "Right."],
+  },
+  {
+    test: /\bjoke\b|make me laugh|something funny/,
+    replies: [
+      "A campaign and a system walk into a quarter. Only one is still there by month three.",
+      "I would tell you a cold-outreach joke, but the reply rate is too low.",
+      "My humor runs dry. Like a pipeline without follow-up.",
+    ],
+    asks: true,
+  },
+  {
+    test: /meaning of life|why are we here|purpose of life/,
+    replies: [
+      "Above my pay grade. The meaning of your pipeline, though, I can help with.",
+      "Forty-two, allegedly. Your acquisition strategy I can be more precise about.",
+    ],
+  },
+  {
+    test: /do you sleep|are you tired|do you eat|do you dream/,
+    replies: [
+      "I do not. That is rather the point. A system does not clock out, and neither does the outreach SVNR builds.",
+      "Never sleep, never forget a follow-up. That is the whole idea.",
+    ],
+  },
+  {
+    test: /marry me|i love you|do you love me|are you single/,
+    replies: [
+      "Flattering. I am committed to your pipeline, though.",
+      "Let us start with a conversation about your market and see where it goes.",
+    ],
+  },
+  {
+    test: /(favou?rite|favorite) (colou?r|food|movie|song)/,
+    replies: [
+      "A deep electric indigo, if you have seen the brand. But I am more useful on your market than my taste.",
+      "I do not have one, but I hold strong opinions about reply rates.",
+    ],
+  },
+  {
+    test: /what can you do|what do you do|how can you help|what should i ask|help me/,
+    replies: [
+      "I can explain what SVNR builds, whether it fits your sector, how engagements are priced and run, and what the Cassian models do.",
+    ],
+    asks: true,
+  },
+  {
+    test: /\b(weather|stocks?|news|sports|football|cricket|score|the time|todays date)\b/,
+    replies: [
+      "Not my lane. The lightest model stays close to SVNR. Soleth is the one that watches markets and the wider world for clients.",
+    ],
+  },
+];
+
+function matchSmalltalk(raw: string): string | null {
+  for (const s of SMALLTALK) {
+    if (s.test.test(raw)) {
+      const base = pick(s.replies);
+      return s.asks ? `${base} ${asksSentence(2)}` : base;
+    }
+  }
+  return null;
+}
+
+function gracefulFallback(): string {
+  const opener = pick([
+    "That one sits a little outside what I cover, but I do not want to leave you hanging.",
+    "I would rather give you a straight answer than guess at that one.",
+    "Not something I can speak to confidently, so let me point you somewhere useful instead.",
+  ]);
+  return `${opener} I am sharpest on SVNR, the services, your sector fit, pricing, and the Cassian models. ${asksSentence(3)}. For anything specific, a quick call with the team is the fastest path.`;
+}
+
+/** Best answer for a free-text query: small talk first, then curated, then a graceful fallback. */
 export function oraAnswer(query: string): { qa: QA | null; answer: string } {
+  const raw = query.toLowerCase().trim();
+  const small = matchSmalltalk(raw);
+  if (small) return { qa: null, answer: small };
+
   const hits = searchOra(query, 1);
   const top = hits[0];
-  if (!top) return { qa: null, answer: ORA_FALLBACK };
-  // Require a minimum confidence for very short / vague queries.
-  return { qa: top, answer: top.a };
+  if (top) return { qa: top, answer: top.a };
+
+  return { qa: null, answer: gracefulFallback() };
 }
 
 export function oraFeatured(limit = 8): QA[] {

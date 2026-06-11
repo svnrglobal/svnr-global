@@ -70,7 +70,7 @@ export const COVER_BY_SLUG: Record<string, { motif: string; bg: string }> = {
 };
 
 const CAT_DEFAULT: Record<string, { motif: string; bg: string }> = {
-  Aether: { motif: "spark", bg: P.lavender },
+  Cassian: { motif: "spark", bg: P.lavender },
   "Use Cases": { motif: "network", bg: P.sky },
   Strategy: { motif: "compass", bg: P.terracotta },
   "Luxury Rugs": { motif: "layers", bg: P.butter },

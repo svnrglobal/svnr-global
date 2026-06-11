@@ -4,6 +4,7 @@ import { VIDEOS } from "../data/content";
 import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
+import Counter from "../components/Counter";
 
 const caseStudies = [
   {
@@ -117,10 +118,10 @@ export default function Results() {
                   <p className="text-lg text-white/80 italic mb-4">{cs.headline}</p>
                   <p className="text-sm text-white/50 leading-relaxed">{cs.body}</p>
 
-                  <div className="grid grid-cols-3 gap-4 mt-8">
+                  <div className="grid grid-cols-3 gap-2 sm:gap-4 mt-8">
                     {cs.metrics.map((m) => (
                       <div key={m.label}>
-                        <div className="text-xl font-medium text-white stat-number">{m.value}</div>
+                        <div className="text-lg sm:text-xl font-medium text-white stat-number"><Counter value={m.value} /></div>
                         <div className="text-[10px] text-white/30 mt-1 leading-tight">{m.label}</div>
                       </div>
                     ))}

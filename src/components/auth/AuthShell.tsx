@@ -32,7 +32,7 @@ export default function AuthShell({
       >
         <Link to="/" className="flex items-center justify-center gap-2 mb-8 text-white">
           <AetherLogo size={24} />
-          <span className="font-medium tracking-tight text-[15px]">Aether</span>
+          <span className="font-medium tracking-tight text-[15px]">Cassian</span>
         </Link>
 
         <div className="glass glass-sheen rounded-3xl p-7">

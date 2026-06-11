@@ -43,7 +43,7 @@ export default function Admin() {
   }, []);
 
   const grant = async (a: App) => {
-    if (!window.confirm(`Grant Aether access to ${a.full_name} (${a.company_name})?`)) return;
+    if (!window.confirm(`Grant Cassian access to ${a.full_name} (${a.company_name})?`)) return;
     setBusyId(a.id);
     const {
       data: { session },
@@ -78,7 +78,7 @@ export default function Admin() {
 
   return (
     <AdminShell>
-      <SEO title="Admin — Applications" description="Aether admin." canonical="/admin" noindex />
+      <SEO title="Admin — Applications" description="Cassian admin." canonical="/admin" noindex />
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-white text-xl font-medium">
           Applications
@@ -144,7 +144,7 @@ export default function Admin() {
                         <p className="text-white/70 leading-relaxed">{a.current_acquisition}</p>
                       </div>
                       <div>
-                        <p className="text-white/35 text-[10px] uppercase tracking-wider mb-1">What they want from Aether</p>
+                        <p className="text-white/35 text-[10px] uppercase tracking-wider mb-1">What they want from Cassian</p>
                         <p className="text-white/70 leading-relaxed">{a.prose_goal}</p>
                       </div>
                       <div className="flex gap-2 pt-2">

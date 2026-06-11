@@ -3,29 +3,39 @@ import { BODY_CELLS, EYE_CELLS, GRID_W, GRID_H } from "./markGeometry";
 
 export type PetMood = "idle" | "thinking" | "happy";
 
-// The larger Aether pet that lives on the chat page. It bobs and drifts while
-// idle, blinks on a long cycle, squints while thinking, and bounces when happy.
+// The Cassian pet (Ora's creature). It drifts and bobs while idle with a little
+// playful hop and wiggle, blinks on a long cycle, squints while thinking, and
+// bounces when happy.
 const floatVariants: Variants = {
   idle: {
-    y: [0, -6, 0],
-    x: [0, 6, -4, 0],
-    transition: { duration: 7, repeat: Infinity, ease: "easeInOut" },
+    y: [0, -5, 0, -2, 0, -15, -2, 0],
+    x: [0, 5, -3, 4, 0, -2, 2, 0],
+    rotate: [0, 2.5, -2.5, 1.5, 0, -4, 2, 0],
+    scaleY: [1, 1, 0.95, 1, 1, 1.06, 0.97, 1],
+    transition: {
+      duration: 6.5,
+      repeat: Infinity,
+      ease: "easeInOut",
+      times: [0, 0.12, 0.24, 0.38, 0.52, 0.74, 0.88, 1],
+    },
   },
-  thinking: { y: [0, -3, 0], transition: { duration: 1.2, repeat: Infinity, ease: "easeInOut" } },
+  thinking: { y: [0, -3, 0], rotate: [0, 1.5, -1.5, 0], transition: { duration: 1.2, repeat: Infinity, ease: "easeInOut" } },
   happy: {
-    y: [0, -12, 0],
-    rotate: [0, -5, 5, 0],
-    transition: { duration: 0.6, repeat: Infinity, ease: "easeInOut" },
+    y: [0, -14, 0],
+    rotate: [0, -7, 7, 0],
+    scaleY: [1, 1.08, 0.96, 1],
+    transition: { duration: 0.55, repeat: Infinity, ease: "easeInOut" },
   },
 };
 
 const eyeVariants: Variants = {
+  // Long open stretches with the occasional cute double blink.
   idle: {
-    scaleY: [1, 1, 0.12, 1, 1],
-    transition: { duration: 4.5, times: [0, 0.9, 0.94, 0.98, 1], repeat: Infinity },
+    scaleY: [1, 1, 0.1, 1, 0.1, 1, 1],
+    transition: { duration: 5.2, times: [0, 0.78, 0.82, 0.86, 0.9, 0.94, 1], repeat: Infinity },
   },
-  thinking: { scaleY: [1, 0.5, 1], transition: { duration: 0.7, repeat: Infinity, ease: "easeInOut" } },
-  happy: { scaleY: [1, 0.6, 1], transition: { duration: 0.4, repeat: Infinity, ease: "easeInOut" } },
+  thinking: { scaleY: [1, 0.45, 1], transition: { duration: 0.7, repeat: Infinity, ease: "easeInOut" } },
+  happy: { scaleY: [1, 0.55, 1], transition: { duration: 0.4, repeat: Infinity, ease: "easeInOut" } },
 };
 
 export default function AetherPet({

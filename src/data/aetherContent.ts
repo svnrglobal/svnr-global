@@ -1,23 +1,27 @@
-// Brand + model definitions for Aether (the AI layer that replaced PROSE).
-// Aether is the flagship name and the family name. Three models sit under it:
-// Ora (free), Soleth (paid), Aether (paid flagship).
+// Brand + model definitions for Cassian (SVNR's AI layer).
+// Cassian is the family name. Three models sit under it:
+//   Cassian Ora    (free)      — clear answers about SVNR
+//   Cassian Prose  (paid)      — connects to your company documents, knows your business at scale
+//   Cassian Soleth (flagship)  — builds agents and operates autonomously
+// Filename stays aetherContent.ts for import stability; exports are Cassian-named.
 
-export const AETHER = {
-  brand: "Aether",
+export const CASSIAN = {
+  brand: "Cassian",
   tagline: "The intelligence layer for premium acquisition.",
   intro:
-    "Aether is SVNR's AI. Talk to it about your pipeline, your market, and exactly what SVNR would build for you.",
+    "Cassian is SVNR's AI. Talk to it about your pipeline, your market, and exactly what SVNR would build for you.",
 };
 
 // Ora's free usage limit.
 export const ORA_LIMIT = 20;
 export const ORA_WINDOW_MS = 5 * 60 * 60 * 1000; // 5 hours
 
-export interface AetherModel {
-  id: "ora" | "soleth" | "aether";
-  name: string;
+export interface CassianModel {
+  id: "ora" | "prose" | "soleth";
+  name: string; // short name: Ora / Prose / Soleth
+  fullName: string; // Cassian Ora / Cassian Prose / Cassian Soleth
   tier: string;
-  verb: string; // Answers / Advises / Operates
+  verb: string; // Answers / Knows / Operates
   tagline: string;
   blurb: string;
   capabilities: string[];
@@ -25,10 +29,11 @@ export interface AetherModel {
   flagship?: boolean;
 }
 
-export const AETHER_MODELS: AetherModel[] = [
+export const CASSIAN_MODELS: CassianModel[] = [
   {
     id: "ora",
     name: "Ora",
+    fullName: "Cassian Ora",
     tier: "Free",
     verb: "Answers",
     access: "free",
@@ -42,36 +47,39 @@ export const AETHER_MODELS: AetherModel[] = [
     ],
   },
   {
-    id: "soleth",
-    name: "Soleth",
+    id: "prose",
+    name: "Prose",
+    fullName: "Cassian Prose",
     tier: "Pro",
-    verb: "Advises",
+    verb: "Knows",
     access: "paid",
-    tagline: "Advice and drafting, with your documents in the room.",
+    tagline: "Knows your company at scale, from your own documents.",
     blurb:
-      "A paid model that goes beyond answers into advice. It researches, reasons over your own files, and drafts outreach, plans, and positioning tailored to your situation.",
+      "A paid model that connects to your company's documents and knowledge. It reads your files, learns how your business actually works, and reasons over everything you give it, then drafts outreach, plans, and positioning grounded in your real context.",
     capabilities: [
       "Everything in Ora",
-      "File and document uploads",
-      "Multi-step research and drafting",
-      "Drafts outreach and plans in your voice",
+      "Connects to your company documents",
+      "Knows your business at scale, from your own files",
+      "Multi-step research and drafting in your voice",
       "Deeper, tailored reasoning and higher limits",
     ],
   },
   {
-    id: "aether",
-    name: "Aether",
+    id: "soleth",
+    name: "Soleth",
+    fullName: "Cassian Soleth",
     tier: "Flagship",
     verb: "Operates",
     access: "paid",
     flagship: true,
     tagline: "The flagship. Builds agents and operates autonomously.",
     blurb:
-      "The most capable model. Aether builds and runs AI agents and voice agents, and operates your acquisition autonomously alongside your team, from outreach to follow-up to pipeline, end to end.",
+      "The most capable model. Soleth builds and runs AI agents and voice agents, and operates your acquisition autonomously alongside your team, from outreach to follow-up to pipeline, end to end. It also watches the world around your business, markets, policy, and risk, and moves early to keep you ahead of it.",
     capabilities: [
-      "Everything in Soleth",
+      "Everything in Prose",
       "Builds and runs AI agents and voice agents",
       "Operates autonomously across your tools",
+      "Watches markets, policy and global risk, and acts early",
       "Outreach, calls, follow-up and pipeline, end to end",
       "Highest limits and priority",
     ],
@@ -79,16 +87,16 @@ export const AETHER_MODELS: AetherModel[] = [
 ];
 
 export const UPGRADE_NOTE =
-  "Soleth and Aether are paid models. When you are ready to upgrade, our team sets it up with you.";
+  "Prose and Soleth are paid models. When you are ready to upgrade, our team sets it up with you.";
 
 // Per-page greeting + starter prompts for the Ora launcher, matched by the
 // most specific path prefix.
-export interface AetherPageContent {
+export interface CassianPageContent {
   greeting: string;
   prompts: string[];
 }
 
-const HOME: AetherPageContent = {
+const HOME: CassianPageContent = {
   greeting:
     "SVNR builds the system that brings the right clients to you. What would you like to understand better?",
   prompts: [
@@ -99,7 +107,7 @@ const HOME: AetherPageContent = {
   ],
 };
 
-const PAGES: Record<string, AetherPageContent> = {
+const PAGES: Record<string, CassianPageContent> = {
   "/": HOME,
   "/services": {
     greeting: "Each service plugs into the same system. What are you trying to fix in your pipeline?",
@@ -172,8 +180,8 @@ const PAGES: Record<string, AetherPageContent> = {
   "/blog": {
     greeting: "Does any of this map to something you are currently working through?",
     prompts: [
-      "What is Aether?",
-      "What are Ora, Soleth and Aether?",
+      "What is Cassian?",
+      "What are Ora, Prose and Soleth?",
       "What would this look like for my sector?",
       "How do I get started?",
     ],
@@ -188,20 +196,23 @@ const PAGES: Record<string, AetherPageContent> = {
       "What do you need from me to start?",
     ],
   },
-  "/aether": {
+  "/cassian": {
     greeting:
-      "I am Ora, the free Aether model. Ask me about SVNR, your sector, pricing, or how SVNR would build for you.",
+      "I am Ora, the free Cassian model. Ask me about SVNR, your sector, pricing, or how SVNR would build for you.",
     prompts: [
-      "What is Aether?",
-      "What are Ora, Soleth and Aether?",
+      "What is Cassian?",
+      "What are Ora, Prose and Soleth?",
       "What would SVNR build for me?",
       "How do I get started?",
     ],
   },
 };
 
-/** Returns the Aether page content for a pathname, matching the most specific prefix. */
-export function getAetherContent(pathname: string): AetherPageContent {
+// /aether kept as an alias so the old greeting still resolves if anything hits it.
+PAGES["/aether"] = PAGES["/cassian"];
+
+/** Returns the Cassian page content for a pathname, matching the most specific prefix. */
+export function getCassianContent(pathname: string): CassianPageContent {
   const path = pathname || "/";
   if (PAGES[path]) return PAGES[path];
   const keys = Object.keys(PAGES)
@@ -211,13 +222,14 @@ export function getAetherContent(pathname: string): AetherPageContent {
   return HOME;
 }
 
-// Tips Aether can give, shown in the teaser carousel to preview the kind of
+// Tips Cassian can give, shown in the teaser carousel to preview the kind of
 // thinking members get. Voice: no em dashes, no exclamation points.
-export const AETHER_TIPS: string[] = [
+export const CASSIAN_TIPS: string[] = [
   "Referrals feel free, but they quietly cap how fast you can grow.",
   "The best time to reach a buyer is before they start looking. The signals are findable.",
   "A campaign ends. Infrastructure compounds. The gap shows by month three.",
   "One researched reply in 14 minutes beats a hundred cold sends.",
   "You can reach principals directly, without portals, ads, or trade fairs.",
   "Most pipelines break at follow-up. A system does not forget, and does not stop.",
+  "A shift in policy or supply can reach your pipeline weeks before the news does. It is worth seeing early.",
 ];

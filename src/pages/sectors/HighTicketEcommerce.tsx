@@ -5,6 +5,7 @@ import { BarChart, Bar, AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YA
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import EngagementTimeline from "../../components/EngagementTimeline";
 
 const aovData = [
   { ch: "D2C", aov: 100 }, { ch: "Trade Q1", aov: 180 }, { ch: "Trade Q2", aov: 260 }, { ch: "Trade Q3", aov: 312 },
@@ -39,7 +40,7 @@ export default function HighTicketEcommerce() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "High-Ticket E-commerce & Wholesale Buyer Acquisition",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "AI-powered wholesale buyer and trade account acquisition for premium D2C and high-ticket e-commerce operators. Systematic outreach that builds B2B distribution alongside D2C, delivering 312% average order value increase through trade channels.",
             "areaServed": ["Global", "Europe", "United Kingdom", "United States", "Middle East"],
             "serviceType": ["Wholesale Buyer Acquisition", "Trade Account Development", "High-Ticket E-commerce Distribution", "D2C to B2B Expansion"]
@@ -78,7 +79,7 @@ export default function HighTicketEcommerce() {
         ]}
       />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <img src="/sectors/ecommerce-EA694261-B27B-44EA-9C9C-02F22C06A07B.jpg" alt="High-Ticket E-commerce" className="absolute inset-0 w-full h-full object-cover z-0" />
+        <img fetchPriority="high" decoding="async" src="/sectors/ecommerce-EA694261-B27B-44EA-9C9C-02F22C06A07B.jpg" alt="High-Ticket E-commerce" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
@@ -155,9 +156,20 @@ export default function HighTicketEcommerce() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           {["/sectors/ecommerce-EA694261-B27B-44EA-9C9C-02F22C06A07B.jpg", "/sectors/ecommerce-IMG_3162.JPG"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="High-ticket e-commerce wholesale buyer acquisition and AOV growth" />
+              <img loading="lazy" decoding="async" src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="High-ticket e-commerce wholesale buyer acquisition and AOV growth" />
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* THE 90-DAY PATH: engagement timeline */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The 90-day path</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">From engagement to active pipeline.</h2>
+          </motion.div>
+          <EngagementTimeline accent="#00c6ff" milestones={[{"when":"Week 0","label":"Trade buyer universe mapped"},{"when":"Week 2 to 3","label":"Wholesale outreach live"},{"when":"Day 30 to 60","label":"First trade accounts open"},{"when":"Day 90","label":"312% higher AOV channel"}]} />
         </div>
       </section>
 

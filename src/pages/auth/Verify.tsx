@@ -14,7 +14,7 @@ export default function Verify() {
         <div className="rounded-lg bg-white/[0.04] border border-white/8 px-4 py-3">
           <p className="text-white/55 text-[13px] leading-relaxed">
             Once verified, you will land on your dashboard where you can apply for
-            Aether access. Applications are reviewed by our team.
+            Cassian access. Applications are reviewed by our team.
           </p>
         </div>
       </AuthShell>

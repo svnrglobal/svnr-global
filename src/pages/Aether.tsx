@@ -8,7 +8,7 @@ import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
 import { VIDEOS } from "../data/content";
-import { AETHER_MODELS } from "../data/aetherContent";
+import { CASSIAN_MODELS } from "../data/aetherContent";
 import { useAuth } from "../lib/useAuth";
 
 const LEVELS = [
@@ -18,18 +18,18 @@ const LEVELS = [
     line: "Ora responds to questions about SVNR, your sector, and how an engagement actually works.",
   },
   {
-    name: "Advises",
+    name: "Knows",
     pos: 0.5,
-    line: "Soleth learns your market, your ICP, and your proof, then gives guidance built on your context.",
+    line: "Prose connects to your company's documents and knows your business at scale, then gives guidance built on your real context.",
   },
   {
     name: "Operates",
     pos: 5 / 6,
-    line: "Aether thinks like your acquisition team: pipeline logic, outreach reasoning, and the next move.",
+    line: "Soleth thinks like your acquisition team: pipeline logic, outreach reasoning, and the next move, then operates it for you.",
   },
 ];
 
-// Aether depth slider — dot-matrix, white→blue gradient, the mark on the handle.
+// Cassian depth slider — dot-matrix, white→blue gradient, the mark on the handle.
 function AetherDepthSlider() {
   const trackRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(1);
@@ -81,19 +81,46 @@ function AetherDepthSlider() {
     }
   };
 
+  // The flagship (Soleth) turns the whole track into a living, twinkling pixel
+  // matrix. Ora and Prose keep the clean gradient-to-handle fill. While dragging,
+  // preview the flagship state as soon as the pointer is nearest it.
+  const previewActive = drag !== null ? nearest(drag) : active;
+  const isTop = previewActive === LEVELS.length - 1;
+
   const SPACING = Math.max(4, Math.round(COLS / 6));
   const dots = [];
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const colFrac = c / (COLS - 1);
-      let bg = "transparent";
-      if (colFrac <= fill + 0.0001) {
-        const t = colFrac / Math.max(fill, 0.0001);
-        bg = `rgba(139,125,255,${(0.4 + 0.55 * t).toFixed(2)})`;
-      } else if (c % SPACING === 0) {
-        bg = "rgba(255,255,255,0.12)";
+      if (isTop) {
+        const baseAlpha = 0.3 + 0.6 * colFrac; // dim left → bright right
+        const h = r * COLS + c;
+        const dur = 1.3 + ((h * 7) % 11) / 10; // 1.3s..2.3s
+        const delay = ((h * 13) % 21) / 10; // 0s..2s
+        dots.push(
+          <span
+            key={`${r}-${c}`}
+            className="matrix-px"
+            style={{
+              background: `rgba(139,125,255,${baseAlpha.toFixed(2)})`,
+              borderRadius: 1.5,
+              animation: `matrixTwinkle ${dur}s ease-in-out ${delay}s infinite`,
+            }}
+          />
+        );
+      } else {
+        // Ora / Prose: calm neutral fill. The purple lives only at the flagship.
+        let bg = "transparent";
+        if (colFrac <= fill + 0.0001) {
+          const t = colFrac / Math.max(fill, 0.0001);
+          bg = `rgba(255,255,255,${(0.14 + 0.4 * t).toFixed(2)})`;
+        } else if (c === COLS - 1) {
+          bg = "rgba(139,125,255,0.85)"; // hint of Soleth's matrix at the far end
+        } else if (c % SPACING === 0) {
+          bg = "rgba(255,255,255,0.12)";
+        }
+        dots.push(<span key={`${r}-${c}`} style={{ background: bg, borderRadius: 1.5 }} />);
       }
-      dots.push(<span key={`${r}-${c}`} style={{ background: bg, borderRadius: 1.5 }} />);
     }
   }
 
@@ -104,7 +131,13 @@ function AetherDepthSlider() {
     >
       <div className="flex items-center justify-between mb-1">
         <span className="text-white/85 text-sm font-medium">
-          What Aether does <span className="text-white/45 font-normal">· {level.name}</span>
+          What Cassian does{" "}
+          <span
+            className="font-normal transition-colors duration-300"
+            style={{ color: isTop ? "#a78bff" : "rgba(255,255,255,0.45)" }}
+          >
+            · {level.name}
+          </span>
         </span>
         <span className="text-white/30 text-xs">drag</span>
       </div>
@@ -120,7 +153,7 @@ function AetherDepthSlider() {
         aria-valuemin={1}
         aria-valuemax={3}
         aria-valuenow={active + 1}
-        aria-label="What Aether does"
+        aria-label="What Cassian does"
         onPointerDown={onDown}
         onPointerMove={onMove}
         onPointerUp={onUp}
@@ -141,27 +174,75 @@ function AetherDepthSlider() {
         />
       </div>
 
-      <div className="flex items-center justify-between mt-3 px-0.5 mb-5">
-        {LEVELS.map((l, i) => (
-          <button
-            key={l.name}
-            onClick={() => setActive(i)}
-            className="text-[11px] sm:text-xs transition-colors"
-            style={{ color: active === i ? "#fff" : "rgba(255,255,255,0.32)" }}
-          >
-            {l.name}
-          </button>
-        ))}
+      {/* Model cards — tap to switch; each shows who it is and what it does */}
+      <div className="grid grid-cols-3 gap-2 mt-3 mb-5">
+        {LEVELS.map((l, i) => {
+          const m = CASSIAN_MODELS[i];
+          const on = active === i;
+          const flagship = i === LEVELS.length - 1;
+          return (
+            <button
+              key={m.id}
+              onClick={() => setActive(i)}
+              className="rounded-2xl px-2.5 sm:px-3.5 py-3 text-left transition-all duration-300"
+              style={{
+                background: on
+                  ? flagship
+                    ? "rgba(139,125,255,0.10)"
+                    : "rgba(255,255,255,0.06)"
+                  : "rgba(255,255,255,0.02)",
+                border: `1px solid ${
+                  on
+                    ? flagship
+                      ? "rgba(139,125,255,0.45)"
+                      : "rgba(255,255,255,0.22)"
+                    : "rgba(255,255,255,0.07)"
+                }`,
+              }}
+            >
+              <span
+                className="block text-[12px] sm:text-[13px] font-medium"
+                style={{ color: on ? "#fff" : "rgba(255,255,255,0.55)" }}
+              >
+                {m.name}
+              </span>
+              <span
+                className="block text-[9.5px] sm:text-[10px] mt-0.5 uppercase tracking-wider"
+                style={{
+                  color: on
+                    ? flagship
+                      ? "#a78bff"
+                      : "rgba(255,255,255,0.5)"
+                    : "rgba(255,255,255,0.28)",
+                }}
+              >
+                {l.name} · {m.tier}
+              </span>
+            </button>
+          );
+        })}
       </div>
 
-      <motion.p
+      <motion.div
         key={active}
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-white/55 text-sm leading-relaxed border-t border-white/8 pt-5"
+        className="border-t border-white/8 pt-5"
       >
-        {level.line}
-      </motion.p>
+        <p className="text-white/55 text-sm leading-relaxed">{level.line}</p>
+        <div className="mt-4 space-y-2">
+          {CASSIAN_MODELS[active].capabilities.slice(0, 3).map((cap) => (
+            <div key={cap} className="flex items-start gap-2.5">
+              <Check
+                size={12}
+                className="mt-[3px] flex-shrink-0"
+                style={{ color: active === LEVELS.length - 1 ? "#a78bff" : "rgba(255,255,255,0.45)" }}
+              />
+              <span className="text-white/45 text-[12.5px] leading-relaxed">{cap}</span>
+            </div>
+          ))}
+        </div>
+      </motion.div>
     </div>
   );
 }
@@ -173,21 +254,36 @@ export default function Aether() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Aether — SVNR Global's AI"
-        description="Aether is SVNR Global's AI. Three models, Ora, Soleth, and Aether, that answer, advise, and operate alongside premium teams. Apply for access to Ora free."
-        canonical="/aether"
+        title="Cassian — SVNR Global's AI"
+        description="Cassian is SVNR Global's AI. Three models, Ora, Prose, and Soleth, that answer, know your company, and operate alongside premium teams. Apply for access to Ora free."
+        canonical="/cassian"
         breadcrumbs={[
           { name: "Home", url: "/" },
-          { name: "Aether", url: "/aether" },
+          { name: "Cassian", url: "/cassian" },
         ]}
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          name: "Aether — SVNR Global's AI",
-          url: "https://svnrglobal.com/aether",
-          description:
-            "Aether is SVNR Global's AI, with three models that answer, advise, and operate alongside premium teams.",
-        }}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            name: "Cassian — SVNR Global's AI",
+            url: "https://svnrglobal.com/cassian",
+            description:
+              "Cassian is SVNR Global's AI, with three models that answer, know your company, and operate alongside premium teams.",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              { q: "What is Cassian Ora?", a: LEVELS[0].line },
+              { q: "How is Cassian Prose different from Ora?", a: LEVELS[1].line },
+              { q: "What does Cassian Soleth do?", a: LEVELS[2].line },
+            ].map((f) => ({
+              "@type": "Question",
+              name: f.q,
+              acceptedAnswer: { "@type": "Answer", text: f.a },
+            })),
+          },
+        ]}
       />
 
       {/* HERO */}
@@ -207,7 +303,7 @@ export default function Aether() {
             transition={{ delay: 1.25 }}
             className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-5"
           >
-            Meet Aether
+            Meet Cassian
           </motion.p>
           <motion.h1
             initial={{ opacity: 0, y: 24 }}
@@ -224,8 +320,8 @@ export default function Aether() {
             transition={{ delay: 1.55 }}
             className="text-white/55 text-base sm:text-lg max-w-xl mx-auto"
           >
-            Aether is SVNR's AI. Talk to Ora free about your market, ask the hard questions, and see the
-            next move. Soleth and Aether go deeper for members.
+            Cassian is SVNR's AI. Talk to Ora free about your market, ask the hard questions, and see the
+            next move. Prose and Soleth go deeper for members.
           </motion.p>
 
           <motion.div
@@ -277,7 +373,7 @@ export default function Aether() {
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-4">
-            {AETHER_MODELS.map((m, i) => {
+            {CASSIAN_MODELS.map((m, i) => {
               const flagship = Boolean(m.flagship);
               return (
                 <motion.div
@@ -296,7 +392,7 @@ export default function Aether() {
                     <div className="flex items-center gap-2.5 text-white">
                       <AetherLogo size={26} state={flagship ? "idle" : "static"} />
                       <div className="leading-tight">
-                        <p className="text-base font-medium">{m.name}</p>
+                        <p className="text-base font-medium">{m.fullName}</p>
                         <p className="text-white/40 text-[10px] uppercase tracking-[0.2em]">{m.verb}</p>
                       </div>
                     </div>
@@ -350,13 +446,95 @@ export default function Aether() {
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/35 mb-3">The flagship, at work</p>
             <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-tight mb-4">One model. Every online job.</h2>
             <p className="text-white/55 text-sm leading-relaxed">
-              The Aether model builds and runs the agents that operate your business online, the storefront,
+              Cassian Soleth builds and runs the agents that operate your business online, the storefront,
               outreach, support, voice, pipeline, and partners, autonomously. The work happens without waiting
               on anyone.
             </p>
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ duration: 0.6 }}>
             <AgentOrbit />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SIGNAL INTELLIGENCE TEASER */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="rounded-3xl p-8 sm:p-12 overflow-hidden relative"
+            style={{
+              background: "linear-gradient(135deg, rgba(108,108,255,0.08), rgba(255,255,255,0.02))",
+              border: "1px solid rgba(255,255,255,0.10)",
+            }}
+          >
+            <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-center">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-[#8b7dff] mb-3">Soleth · Signal intelligence</p>
+                <h2 className="text-2xl sm:text-3xl font-medium text-white tracking-tight mb-4 leading-tight">
+                  It watches the world so your next move is early.
+                </h2>
+                <p className="text-white/55 text-sm leading-relaxed mb-4">
+                  Markets move, policy shifts, supply chains reroute. Soleth reads the signals as they appear,
+                  news, filings, rates, and sanctions, and connects them to your pipeline, so an opening lands
+                  on your desk before it is obvious to everyone else.
+                </p>
+                <p className="text-white/55 text-sm leading-relaxed mb-6">
+                  Find importers in a new market before a tariff lands. Reposition before the rest of your
+                  sector reacts. The thinking is continuous, and the call is still yours.
+                </p>
+                <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-white/40 border border-white/12 rounded-full px-4 py-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#8b7dff]" /> In private preview for engagement members
+                </span>
+              </div>
+
+              {/* Infographic: signal sources pulse into Soleth, out comes a decision */}
+              <div className="flex flex-col gap-3">
+                <div className="grid grid-cols-2 gap-2.5">
+                  {["News", "Policy", "Markets", "Sanctions"].map((s, i) => (
+                    <motion.div
+                      key={s}
+                      initial={{ opacity: 0.35 }}
+                      whileInView={{ opacity: 1 }}
+                      viewport={{ once: true }}
+                      animate={{ opacity: [0.4, 1, 0.4] }}
+                      transition={{ duration: 2.4, repeat: Infinity, delay: i * 0.4, ease: "easeInOut" }}
+                      className="flex items-center gap-2 rounded-xl px-3 py-2.5 text-[12px] text-white/70"
+                      style={{ background: "rgba(255,255,255,0.04)", border: "1px solid rgba(255,255,255,0.08)" }}
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#8b7dff] flex-shrink-0" /> {s}
+                    </motion.div>
+                  ))}
+                </div>
+                <div className="flex justify-center text-white/25 text-lg leading-none">↓</div>
+                <div
+                  className="rounded-2xl px-5 py-4 text-center"
+                  style={{ background: "rgba(108,108,255,0.12)", border: "1px solid rgba(139,125,255,0.25)" }}
+                >
+                  <div className="flex items-center justify-center gap-2 mb-1.5 text-white">
+                    <AetherLogo size={18} />
+                    <span className="text-sm font-medium">Cassian Soleth</span>
+                  </div>
+                  <p className="text-white/45 text-[11px] leading-relaxed">
+                    Reads the signal, weighs it against your pipeline, and surfaces the move.
+                  </p>
+                </div>
+                <div className="flex justify-center text-white/25 text-lg leading-none">↓</div>
+                <motion.div
+                  initial={{ opacity: 0, y: 8 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.3 }}
+                  className="rounded-xl px-4 py-3 text-[12px] text-white/80"
+                  style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.12)" }}
+                >
+                  <span className="text-[#8b7dff] font-medium">Move:</span> reach 40 importers in Vietnam this
+                  week, before the duty change is priced in.
+                </motion.div>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -382,7 +560,7 @@ export default function Aether() {
           <p className="text-[10px] uppercase tracking-[0.3em] text-white/35 mb-3">Private access</p>
           <h2 className="text-2xl font-medium text-white tracking-tight mb-3">Access is granted individually.</h2>
           <p className="text-white/55 text-sm leading-relaxed max-w-md mx-auto mb-7">
-            Create a free account to apply for Ora. Applications are reviewed by our team. If Aether is a fit
+            Create a free account to apply for Ora. Applications are reviewed by our team. If Cassian is a fit
             for where you are right now, you will hear from us directly.
           </p>
           <Link

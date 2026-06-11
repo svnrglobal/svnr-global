@@ -42,7 +42,7 @@ const ROUTES = [
   "/compare",
   "/engagement",
   "/founder",
-  "/aether",
+  "/cassian",
   "/services/client-acquisition",
   "/services/ai-receptionist",
   "/services/revenue-operations",
@@ -167,7 +167,7 @@ function xmlEsc(s) {
 
 function priorityFor(route) {
   if (route === "/") return "1.0";
-  if (/^\/(about|services|sectors|case-studies|blog|founder|engagement|compare|contact|aether)$/.test(route)) return "0.9";
+  if (/^\/(about|services|sectors|case-studies|blog|founder|engagement|compare|contact|cassian|aether)$/.test(route)) return "0.9";
   if (route.startsWith("/services/") || route.startsWith("/sectors/")) return "0.8";
   return "0.7"; // case-study + blog detail pages
 }

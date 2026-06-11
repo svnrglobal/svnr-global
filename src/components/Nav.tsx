@@ -8,7 +8,7 @@ const links = [
   { label: "Services",   href: "/services" },
   { label: "Industries", href: "/sectors" },
   { label: "Case Studies", href: "/case-studies" },
-  { label: "Blog",       href: "/blog" },
+  { label: "Cassian",    href: "/cassian" },
   { label: "How We Work", href: "/engagement" },
   { label: "About",      href: "/about" },
 ];
@@ -53,13 +53,13 @@ export default function Nav() {
         initial={{ opacity: 0, y: -12 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-auto shrink-0 hidden md:block"
+        className="pointer-events-auto shrink-0 hidden lg:block"
       >
         <Link to="/" className="flex items-center">
           <img
             src="/svnr-logo.svg"
             alt="SVNR Global"
-            className="block w-[72px] h-[72px] md:w-[112px] md:h-[112px]"
+            className="block w-[88px] h-[88px] xl:w-[112px] xl:h-[112px]"
             style={{ objectFit: "contain", mixBlendMode: "screen" }}
           />
         </Link>
@@ -70,7 +70,7 @@ export default function Nav() {
         initial={{ opacity: 0, y: -14 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="hidden md:flex items-center pointer-events-auto absolute left-1/2 -translate-x-1/2"
+        className="hidden lg:flex items-center pointer-events-auto absolute left-1/2 -translate-x-1/2 w-max max-w-[calc(100vw-3rem)]"
         style={{
           background: "rgba(15,15,17,0.65)",
           backdropFilter: "blur(24px)",
@@ -89,7 +89,7 @@ export default function Nav() {
             <Link
               key={l.href}
               to={l.href}
-              className="relative px-3 py-2 rounded-full text-[10.5px] uppercase tracking-[0.14em] font-light transition-colors duration-200 hover:text-white whitespace-nowrap"
+              className="relative px-2.5 py-2 rounded-full text-[10.5px] uppercase tracking-[0.12em] font-light transition-colors duration-200 hover:text-white whitespace-nowrap"
               style={{ color: active ? "#fff" : "rgba(255,255,255,0.45)" }}
             >
               {active && (
@@ -124,7 +124,7 @@ export default function Nav() {
       {/* ── Mobile logo ── */}
       <Link
         to="/"
-        className="md:hidden pointer-events-auto shrink-0"
+        className="lg:hidden pointer-events-auto shrink-0"
       >
         <img
           src="/svnr-logo.svg"
@@ -139,7 +139,7 @@ export default function Nav() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
-        className="md:hidden pointer-events-auto text-white/60 hover:text-white transition-colors mt-1 shrink-0"
+        className="lg:hidden pointer-events-auto text-white/60 hover:text-white transition-colors mt-1 shrink-0"
         onClick={() => setOpen(!open)}
         aria-label="Toggle menu"
       >
@@ -164,12 +164,6 @@ export default function Nav() {
             }}
           >
             <div className="flex flex-col gap-1 p-3">
-              <Link
-                to="/"
-                className="px-4 py-3 rounded-xl text-sm text-white/60 hover:text-white hover:bg-white/5 uppercase tracking-widest font-light transition-all"
-              >
-                Home
-              </Link>
               {links.map((l) => (
                 <Link
                   key={l.href}

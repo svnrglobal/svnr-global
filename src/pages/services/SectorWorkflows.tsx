@@ -5,7 +5,11 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import Counter from "../../components/Counter";
+import SystemFlow from "../../components/SystemFlow";
 
+
+const flowGradient = "linear-gradient(135deg, #34d399, #059669)";
 
 const beforeAfter = [
   { label: "Before", hours: 100, errors: 14 },
@@ -50,7 +54,7 @@ export default function SectorWorkflows() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Sector Workflows, Industry-Specific Automation",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "Custom AI workflow automation built for specific industry verticals, luxury brands, wealth management, real estate, maritime, and professional services. Not generic automation. Systems built around how your business actually operates.",
             "areaServed": ["Global"],
             "serviceType": ["Sector Workflow Automation", "Industry-Specific AI Automation", "Business Process Automation", "Operational AI Systems"]
@@ -103,7 +107,7 @@ export default function SectorWorkflows() {
       <section className="relative z-10 bg-[#0A0A0B] pt-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="rounded-2xl overflow-hidden border border-white/10">
-            <img src="/services/sector-workflows.png" alt="Sector Workflows Dashboard" className="w-full h-auto object-cover" />
+            <img loading="lazy" decoding="async" src="/services/sector-workflows.png" alt="Sector Workflows Dashboard" className="w-full h-auto object-cover" />
           </motion.div>
         </div>
       </section>
@@ -135,12 +139,29 @@ export default function SectorWorkflows() {
                 </ResponsiveContainer>
               </div>
               <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-white/10">
-                <div className="text-center"><div className="text-2xl font-medium text-white">70%</div><div className="text-[10px] text-white/30 mt-1">Time reduction</div></div>
-                <div className="text-center"><div className="text-2xl font-medium text-white">0.2%</div><div className="text-[10px] text-white/30 mt-1">Error rate</div></div>
-                <div className="text-center"><div className="text-2xl font-medium text-white">3</div><div className="text-[10px] text-white/30 mt-1">FTEs displaced</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="70%" /></div><div className="text-[10px] text-white/30 mt-1">Time reduction</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="0.2%" /></div><div className="text-[10px] text-white/30 mt-1">Error rate</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="3" /></div><div className="text-[10px] text-white/30 mt-1">FTEs displaced</div></div>
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* HOW IT RUNS: system flow infographic */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">How it runs</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">Manual work in. Automated operations out.</h2>
+          </motion.div>
+          <SystemFlow
+            inputs={["Enquiry handling", "Quote generation", "Order tracking", "Partner onboarding"]}
+            engine="Sector Workflow Engine"
+            engineIcon={Workflow}
+            output={{ value: "70%", label: "operational time reduction" }}
+            gradient={flowGradient}
+          />
         </div>
       </section>
 

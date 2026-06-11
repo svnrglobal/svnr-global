@@ -29,7 +29,7 @@ const footerLinks: Record<string, { label: string; href: string }[]> = {
     { label: "Case Studies", href: "/case-studies" },
     { label: "SVNR vs Alternatives", href: "/compare" },
     { label: "Blog", href: "/blog" },
-    { label: "Ask Aether", href: "/aether" },
+    { label: "Ask Cassian", href: "/cassian" },
     { label: "Contact", href: "/contact" },
   ],
 };
@@ -45,8 +45,7 @@ export default function Footer() {
       <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 mb-10">
         <div className="md:col-span-4">
           <Link to="/" className="flex items-center mb-6 group">
-            <img
-              src="/svnr-logo.svg"
+            <img loading="lazy" decoding="async" src="/svnr-logo.svg"
               alt="SVNR Global"
               className="w-[88px] h-[88px] md:w-[124px] md:h-[124px]"
               style={{ objectFit: "contain", mixBlendMode: "screen" }}

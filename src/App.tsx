@@ -1,10 +1,17 @@
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
+import { MotionConfig, motion, useScroll, useSpring } from "motion/react";
+import Lenis from "lenis";
+import "lenis/dist/lenis.css";
+import { setLenis, scrollToTop } from "./lib/lenis";
 import "./index.css";
 import Nav from "./components/Nav";
 import AetherLauncher from "./components/aether/AetherLauncher";
 import { AuthProvider } from "./lib/useAuth";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
+
+// Routes that render their own full-screen app chrome (no public site chrome).
+const APP_ROUTES = ["/login", "/signup", "/verify", "/dashboard", "/admin", "/settings", "/member", "/chat"];
 
 // Lazy-load all pages for code splitting
 const Home                = lazy(() => import("./pages/Home"));
@@ -25,6 +32,7 @@ const Login               = lazy(() => import("./pages/auth/Login"));
 const Verify              = lazy(() => import("./pages/auth/Verify"));
 const Dashboard           = lazy(() => import("./pages/member/Dashboard"));
 const Chat                = lazy(() => import("./pages/member/Chat"));
+const Account             = lazy(() => import("./pages/member/Account"));
 const Admin               = lazy(() => import("./pages/admin/Admin"));
 const Members             = lazy(() => import("./pages/admin/Members"));
 
@@ -48,19 +56,107 @@ const HighTicketEcommerce = lazy(() => import("./pages/sectors/HighTicketEcommer
 const Maritime            = lazy(() => import("./pages/sectors/Maritime"));
 const ProfessionalServices = lazy(() => import("./pages/sectors/ProfessionalServices"));
 
+// Buttery inertia scrolling on public marketing pages. Disabled on app routes
+// (chat/dashboard have their own inner scroll) and under prefers-reduced-motion.
+// The live instance is shared via src/lib/lenis.ts so pages can scroll through it.
+function SmoothScroll() {
+  const { pathname } = useLocation();
+  const isApp = APP_ROUTES.some((p) => pathname.startsWith(p));
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce || isApp) return;
+    const lenis = new Lenis({
+      duration: 1.05,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      smoothWheel: true,
+      touchMultiplier: 1.6,
+    });
+    setLenis(lenis);
+    let raf = 0;
+    const loop = (time: number) => {
+      lenis.raf(time);
+      raf = requestAnimationFrame(loop);
+    };
+    raf = requestAnimationFrame(loop);
+    return () => {
+      cancelAnimationFrame(raf);
+      lenis.destroy();
+      setLenis(null);
+    };
+  }, [isApp]);
+  return null;
+}
+
 function ScrollToTop() {
   const { pathname } = useLocation();
-  useEffect(() => { window.scrollTo(0, 0); }, [pathname]);
+  useEffect(() => {
+    scrollToTop(true);
+  }, [pathname]);
   return null;
+}
+
+// Thin reading-progress bar pinned to the top of the viewport (public pages only).
+function ScrollProgress() {
+  const { pathname } = useLocation();
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 });
+  if (APP_ROUTES.some((p) => pathname.startsWith(p))) return null;
+  return (
+    <motion.div
+      aria-hidden="true"
+      style={{ scaleX, transformOrigin: "0%" }}
+      className="fixed top-0 left-0 right-0 h-[2px] z-[60] pointer-events-none"
+    >
+      <div className="w-full h-full" style={{ background: "linear-gradient(90deg, #6c6cff, #a78bfa)" }} />
+    </motion.div>
+  );
+}
+
+// Minimal branded fallback shown only while a lazy route chunk loads (SPA nav).
+// The app background is already #0A0A0B, so this just adds a subtle pulse.
+function PageLoader() {
+  return (
+    <div className="fixed inset-0 z-[40] flex items-center justify-center bg-[#0A0A0B]" aria-hidden="true">
+      <motion.div
+        className="w-2 h-2 rounded-full"
+        style={{ background: "#8b7dff" }}
+        animate={{ opacity: [0.3, 1, 0.3], scale: [1, 1.5, 1] }}
+        transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
+      />
+    </div>
+  );
+}
+
+// Gentle opacity-only cross-fade on navigation. Opacity (unlike transform) does
+// not create a containing block, so page-level position:fixed elements stay put.
+function RouteFade({ children }: { children: React.ReactNode }) {
+  const { pathname } = useLocation();
+  return (
+    <motion.div
+      key={pathname}
+      id="main-content"
+      tabIndex={-1}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.26, ease: "easeOut" }}
+    >
+      {children}
+    </motion.div>
+  );
 }
 
 export default function App() {
   return (
     <BrowserRouter>
       <AuthProvider>
+      <MotionConfig reducedMotion="user">
+      <a href="#main-content" className="skip-link">Skip to content</a>
+      <SmoothScroll />
       <ScrollToTop />
+      <ScrollProgress />
       <Nav />
-      <Suspense fallback={null}>
+      <Suspense fallback={<PageLoader />}>
+        <RouteFade>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />
@@ -74,9 +170,10 @@ export default function App() {
           <Route path="/compare" element={<Compare />} />
           <Route path="/engagement" element={<Engagement />} />
           <Route path="/founder" element={<Founder />} />
-          <Route path="/aether" element={<Aether />} />
-          {/* old PROSE links → Aether */}
-          <Route path="/prose" element={<Navigate to="/aether" replace />} />
+          <Route path="/cassian" element={<Aether />} />
+          {/* old names → Cassian */}
+          <Route path="/aether" element={<Navigate to="/cassian" replace />} />
+          <Route path="/prose" element={<Navigate to="/cassian" replace />} />
 
           {/* Member platform (private, noindex) */}
           <Route path="/signup" element={<Signup />} />
@@ -84,6 +181,7 @@ export default function App() {
           <Route path="/verify" element={<Verify />} />
           <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
           <Route path="/chat" element={<ProtectedRoute><Chat /></ProtectedRoute>} />
+          <Route path="/settings" element={<ProtectedRoute><Account /></ProtectedRoute>} />
           <Route path="/admin" element={<ProtectedRoute admin><Admin /></ProtectedRoute>} />
           <Route path="/admin/members" element={<ProtectedRoute admin><Members /></ProtectedRoute>} />
 
@@ -107,8 +205,10 @@ export default function App() {
           <Route path="/sectors/maritime-logistics" element={<Maritime />} />
           <Route path="/sectors/professional-services" element={<ProfessionalServices />} />
         </Routes>
+        </RouteFade>
       </Suspense>
       <AetherLauncher />
+      </MotionConfig>
       </AuthProvider>
     </BrowserRouter>
   );

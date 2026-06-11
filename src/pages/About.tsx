@@ -1,9 +1,10 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Globe, Layers, Zap, Target, Users, BarChart2 } from "lucide-react";
+import { ArrowRight, Globe, Layers, Zap, Target, Users, BarChart2, RefreshCw, Star, Building2, Briefcase, ShoppingBag, ShoppingCart, Anchor, PenTool } from "lucide-react";
 import { VIDEOS } from "../data/content";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
+import Counter from "../components/Counter";
 
 /* ── data ── */
 
@@ -48,14 +49,14 @@ const values = [
 ];
 
 const verticals = [
-  { n: "01", label: "Luxury Rugs & Home Textiles",        color: "from-amber-500/20 to-transparent" },
-  { n: "02", label: "Premium Real Estate",                 color: "from-blue-500/20 to-transparent" },
-  { n: "03", label: "Private Equity & Family Offices",     color: "from-purple-500/20 to-transparent" },
-  { n: "04", label: "B2B Luxury Brands",                   color: "from-pink-500/20 to-transparent" },
-  { n: "05", label: "Wealth Management Boutiques",         color: "from-emerald-500/20 to-transparent" },
-  { n: "06", label: "High-Ticket E-Commerce",              color: "from-cyan-500/20 to-transparent" },
-  { n: "07", label: "Maritime & Logistics",                color: "from-sky-500/20 to-transparent" },
-  { n: "08", label: "Professional & Creative Services",    color: "from-rose-500/20 to-transparent" },
+  { n: "01", label: "Luxury Rugs & Home Textiles",        color: "from-amber-500/20 to-transparent",   icon: Star },
+  { n: "02", label: "Premium Real Estate",                 color: "from-blue-500/20 to-transparent",    icon: Building2 },
+  { n: "03", label: "Private Equity & Family Offices",     color: "from-purple-500/20 to-transparent",  icon: Briefcase },
+  { n: "04", label: "B2B Luxury Brands",                   color: "from-pink-500/20 to-transparent",    icon: ShoppingBag },
+  { n: "05", label: "Wealth Management Boutiques",         color: "from-emerald-500/20 to-transparent", icon: Layers },
+  { n: "06", label: "High-Ticket E-Commerce",              color: "from-cyan-500/20 to-transparent",    icon: ShoppingCart },
+  { n: "07", label: "Maritime & Logistics",                color: "from-sky-500/20 to-transparent",     icon: Anchor },
+  { n: "08", label: "Professional & Creative Services",    color: "from-rose-500/20 to-transparent",    icon: PenTool },
 ];
 
 const timeline = [
@@ -241,7 +242,7 @@ export default function About() {
           >
             {stats.map((s) => (
               <div key={s.label} className="px-4 sm:px-8 py-6 sm:py-10 flex flex-col justify-between">
-                <div className="text-2xl sm:text-4xl md:text-5xl font-medium text-white tracking-tight mb-2 md:mb-3">{s.value}</div>
+                <div className="text-2xl sm:text-4xl md:text-5xl font-medium text-white tracking-tight mb-2 md:mb-3"><Counter value={s.value} duration={1.6} /></div>
                 <div>
                   <div className="text-sm text-white/70 font-medium mb-1">{s.label}</div>
                   <div className="text-[10px] text-white/30 uppercase tracking-[0.15em]">{s.sub}</div>
@@ -319,6 +320,36 @@ export default function About() {
               They run infrastructure, and close."
             </p>
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/25">The SVNR philosophy</p>
+
+            {/* Campaign vs Infrastructure: the compounding difference, drawn */}
+            <div className="max-w-[560px] mx-auto mt-8">
+              <svg viewBox="0 0 560 140" className="w-full h-auto" role="img" aria-label="A campaign spikes then ends; infrastructure compounds over time">
+                <line x1="20" y1="120" x2="540" y2="120" stroke="rgba(255,255,255,0.1)" strokeWidth="1" />
+                <motion.path
+                  d="M 20 120 C 70 40, 110 35, 150 60 C 190 85, 240 115, 300 120 L 540 120"
+                  fill="none"
+                  stroke="rgba(255,255,255,0.25)"
+                  strokeWidth="1.5"
+                  strokeDasharray="4 4"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <motion.path
+                  d="M 20 120 C 140 116, 240 104, 330 80 C 420 56, 490 36, 540 22"
+                  fill="none"
+                  stroke="#8b7dff"
+                  strokeWidth="2"
+                  initial={{ pathLength: 0 }}
+                  whileInView={{ pathLength: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 1.4, delay: 0.25, ease: [0.22, 1, 0.36, 1] }}
+                />
+                <text x="305" y="135" fill="rgba(255,255,255,0.3)" fontSize="10" letterSpacing="1.5">CAMPAIGN ENDS</text>
+                <text x="380" y="16" fill="#b49bff" fontSize="10" letterSpacing="1.5">INFRASTRUCTURE COMPOUNDS</text>
+              </svg>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -416,6 +447,7 @@ export default function About() {
                 transition={{ delay: i * 0.06, duration: 0.6 }}
                 className={`liquid-glass rounded-xl px-5 py-5 bg-gradient-to-b ${v.color}`}
               >
+                <v.icon size={16} strokeWidth={1.5} className="text-white/30 mb-3" />
                 <span className="text-[9px] text-white/20 block mb-2 uppercase tracking-[0.2em]">{v.n}</span>
                 <span className="text-sm text-white/75 leading-snug font-medium">{v.label}</span>
               </motion.div>
@@ -435,6 +467,31 @@ export default function About() {
           >
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">How it works</p>
             <h2 className="text-3xl md:text-4xl font-medium text-white tracking-tight">Three layers. One permanent system.</h2>
+          </motion.div>
+
+          {/* The three layers as a connected flow that loops */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="flex items-center justify-center gap-3 flex-wrap mb-12"
+          >
+            {[
+              { n: "01", label: "Research", accent: "text-amber-400" },
+              { n: "02", label: "Outreach", accent: "text-sky-400" },
+              { n: "03", label: "Infrastructure", accent: "text-emerald-400" },
+            ].map((s, i, arr) => (
+              <span key={s.n} className="flex items-center gap-3">
+                <span className="flex items-center gap-2 rounded-full border border-white/10 px-4 py-1.5 text-[11px] text-white/60">
+                  <span className={`font-medium ${s.accent}`}>{s.n}</span> {s.label}
+                </span>
+                {i < arr.length - 1 && <ArrowRight size={12} className="text-white/25" />}
+              </span>
+            ))}
+            <span className="flex items-center gap-1.5 text-[10px] uppercase tracking-widest text-white/30">
+              <RefreshCw size={11} /> runs continuously
+            </span>
           </motion.div>
 
           <div className="grid md:grid-cols-3 gap-6">
@@ -498,7 +555,7 @@ export default function About() {
                 href="mailto:contact@svnrglobal.com"
                 className="text-sm text-white/40 hover:text-white transition-colors"
               >
-                hamza@svnrglobal.com
+                contact@svnrglobal.com
               </a>
               <Link
                 to="/contact"

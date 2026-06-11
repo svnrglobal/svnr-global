@@ -5,6 +5,7 @@ import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YA
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import EngagementTimeline from "../../components/EngagementTimeline";
 
 const enquiryData = [
   { w: "W1", v: 5 }, { w: "W2", v: 12 }, { w: "W3", v: 22 }, { w: "W4", v: 38 }, { w: "W5", v: 55 }, { w: "W6", v: 78 },
@@ -44,7 +45,7 @@ export default function B2BLuxury() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "B2B Luxury Brand Client Acquisition",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "AI-powered stockist and trade buyer acquisition for premium fashion, interiors, and lifestyle brands. Systematic outreach to interior designers, retail buyers, and trade partners across target geographies.",
             "areaServed": ["Global", "Europe", "Middle East", "United Kingdom", "United States"],
             "serviceType": ["Trade Buyer Acquisition", "Stockist Outreach", "B2B Luxury Brand Development", "Channel Partnership"]
@@ -78,7 +79,7 @@ export default function B2BLuxury() {
         ]}
       />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <img src="/sectors/b2b-luxury-photo-1514179974491-a7885781ed87.avif" alt="B2B Luxury" className="absolute inset-0 w-full h-full object-cover z-0" />
+        <img fetchPriority="high" decoding="async" src="/sectors/b2b-luxury-photo-1514179974491-a7885781ed87.avif" alt="B2B Luxury" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
@@ -155,9 +156,20 @@ export default function B2BLuxury() {
         <div className="max-w-7xl mx-auto grid grid-cols-3 gap-4">
           {["/sectors/b2b-luxury-photo-1514179974491-a7885781ed87.avif", "/sectors/b2b-luxury-photo-1598452963314-b09f397a5c48.avif", "/sectors/b2b-luxury-premium_photo-1724862979245-71e659b98366.avif"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-square">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="B2B luxury brand client acquisition and trade buyer outreach" />
+              <img loading="lazy" decoding="async" src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="B2B luxury brand client acquisition and trade buyer outreach" />
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* THE 90-DAY PATH: engagement timeline */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The 90-day path</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">From engagement to active pipeline.</h2>
+          </motion.div>
+          <EngagementTimeline accent="#f953c6" milestones={[{"when":"Week 0","label":"Trade market mapped by name"},{"when":"Week 2 to 3","label":"Outreach live to stockists and buyers"},{"when":"Week 6","label":"78% lift in qualified enquiries"},{"when":"Day 90","label":"Active stockist pipeline"}]} />
         </div>
       </section>
 

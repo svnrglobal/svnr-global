@@ -10,6 +10,7 @@ import { VIDEOS, SECTORS } from "../data/content";
 import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 const sectorCharts: Record<string, React.ReactNode> = {
   "luxury-rugs-home-textiles": (
@@ -157,6 +158,9 @@ export default function Sectors() {
       </VideoHero>
 
       <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
+        <div className="max-w-7xl mx-auto">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Industries" }]} />
+        </div>
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
           {SECTORS.map((s, i) => (
             <motion.div

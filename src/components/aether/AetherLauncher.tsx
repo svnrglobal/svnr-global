@@ -7,7 +7,7 @@ import OraThread from "./OraThread";
 import OraComposer from "./OraComposer";
 import { useOra } from "../../lib/useOra";
 import { useAuth } from "../../lib/useAuth";
-import { AETHER_TIPS, getAetherContent } from "../../data/aetherContent";
+import { CASSIAN_TIPS, getCassianContent } from "../../data/aetherContent";
 
 const DISMISS_KEY = "aether_card_dismissed";
 
@@ -37,7 +37,7 @@ export default function AetherLauncher() {
 function ChatLauncher({ pathname }: { pathname: string }) {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
-  const greeting = getAetherContent(pathname).greeting;
+  const greeting = getCassianContent(pathname).greeting;
   const { messages, ask, thinking, remaining, blocked, resetAt } = useOra(greeting);
   const bottomRef = useRef<HTMLDivElement>(null);
 
@@ -73,7 +73,7 @@ function ChatLauncher({ pathname }: { pathname: string }) {
                 <AetherLogo size={20} state={thinking ? "thinking" : "idle"} />
                 <div className="leading-tight">
                   <p className="text-sm font-medium tracking-tight">Ora</p>
-                  <p className="text-white/35 text-[10px]">Free Aether model · {remaining} of 20 left</p>
+                  <p className="text-white/35 text-[10px]">Free Cassian model · {remaining} of 20 left</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
@@ -129,7 +129,7 @@ function TeaserLauncher() {
 
   useEffect(() => {
     if (open || dismissed || hover) return;
-    const id = setInterval(() => setIdx((i) => (i + 1) % AETHER_TIPS.length), 4800);
+    const id = setInterval(() => setIdx((i) => (i + 1) % CASSIAN_TIPS.length), 4800);
     return () => clearInterval(id);
   }, [open, dismissed, hover]);
 
@@ -170,7 +170,7 @@ function TeaserLauncher() {
               <div className="flex items-center gap-2.5 text-white">
                 <AetherLogo size={20} />
                 <div className="leading-tight">
-                  <p className="text-sm font-medium tracking-tight">Aether</p>
+                  <p className="text-sm font-medium tracking-tight">Cassian</p>
                   <p className="text-white/35 text-[10px]">SVNR intelligence · private access</p>
                 </div>
               </div>
@@ -184,13 +184,13 @@ function TeaserLauncher() {
                 <div className="mb-4 rounded-2xl bg-white/[0.05] border border-white/8 px-4 py-3">
                   <div className="flex items-center gap-1.5 mb-1.5 text-white/40">
                     <AetherLogo size={11} state="static" />
-                    <span className="text-[9px] uppercase tracking-[0.25em]">Aether tip</span>
+                    <span className="text-[9px] uppercase tracking-[0.25em]">Cassian tip</span>
                   </div>
                   <p className="text-white/80 text-[13px] leading-relaxed">{openedTip}</p>
                 </div>
               )}
 
-              <p className="text-white/75 text-[13.5px] leading-relaxed">Aether is currently in private access.</p>
+              <p className="text-white/75 text-[13.5px] leading-relaxed">Cassian is currently in private access.</p>
               <p className="text-white/55 text-[13px] leading-relaxed mt-2">
                 Create a free account to apply for access to Ora, the free model. Applications are reviewed by
                 our team.
@@ -239,29 +239,29 @@ function TeaserLauncher() {
 
             <div className="flex items-center gap-2 mb-3 text-white">
               <AetherLogo size={16} />
-              <span className="text-[12px] font-medium tracking-tight">Aether</span>
+              <span className="text-[12px] font-medium tracking-tight">Cassian</span>
               <span className="text-[9px] uppercase tracking-[0.25em] text-white/30 ml-1">tip</span>
             </div>
 
-            <button onClick={() => openPanel(AETHER_TIPS[idx])} className="text-left block w-full">
+            <button onClick={() => openPanel(CASSIAN_TIPS[idx])} className="text-left block w-full">
               <p className="text-white text-[14.5px] leading-snug font-medium pr-3 mb-3 hover:text-white/80 transition-colors">
-                {AETHER_TIPS[idx]}
+                {CASSIAN_TIPS[idx]}
               </p>
             </button>
 
             <button
-              onClick={() => openPanel(AETHER_TIPS[idx])}
+              onClick={() => openPanel(CASSIAN_TIPS[idx])}
               className="w-full flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-black text-[12px] font-medium hover:bg-white/90 transition-all mb-3"
             >
-              See how Aether helps <ArrowRight size={13} />
+              See how Cassian helps <ArrowRight size={13} />
             </button>
 
             <div className="flex items-center justify-between">
-              <button onClick={() => setIdx((i) => (i - 1 + AETHER_TIPS.length) % AETHER_TIPS.length)} aria-label="Previous tip" className="text-white/30 hover:text-white/70 transition-colors">
+              <button onClick={() => setIdx((i) => (i - 1 + CASSIAN_TIPS.length) % CASSIAN_TIPS.length)} aria-label="Previous tip" className="text-white/30 hover:text-white/70 transition-colors">
                 <ChevronLeft size={16} />
               </button>
               <div className="flex items-center gap-1.5">
-                {AETHER_TIPS.map((_, i) => (
+                {CASSIAN_TIPS.map((_, i) => (
                   <button
                     key={i}
                     onClick={() => setIdx(i)}
@@ -275,7 +275,7 @@ function TeaserLauncher() {
                   />
                 ))}
               </div>
-              <button onClick={() => setIdx((i) => (i + 1) % AETHER_TIPS.length)} aria-label="Next tip" className="text-white/30 hover:text-white/70 transition-colors">
+              <button onClick={() => setIdx((i) => (i + 1) % CASSIAN_TIPS.length)} aria-label="Next tip" className="text-white/30 hover:text-white/70 transition-colors">
                 <ChevronRight size={16} />
               </button>
             </div>
@@ -309,7 +309,7 @@ function Fab({
           exit={{ opacity: 0, scale: 0.6 }}
           transition={{ type: "spring", bounce: 0.3, duration: 0.5 }}
           onClick={onClick}
-          aria-label={open ? "Close Aether" : "Open Aether"}
+          aria-label={open ? "Close Cassian" : "Open Cassian"}
           className="pointer-events-auto relative w-14 h-14 rounded-full flex items-center justify-center text-white/90"
           style={{
             background: "linear-gradient(135deg, #1c1c22 0%, #0e0e11 100%)",

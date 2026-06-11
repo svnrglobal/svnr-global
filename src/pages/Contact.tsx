@@ -1,27 +1,30 @@
 import { motion } from "motion/react";
 import { useState } from "react";
 import { ArrowRight, Mail, MapPin } from "lucide-react";
+import { Link } from "react-router-dom";
 import { VIDEOS, SECTORS } from "../data/content";
 import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
+import Counter from "../components/Counter";
 
 export default function Contact() {
-  const [sent, setSent] = useState(false);
+  const [status, setStatus] = useState<"idle" | "sending" | "error" | "sent">("idle");
   const [form, setForm] = useState({ name: "", email: "", company: "", website: "", sector: "", message: "" });
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setStatus("sending");
     try {
       const res = await fetch("https://formspree.io/f/xqejvgbw", {
         method: "POST",
-        headers: { "Accept": "application/json" },
+        headers: { "Accept": "application/json", "Content-Type": "application/json" },
         body: JSON.stringify(form),
       });
-      if (res.ok) setSent(true);
-      else setSent(true); // still show success
+      setStatus(res.ok ? "sent" : "error");
     } catch {
-      setSent(true);
+      setStatus("error");
     }
   };
 
@@ -74,6 +77,7 @@ export default function Contact() {
 
       <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
         <div className="max-w-4xl mx-auto mb-10 md:mb-14">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Contact" }]} />
           <div className="grid grid-cols-3 gap-3 sm:gap-6">
             {[
               { value: "40+", label: "Qualified leads per month", sub: "Average across active clients" },
@@ -86,16 +90,16 @@ export default function Contact() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="liquid-glass rounded-2xl px-6 py-5 text-center"
+                className="liquid-glass rounded-2xl px-2 py-4 sm:px-6 sm:py-5 text-center"
               >
-                <div className="text-xl sm:text-3xl font-medium text-white mb-1">{s.value}</div>
-                <p className="text-white/60 text-xs sm:text-sm mb-1">{s.label}</p>
+                <div className="text-lg sm:text-3xl font-medium text-white mb-1"><Counter value={s.value} /></div>
+                <p className="text-white/60 text-[11px] sm:text-sm mb-1">{s.label}</p>
                 <p className="text-[9px] sm:text-[10px] uppercase tracking-widest text-white/25">{s.sub}</p>
               </motion.div>
             ))}
           </div>
         </div>
-        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12">
+        <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -133,11 +137,20 @@ export default function Contact() {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
           >
-            {sent ? (
-              <div className="liquid-glass rounded-3xl p-10 text-center">
+            {status === "sent" ? (
+              <div className="liquid-glass rounded-3xl p-6 sm:p-10 text-center">
                 <div className="text-4xl mb-4">✓</div>
                 <h3 className="text-white text-xl font-medium mb-2">Message received.</h3>
                 <p className="text-white/50 text-sm">We'll be in touch within 24 hours.</p>
+                <p className="text-white/40 text-xs mt-6 mb-3">While you wait</p>
+                <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                  <Link to="/case-studies" className="border border-white/15 rounded-full px-5 py-2.5 text-xs text-white/60 hover:text-white hover:border-white/40 transition-all">
+                    See client results
+                  </Link>
+                  <Link to="/engagement" className="border border-white/15 rounded-full px-5 py-2.5 text-xs text-white/60 hover:text-white hover:border-white/40 transition-all">
+                    How engagements work
+                  </Link>
+                </div>
               </div>
             ) : (
               <form
@@ -145,45 +158,73 @@ export default function Contact() {
                 className="liquid-glass rounded-3xl p-6 sm:p-8 space-y-4"
               >
                 {[
-                  { field: "name", placeholder: "Your name", type: "text", required: true },
-                  { field: "email", placeholder: "Email address", type: "email", required: true },
-                  { field: "company", placeholder: "Company name", type: "text", required: true },
-                  { field: "website", placeholder: "Company website (e.g. yourcompany.com)", type: "text", required: false },
-                ].map(({ field, placeholder, type, required }) => (
-                  <input
-                    key={field}
-                    type={type}
-                    placeholder={placeholder}
-                    required={required}
-                    value={form[field as keyof typeof form]}
-                    onChange={(e) => setForm({ ...form, [field]: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors"
-                  />
+                  { field: "name", label: "Name", placeholder: "Your name", type: "text", required: true },
+                  { field: "email", label: "Email", placeholder: "you@company.com", type: "email", required: true },
+                  { field: "company", label: "Company", placeholder: "Company name", type: "text", required: true },
+                  { field: "website", label: "Website (optional)", placeholder: "yourcompany.com", type: "text", required: false },
+                ].map(({ field, label, placeholder, type, required }) => (
+                  <div key={field}>
+                    <label htmlFor={field} className="block text-[11px] uppercase tracking-widest text-white/40 mb-1.5">
+                      {label}
+                    </label>
+                    <input
+                      id={field}
+                      type={type}
+                      placeholder={placeholder}
+                      required={required}
+                      value={form[field as keyof typeof form]}
+                      onChange={(e) => setForm({ ...form, [field]: e.target.value })}
+                      className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors"
+                    />
+                  </div>
                 ))}
-                <select
-                  value={form.sector}
-                  onChange={(e) => setForm({ ...form, sector: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-white/30 transition-colors"
-                  style={{ colorScheme: "dark" }}
-                >
-                  <option value="" style={{ background: "#1A1A1C" }}>Select your sector</option>
-                  {SECTORS.map((s) => (
-                    <option key={s.slug} value={s.slug} style={{ background: "#1A1A1C" }}>{s.label}</option>
-                  ))}
-                </select>
-                <textarea
-                  placeholder="What's the constraint? Tell us about your current pipeline situation."
-                  rows={4}
-                  value={form.message}
-                  onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors resize-none"
-                />
+                <div>
+                  <label htmlFor="sector" className="block text-[11px] uppercase tracking-widest text-white/40 mb-1.5">
+                    Sector
+                  </label>
+                  <select
+                    id="sector"
+                    value={form.sector}
+                    onChange={(e) => setForm({ ...form, sector: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm focus:outline-none focus:border-white/30 transition-colors"
+                    style={{ colorScheme: "dark" }}
+                  >
+                    <option value="" style={{ background: "#1A1A1C" }}>Select your sector</option>
+                    {SECTORS.map((s) => (
+                      <option key={s.slug} value={s.slug} style={{ background: "#1A1A1C" }}>{s.label}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label htmlFor="message" className="block text-[11px] uppercase tracking-widest text-white/40 mb-1.5">
+                    Your situation
+                  </label>
+                  <textarea
+                    id="message"
+                    placeholder="What's the constraint? Tell us about your current pipeline situation."
+                    rows={4}
+                    required
+                    minLength={10}
+                    value={form.message}
+                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-white/30 transition-colors resize-none"
+                  />
+                </div>
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-black text-sm font-medium hover:bg-white/90 transition-all"
+                  disabled={status === "sending"}
+                  className="w-full flex items-center justify-center gap-2 px-6 py-3.5 rounded-xl bg-white text-black text-sm font-medium hover:bg-white/90 transition-all disabled:opacity-60 disabled:cursor-wait"
                 >
-                  Send Message <ArrowRight size={14} />
+                  {status === "sending" ? "Sending..." : <>Send Message <ArrowRight size={14} /></>}
                 </button>
+                {status === "error" && (
+                  <p className="text-sm text-red-300/80 text-center">
+                    Something went wrong. Email us directly at{" "}
+                    <a href="mailto:contact@svnrglobal.com" className="underline underline-offset-2 hover:text-red-200">
+                      contact@svnrglobal.com
+                    </a>
+                  </p>
+                )}
               </form>
             )}
           </motion.div>

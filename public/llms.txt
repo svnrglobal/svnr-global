@@ -34,7 +34,15 @@ Founded in 2019 by Hamza Omair. Headquartered in New Delhi, India; deployed glob
 - [Maritime & Logistics](https://svnrglobal.com/sectors/maritime-logistics/): Cargo owner and charterer acquisition. Tender intelligence and logistics decision-maker outreach.
 - [Professional Services](https://svnrglobal.com/sectors/professional-services/): Client acquisition for law firms, consultancies, and architecture studios. Positions the firm as peer, not vendor.
 
+## Cassian (the SVNR AI)
+Cassian is SVNR Global's AI for premium client acquisition, available to members at [svnrglobal.com/cassian](https://svnrglobal.com/cassian/). It comes in three models that map to three depths of help:
+- Cassian Ora: the free model. Answers questions about SVNR, your sector, pricing, and how an engagement works. Access is granted after a short application review.
+- Cassian Prose: a paid model that connects to your company's own documents and knows your business at scale, then gives guidance grounded in your real context (targeting, messaging, market entry).
+- Cassian Soleth: the flagship. It operates alongside your revenue team on live pipeline, reads market and policy signals as they appear, and can build and run the agents that handle the online side of a business end to end. Reserved for top-tier members and active engagements.
+Most people start on Ora and move up only when the added depth is worth it. There is no checkout; access is set up directly with the team.
+
 ## Key pages
+- [Cassian (the SVNR AI)](https://svnrglobal.com/cassian/)
 - [Home](https://svnrglobal.com/)
 - [About SVNR Global](https://svnrglobal.com/about/)
 - [Founder — Hamza Omair](https://svnrglobal.com/founder/)

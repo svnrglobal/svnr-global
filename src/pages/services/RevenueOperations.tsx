@@ -5,6 +5,9 @@ import { BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recha
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import Counter from "../../components/Counter";
+import AnimatedSteps from "../../components/AnimatedSteps";
+import SystemFlow from "../../components/SystemFlow";
 
 const gradient = "linear-gradient(135deg, #f093fb, #f5576c)";
 
@@ -54,7 +57,7 @@ export default function RevenueOperations() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Revenue Operations, Pipeline Management & Automation",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "Full-funnel revenue operations infrastructure for premium B2B operators. Pipeline stage tracking, deal signal monitoring, CRM automation, and reporting architecture built specifically for your deal cycle, no generic templates.",
             "areaServed": ["Global"],
             "serviceType": ["Revenue Operations", "Pipeline Management", "CRM Automation", "Sales Operations", "Deal Tracking"]
@@ -107,7 +110,7 @@ export default function RevenueOperations() {
       <section className="relative z-10 bg-[#0A0A0B] pt-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="rounded-2xl overflow-hidden border border-white/10">
-            <img src="/services/revenue-operations.png" alt="Revenue Operations Dashboard" className="w-full h-auto object-cover" />
+            <img loading="lazy" decoding="async" src="/services/revenue-operations.png" alt="Revenue Operations Dashboard" className="w-full h-auto object-cover" />
           </motion.div>
         </div>
       </section>
@@ -129,10 +132,29 @@ export default function RevenueOperations() {
         <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8">
           {[{ value: "312%", label: "Pipeline increase" }, { value: "2.4x", label: "Close rate improvement" }, { value: "60 days", label: "Payback period" }].map((m) => (
             <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
-              <div className="text-4xl md:text-5xl font-medium text-white mb-2">{m.value}</div>
+              <div className="text-4xl md:text-5xl font-medium mb-2" style={{ background: gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
+                <Counter value={m.value} />
+              </div>
               <p className="text-xs uppercase tracking-widest text-white/40">{m.label}</p>
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* HOW IT RUNS: system flow infographic */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">How it runs</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">Pipeline in. Revenue clarity out.</h2>
+          </motion.div>
+          <SystemFlow
+            inputs={["CRM architecture", "Pipeline automation", "Deal velocity tracking", "Conversion analytics"]}
+            engine="Revenue Operations Layer"
+            engineIcon={Database}
+            output={{ value: "312%", label: "pipeline increase over six months" }}
+            gradient={gradient}
+          />
         </div>
       </section>
 
@@ -164,20 +186,7 @@ export default function RevenueOperations() {
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Process</p>
             <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tight">How the system deploys</h2>
           </motion.div>
-          <div className="relative">
-            <div className="hidden md:block absolute left-[28px] top-0 bottom-0 w-px bg-white/10" />
-            <div className="space-y-8">
-              {steps.map((step, i) => (
-                <motion.div key={step.n} initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="flex gap-8">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-full flex items-center justify-center text-xs font-medium text-white border border-white/20 bg-[#0A0A0B] relative z-10">{step.n}</div>
-                  <div className="pt-3">
-                    <h3 className="text-white font-medium mb-1">{step.title}</h3>
-                    <p className="text-sm text-white/50 leading-relaxed max-w-xl">{step.desc}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
+          <AnimatedSteps steps={steps} gradient={gradient} />
         </div>
       </section>
 

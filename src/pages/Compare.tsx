@@ -1,10 +1,11 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, X, Minus } from "lucide-react";
+import { ArrowRight, Check, X, Minus, Settings, PenLine, Lightbulb, BarChart3, Workflow } from "lucide-react";
 import { VIDEOS } from "../data/content";
 import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
 
 const checks = {
   yes: <Check size={16} className="text-white" />,
@@ -94,6 +95,141 @@ const Cell = ({ val, highlight }: { val: keyof typeof checks; highlight?: boolea
   </td>
 );
 
+// Small inline visuals that anchor three of the comparison angles. Additive
+// next to the prose; no SEO copy is replaced.
+function AngleVisual({ index }: { index: number }) {
+  if (index === 0) {
+    // Volume vs Precision: scattered dots vs converging target
+    const scatter = [
+      [42, 36], [88, 92], [140, 50], [62, 128], [180, 120], [220, 64],
+      [118, 148], [200, 30], [250, 140], [156, 92], [34, 84], [240, 100],
+    ];
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="rounded-2xl border border-white/8 p-6 mb-8"
+      >
+        <svg viewBox="0 0 640 180" className="w-full h-auto" role="img" aria-label="Volume outreach scatters; precision outreach converges on the right buyer">
+          {scatter.map(([x, y], i) => (
+            <circle key={i} cx={x + 20} cy={y} r={4} fill="rgba(255,255,255,0.22)" opacity={0.15 + (i % 4) * 0.05} />
+          ))}
+          <text x="160" y="172" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="10" letterSpacing="2">VOLUME</text>
+          <line x1="310" y1="20" x2="310" y2="160" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
+          {[[370, 40], [385, 130], [420, 70], [445, 120], [470, 45]].map(([x, y], i) => (
+            <g key={i}>
+              <circle cx={x} cy={y} r={4} fill="rgba(139,125,255,0.7)" />
+              <line x1={x} y1={y} x2={540} y2={90} stroke="rgba(139,125,255,0.3)" strokeWidth="1.5" />
+            </g>
+          ))}
+          <circle cx="540" cy="90" r="22" fill="none" stroke="rgba(139,125,255,0.7)" strokeWidth="1.5" />
+          <circle cx="540" cy="90" r="12" fill="none" stroke="rgba(139,125,255,0.45)" strokeWidth="1.5" />
+          <circle cx="540" cy="90" r="4" fill="#8b7dff" />
+          <text x="480" y="172" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="10" letterSpacing="2">PRECISION</text>
+        </svg>
+      </motion.div>
+    );
+  }
+  if (index === 2) {
+    const tools = [
+      { icon: Settings, label: "Configure" },
+      { icon: PenLine, label: "Copywriting" },
+      { icon: Lightbulb, label: "Strategy" },
+      { icon: BarChart3, label: "Analysis" },
+      { icon: Workflow, label: "RevOps" },
+    ];
+    return (
+      <div className="flex flex-wrap items-center gap-2 mb-8">
+        {tools.map((t, i) => (
+          <motion.span
+            key={t.label}
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: i * 0.06 }}
+            className="flex items-center gap-2"
+          >
+            <span className="flex items-center gap-1.5 rounded-full border border-white/10 px-3 py-1.5 text-[10px] uppercase tracking-widest text-white/45">
+              <t.icon size={12} /> {t.label}
+            </span>
+            {i < tools.length - 1 && <span className="text-white/25">+</span>}
+          </motion.span>
+        ))}
+        <ArrowRight size={12} className="text-white/25" />
+        <motion.span
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="rounded-full border border-[#8b7dff]/40 px-3 py-1.5 text-[10px] uppercase tracking-widest text-white"
+        >
+          One system, operated for you
+        </motion.span>
+      </div>
+    );
+  }
+  if (index === 3) {
+    const seg = "h-7 flex items-center justify-center text-[10px] uppercase tracking-widest text-white/50 whitespace-nowrap overflow-hidden";
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.7 }}
+        className="rounded-2xl border border-white/8 p-6 mb-8 space-y-4"
+      >
+        <div>
+          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2">In-house SDR</p>
+          <div className="flex gap-1">
+            {[
+              { w: "50%", bg: "rgba(255,255,255,0.08)", label: "Hire, 6 months" },
+              { w: "25%", bg: "rgba(255,255,255,0.12)", label: "Ramp, 3 months" },
+              { w: "25%", bg: "rgba(255,255,255,0.2)", label: "First results" },
+            ].map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                style={{ width: s.w, background: s.bg, transformOrigin: "left" }}
+                className={`${seg} rounded-md px-1`}
+              >
+                {s.label}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+        <div>
+          <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2">SVNR</p>
+          <div className="flex gap-1">
+            {[
+              { w: "15%", bg: "rgba(139,125,255,0.6)", label: "Deploy" },
+              { w: "25%", bg: "rgba(139,125,255,0.3)", label: "Outreach live" },
+            ].map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.45 + i * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                style={{ width: s.w, background: s.bg, transformOrigin: "left" }}
+                className={`${seg} rounded-md px-1`}
+              >
+                {s.label}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+        <p className="text-[9px] text-white/25">0 to 9 months</p>
+      </motion.div>
+    );
+  }
+  return null;
+}
+
 export default function Compare() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
@@ -171,6 +307,7 @@ export default function Compare() {
       {/* COMPARISON TABLE */}
       <section className="relative z-10 bg-[#0A0A0B] py-20 px-4 sm:px-6">
         <div className="max-w-5xl mx-auto">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "SVNR vs Alternatives" }]} />
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="mb-12 text-center"
@@ -183,31 +320,42 @@ export default function Compare() {
             initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
             className="liquid-glass rounded-2xl overflow-hidden"
           >
-            <div className="overflow-x-auto">
-              <table className="w-full border-collapse">
-                <thead>
-                  <tr className="border-b border-white/8">
-                    <th className="px-4 py-4 text-left text-xs uppercase tracking-widest text-white/30 font-normal">Capability</th>
-                    <ColHeader label="SVNR Global" sub="Infrastructure" highlight />
-                    <ColHeader label="Volume Agency" sub="Belkins, CIENCE, etc." />
-                    <ColHeader label="In-House SDR" sub="Full-time hire" />
-                    <ColHeader label="AI Tools" sub="Apollo, Instantly, etc." />
-                  </tr>
-                </thead>
-                <tbody>
-                  {comparisonRows.map((row, i) => (
-                    <tr key={row.label} className={`border-b border-white/5 ${i % 2 === 0 ? "" : "bg-white/[0.02]"}`}>
-                      <td className="px-4 py-3.5 text-sm text-white/60">{row.label}</td>
-                      <Cell val={row.svnr as keyof typeof checks} highlight />
-                      <Cell val={row.generic as keyof typeof checks} />
-                      <Cell val={row.inhouse as keyof typeof checks} />
-                      <Cell val={row.tools as keyof typeof checks} />
+            <div className="relative">
+              <div className="overflow-x-auto">
+                <table className="w-full min-w-[640px] border-collapse">
+                  <thead>
+                    <tr className="border-b border-white/8">
+                      <th className="sticky left-0 z-10 bg-[#101012] px-4 py-4 text-left text-xs uppercase tracking-widest text-white/30 font-normal">Capability</th>
+                      <ColHeader label="SVNR Global" sub="Infrastructure" highlight />
+                      <ColHeader label="Volume Agency" sub="Belkins, CIENCE, etc." />
+                      <ColHeader label="In-House SDR" sub="Full-time hire" />
+                      <ColHeader label="AI Tools" sub="Apollo, Instantly, etc." />
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody>
+                    {comparisonRows.map((row, i) => (
+                      <motion.tr
+                        key={row.label}
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: Math.min(i * 0.04, 0.3) }}
+                        className={`border-b border-white/5 ${i % 2 === 0 ? "" : "bg-white/[0.02]"}`}
+                      >
+                        <td className="sticky left-0 z-10 bg-[#101012] px-4 py-3.5 text-sm text-white/60">{row.label}</td>
+                        <Cell val={row.svnr as keyof typeof checks} highlight />
+                        <Cell val={row.generic as keyof typeof checks} />
+                        <Cell val={row.inhouse as keyof typeof checks} />
+                        <Cell val={row.tools as keyof typeof checks} />
+                      </motion.tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[#0A0A0B] to-transparent md:hidden" />
             </div>
           </motion.div>
+          <p className="text-[10px] text-white/30 text-center mt-3 sm:hidden">Swipe to compare</p>
         </div>
       </section>
 
@@ -235,6 +383,8 @@ export default function Compare() {
                   <p key={j} className="text-white/60 leading-relaxed text-[15px]">{para}</p>
                 ))}
               </div>
+
+              <AngleVisual index={i} />
 
               <div className="flex flex-wrap gap-2">
                 {a.tags.map((tag) => (

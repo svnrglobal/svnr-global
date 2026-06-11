@@ -5,6 +5,7 @@ import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YA
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import EngagementTimeline from "../../components/EngagementTimeline";
 
 
 const enquiryData = [
@@ -54,7 +55,7 @@ export default function LuxuryRugs() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Luxury Rugs & Home Textiles B2B Distribution Development",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "Systematic A&D community outreach and trade buyer acquisition for luxury rug brands and handmade carpet manufacturers entering new international markets. 13 qualified B2B enquiries in 14 days, without trade fairs.",
             "areaServed": ["Global", "Europe", "Germany", "United Kingdom", "United States", "UAE", "Japan"],
             "serviceType": ["Luxury Rug Distribution", "A&D Community Outreach", "Trade Buyer Acquisition", "New Market Entry"]
@@ -94,8 +95,8 @@ export default function LuxuryRugs() {
       />
       {/* HERO */}
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <img src="/sectors/luxury-rugs-photo-1600166930985-a86f7295dd99.avif" alt="Luxury Rugs" className="absolute inset-0 w-full h-full object-cover z-0" />
-        <img src="/sectors/luxury-rugs-premium_photo-1664114727312-cf38fd519315.avif" alt="" className="absolute inset-0 w-full h-full object-cover z-0 opacity-0 hover:opacity-100 transition-opacity duration-1000" />
+        <img fetchPriority="high" decoding="async" src="/sectors/luxury-rugs-photo-1600166930985-a86f7295dd99.avif" alt="Luxury Rugs" className="absolute inset-0 w-full h-full object-cover z-0" />
+        <img loading="lazy" decoding="async" src="/sectors/luxury-rugs-premium_photo-1664114727312-cf38fd519315.avif" alt="Premium handmade luxury rug weaves and textures" className="absolute inset-0 w-full h-full object-cover z-0 opacity-0 hover:opacity-100 transition-opacity duration-1000" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
@@ -182,15 +183,26 @@ export default function LuxuryRugs() {
       <section className="relative z-10 bg-[#0A0A0B] py-12 px-6">
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-            <img src="/sectors/luxury-rugs-photo-1600166930985-a86f7295dd99.avif" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Luxury rug and carpet brand distribution strategy for new markets" />
+            <img loading="lazy" decoding="async" src="/sectors/luxury-rugs-photo-1600166930985-a86f7295dd99.avif" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Luxury rug and carpet brand distribution strategy for new markets" />
           </motion.div>
           <motion.div initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-            <img src="/sectors/luxury-rugs-premium_photo-1664114727312-cf38fd519315.avif" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Premium handmade textile trade buyer outreach and stockist acquisition" />
+            <img loading="lazy" decoding="async" src="/sectors/luxury-rugs-premium_photo-1664114727312-cf38fd519315.avif" className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Premium handmade textile trade buyer outreach and stockist acquisition" />
           </motion.div>
         </div>
       </section>
 
       {/* SERVICES */}
+      {/* THE 90-DAY PATH: engagement timeline */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The 90-day path</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">From engagement to active pipeline.</h2>
+          </motion.div>
+          <EngagementTimeline accent="#F5A623" milestones={[{"when":"Week 0","label":"A&D universe mapped by name"},{"when":"Week 2","label":"Outreach live"},{"when":"Day 14","label":"13 qualified enquiries"},{"when":"Day 90","label":"Distribution pipeline active"}]} />
+        </div>
+      </section>
+
       <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">

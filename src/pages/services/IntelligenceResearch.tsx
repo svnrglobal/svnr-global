@@ -5,7 +5,11 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import Counter from "../../components/Counter";
+import SystemFlow from "../../components/SystemFlow";
 
+
+const flowGradient = "linear-gradient(135deg, #a78bfa, #764ba2)";
 
 const chartData = [
   { m: "Jan", v: 120 }, { m: "Feb", v: 220 }, { m: "Mar", v: 320 },
@@ -47,7 +51,7 @@ export default function IntelligenceResearch() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Intelligence Research, Prospect & Market Mapping",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "AI-powered prospect intelligence and market mapping for premium B2B operators. We build the research layer that identifies every qualifying buyer, decision-maker, and opportunity in your market, enriched across 50+ data signals and delivered as actionable outreach intelligence.",
             "areaServed": ["Global", "Europe", "Middle East", "Asia"],
             "serviceType": ["Prospect Intelligence", "Market Mapping", "B2B Research", "Buyer Identification", "Signal Monitoring"]
@@ -100,7 +104,7 @@ export default function IntelligenceResearch() {
       <section className="relative z-10 bg-[#0A0A0B] pt-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="rounded-2xl overflow-hidden border border-white/10">
-            <img src="/services/intelligence-research.png" alt="Intelligence Research Dashboard" className="w-full h-auto object-cover" />
+            <img loading="lazy" decoding="async" src="/services/intelligence-research.png" alt="Intelligence Research Dashboard" className="w-full h-auto object-cover" />
           </motion.div>
         </div>
       </section>
@@ -132,12 +136,29 @@ export default function IntelligenceResearch() {
                 </ResponsiveContainer>
               </div>
               <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-white/10">
-                <div className="text-center"><div className="text-2xl font-medium text-white">500+</div><div className="text-[10px] text-white/30 mt-1">Profiles built</div></div>
-                <div className="text-center"><div className="text-2xl font-medium text-white">80+</div><div className="text-[10px] text-white/30 mt-1">Signal sources</div></div>
-                <div className="text-center"><div className="text-2xl font-medium text-white">97%</div><div className="text-[10px] text-white/30 mt-1">Accuracy rate</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="500+" /></div><div className="text-[10px] text-white/30 mt-1">Profiles built</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="80+" /></div><div className="text-[10px] text-white/30 mt-1">Signal sources</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="97%" /></div><div className="text-[10px] text-white/30 mt-1">Accuracy rate</div></div>
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* HOW IT RUNS: system flow infographic */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">How it runs</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">Raw signals in. Decision-ready briefs out.</h2>
+          </motion.div>
+          <SystemFlow
+            inputs={["Company filings", "Hiring signals", "Funding events", "Press and trade data"]}
+            engine="Intelligence Engine"
+            engineIcon={Search}
+            output={{ value: "500+", label: "decision-maker profiles per market" }}
+            gradient={flowGradient}
+          />
         </div>
       </section>
 

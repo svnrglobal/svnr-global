@@ -5,6 +5,9 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, BarChart, Bar } f
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import SystemFlow from "../../components/SystemFlow";
+
+const flowGradient = "linear-gradient(135deg, #38ef7d, #11998e)";
 
 const chartData = [
   { q: "Q1", deals: 3 }, { q: "Q2", deals: 5 },
@@ -51,7 +54,7 @@ export default function DealflowInvestors() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Dealflow for Investors, Proprietary PE Deal Sourcing",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "AI-powered proprietary deal flow infrastructure for private equity firms, venture capital funds, and family offices. We identify and reach founders, owner-operators, and management teams before formal sale processes begin, delivering off-market deal pipeline that competitive bidding never reaches.",
             "areaServed": ["Global", "Europe", "Middle East", "India", "United Kingdom"],
             "serviceType": ["Proprietary Deal Flow", "PE Deal Sourcing", "Off-Market Transaction Pipeline", "Founder Outreach", "LP Fundraising"]
@@ -104,7 +107,7 @@ export default function DealflowInvestors() {
       <section className="relative z-10 bg-[#0A0A0B] pt-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="rounded-2xl overflow-hidden border border-white/10">
-            <img src="/services/dealflow-investors.png" alt="Dealflow Investors Dashboard" className="w-full h-auto object-cover" />
+            <img loading="lazy" decoding="async" src="/services/dealflow-investors.png" alt="Dealflow Investors Dashboard" className="w-full h-auto object-cover" />
           </motion.div>
         </div>
       </section>
@@ -151,6 +154,23 @@ export default function DealflowInvestors() {
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* HOW IT RUNS: system flow infographic */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">How it runs</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">Signals in. Proprietary conversations out.</h2>
+          </motion.div>
+          <SystemFlow
+            inputs={["Founder signals", "Succession indicators", "Sector mapping", "Direct outreach"]}
+            engine="Deal Origination Engine"
+            engineIcon={TrendingUp}
+            output={{ value: "90", label: "days to a meaningful starting position" }}
+            gradient={flowGradient}
+          />
         </div>
       </section>
 

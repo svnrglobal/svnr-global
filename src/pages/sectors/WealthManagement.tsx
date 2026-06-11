@@ -5,6 +5,7 @@ import { AreaChart, Area, PieChart, Pie, Cell, ResponsiveContainer, Tooltip, XAx
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import EngagementTimeline from "../../components/EngagementTimeline";
 
 const aumData = [
   { m: "M1", contacts: 20 }, { m: "M3", contacts: 60 }, { m: "M6", contacts: 120 },
@@ -42,7 +43,7 @@ export default function WealthManagement() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Wealth Management Boutique Client Acquisition",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "AI-powered UHNW and HNW client acquisition for wealth management boutiques and independent financial advisors. Discreet, researched outreach to qualified principals at the moment of liquidity events and wealth transitions.",
             "areaServed": ["Global", "Europe", "Middle East", "Switzerland", "United Kingdom", "Singapore"],
             "serviceType": ["UHNW Client Acquisition", "HNW Investor Outreach", "Wealth Management Business Development", "Liquidity Event Targeting"]
@@ -81,7 +82,7 @@ export default function WealthManagement() {
         ]}
       />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <img src="/sectors/wealth-photo-1444653614773-995cb1ef9efa.avif" alt="Wealth Management" className="absolute inset-0 w-full h-full object-cover z-0" />
+        <img fetchPriority="high" decoding="async" src="/sectors/wealth-photo-1444653614773-995cb1ef9efa.avif" alt="Wealth Management" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
@@ -161,9 +162,20 @@ export default function WealthManagement() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           {["/sectors/wealth-photo-1444653614773-995cb1ef9efa.avif", "/sectors/wealth-photo-1454165804606-c3d57bc86b40.avif"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Wealth management UHNW client acquisition and trigger-driven outreach" />
+              <img loading="lazy" decoding="async" src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Wealth management UHNW client acquisition and trigger-driven outreach" />
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* THE 90-DAY PATH: engagement timeline */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The 90-day path</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">From engagement to active pipeline.</h2>
+          </motion.div>
+          <EngagementTimeline accent="#11998e" milestones={[{"when":"Week 0","label":"UHNW signals mapped"},{"when":"Week 2 to 3","label":"Discreet outreach live"},{"when":"Day 30 to 60","label":"First qualified conversations"},{"when":"Day 90","label":"Pipeline beyond referrals"}]} />
         </div>
       </section>
 

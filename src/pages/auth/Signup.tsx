@@ -39,10 +39,10 @@ export default function Signup() {
 
   return (
     <>
-      <SEO title="Create your SVNR account" description="Create a free SVNR account to apply for Aether access." canonical="/signup" noindex />
+      <SEO title="Create your SVNR account" description="Create a free SVNR account to apply for Cassian access." canonical="/signup" noindex />
       <AuthShell
         title="Create your SVNR™ account"
-        subtitle="Sign up with any email. Aether access is confirmed individually — you will be notified when yours is active."
+        subtitle="Sign up with any email. Cassian access is confirmed individually, you will be notified when yours is active."
         footer={<>Have an account? <Link to="/login" className="text-white/80 hover:text-white underline underline-offset-2">Sign in</Link></>}
       >
         <form onSubmit={submit} className="space-y-3 auth-stagger">

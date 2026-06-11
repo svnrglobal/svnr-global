@@ -43,7 +43,7 @@ export default function AgentOrbit() {
           <span className="absolute inset-0 rounded-full blur-xl" style={{ background: "rgba(139,125,255,0.35)" }} />
           <AetherLogo size={52} state="pulse" className="relative text-white" />
         </div>
-        <span className="mt-2 text-[10px] uppercase tracking-[0.25em] text-white/50">Aether</span>
+        <span className="mt-2 text-[10px] uppercase tracking-[0.25em] text-white/50">Cassian Soleth</span>
       </div>
 
       {NODES.map((node, i) => {

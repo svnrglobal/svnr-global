@@ -1104,7 +1104,7 @@ export default function BlogArticle() {
           </>
         ) : (
           <>
-            <img src={article.image} alt={article.imageAlt} className="absolute inset-0 w-full h-full object-cover z-0" />
+            <img fetchPriority="high" decoding="async" src={article.image} alt={article.imageAlt} className="absolute inset-0 w-full h-full object-cover z-0" />
             <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.6) 50%, rgba(10,10,11,0.2) 100%)" }} />
           </>
         )}
@@ -1149,8 +1149,7 @@ export default function BlogArticle() {
                   className="mt-8"
                 >
                   <div className="rounded-2xl overflow-hidden border border-white/8">
-                    <img
-                      src={section.image}
+                    <img loading="lazy" decoding="async" src={section.image}
                       alt={section.imageAlt ?? section.heading}
                       className="w-full h-64 md:h-80 object-cover"
                     />
@@ -1166,6 +1165,45 @@ export default function BlogArticle() {
           ))}
         </div>
       </section>
+
+      {/* THE PLAYBOOK: visible step rail for articles with HowTo steps */}
+      {article.howToSteps && article.howToSteps.length > 0 && (
+        <section className="relative z-10 bg-[#0A0A0B] px-6 pb-14">
+          <div className="max-w-3xl mx-auto">
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-8"
+            >
+              The playbook
+            </motion.p>
+            <div>
+              {article.howToSteps.map((step, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, x: -16 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: Math.min(i * 0.08, 0.5), duration: 0.6 }}
+                  className="flex gap-5"
+                >
+                  <div className="flex flex-col items-center">
+                    <div className="w-7 h-7 shrink-0 rounded-full border border-white/15 flex items-center justify-center text-[11px] text-white/60">
+                      {i + 1}
+                    </div>
+                    {i < article.howToSteps!.length - 1 && <div className="w-px flex-1 bg-white/8 my-1" />}
+                  </div>
+                  <div className="pb-8">
+                    <h3 className="text-white font-medium text-[15px] mb-1.5">{step.name}</h3>
+                    <p className="text-white/50 text-sm leading-relaxed">{step.text}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* FAQ SECTION */}
       {article.faqs && article.faqs.length > 0 && (
@@ -1270,7 +1308,7 @@ export default function BlogArticle() {
               <motion.div key={a.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
                 <Link to={`/blog/${a.slug}`} className="group block liquid-glass rounded-2xl overflow-hidden hover:ring-1 hover:ring-white/20 transition-all">
                   <div className="relative h-40 overflow-hidden">
-                    <img src={a.image} alt={a.imageAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                    <img loading="lazy" decoding="async" src={a.image} alt={a.imageAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B]/60 to-transparent" />
                   </div>
                   <div className="p-5">

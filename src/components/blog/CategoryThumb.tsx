@@ -53,7 +53,7 @@ export default function CategoryThumb({
         }}
       />
       <div className="absolute inset-0 flex items-center justify-center">
-        {category === "Aether" ? (
+        {category === "Cassian" ? (
           <AetherLogo size={iconSize + 6} state="static" className="text-white/90" />
         ) : Icon ? (
           <Icon size={iconSize} className="text-white/85" strokeWidth={1.4} />

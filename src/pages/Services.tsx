@@ -7,6 +7,8 @@ import VideoHero from "../components/VideoHero";
 import FeatureCard from "../components/FeatureCard";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
+import Counter from "../components/Counter";
 
 const metricChartData: Record<string, { data: { name: string; value: number }[]; color: string }> = {
   "client-acquisition": { data: [{ name: "W1", value: 4 }, { name: "W2", value: 9 }, { name: "W3", value: 18 }, { name: "W4", value: 28 }, { name: "W5", value: 35 }, { name: "W6", value: 40 }], color: "#FF3D77" },
@@ -46,7 +48,13 @@ function ServiceDetailCard({ svc, index }: { svc: typeof SERVICES[0]; index: num
         <p className="text-white/60 text-sm leading-relaxed mb-8">{svc.description}</p>
 
         {/* Animated Chart */}
-        <div className="mb-8">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.15 }}
+          className="mb-8"
+        >
           <p className="text-[10px] uppercase tracking-widest text-white/30 mb-3">Performance curve</p>
           <div className="h-28">
             <ResponsiveContainer width="100%" height="100%">
@@ -72,14 +80,14 @@ function ServiceDetailCard({ svc, index }: { svc: typeof SERVICES[0]; index: num
               </AreaChart>
             </ResponsiveContainer>
           </div>
-        </div>
+        </motion.div>
 
         {/* Metrics */}
         <div className="grid grid-cols-3 gap-2 sm:gap-4 mb-8">
           {svc.metrics.map((m) => (
             <div key={m.label} className="text-center">
               <div className="text-base sm:text-xl font-medium text-white stat-number">
-                {m.value}{m.unit}
+                <Counter value={`${m.value}${m.unit ?? ""}`} />
               </div>
               <div className="text-[9px] sm:text-[10px] text-white/30 mt-1 leading-tight">{m.label}</div>
             </div>
@@ -121,7 +129,7 @@ export default function Services() {
           "@context": "https://schema.org",
           "@type": "Service",
           "name": "AI Client Acquisition & Outreach Infrastructure",
-          "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+          "provider": { "@id": "https://svnrglobal.com/#organization" },
           "description": "Bespoke AI systems for client acquisition, outbound outreach, revenue operations, and business development for luxury brands and premium B2B operators.",
           "areaServed": "Worldwide",
           "serviceType": ["Client Acquisition", "AI Outreach", "Revenue Operations", "Deal Flow Generation", "Brand Outreach"]
@@ -160,6 +168,7 @@ export default function Services() {
       {/* Overview Cards */}
       <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
         <div className="max-w-7xl mx-auto">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Services" }]} />
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-16 md:mb-24">
             {SERVICES.map((svc, i) => (
               <Link key={svc.slug} to={`/services/${svc.slug}`} style={{ textDecoration: "none" }}>

@@ -5,6 +5,10 @@ import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import Counter from "../../components/Counter";
+import SystemFlow from "../../components/SystemFlow";
+
+const flowGradient = "linear-gradient(135deg, #f953c6, #b91d73)";
 
 const chartData = [
   { seq: "Seq 1", rate: 18 }, { seq: "Seq 2", rate: 24 },
@@ -46,7 +50,7 @@ export default function BrandOutreach() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Brand Outreach, Hyper-Personalised B2B Messaging",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "Individually researched, hyper-personalised B2B outreach sequences for premium brands. Every message is written for the specific recipient, no templates, no mass sends. Outreach that earns a response because it reads like it came from a peer who did their homework.",
             "areaServed": ["Global", "Europe", "Middle East", "Asia"],
             "serviceType": ["Brand Outreach", "Personalised B2B Messaging", "Premium Outreach Sequences", "B2B Email Strategy"]
@@ -99,7 +103,7 @@ export default function BrandOutreach() {
       <section className="relative z-10 bg-[#0A0A0B] pt-16 px-6">
         <div className="max-w-5xl mx-auto">
           <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="rounded-2xl overflow-hidden border border-white/10">
-            <img src="/services/brand-outreach.png" alt="Brand Outreach Dashboard" className="w-full h-auto object-cover" />
+            <img loading="lazy" decoding="async" src="/services/brand-outreach.png" alt="Brand Outreach Dashboard" className="w-full h-auto object-cover" />
           </motion.div>
         </div>
       </section>
@@ -131,12 +135,29 @@ export default function BrandOutreach() {
                 </ResponsiveContainer>
               </div>
               <div className="grid grid-cols-3 gap-4 mt-6 pt-6 border-t border-white/10">
-                <div className="text-center"><div className="text-2xl font-medium text-white">52%</div><div className="text-[10px] text-white/30 mt-1">Open rate</div></div>
-                <div className="text-center"><div className="text-2xl font-medium text-white">21%</div><div className="text-[10px] text-white/30 mt-1">Positive reply</div></div>
-                <div className="text-center"><div className="text-2xl font-medium text-white">0.4%</div><div className="text-[10px] text-white/30 mt-1">Unsubscribe</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="52%" /></div><div className="text-[10px] text-white/30 mt-1">Open rate</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="21%" /></div><div className="text-[10px] text-white/30 mt-1">Positive reply</div></div>
+                <div className="text-center"><div className="text-2xl font-medium text-white"><Counter value="0.4%" /></div><div className="text-[10px] text-white/30 mt-1">Unsubscribe</div></div>
               </div>
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* HOW IT RUNS: system flow infographic */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-5xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">How it runs</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">Research in. Replies out.</h2>
+          </motion.div>
+          <SystemFlow
+            inputs={["Prospect research", "Brand voice calibration", "Individual messaging", "Multi-touch sequences"]}
+            engine="Brand Outreach System"
+            engineIcon={Mail}
+            output={{ value: "21%", label: "positive reply rate" }}
+            gradient={flowGradient}
+          />
         </div>
       </section>
 

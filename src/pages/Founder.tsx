@@ -20,9 +20,10 @@ export default function Founder() {
           {
             "@context": "https://schema.org",
             "@type": "Person",
+            "@id": "https://svnrglobal.com/#hamza-omair",
             "name": "Hamza Omair",
             "jobTitle": "Founder & CEO",
-            "worksFor": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "worksFor": { "@id": "https://svnrglobal.com/#organization" },
             "url": "https://svnrglobal.com/founder/",
             "image": "https://svnrglobal.com/hamza.jpg",
             "sameAs": ["https://in.linkedin.com/in/hamza-omair-5434b1354"],
@@ -36,7 +37,7 @@ export default function Founder() {
 
       {/* HERO, video background */}
       <VideoHero src={FOUNDER_VIDEO} minHeight="min-h-screen">
-        <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-end min-h-screen">
+        <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end min-h-screen">
           {/* Text */}
           <div className="flex flex-col justify-end pb-4">
             <motion.p
@@ -74,8 +75,7 @@ export default function Founder() {
             className="flex justify-center md:justify-end items-end pb-4"
           >
             <div className="relative w-64 sm:w-72 md:w-80">
-              <img
-                src="/hamza.jpg"
+              <img loading="lazy" decoding="async" src="/hamza.jpg"
                 alt="Hamza Omair, Founder of SVNR Global"
                 className="w-full rounded-2xl object-cover"
                 style={{ aspectRatio: "1/1" }}
@@ -145,7 +145,7 @@ export default function Founder() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid grid-cols-3 gap-6 mb-20"
+            className="grid grid-cols-3 gap-3 sm:gap-6 mb-20"
           >
             {[
               { value: "2019", label: "Founded" },

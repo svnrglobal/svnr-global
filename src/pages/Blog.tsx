@@ -76,8 +76,8 @@ export default function Blog() {
   return (
     <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
       <SEO
-        title="Blog — AI Client Acquisition, Outreach & Aether Insights | SVNR Global"
-        description="Playbooks on AI client acquisition, the Aether models, outreach strategy, deal flow, and revenue growth for luxury brands, real estate, private equity, and premium B2B operators."
+        title="Blog — AI Client Acquisition, Outreach & Cassian Insights | SVNR Global"
+        description="Playbooks on AI client acquisition, the Cassian models, outreach strategy, deal flow, and revenue growth for luxury brands, real estate, private equity, and premium B2B operators."
         canonical="/blog"
         breadcrumbs={[{ name: "Home", url: "/" }, { name: "Blog", url: "/blog" }]}
         schema={{
@@ -86,7 +86,7 @@ export default function Blog() {
           name: "SVNR Global Blog",
           url: "https://svnrglobal.com/blog",
           description:
-            "Insights on AI-powered client acquisition, the Aether models, outbound strategy, and revenue growth for premium B2B and luxury operators.",
+            "Insights on AI-powered client acquisition, the Cassian models, outbound strategy, and revenue growth for premium B2B and luxury operators.",
           publisher: { "@type": "Organization", name: "SVNR Global", url: "https://svnrglobal.com" },
         }}
       />
@@ -101,7 +101,7 @@ export default function Blog() {
             <span className="shimmer-text">build their pipelines.</span>
           </motion.h1>
           <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6 }} className="text-lg text-white/50 max-w-xl mx-auto">
-            Sector guides, use cases, and the Aether models, written for operators, not marketers.
+            Sector guides, use cases, and the Cassian models, written for operators, not marketers.
           </motion.p>
         </div>
       </VideoHero>
@@ -114,7 +114,8 @@ export default function Blog() {
               <BlogCover {...getCover(featured.slug, featured.category)} className="h-56 md:h-auto md:min-h-[300px]" />
               <div className="p-6 sm:p-8 md:p-12 flex flex-col justify-between">
                 <div>
-                  <div className="flex items-center gap-3 mb-5">
+                  <div className="flex items-center gap-3 mb-5 flex-wrap">
+                    <span className="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full bg-white/10 text-white/70">Featured</span>
                     <span className="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full" style={{ background: `${categoryColors[featured.category]}22`, color: categoryColors[featured.category] }}>
                       {featured.category}
                     </span>
@@ -136,7 +137,7 @@ export default function Blog() {
       <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
         <div className="max-w-7xl mx-auto grid lg:grid-cols-[190px_1fr] gap-8 lg:gap-12">
           {/* category nav */}
-          <aside className="lg:sticky lg:top-24 lg:self-start">
+          <aside className="min-w-0 lg:sticky lg:top-24 lg:self-start">
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-3 hidden lg:block">Browse</p>
             <div className="flex lg:flex-col gap-1.5 overflow-x-auto lg:overflow-y-auto lg:max-h-[calc(100vh-9rem)] pb-2 lg:pb-0 -mx-1 px-1 lg:pr-1.5 nice-scroll">
               {["All", ...categories].map((c) => {

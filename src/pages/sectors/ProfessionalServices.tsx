@@ -5,6 +5,7 @@ import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YA
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import EngagementTimeline from "../../components/EngagementTimeline";
 
 const mandateData = [
   { q: "Q1", mandates: 2 }, { q: "Q2", mandates: 4 }, { q: "Q3", mandates: 5 }, { q: "Q4", mandates: 6 },
@@ -39,7 +40,7 @@ export default function ProfessionalServices() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Professional Services Client Acquisition",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "Systematic mandate and client acquisition for law firms, boutique consultancies, accountancies, architecture studios, and advisory practices. Pre-RFP outreach to developers, corporates, and principals that positions the firm as a peer before the brief is issued.",
             "areaServed": ["Global", "Europe", "Middle East", "India", "United Kingdom"],
             "serviceType": ["Law Firm Client Acquisition", "Consultancy Business Development", "Architecture Studio Mandate Pipeline", "Advisory Practice Growth"]
@@ -78,7 +79,7 @@ export default function ProfessionalServices() {
         ]}
       />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <img src="/sectors/professional-A015474D-5AE6-4690-B0C0-35613EAEE95D.JPG" alt="Professional Services" className="absolute inset-0 w-full h-full object-cover z-0" />
+        <img fetchPriority="high" decoding="async" src="/sectors/professional-A015474D-5AE6-4690-B0C0-35613EAEE95D.JPG" alt="Professional Services" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
@@ -155,7 +156,7 @@ export default function ProfessionalServices() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           {["/sectors/professional-A015474D-5AE6-4690-B0C0-35613EAEE95D.JPG", "/sectors/professional-IMG_3168.JPG"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Professional services firm client acquisition and pre-RFP outreach" />
+              <img loading="lazy" decoding="async" src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Professional services firm client acquisition and pre-RFP outreach" />
             </motion.div>
           ))}
         </div>
@@ -172,6 +173,17 @@ export default function ProfessionalServices() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* THE 90-DAY PATH: engagement timeline */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The 90-day path</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">From engagement to active pipeline.</h2>
+          </motion.div>
+          <EngagementTimeline accent="#a78bfa" milestones={[{"when":"Week 0","label":"Client universe mapped"},{"when":"Week 2 to 3","label":"Outreach live"},{"when":"Day 30 to 60","label":"First mandates in discussion"},{"when":"Day 90","label":"Pipeline before the RFP"}]} />
         </div>
       </section>
 

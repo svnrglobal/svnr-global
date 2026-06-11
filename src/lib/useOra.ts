@@ -33,7 +33,7 @@ function saveStamps(a: number[]): void {
 }
 
 function limitMessage(): string {
-  return "You have reached Ora's free limit of 20 questions. It refills over the next five hours. To remove the limit, upgrade to Soleth or Aether, or book a call and the team will help directly.";
+  return "You have reached Ora's free limit of 20 questions. It refills over the next five hours. To remove the limit, upgrade to Prose or Soleth, or book a call and the team will help directly.";
 }
 
 /**

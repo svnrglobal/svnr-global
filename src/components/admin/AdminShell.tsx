@@ -18,7 +18,7 @@ export default function AdminShell({ children }: { children: React.ReactNode }) 
         <div className="flex items-center gap-6">
           <Link to="/" className="flex items-center gap-2 text-white">
             <AetherLogo size={22} />
-            <span className="text-sm font-medium tracking-tight">Aether Admin</span>
+            <span className="text-sm font-medium tracking-tight">Cassian Admin</span>
           </Link>
           <nav className="flex items-center gap-1">
             {tabs.map((t) => {

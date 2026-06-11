@@ -1,11 +1,13 @@
 import { motion, AnimatePresence, useInView } from "motion/react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check } from "lucide-react";
+import { ArrowRight, Check, Search, Mail, Workflow, BarChart3 } from "lucide-react";
 import { useRef, useState } from "react";
 import { VIDEOS } from "../data/content";
 import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
+import Breadcrumbs from "../components/Breadcrumbs";
+import FaqSection from "../components/FaqSection";
 
 const included = [
   {
@@ -247,19 +249,46 @@ function DotMatrixSlider({
     }
   };
 
+  // Top tier (Full Stack) turns the whole track into a living, twinkling pixel
+  // matrix. Lower tiers keep the clean gradient-to-handle fill. While dragging,
+  // preview the top-tier state as soon as the pointer is nearest it.
+  const previewActive = drag !== null ? nearestTier(drag) : active;
+  const isTop = previewActive === tiers.length - 1;
+
   const SPACING = Math.max(4, Math.round(COLS / 6));
   const dots = [];
   for (let r = 0; r < ROWS; r++) {
     for (let c = 0; c < COLS; c++) {
       const colFrac = c / (COLS - 1);
-      let bg = "transparent";
-      if (colFrac <= fill + 0.0001) {
-        const t = colFrac / Math.max(fill, 0.0001);
-        bg = `rgba(180,150,255,${(0.4 + 0.55 * t).toFixed(2)})`;
-      } else if (c % SPACING === 0) {
-        bg = "rgba(255,255,255,0.12)";
+      if (isTop) {
+        const baseAlpha = 0.3 + 0.6 * colFrac; // dim left → bright right
+        const h = r * COLS + c;
+        const dur = 1.3 + ((h * 7) % 11) / 10; // 1.3s..2.3s
+        const delay = ((h * 13) % 21) / 10; // 0s..2s
+        dots.push(
+          <span
+            key={`${r}-${c}`}
+            className="matrix-px"
+            style={{
+              background: `rgba(180,150,255,${baseAlpha.toFixed(2)})`,
+              borderRadius: 1.5,
+              animation: `matrixTwinkle ${dur}s ease-in-out ${delay}s infinite`,
+            }}
+          />
+        );
+      } else {
+        // Foundation / Infrastructure: calm neutral fill. Purple lives only at Full Stack.
+        let bg = "transparent";
+        if (colFrac <= fill + 0.0001) {
+          const t = colFrac / Math.max(fill, 0.0001);
+          bg = `rgba(255,255,255,${(0.14 + 0.4 * t).toFixed(2)})`;
+        } else if (c === COLS - 1) {
+          bg = "rgba(180,150,255,0.85)"; // hint of the Full Stack matrix at the far end
+        } else if (c % SPACING === 0) {
+          bg = "rgba(255,255,255,0.12)";
+        }
+        dots.push(<span key={`${r}-${c}`} style={{ background: bg, borderRadius: 1.5 }} />);
       }
-      dots.push(<span key={`${r}-${c}`} style={{ background: bg, borderRadius: 1.5 }} />);
     }
   }
 
@@ -274,7 +303,12 @@ function DotMatrixSlider({
       <div className="flex items-center justify-between mb-1">
         <span className="text-white/85 text-sm font-medium">
           Engagement depth{" "}
-          <span className="text-white/45 font-normal">· {tier.name}</span>
+          <span
+            className="font-normal transition-colors duration-300"
+            style={{ color: isTop ? "#b49bff" : "rgba(255,255,255,0.45)" }}
+          >
+            · {tier.name}
+          </span>
         </span>
         <span className="text-white/30 text-xs">drag to compare</span>
       </div>
@@ -348,17 +382,62 @@ function DotMatrixSlider({
         </motion.div>
       </div>
 
-      <div className="flex items-center justify-between mt-3 px-0.5">
-        {tiers.map((t, i) => (
-          <button
-            key={t.id}
-            onClick={() => onChange(i)}
-            className="text-[11px] sm:text-xs transition-colors"
-            style={{ color: active === i ? "#fff" : "rgba(255,255,255,0.32)" }}
-          >
-            {t.name}
-          </button>
-        ))}
+      {/* Tier cards — tap to switch; each says who it is for and what it adds */}
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 mt-3">
+        {tiers.map((t, i) => {
+          const on = active === i;
+          const top = i === tiers.length - 1;
+          const scope =
+            i === 0
+              ? `${t.includes.length} core deliverables`
+              : `Everything in ${tiers[i - 1].name}, plus ${t.includes.length - 1} more`;
+          return (
+            <button
+              key={t.id}
+              onClick={() => onChange(i)}
+              className="rounded-2xl px-3.5 py-3 text-left transition-all duration-300"
+              style={{
+                background: on
+                  ? top
+                    ? "rgba(180,150,255,0.10)"
+                    : "rgba(255,255,255,0.06)"
+                  : "rgba(255,255,255,0.02)",
+                border: `1px solid ${
+                  on
+                    ? top
+                      ? "rgba(180,150,255,0.45)"
+                      : "rgba(255,255,255,0.22)"
+                    : "rgba(255,255,255,0.07)"
+                }`,
+              }}
+            >
+              <span
+                className="block text-[12px] sm:text-[13px] font-medium"
+                style={{ color: on ? "#fff" : "rgba(255,255,255,0.55)" }}
+              >
+                {t.name}
+              </span>
+              <span
+                className="block text-[10.5px] mt-1 leading-snug"
+                style={{ color: on ? "rgba(255,255,255,0.55)" : "rgba(255,255,255,0.3)" }}
+              >
+                {t.tagline}
+              </span>
+              <span
+                className="block text-[9.5px] mt-1.5 uppercase tracking-wider"
+                style={{
+                  color: on
+                    ? top
+                      ? "#b49bff"
+                      : "rgba(255,255,255,0.4)"
+                    : "rgba(255,255,255,0.22)",
+                }}
+              >
+                {scope}
+              </span>
+            </button>
+          );
+        })}
       </div>
     </div>
   );
@@ -474,13 +553,24 @@ export default function Engagement() {
           { name: "Home", url: "/" },
           { name: "How We Work", url: "/engagement" },
         ]}
-        schema={{
-          "@context": "https://schema.org",
-          "@type": "WebPage",
-          "name": "SVNR Global Engagement Model",
-          "url": "https://svnrglobal.com/engagement",
-          "description": "SVNR Global's bespoke engagement model, custom AI agents, outreach infrastructure, and reporting dashboards built specifically for each client.",
-        }}
+        schema={[
+          {
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "SVNR Global Engagement Model",
+            "url": "https://svnrglobal.com/engagement",
+            "description": "SVNR Global's bespoke engagement model, custom AI agents, outreach infrastructure, and reporting dashboards built specifically for each client.",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": faqs.map((f) => ({
+              "@type": "Question",
+              "name": f.q,
+              "acceptedAnswer": { "@type": "Answer", "text": f.a },
+            })),
+          },
+        ]}
       />
 
       {/* HERO */}
@@ -512,9 +602,10 @@ export default function Engagement() {
       {/* PHILOSOPHY */}
       <section className="relative z-10 bg-[#0A0A0B] py-20 px-6 border-t border-white/8">
         <div className="max-w-4xl mx-auto">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "How We Work" }]} />
           <motion.div
             initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start"
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-start"
           >
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Why bespoke</p>
@@ -547,6 +638,44 @@ export default function Engagement() {
             <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Every engagement</p>
             <h2 className="text-3xl sm:text-4xl font-medium text-white tracking-tight">What's included</h2>
           </motion.div>
+
+          {/* Flow strip: the four delivery stages in sequence */}
+          <div className="hidden sm:flex items-center justify-center gap-3 flex-wrap mb-10">
+            {[
+              { icon: Search, label: "Research & Intelligence" },
+              { icon: Mail, label: "Outreach & Execution" },
+              { icon: Workflow, label: "Infrastructure & Automation" },
+              { icon: BarChart3, label: "Reporting & Visibility" },
+            ].map((stage, i, arr) => (
+              <motion.div
+                key={stage.label}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="flex items-center gap-3"
+              >
+                <span className="flex items-center gap-2 rounded-full border border-white/10 px-4 py-2">
+                  <stage.icon size={14} className="text-white/50" />
+                  <span className="text-[11px] text-white/60 whitespace-nowrap">{stage.label}</span>
+                </span>
+                {i < arr.length - 1 && <ArrowRight size={12} className="text-white/25" />}
+              </motion.div>
+            ))}
+          </div>
+          <div className="grid sm:hidden grid-cols-2 gap-2 mb-10">
+            {[
+              { icon: Search, label: "Research & Intelligence" },
+              { icon: Mail, label: "Outreach & Execution" },
+              { icon: Workflow, label: "Infrastructure & Automation" },
+              { icon: BarChart3, label: "Reporting & Visibility" },
+            ].map((stage) => (
+              <span key={stage.label} className="flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 min-w-0">
+                <stage.icon size={13} className="text-white/50 shrink-0" />
+                <span className="text-[10px] text-white/60 truncate">{stage.label}</span>
+              </span>
+            ))}
+          </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {included.map((block, i) => (
@@ -605,33 +734,7 @@ export default function Engagement() {
       </section>
 
       {/* FAQ */}
-      <section className="relative z-10 bg-[#0A0A0B] py-20 px-6 border-t border-white/8">
-        <div className="max-w-3xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="mb-12"
-          >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Common questions</p>
-            <h2 className="text-3xl font-medium text-white tracking-tight">Before you book</h2>
-          </motion.div>
-
-          <div className="space-y-6">
-            {faqs.map((faq, i) => (
-              <motion.div
-                key={faq.q}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="border-b border-white/8 pb-6"
-              >
-                <h3 className="text-white font-medium mb-3">{faq.q}</h3>
-                <p className="text-white/55 text-sm leading-relaxed">{faq.a}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <FaqSection faqs={faqs} title="Before you book" />
 
       {/* CTA */}
       <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">

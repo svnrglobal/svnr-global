@@ -2,10 +2,13 @@ import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import SEO from "../components/SEO";
+import Counter from "../components/Counter";
 import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
+import BlogCover from "../components/blog/BlogCover";
 import { VIDEOS } from "../data/content";
 import { CASE_STUDIES } from "../data/caseStudies";
+import { getCaseStudyCover } from "../data/caseStudyCovers";
 
 const schema = {
   "@context": "https://schema.org",
@@ -78,7 +81,7 @@ export default function CaseStudies() {
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
               >
-                <div className="text-3xl md:text-4xl font-medium text-white mb-1">{stat.value}</div>
+                <div className="text-3xl md:text-4xl font-medium text-white mb-1"><Counter value={stat.value} duration={1.8} /></div>
                 <div className="text-[10px] uppercase tracking-widest text-white/30">{stat.label}</div>
               </motion.div>
             ))}
@@ -90,7 +93,9 @@ export default function CaseStudies() {
       <section className="relative z-10 bg-[#0A0A0B] py-20 px-6">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CASE_STUDIES.map((cs, i) => (
+            {CASE_STUDIES.map((cs, i) => {
+              const cover = getCaseStudyCover(cs.slug);
+              return (
               <motion.div
                 key={cs.slug}
                 initial={{ opacity: 0, y: 30 }}
@@ -102,18 +107,16 @@ export default function CaseStudies() {
                   <div className="relative overflow-hidden rounded-3xl h-full flex flex-col"
                     style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
 
-                    {/* Image */}
+                    {/* Self-made cover */}
                     <div className="relative h-56 overflow-hidden rounded-t-3xl">
-                      <img
-                        src={cs.heroImage}
-                        alt={cs.industry}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
-                        onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
+                      <BlogCover
+                        motif={cover.motif}
+                        bg={cover.bg}
+                        className="w-full h-full group-hover:scale-[1.04] transition-transform duration-700"
                       />
-                      <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, transparent 40%, rgba(10,10,11,0.9) 100%)" }} />
                       {/* Industry tag */}
                       <div className="absolute top-4 left-4">
-                        <span className="text-[9px] uppercase tracking-[0.2em] text-white/60 bg-black/40 backdrop-blur-sm px-3 py-1 rounded-full border border-white/10">
+                        <span className="text-[9px] uppercase tracking-[0.2em] text-[#1c1b17]/70 bg-white/45 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10">
                           {cs.industryCode} · {cs.industry}
                         </span>
                       </div>
@@ -151,7 +154,8 @@ export default function CaseStudies() {
                   </div>
                 </Link>
               </motion.div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>

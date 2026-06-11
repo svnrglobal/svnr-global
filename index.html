@@ -49,15 +49,86 @@
 
     <!-- Preload critical assets -->
     <link rel="preload" href="/svnr-logo.svg" as="image" type="image/svg+xml" />
+    <link rel="preload" href="/fonts/helvetica-regular.woff2" as="font" type="font/woff2" crossorigin />
     <!-- Preconnect to video CDN early to reduce LCP latency -->
     <link rel="preconnect" href="https://image.mux.com" crossorigin />
-    <!-- og:image type (redundant with JS-injected but helps crawlers reading the shell) -->
-    <meta property="og:image:type" content="image/png" />
 
     <!-- Theme + feed discovery -->
     <meta name="theme-color" content="#0A0A0B" />
     <link rel="alternate" type="application/rss+xml" title="SVNR Global Blog" href="/rss.xml" />
     <link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml" />
+
+    <!-- Global structured data: always present in the shell (pre-JS) for crawlers + AI answer engines -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://svnrglobal.com/#organization",
+          "name": "SVNR Global",
+          "alternateName": "SVNR",
+          "url": "https://svnrglobal.com/",
+          "logo": "https://svnrglobal.com/svnr-logo.svg",
+          "slogan": "AI client acquisition infrastructure for premium operators.",
+          "description": "SVNR Global builds bespoke AI-powered client acquisition systems and outreach infrastructure for premium operators, luxury brands, private equity, real estate, and high-ticket B2B.",
+          "foundingDate": "2019",
+          "founder": { "@id": "https://svnrglobal.com/#hamza-omair" },
+          "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
+          "areaServed": ["GB", "DE", "FR", "AE", "CH", "SG", "IN", "US"],
+          "knowsAbout": [
+            "AI client acquisition",
+            "B2B outreach infrastructure",
+            "outbound lead generation",
+            "luxury brand B2B sales",
+            "private equity deal flow",
+            "HNW investor outreach",
+            "UHNW client acquisition",
+            "premium real estate client acquisition",
+            "wealth management client acquisition",
+            "AI prospecting"
+          ],
+          "contactPoint": { "@type": "ContactPoint", "email": "contact@svnrglobal.com", "contactType": "sales" },
+          "sameAs": [
+            "https://www.instagram.com/svnr.lab",
+            "https://in.pinterest.com/svnrglobal/",
+            "https://www.linkedin.com/company/svnrglobal"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://svnrglobal.com/#website",
+          "url": "https://svnrglobal.com/",
+          "name": "SVNR Global",
+          "publisher": { "@id": "https://svnrglobal.com/#organization" },
+          "inLanguage": "en",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": { "@type": "EntryPoint", "urlTemplate": "https://svnrglobal.com/blog?q={search_term_string}" },
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "Person",
+          "@id": "https://svnrglobal.com/#hamza-omair",
+          "name": "Hamza Omair",
+          "givenName": "Hamza",
+          "familyName": "Omair",
+          "jobTitle": "Founder & CEO",
+          "url": "https://svnrglobal.com/founder/",
+          "worksFor": { "@id": "https://svnrglobal.com/#organization" },
+          "knowsAbout": [
+            "AI client acquisition",
+            "B2B outreach infrastructure",
+            "luxury trade and distribution",
+            "private equity deal flow",
+            "premium client acquisition"
+          ],
+          "sameAs": ["https://in.linkedin.com/in/hamza-omair-5434b1354"]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
@@ -79,14 +150,14 @@
         <p>SVNR Global builds bespoke AI-powered outreach systems that bring the right clients to luxury brands, private equity firms, premium real estate, and high-ticket B2B operators. No ads. No referrals. Just results.</p>
         <h2>Our Services</h2>
         <ul>
-          <li><a href="/services/client-acquisition" style="color:#aaa">Client Acquisition</a>:Systematic outreach to the exact decision-makers in your market.</li>
-          <li><a href="/services/ai-receptionist" style="color:#aaa">AI Receptionist</a>:Every inbound enquiry handled instantly, 24/7.</li>
-          <li><a href="/services/intelligence-research" style="color:#aaa">Intelligence Research</a>:Deep prospect research and competitive mapping.</li>
-          <li><a href="/services/brand-outreach" style="color:#aaa">Brand Outreach</a>:Hyper-personalised messages that open doors at the principal level.</li>
-          <li><a href="/services/revenue-operations" style="color:#aaa">Revenue Operations</a>:Full-funnel pipeline visibility and automation.</li>
-          <li><a href="/services/sector-workflows" style="color:#aaa">Sector Workflows</a>:Operations built for your vertical.</li>
-          <li><a href="/services/dealflow-investor" style="color:#aaa">Deal Flow &amp; Investor Relations</a>:Proprietary deal flow for private equity and family offices.</li>
-          <li><a href="/services/channel-partnership" style="color:#aaa">Channel Partnership</a>:Activate distributors, resellers, and trade partners systematically.</li>
+          <li><a href="/services/client-acquisition" style="color:#aaa">Client Acquisition</a>: Systematic outreach to the exact decision-makers in your market.</li>
+          <li><a href="/services/ai-receptionist" style="color:#aaa">AI Receptionist</a>: Every inbound enquiry handled instantly, 24/7.</li>
+          <li><a href="/services/intelligence-research" style="color:#aaa">Intelligence Research</a>: Deep prospect research and competitive mapping.</li>
+          <li><a href="/services/brand-outreach" style="color:#aaa">Brand Outreach</a>: Hyper-personalised messages that open doors at the principal level.</li>
+          <li><a href="/services/revenue-operations" style="color:#aaa">Revenue Operations</a>: Full-funnel pipeline visibility and automation.</li>
+          <li><a href="/services/sector-workflows" style="color:#aaa">Sector Workflows</a>: Operations built for your vertical.</li>
+          <li><a href="/services/dealflow-investor" style="color:#aaa">Deal Flow &amp; Investor Relations</a>: Proprietary deal flow for private equity and family offices.</li>
+          <li><a href="/services/channel-partnership" style="color:#aaa">Channel Partnership</a>: Activate distributors, resellers, and trade partners systematically.</li>
         </ul>
         <h2>Industries We Serve</h2>
         <ul>

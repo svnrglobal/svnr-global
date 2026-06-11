@@ -5,15 +5,16 @@ import { ArrowLeft, ChevronDown, Lock, LogOut, Paperclip, X } from "lucide-react
 import SEO from "../../components/SEO";
 import AetherLogo from "../../components/aether/AetherLogo";
 import AetherPet, { type PetMood } from "../../components/aether/AetherPet";
+import ChatBackground from "../../components/aether/ChatBackground";
 import OraThread from "../../components/aether/OraThread";
 import OraComposer from "../../components/aether/OraComposer";
 import { useOra } from "../../lib/useOra";
 import { useAuth } from "../../lib/useAuth";
 import {
-  AETHER_MODELS,
+  CASSIAN_MODELS,
   UPGRADE_NOTE,
-  getAetherContent,
-  type AetherModel,
+  getCassianContent,
+  type CassianModel,
 } from "../../data/aetherContent";
 
 function fmtReset(resetAt: number | null): string {
@@ -25,21 +26,114 @@ function fmtReset(resetAt: number | null): string {
   return h > 0 ? `${h}h ${m}m` : `${m}m`;
 }
 
+// Model selector used both in the top bar (opens down) and in the composer next
+// to the upload control (opens up). Ora is the active free model; the paid
+// models open the upgrade card.
+function ModelSwitcher({
+  direction = "down",
+  onUpgrade,
+}: {
+  direction?: "down" | "up";
+  onUpgrade: (m: CassianModel) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="relative">
+      <button
+        onClick={() => setOpen((v) => !v)}
+        className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs text-white/70 hover:text-white hover:bg-white/5 border border-white/10 transition-colors"
+      >
+        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Ora
+        <ChevronDown size={13} className="text-white/40" />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <>
+            <div className="fixed inset-0 z-30" onClick={() => setOpen(false)} />
+            <motion.div
+              initial={{ opacity: 0, y: direction === "up" ? 6 : -6, scale: 0.97 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: direction === "up" ? 6 : -6, scale: 0.97 }}
+              transition={{ duration: 0.16 }}
+              className={`absolute left-0 w-64 rounded-2xl overflow-hidden p-1.5 z-40 ${
+                direction === "up" ? "bottom-full mb-2" : "top-full mt-2"
+              }`}
+              style={{
+                background: "rgba(16,16,19,0.97)",
+                backdropFilter: "blur(28px)",
+                WebkitBackdropFilter: "blur(28px)",
+                border: "1px solid rgba(255,255,255,0.10)",
+                boxShadow: "0 24px 70px rgba(0,0,0,0.6)",
+              }}
+            >
+              {CASSIAN_MODELS.map((m) => {
+                const locked = m.access === "paid";
+                return (
+                  <button
+                    key={m.id}
+                    onClick={() => {
+                      setOpen(false);
+                      if (locked) onUpgrade(m);
+                    }}
+                    className="w-full flex items-start gap-2.5 px-3 py-2.5 rounded-xl text-left hover:bg-white/5 transition-colors"
+                  >
+                    <AetherLogo size={16} state="static" className="text-white/70 mt-0.5" />
+                    <span className="flex-1 min-w-0">
+                      <span className="flex items-center gap-1.5">
+                        <span className="text-[13px] text-white font-medium">{m.fullName}</span>
+                        {locked && <Lock size={11} className="text-white/35" />}
+                      </span>
+                      <span className="block text-[11.5px] text-white/45 leading-snug">{m.tagline}</span>
+                    </span>
+                  </button>
+                );
+              })}
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
 export default function Chat() {
   const { profile, signOut } = useAuth();
   const firstName = profile?.full_name?.split(" ")[0];
 
-  const greeting = `Hello${firstName ? `, ${firstName}` : ""}. I am Ora, the free Aether model. Ask me about SVNR, your sector, pricing, or what SVNR would build for you.`;
-  const { messages, ask, thinking, remaining, blocked, resetAt } = useOra(greeting);
-  const prompts = useMemo(() => getAetherContent("/aether").prompts, []);
+  const { messages, ask, thinking, remaining, blocked, resetAt, setMessages } = useOra();
+  const prompts = useMemo(() => getCassianContent("/cassian").prompts, []);
+
+  // Onboarding: Ora types out a short welcome sequence on first open.
+  const onboarding = useMemo(
+    () => [
+      `Hey${firstName ? ` ${firstName}` : ""}, I'm Ora, the free Cassian model.`,
+      "I know SVNR end to end: the systems we build, your sector, the pricing, all of it.",
+      "Ask me anything below, or pick one of these to get going.",
+    ],
+    [firstName]
+  );
+  useEffect(() => {
+    const timers: number[] = [];
+    let delay = 450;
+    onboarding.forEach((text, i) => {
+      const id = `intro-${i}`;
+      timers.push(
+        window.setTimeout(() => {
+          // idempotent: never double-add the same intro line (StrictMode safe)
+          setMessages((m) => (m.some((x) => x.id === id) ? m : [...m, { role: "ora", text, id }]));
+        }, delay)
+      );
+      delay += Math.min(text.length * 14 + 850, 3200);
+    });
+    return () => timers.forEach((t) => window.clearTimeout(t));
+  }, [onboarding, setMessages]);
 
   const started = messages.some((m) => m.role === "user");
   const [happy, setHappy] = useState(false);
   const lastLen = useRef(0);
   const bottomRef = useRef<HTMLDivElement>(null);
 
-  const [modelMenu, setModelMenu] = useState(false);
-  const [upgrade, setUpgrade] = useState<AetherModel | null>(null);
+  const [upgrade, setUpgrade] = useState<CassianModel | null>(null);
 
   // Pet gets happy briefly when Ora answers.
   useEffect(() => {
@@ -62,16 +156,19 @@ export default function Chat() {
   // ── Gate: signed in but not yet approved ──
   if (profile && !profile.prose_access_granted) {
     return (
-      <main className="min-h-screen bg-[#0A0A0B] flex items-center justify-center px-6 selection:bg-white/20">
-        <SEO title="Aether" description="The Aether workspace." canonical="/chat" noindex />
-        <div className="glass glass-sheen rounded-3xl p-9 max-w-md text-center">
+      <main className="min-h-screen bg-[#0A0A0B] flex items-center justify-center px-6 selection:bg-white/20 relative overflow-hidden">
+        <ChatBackground />
+        <SEO title="Cassian" description="The Cassian workspace." canonical="/chat" noindex />
+        <div className="glass glass-sheen rounded-3xl p-9 max-w-md text-center relative z-10">
           <div className="flex justify-center mb-5 text-white">
             <AetherPet size={104} mood="idle" />
           </div>
-          <h1 className="text-white text-xl font-medium mb-2">Aether is in private access</h1>
+          <h1 className="text-white text-xl font-medium mb-2">
+            Cassian is in private access
+          </h1>
           <p className="text-white/55 text-sm leading-relaxed mb-6">
             Your account is set up. Once our team approves your application, Ora opens here and you can
-            start talking to Aether.
+            start talking to Cassian.
           </p>
           <Link
             to="/dashboard"
@@ -85,104 +182,47 @@ export default function Chat() {
   }
 
   return (
-    <main className="h-screen flex flex-col bg-[#0A0A0B] text-white selection:bg-white/20 overflow-hidden">
-      <SEO title="Aether — Ora" description="Talk to Ora, the free Aether model." canonical="/chat" noindex />
+    <main className="h-screen flex flex-col bg-[#0A0A0B] text-white selection:bg-white/20 overflow-hidden relative">
+      <SEO title="Cassian — Ora" description="Talk to Ora, the free Cassian model." canonical="/chat" noindex />
+      <ChatBackground />
 
       {/* ── Top bar ── */}
-      <header className="shrink-0 flex items-center justify-between px-4 sm:px-6 h-14 border-b border-white/8 bg-[#0A0A0B]/80 backdrop-blur-xl relative z-30">
+      <header className="shrink-0 flex items-center justify-between px-4 sm:px-6 h-14 border-b border-white/8 bg-[#0A0A0B]/70 backdrop-blur-xl relative z-30">
         <div className="flex items-center gap-3">
-          <Link to="/aether" className="flex items-center gap-2 text-white hover:opacity-80 transition-opacity">
+          <Link to="/cassian" className="flex items-center gap-2 text-white hover:opacity-80 transition-opacity">
             <AetherLogo size={22} />
-            <span className="text-sm font-medium tracking-tight">Aether</span>
+            <span className="text-sm font-medium tracking-tight">Cassian</span>
           </Link>
-
-          {/* model switcher */}
-          <div className="relative">
-            <button
-              onClick={() => setModelMenu((v) => !v)}
-              className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-xs text-white/70 hover:text-white hover:bg-white/5 transition-colors"
-            >
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" /> Ora
-              <ChevronDown size={13} className="text-white/40" />
-            </button>
-            <AnimatePresence>
-              {modelMenu && (
-                <>
-                  <div className="fixed inset-0 z-30" onClick={() => setModelMenu(false)} />
-                  <motion.div
-                    initial={{ opacity: 0, y: -6, scale: 0.97 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -6, scale: 0.97 }}
-                    transition={{ duration: 0.16 }}
-                    className="absolute left-0 top-full mt-2 w-64 rounded-2xl overflow-hidden p-1.5 z-40"
-                    style={{
-                      background: "rgba(16,16,19,0.97)",
-                      backdropFilter: "blur(28px)",
-                      WebkitBackdropFilter: "blur(28px)",
-                      border: "1px solid rgba(255,255,255,0.10)",
-                      boxShadow: "0 24px 70px rgba(0,0,0,0.6)",
-                    }}
-                  >
-                    {AETHER_MODELS.map((m) => {
-                      const locked = m.access === "paid";
-                      return (
-                        <button
-                          key={m.id}
-                          onClick={() => {
-                            setModelMenu(false);
-                            if (locked) setUpgrade(m);
-                          }}
-                          className="w-full flex items-start gap-2.5 px-3 py-2.5 rounded-xl text-left hover:bg-white/5 transition-colors"
-                        >
-                          <AetherLogo size={16} state="static" className="text-white/70 mt-0.5" />
-                          <span className="flex-1 min-w-0">
-                            <span className="flex items-center gap-1.5">
-                              <span className="text-[13px] text-white font-medium">{m.name}</span>
-                              <span className="text-[8.5px] uppercase tracking-[0.2em] text-white/35">
-                                {m.tier}
-                              </span>
-                              {locked && <Lock size={11} className="text-white/35" />}
-                            </span>
-                            <span className="block text-[11.5px] text-white/45 leading-snug">
-                              {m.tagline}
-                            </span>
-                          </span>
-                        </button>
-                      );
-                    })}
-                  </motion.div>
-                </>
-              )}
-            </AnimatePresence>
-          </div>
+          <ModelSwitcher direction="down" onUpgrade={setUpgrade} />
         </div>
 
-        <div className="flex items-center gap-3">
-          <span className="hidden sm:inline text-[11px] text-white/35">
-            {remaining} of 20 left
-          </span>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <span className="hidden sm:inline text-[11px] text-white/35">{remaining} of 20 left</span>
           <Link
             to="/"
-            className="flex items-center gap-1.5 text-white/45 hover:text-white text-xs transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-white/55 hover:text-white text-xs border border-white/10 hover:bg-white/5 transition-colors"
           >
-            <ArrowLeft size={13} /> Site
+            <ArrowLeft size={13} /> <span className="hidden sm:inline">Site</span>
           </Link>
           <button
             onClick={signOut}
-            className="flex items-center gap-1.5 text-white/45 hover:text-white text-xs transition-colors"
+            className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-white/70 hover:text-white text-xs border border-white/12 hover:bg-white/5 transition-colors"
           >
-            <LogOut size={13} />
+            <LogOut size={13} /> Log out
           </button>
         </div>
       </header>
 
       {/* ── Conversation / welcome ── */}
-      <div className="flex-1 overflow-y-auto relative">
+      <div className="flex-1 overflow-y-auto relative z-10">
         {!started ? (
           <div className="min-h-full flex flex-col items-center justify-center text-center px-6 py-10">
-            <AetherPet size={130} mood={mood} className="mb-6" />
-            <h1 className="text-white text-2xl font-medium tracking-tight mb-2">Talk to Ora</h1>
-            <p className="text-white/55 text-sm leading-relaxed max-w-md">{greeting}</p>
+            <motion.div layoutId="ora-pet" transition={{ type: "spring", bounce: 0.22, duration: 0.9 }}>
+              <AetherPet size={124} mood={mood} />
+            </motion.div>
+            <div className="mt-7 w-full max-w-md text-left">
+              <OraThread messages={messages} thinking={thinking} avatar="creature" typeLast />
+            </div>
             <div className="flex flex-wrap gap-2 justify-center mt-7 max-w-xl">
               {prompts.map((p) => (
                 <button
@@ -197,31 +237,36 @@ export default function Chat() {
           </div>
         ) : (
           <div className="max-w-3xl mx-auto px-4 sm:px-6 py-6">
-            <OraThread messages={messages} thinking={thinking} avatar="creature" />
+            <OraThread messages={messages} thinking={thinking} avatar="creature" typeLast />
             <div ref={bottomRef} className="h-2" />
-          </div>
-        )}
-
-        {/* drifting pet companion while chatting */}
-        {started && (
-          <div className="hidden md:block fixed left-5 bottom-28 pointer-events-none opacity-90">
-            <AetherPet size={58} mood={mood} />
           </div>
         )}
       </div>
 
+      {/* drifting pet companion once chatting, flies to the bottom-right */}
+      {started && (
+        <div className="hidden sm:block fixed right-5 bottom-28 z-20 pointer-events-none">
+          <motion.div layoutId="ora-pet" transition={{ type: "spring", bounce: 0.22, duration: 0.9 }}>
+            <AetherPet size={60} mood={mood} />
+          </motion.div>
+        </div>
+      )}
+
       {/* ── Composer ── */}
-      <div className="shrink-0 border-t border-white/8 bg-[#0A0A0B]/80 backdrop-blur-xl">
+      <div className="shrink-0 border-t border-white/8 bg-[#0A0A0B]/70 backdrop-blur-xl relative z-30">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 py-3">
           <div className="flex items-end gap-2">
             <button
-              onClick={() => setUpgrade(AETHER_MODELS[1])}
+              onClick={() => setUpgrade(CASSIAN_MODELS[1])}
               aria-label="Upload a file (paid)"
               className="shrink-0 mb-0.5 w-9 h-9 rounded-xl flex items-center justify-center text-white/40 hover:text-white/70 border border-white/10 hover:bg-white/5 transition-colors relative"
             >
               <Paperclip size={16} />
               <Lock size={9} className="absolute -top-1 -right-1 text-white/40 bg-[#0A0A0B] rounded-full p-[1px]" />
             </button>
+            <div className="shrink-0 mb-0.5 hidden sm:block">
+              <ModelSwitcher direction="up" onUpgrade={setUpgrade} />
+            </div>
             <div className="flex-1">
               <OraComposer onSubmit={ask} disabled={blocked} autoFocus />
             </div>
@@ -266,7 +311,7 @@ export default function Chat() {
               <div className="flex items-center gap-2.5 mb-3 text-white">
                 <AetherLogo size={26} />
                 <div>
-                  <p className="text-base font-medium leading-tight">{upgrade.name}</p>
+                  <p className="text-base font-medium leading-tight">{upgrade.fullName}</p>
                   <p className="text-white/40 text-[11px] uppercase tracking-[0.2em]">{upgrade.tier}</p>
                 </div>
               </div>

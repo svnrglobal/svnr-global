@@ -36,7 +36,7 @@ export const categoryColors: Record<string, string> = {
   "Wealth Management": "#11998e",
   "B2B Platforms": "#f953c6",
   "Strategy": "#FC466B",
-  "Aether": "#8b7dff",
+  "Cassian": "#8b7dff",
   "Use Cases": "#38bdf8",
   "Maritime & Logistics": "#4facfe",
   "High-Ticket E-commerce": "#00C6FF",
@@ -58,7 +58,7 @@ export const categoryLinks: Record<string, { label: string; href: string }> = {
   "Wealth Management": { label: "Wealth Management", href: "/sectors/wealth-management" },
   "B2B Platforms": { label: "B2B Luxury Brands", href: "/sectors/b2b-luxury-brands" },
   "Strategy": { label: "Client Acquisition", href: "/services/client-acquisition" },
-  "Aether": { label: "Aether", href: "/aether" },
+  "Cassian": { label: "Cassian", href: "/cassian" },
   "Use Cases": { label: "Client Acquisition", href: "/services/client-acquisition" },
   "Maritime & Logistics": { label: "Maritime & Logistics", href: "/sectors/maritime-logistics" },
   "High-Ticket E-commerce": { label: "High-Ticket E-commerce", href: "/sectors/high-ticket-ecommerce" },
@@ -73,7 +73,7 @@ export const categoryLinks: Record<string, { label: string; href: string }> = {
 
 // Display order for the index category filter.
 export const CATEGORY_ORDER = [
-  "Aether",
+  "Cassian",
   "Use Cases",
   "Strategy",
   "Luxury Rugs",

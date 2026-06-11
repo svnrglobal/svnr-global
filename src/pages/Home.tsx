@@ -1,10 +1,11 @@
-import { motion, useScroll, useTransform } from "motion/react";
-import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useSpring, useMotionValueEvent } from "motion/react";
+import { useRef, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, ChevronDown } from "lucide-react";
 import { VIDEOS, SERVICES, SECTORS } from "../data/content";
 import SEO from "../components/SEO";
 import FaqSection from "../components/FaqSection";
+import { scrollToEl } from "../lib/lenis";
 
 const HOME_FAQS = [
   { q: "What is AI outreach infrastructure?", a: "AI outreach infrastructure is a system of automated, AI-driven processes that identify ideal clients, craft personalised outreach sequences, qualify leads, and route them into a sales pipeline, without relying on inbound marketing, paid ads, or referrals." },
@@ -17,52 +18,9 @@ const HOME_FAQS = [
   { q: "How is SVNR Global different from a cold email agency?", a: "A cold email agency sends templated sequences at volume. SVNR builds sector-specific outreach infrastructure: ICP definition, prospect research using 50+ data signals, individually crafted messaging, multi-channel deployment across email and LinkedIn, and continuous optimisation. The result is a permanent acquisition asset, not a one-off campaign." },
 ];
 
+// Organization + WebSite now live as a global @graph in index.html (present pre-JS on
+// every page). Home keeps the page-specific ProfessionalService + FAQ schema.
 const HOME_SCHEMA = [
-  {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "SVNR Global",
-    "alternateName": "SVNR",
-    "url": "https://svnrglobal.com",
-    "logo": "https://svnrglobal.com/svnr-logo.svg",
-    "slogan": "AI client acquisition infrastructure for premium operators.",
-    "description": "SVNR Global builds bespoke AI-powered client acquisition systems and outreach infrastructure for premium operators, luxury brands, private equity, real estate, and high-ticket B2B.",
-    "foundingDate": "2019",
-    "founder": {
-      "@type": "Person",
-      "name": "Hamza Omair",
-      "jobTitle": "Founder & CEO",
-      "url": "https://svnrglobal.com/founder/",
-      "sameAs": "https://in.linkedin.com/in/hamza-omair-5434b1354"
-    },
-    "address": { "@type": "PostalAddress", "addressLocality": "New Delhi", "addressCountry": "IN" },
-    "areaServed": ["GB", "DE", "FR", "AE", "CH", "SG", "IN", "US"],
-    "knowsAbout": [
-      "AI client acquisition",
-      "B2B outreach infrastructure",
-      "outbound lead generation",
-      "luxury brand B2B sales",
-      "private equity deal flow",
-      "HNW investor outreach",
-      "UHNW client acquisition",
-      "premium real estate client acquisition",
-      "wealth management client acquisition",
-      "AI prospecting"
-    ],
-    "contactPoint": { "@type": "ContactPoint", "email": "contact@svnrglobal.com", "contactType": "sales" },
-    "sameAs": [
-      "https://www.instagram.com/svnr.lab",
-      "https://in.pinterest.com/svnrglobal/",
-      "https://www.linkedin.com/company/svnrglobal"
-    ]
-  },
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "SVNR Global",
-    "url": "https://svnrglobal.com",
-    "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
-  },
   {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
@@ -119,6 +77,7 @@ const TECH_LOGOS = [
 ];
 import FeatureCard from "../components/FeatureCard";
 import Footer from "../components/Footer";
+import Counter from "../components/Counter";
 
 const RESULTS = [
   { metric: "312%", label: "Increase in average order value", sector: "High-Ticket E-commerce" },
@@ -128,6 +87,112 @@ const RESULTS = [
   { metric: "<60s", label: "AI receptionist response time", sector: "All Sectors" },
   { metric: "8", label: "Markets mapped per client", sector: "Average" },
 ];
+
+// Sections the journey rail tracks, in page order. `at` (0..1 of total scroll)
+// is measured from the live DOM so the dots sit at each section's true position.
+const JOURNEY = [
+  { id: "systems", label: "Systems" },
+  { id: "proof", label: "Proof" },
+  { id: "clients", label: "Clients" },
+  { id: "industries", label: "Industries" },
+  { id: "book", label: "Book a call" },
+];
+
+// Scroll-following journey rail (desktop): a glowing dot rides the rail with the
+// scroll position, milestones light up as you pass them, and each is a shortcut
+// to its section. Spring-smoothed so the dot trails the scroll like a follower.
+function ScrollJourney() {
+  const { scrollYProgress } = useScroll();
+  const progress = useSpring(scrollYProgress, { stiffness: 90, damping: 26, mass: 0.4 });
+  const dotTop = useTransform(progress, (v) => `${v * 100}%`);
+  const [marks, setMarks] = useState<{ id: string; label: string; at: number }[]>([]);
+  const [active, setActive] = useState(-1);
+
+  useEffect(() => {
+    const measure = () => {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      if (total <= 0) return;
+      setMarks(
+        JOURNEY.map((j) => {
+          const el = document.getElementById(j.id);
+          const at = el ? Math.min(1, Math.max(0, (el.offsetTop - window.innerHeight * 0.35) / total)) : 0;
+          return { ...j, at };
+        })
+      );
+    };
+    measure();
+    // re-measure once media has settled, and on resize
+    const t = window.setTimeout(measure, 900);
+    window.addEventListener("resize", measure);
+    return () => {
+      window.clearTimeout(t);
+      window.removeEventListener("resize", measure);
+    };
+  }, []);
+
+  useMotionValueEvent(scrollYProgress, "change", (v) => {
+    let idx = -1;
+    marks.forEach((m, i) => {
+      if (v >= m.at - 0.001) idx = i;
+    });
+    setActive(idx);
+  });
+
+  return (
+    <div className="fixed right-5 xl:right-8 top-1/2 -translate-y-1/2 z-40 hidden lg:block pointer-events-none">
+      <div className="relative" style={{ height: "44vh", width: 2 }}>
+        {/* track */}
+        <div className="absolute inset-0 rounded-full" style={{ background: "rgba(255,255,255,0.08)" }} />
+        {/* fill that grows with scroll */}
+        <motion.div
+          className="absolute left-0 top-0 w-full rounded-full"
+          style={{
+            height: "100%",
+            scaleY: progress,
+            transformOrigin: "top",
+            background: "linear-gradient(180deg, rgba(139,125,255,0.15), rgba(139,125,255,0.85))",
+          }}
+        />
+        {/* traveling dot */}
+        <motion.div
+          aria-hidden="true"
+          className="absolute -left-[5px] w-3 h-3 rounded-full"
+          style={{
+            top: dotTop,
+            y: "-50%",
+            background: "#cfc7ff",
+            boxShadow: "0 0 14px 3px rgba(139,125,255,0.6)",
+          }}
+        />
+        {/* milestones at their true page positions */}
+        {marks.map((m, i) => (
+          <button
+            key={m.id}
+            onClick={() => scrollToEl(m.id)}
+            className="group absolute -left-[3px] pointer-events-auto p-2 -m-2"
+            style={{ top: `${m.at * 100}%`, transform: "translateY(-50%)" }}
+            aria-label={`Scroll to ${m.label}`}
+          >
+            <span
+              className="block w-2 h-2 rounded-full transition-all duration-300"
+              style={{
+                background: active >= i ? "#8b7dff" : "rgba(255,255,255,0.25)",
+                boxShadow: active === i ? "0 0 9px rgba(139,125,255,0.85)" : "none",
+              }}
+            />
+            <span
+              className={`absolute right-5 top-1/2 -translate-y-1/2 whitespace-nowrap text-[10px] uppercase tracking-widest transition-opacity duration-300 ${
+                active === i ? "opacity-100 text-white/85" : "opacity-0 group-hover:opacity-100 text-white/50"
+              }`}
+            >
+              {m.label}
+            </span>
+          </button>
+        ))}
+      </div>
+    </div>
+  );
+}
 
 export default function Home() {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -144,6 +209,7 @@ export default function Home() {
         canonical="/"
         schema={HOME_SCHEMA}
       />
+      <ScrollJourney />
       {/* HERO */}
       <section ref={heroRef} className="relative w-full h-screen flex flex-col items-center justify-center overflow-hidden">
         <video
@@ -228,7 +294,7 @@ export default function Home() {
               { value: "8", label: "Sector verticals" },
             ].map((stat) => (
               <div key={stat.label} className="text-center">
-                <div className="text-2xl font-medium text-white stat-number">{stat.value}</div>
+                <div className="text-2xl font-medium text-white stat-number"><Counter value={stat.value} /></div>
                 <div className="text-[10px] uppercase tracking-widest text-white/30 mt-1">{stat.label}</div>
               </div>
             ))}
@@ -276,8 +342,7 @@ export default function Home() {
                 key={i}
                 className="flex flex-col items-center gap-2 flex-shrink-0 opacity-40 hover:opacity-90 transition-opacity duration-300 group"
               >
-                <img
-                  src={item.logo}
+                <img loading="lazy" decoding="async" src={item.logo}
                   alt={item.name}
                   className="h-8 w-auto object-contain"
                   style={{ filter: "brightness(0) invert(1)" }}
@@ -291,7 +356,7 @@ export default function Home() {
       </section>
 
       {/* SERVICES */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
+      <section id="systems" className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -330,7 +395,7 @@ export default function Home() {
       </section>
 
       {/* RESULTS */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
+      <section id="proof" className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -353,7 +418,7 @@ export default function Home() {
                 transition={{ delay: i * 0.08 }}
                 className="liquid-glass rounded-2xl p-7"
               >
-                <div className="text-4xl font-medium text-white mb-2 stat-number">{r.metric}</div>
+                <div className="text-4xl font-medium text-white mb-2 stat-number"><Counter value={r.metric} /></div>
                 <p className="text-sm text-white/60 mb-3">{r.label}</p>
                 <span className="text-[10px] uppercase tracking-widest text-white/30">{r.sector}</span>
               </motion.div>
@@ -363,7 +428,7 @@ export default function Home() {
       </section>
 
       {/* SOCIAL PROOF */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
+      <section id="clients" className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-6xl mx-auto">
           <motion.p
             initial={{ opacity: 0, y: 20 }}
@@ -418,7 +483,7 @@ export default function Home() {
       </section>
 
       {/* SECTORS */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
+      <section id="industries" className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-7xl mx-auto">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -439,6 +504,7 @@ export default function Home() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.06 }}
+                whileHover={{ y: -3 }}
               >
                 <Link
                   to={`/sectors/${s.slug}`}
@@ -458,7 +524,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
+      <section id="book" className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}

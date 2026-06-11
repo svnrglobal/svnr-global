@@ -1,334 +1,525 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- Core pages -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://svnrglobal.com/</loc>
-    <lastmod>2026-06-01</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/about</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/about/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/services</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/services/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/sectors</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/sectors/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/case-studies</loc>
-    <lastmod>2026-06-04</lastmod>
+    <loc>https://svnrglobal.com/case-studies/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/case-studies/luxury-real-estate-pipeline</loc>
-    <lastmod>2026-06-04</lastmod>
+    <loc>https://svnrglobal.com/case-studies/luxury-real-estate-pipeline/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/case-studies/hotel-direct-bookings</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/case-studies/wealth-management-pipeline</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/case-studies/law-firm-consultations</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/case-studies/dental-clinic-revenue</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/case-studies/private-healthcare-network</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/case-studies/manufacturing-export-buyers</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/case-studies/ecommerce-dtc-revenue</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/case-studies/aesthetic-clinic-revenue</loc>
-    <lastmod>2026-06-04</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/blog</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/contact</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
-
   <url>
-    <loc>https://svnrglobal.com/founder</loc>
-    <lastmod>2026-06-04</lastmod>
+    <loc>https://svnrglobal.com/case-studies/hotel-direct-bookings/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/compare</loc>
-    <lastmod>2026-06-03</lastmod>
+    <loc>https://svnrglobal.com/case-studies/wealth-management-pipeline/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/law-firm-consultations/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/dental-clinic-revenue/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/private-healthcare-network/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/manufacturing-export-buyers/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/ecommerce-dtc-revenue/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/aesthetic-clinic-revenue/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/case-studies/aether-autonomous-ecommerce-cofounder/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/contact/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/engagement</loc>
-    <lastmod>2026-06-03</lastmod>
+    <loc>https://svnrglobal.com/compare/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
-
-  <!-- Service pages -->
   <url>
-    <loc>https://svnrglobal.com/services/client-acquisition</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/engagement/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/services/ai-receptionist</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/founder/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/services/revenue-operations</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/cassian/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/services/intelligence-research</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/services/sector-workflows</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/services/brand-outreach</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/services/dealflow-investor</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-  <url>
-    <loc>https://svnrglobal.com/services/channel-partnership</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.85</priority>
-  </url>
-
-  <!-- Sector pages -->
-  <url>
-    <loc>https://svnrglobal.com/sectors/luxury-rugs-home-textiles</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/services/client-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/sectors/premium-real-estate</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/services/ai-receptionist/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/sectors/private-equity-family-offices</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/services/revenue-operations/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/sectors/b2b-luxury-brands</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/services/intelligence-research/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/sectors/wealth-management</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/services/sector-workflows/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/sectors/high-ticket-ecommerce</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/services/brand-outreach/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/sectors/maritime-logistics</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/services/dealflow-investor/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/sectors/professional-services</loc>
-    <lastmod>2026-06-01</lastmod>
+    <loc>https://svnrglobal.com/services/channel-partnership/</loc>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-
-  <!-- Blog articles -->
   <url>
-    <loc>https://svnrglobal.com/blog/luxury-rug-brand-distribution-strategy</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/sectors/luxury-rugs-home-textiles/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/real-estate-investor-buyer-acquisition</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/sectors/premium-real-estate/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/private-equity-proprietary-deal-flow</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/sectors/private-equity-family-offices/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/architecture-interior-design-studio-client-acquisition</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/sectors/b2b-luxury-brands/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/wealth-management-boutique-client-acquisition</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/sectors/wealth-management/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/b2b-textile-platform-buyer-acquisition</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/sectors/high-ticket-ecommerce/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/client-acquisition-cost-referral-dependency</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/sectors/maritime-logistics/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/client-acquisition-system-vs-campaign</loc>
-    <lastmod>2026-06-01</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/sectors/professional-services/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/ai-prospecting-family-offices</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/luxury-rug-brand-distribution-strategy/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/hnw-investor-outreach-strategy</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/real-estate-investor-buyer-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/uhnw-client-acquisition-strategy</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/private-equity-proprietary-deal-flow/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/b2b-outreach-agency-india</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/architecture-interior-design-studio-client-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/what-is-outreach-infrastructure</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/wealth-management-boutique-client-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/maritime-logistics-business-development</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/b2b-textile-platform-buyer-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/cold-email-agency-luxury-brands</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/client-acquisition-cost-referral-dependency/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/professional-services-client-acquisition</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/client-acquisition-system-vs-campaign/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/outbound-lead-generation-luxury-retail</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/ai-prospecting-family-offices/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://svnrglobal.com/blog/how-to-get-b2b-clients-luxury-brand</loc>
-    <lastmod>2026-06-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.75</priority>
+    <loc>https://svnrglobal.com/blog/hnw-investor-outreach-strategy/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-
+  <url>
+    <loc>https://svnrglobal.com/blog/uhnw-client-acquisition-strategy/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/b2b-outreach-agency-india/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/what-is-outreach-infrastructure/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/maritime-logistics-business-development/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/cold-email-agency-luxury-brands/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/professional-services-client-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/outbound-lead-generation-luxury-retail/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/how-to-get-b2b-clients-luxury-brand/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/aether-ai-for-premium-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ora-free-ai-model-svnr/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/soleth-ai-model-advisory/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/aether-flagship-model/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ora-soleth-aether-comparison/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/how-aether-learns-your-market/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/aether-data-privacy/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-vs-marketing-agency-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-prospect-research-aether/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-draft-outreach-soleth/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-qualify-inbound-enquiries/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-market-mapping-aether/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-buyer-signal-monitoring/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-pipeline-review-aether/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-client-acquisition-luxury-brands/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-deal-flow-private-equity/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-outreach-premium-real-estate/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-client-acquisition-wealth-management/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-distribution-luxury-rugs/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-business-development-maritime/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-client-acquisition-professional-services/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/ai-wholesale-high-ticket-ecommerce/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/luxury-hotels-direct-bookings/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/superyacht-brokerage-client-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/private-aviation-charter-clients/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/art-gallery-collector-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/fine-jewellery-watch-client-acquisition/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/fine-wine-spirits-trade-buyers/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/commercial-real-estate-institutional-buyers/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/enterprise-saas-outbound/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/boutique-consulting-mandates/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://svnrglobal.com/blog/luxury-furniture-design-distribution/</loc>
+    <lastmod>2026-06-10</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 </urlset>

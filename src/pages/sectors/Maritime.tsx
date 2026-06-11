@@ -5,6 +5,7 @@ import { AreaChart, Area, BarChart, Bar, ResponsiveContainer, Tooltip, XAxis, YA
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import EngagementTimeline from "../../components/EngagementTimeline";
 
 const leadsData = [
   { q: "Q1", leads: 4 }, { q: "Q2", leads: 8 }, { q: "Q3", leads: 12 }, { q: "Q4", leads: 15 },
@@ -39,7 +40,7 @@ export default function Maritime() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Maritime & Logistics Business Development",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "Systematic cargo owner identification, charterer outreach, and commercial client acquisition for shipping operators, freight forwarders, and port services providers. Trade-lane specific outreach that builds maritime commercial relationships at scale.",
             "areaServed": ["Global", "Europe", "Middle East", "Asia", "West Africa", "Mediterranean"],
             "serviceType": ["Maritime Business Development", "Freight Forwarder Client Acquisition", "Cargo Owner Outreach", "Port Services Commercial Development"]
@@ -78,7 +79,7 @@ export default function Maritime() {
         ]}
       />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <img src="/sectors/maritime-66696B36-CAA5-4117-AA93-881FBF985E5C.JPG" alt="Maritime Logistics" className="absolute inset-0 w-full h-full object-cover z-0" />
+        <img fetchPriority="high" decoding="async" src="/sectors/maritime-66696B36-CAA5-4117-AA93-881FBF985E5C.JPG" alt="Maritime Logistics" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
@@ -155,7 +156,7 @@ export default function Maritime() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           {["/sectors/maritime-66696B36-CAA5-4117-AA93-881FBF985E5C.JPG", "/sectors/maritime-BDEF64CC-72BD-4FF6-BEB8-883C73230CB0.JPG"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Maritime logistics business development and cargo owner outreach" />
+              <img loading="lazy" decoding="async" src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Maritime logistics business development and cargo owner outreach" />
             </motion.div>
           ))}
         </div>
@@ -172,6 +173,17 @@ export default function Maritime() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* THE 90-DAY PATH: engagement timeline */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The 90-day path</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">From engagement to active pipeline.</h2>
+          </motion.div>
+          <EngagementTimeline accent="#4facfe" milestones={[{"when":"Week 0","label":"Cargo owner universe mapped"},{"when":"Week 2 to 3","label":"Outreach live"},{"when":"Day 30 to 60","label":"First charterer conversations"},{"when":"Day 90","label":"Relationship pipeline active"}]} />
         </div>
       </section>
 

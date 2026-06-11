@@ -5,6 +5,7 @@ import { AreaChart, Area, RadialBarChart, RadialBar, ResponsiveContainer, Toolti
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import EngagementTimeline from "../../components/EngagementTimeline";
 
 const timelineData = [
   { day: "D1", response: 100 }, { day: "D3", response: 72 },
@@ -50,7 +51,7 @@ export default function PremiumRealEstate() {
             "@context": "https://schema.org",
             "@type": "Service",
             "name": "Premium Real Estate Buyer & Investor Acquisition",
-            "provider": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
+            "provider": { "@id": "https://svnrglobal.com/#organization" },
             "description": "AI-powered outreach to HNW investors, family offices, and principal buyers for premium and luxury real estate firms. Off-market buyer acquisition without portal dependency.",
             "areaServed": ["Global", "Europe", "Middle East", "Switzerland", "United Kingdom", "UAE"],
             "serviceType": ["Real Estate Buyer Acquisition", "HNW Investor Outreach", "Off-Market Deal Pipeline", "Principal Buyer Identification"]
@@ -89,7 +90,7 @@ export default function PremiumRealEstate() {
         ]}
       />
       <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <img src="/sectors/real-estate-photo-1505873242700-f289a29e1e0f.avif" alt="Premium Real Estate" className="absolute inset-0 w-full h-full object-cover z-0" />
+        <img fetchPriority="high" decoding="async" src="/sectors/real-estate-photo-1505873242700-f289a29e1e0f.avif" alt="Premium Real Estate" className="absolute inset-0 w-full h-full object-cover z-0" />
         <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />
         <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
           <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
@@ -176,9 +177,20 @@ export default function PremiumRealEstate() {
         <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
           {["/sectors/real-estate-photo-1505873242700-f289a29e1e0f.avif", "/sectors/real-estate-premium_photo-1661915661139-5b6a4e4a6fcc.avif"].map((src, i) => (
             <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-              <img src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Premium real estate UHNW investor buyer pipeline generation" />
+              <img loading="lazy" decoding="async" src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Premium real estate UHNW investor buyer pipeline generation" />
             </motion.div>
           ))}
+        </div>
+      </section>
+
+      {/* THE 90-DAY PATH: engagement timeline */}
+      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
+        <div className="max-w-6xl mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
+            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The 90-day path</p>
+            <h2 className="text-3xl font-medium text-white tracking-tight">From engagement to active pipeline.</h2>
+          </motion.div>
+          <EngagementTimeline accent="#0071E3" milestones={[{"when":"Week 0","label":"Buyer signals mapped"},{"when":"Week 2 to 3","label":"Outreach live"},{"when":"First reply","label":"14 minutes in a live programme"},{"when":"Day 90","label":"Principal pipeline active"}]} />
         </div>
       </section>
 

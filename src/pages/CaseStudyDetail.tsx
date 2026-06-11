@@ -4,8 +4,10 @@ import { useRef } from "react";
 import { ArrowRight, ArrowLeft, ChevronDown } from "lucide-react";
 import SEO from "../components/SEO";
 import Footer from "../components/Footer";
-import BlogHeroArt, { type HeroKind } from "../components/blog/BlogHeroArt";
+import BlogCover from "../components/blog/BlogCover";
+import Counter from "../components/Counter";
 import { CASE_STUDIES } from "../data/caseStudies";
+import { getCaseStudyCover } from "../data/caseStudyCovers";
 
 function CapabilityBar({ label, value, delay, gradient }: { label: string; value: number; delay: number; gradient: string }) {
   const ref = useRef(null);
@@ -32,8 +34,7 @@ function CapabilityBar({ label, value, delay, gradient }: { label: string; value
 function SectionImage({ src, alt, className = "", objectPosition = "center" }: { src: string; alt: string; className?: string; objectPosition?: string }) {
   return (
     <div className={`relative rounded-2xl overflow-hidden ${className}`}>
-      <img
-        src={src}
+      <img loading="lazy" decoding="async" src={src}
         alt={alt}
         className="w-full h-full object-cover"
         style={{ objectPosition }}
@@ -54,8 +55,11 @@ export default function CaseStudyDetail() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 120]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
+  const heroScale = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
 
   if (!cs) return <Navigate to="/case-studies" replace />;
+
+  const cover = getCaseStudyCover(cs.slug);
 
   const currentIndex = CASE_STUDIES.findIndex((c) => c.slug === slug);
   const prev = CASE_STUDIES[currentIndex - 1];
@@ -100,18 +104,10 @@ export default function CaseStudyDetail() {
 
       {/* ── HERO ── */}
       <section ref={heroRef} className="relative w-full min-h-[92vh] flex flex-col justify-end overflow-hidden">
-        <motion.div style={{ y: heroY, opacity: heroOpacity }} className="absolute inset-0">
-          {cs.heroArt ? (
-            <BlogHeroArt kind={cs.heroArt.kind as HeroKind} color={cs.heroArt.color} className="absolute inset-0" />
-          ) : (
-            <img
-              src={cs.heroImage}
-              alt={cs.industry}
-              className="w-full h-full object-cover"
-              onError={(e) => { (e.target as HTMLImageElement).style.display = "none"; }}
-            />
-          )}
-          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,10,11,0.2) 0%, rgba(10,10,11,0.45) 40%, rgba(10,10,11,0.97) 100%)" }} />
+        <motion.div style={{ y: heroY, opacity: heroOpacity, scale: heroScale }} className="absolute inset-0">
+          {/* Self-made cover, the same line-art motif used on the index card */}
+          <BlogCover motif={cover.motif} bg={cover.bg} className="absolute inset-0 w-full h-full" />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to bottom, rgba(10,10,11,0.35) 0%, rgba(10,10,11,0.6) 45%, rgba(10,10,11,0.98) 100%)" }} />
         </motion.div>
 
         <div className="absolute top-24 left-6 md:left-10 z-20">
@@ -164,7 +160,7 @@ export default function CaseStudyDetail() {
                   className="text-4xl md:text-5xl font-medium mb-2 tabular-nums"
                   style={{ background: cs.gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}
                 >
-                  {m.value}
+                  <Counter value={m.value} />
                 </div>
                 <div className="text-[9px] uppercase tracking-[0.2em] text-white/35 leading-relaxed">{m.label}</div>
               </motion.div>

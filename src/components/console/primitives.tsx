@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, useReducedMotion, AnimatePresence } from "motion/react";
 
 // Four small animation primitives shared by the product replicas. Each is

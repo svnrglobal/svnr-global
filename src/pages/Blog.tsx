@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import SEO from "../components/SEO";
 import Breadcrumbs from "../components/Breadcrumbs";
 import { articles } from "./BlogArticle";
-import { CATEGORY_ORDER, type Article } from "../data/blogShared";
+import { type Article } from "../data/blogShared";
 
 const MONO = { fontFamily: "var(--font-mono)" };
 
@@ -63,12 +63,6 @@ function Row({ a, i, dense }: { a: Article; i: number; dense?: boolean }) {
 
 export default function Blog() {
   const [active, setActive] = useState<"All" | "Featured">("All");
-
-  const categories = useMemo(() => {
-    const present = CATEGORY_ORDER.filter((c) => articles.some((a) => a.category === c));
-    const extra = Array.from(new Set(articles.map((a) => a.category))).filter((c) => !present.includes(c));
-    return [...present, ...extra];
-  }, []);
 
   const featured = useMemo(
     () => articles.find((a) => a.slug === "aether-ai-for-premium-acquisition") ?? articles[0],

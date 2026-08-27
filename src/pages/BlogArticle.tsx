@@ -1,14 +1,51 @@
+import { useState } from "react";
 import { motion } from "motion/react";
 import { Link, useParams, Navigate } from "react-router-dom";
-import { ArrowLeft, ArrowRight, Clock } from "lucide-react";
+import { ArrowRight, Check, Clock, Link2 } from "lucide-react";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
-import BlogHeroArt from "../components/blog/BlogHeroArt";
+import Breadcrumbs from "../components/Breadcrumbs";
 import BlogCover from "../components/blog/BlogCover";
 import { getCover } from "../data/blogCovers";
-import { HERO_BY_SLUG } from "../data/blogHeroes";
 import { AETHER_POSTS } from "../data/aetherPosts";
 import { categoryColors, categoryLinks, type Article } from "../data/blogShared";
+
+const MONO = { fontFamily: "var(--font-mono)" };
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+function slugifyHeading(text: string): string {
+  return text
+    .toLowerCase()
+    .replace(/[^a-z0-9\s-]/g, "")
+    .trim()
+    .replace(/\s+/g, "-");
+}
+
+// Copy-link-to-heading affordance, revealed on hover. Guarded in try/catch —
+// clipboard access can fail in restricted/insecure contexts.
+function HeadingAnchor({ id }: { id: string }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = async () => {
+    try {
+      const url = `${window.location.origin}${window.location.pathname}#${id}`;
+      await navigator.clipboard.writeText(url);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // Clipboard unavailable — fail silently, the anchor link still works via href.
+    }
+  };
+  return (
+    <a
+      href={`#${id}`}
+      onClick={handleCopy}
+      aria-label="Copy link to heading"
+      className="inline-flex items-center justify-center w-6 h-6 rounded-md opacity-0 group-hover:opacity-100 focus-visible:opacity-100 text-white/35 hover:text-white/70 transition-all shrink-0"
+    >
+      {copied ? <Check size={13} /> : <Link2 size={13} />}
+    </a>
+  );
+}
 
 const localArticles: Article[] = [
   {
@@ -1019,14 +1056,13 @@ export default function BlogArticle() {
   if (!article) return <Navigate to="/blog" replace />;
 
   const color = categoryColors[article.category] || "#ffffff";
-  const hero = HERO_BY_SLUG[article.slug] ?? (article.bloom ? { kind: "bloom" as const, color: "#bc4a30", light: true } : null);
   const related = articles.filter((a) => a.slug !== slug).slice(0, 3);
 
   const articleDescription = article.seoDescription ?? (article.content[0]?.body?.slice(0, 155).replace(/\s\S*$/, "…") ?? article.title);
   const pubDate = article.datePublished ?? "2026-06-01T00:00:00Z";
 
   return (
-    <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+    <main className="relative w-full bg-black font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title={article.title}
         description={articleDescription}
@@ -1085,96 +1121,95 @@ export default function BlogArticle() {
           { name: article.title, url: `/blog/${article.slug}` },
         ]}
       />
-      {/* HERO */}
-      <section
-        className="relative w-full h-[70vh] flex items-end overflow-hidden"
-        style={hero?.light ? { background: "#efe9df" } : undefined}
-      >
-        {hero ? (
-          <>
-            <BlogHeroArt kind={hero.kind} color={hero.color} className="absolute inset-0 z-0" />
-            <div
-              className="absolute inset-0 z-[1]"
-              style={{
-                background: hero.light
-                  ? "linear-gradient(to top, #0A0A0B 0%, rgba(10,10,11,0.5) 42%, rgba(10,10,11,0) 80%)"
-                  : "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.45) 55%, rgba(10,10,11,0.1) 100%)",
-              }}
-            />
-          </>
-        ) : (
-          <>
-            <img fetchPriority="high" decoding="async" src={article.image} alt={article.imageAlt} className="absolute inset-0 w-full h-full object-cover z-0" />
-            <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.6) 50%, rgba(10,10,11,0.2) 100%)" }} />
-          </>
-        )}
-        <div className="relative z-10 max-w-4xl mx-auto px-6 md:px-10 pb-16 w-full">
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, delay: 0.2 }}>
-            <Link to="/blog" className="inline-flex items-center gap-2 text-[10px] uppercase tracking-widest text-white/40 hover:text-white/70 transition-colors mb-6">
-              <ArrowLeft size={12} /> Back to Blog
-            </Link>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="text-[10px] uppercase tracking-widest px-3 py-1 rounded-full" style={{ background: `${color}22`, color }}>
-                {article.category}
-              </span>
-              <span className="text-[10px] text-white/30 flex items-center gap-1">
-                <Clock size={10} /> {article.readTime} read
-              </span>
+      {/* HEADER */}
+      <section className="relative w-full pt-14 md:pt-20 pb-10 md:pb-14 px-6">
+        <div className="max-w-[720px] mx-auto">
+          <Breadcrumbs
+            items={[
+              { label: "Home", to: "/" },
+              { label: "Blog", to: "/blog" },
+              { label: article.category, to: `/blog?category=${encodeURIComponent(article.category)}` },
+            ]}
+          />
+          <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5, ease: EASE }}>
+            <h1 className="text-4xl sm:text-5xl md:text-[52px] font-medium leading-[1.05] tracking-tight text-white mb-6">
+              {article.title}
+            </h1>
+            <div className="flex items-center flex-wrap gap-x-3 gap-y-2 text-[13px] text-white/40 mb-6">
+              <span>SVNR Global</span>
+              <span className="text-white/15">·</span>
+              <time dateTime={pubDate}>
+                {new Date(pubDate).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+              </time>
+              <span className="text-white/15">·</span>
+              <span style={{ color }} className="uppercase tracking-[0.2em] text-[10px]">{article.category}</span>
+              <span className="text-white/15">·</span>
+              <span className="inline-flex items-center gap-1"><Clock size={11} /> {article.readTime} read</span>
             </div>
-            <h1 className="text-3xl md:text-5xl font-medium text-white tracking-tight leading-tight">{article.title}</h1>
+            {article.seoDescription && (
+              <p className="text-lg md:text-xl text-white/45 font-light leading-relaxed">{article.seoDescription}</p>
+            )}
           </motion.div>
         </div>
       </section>
 
       {/* ARTICLE BODY */}
-      <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-20 px-6">
-        <div className="max-w-3xl mx-auto">
-          {article.content.map((section, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="mb-14"
-            >
-              <h2 className="text-2xl font-medium text-white tracking-tight mb-4">{section.heading}</h2>
-              <p className="text-white/60 leading-relaxed text-base mb-0">{section.body}</p>
-              {section.image && (
-                <motion.figure
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 }}
-                  className="mt-8"
-                >
-                  <div className="rounded-2xl overflow-hidden border border-white/8">
-                    <img loading="lazy" decoding="async" src={section.image}
-                      alt={section.imageAlt ?? section.heading}
-                      className="w-full h-64 md:h-80 object-cover"
-                    />
-                  </div>
-                  {section.imageCaption && (
-                    <figcaption className="text-[11px] text-white/30 mt-3 text-center tracking-wide">
-                      {section.imageCaption}
-                    </figcaption>
-                  )}
-                </motion.figure>
-              )}
-            </motion.div>
-          ))}
+      <article className="relative z-10 px-6 pb-12 md:pb-20">
+        <div className="max-w-[70ch] mx-auto">
+          {article.content.map((section, i) => {
+            const headingId = slugifyHeading(section.heading);
+            return (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: Math.min(i, 6) * 0.05, ease: EASE }}
+                className="mb-12"
+              >
+                <h2 id={headingId} className="group flex items-center gap-2 text-2xl md:text-4xl font-medium tracking-tight text-white mb-5 scroll-mt-24">
+                  {section.heading}
+                  <HeadingAnchor id={headingId} />
+                </h2>
+                <p className="text-white/45 leading-[1.75] text-[17px] mb-0">{section.body}</p>
+                {section.image && (
+                  <motion.figure
+                    initial={{ opacity: 0, y: 16 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: "-60px" }}
+                    transition={{ duration: 0.5, ease: EASE }}
+                    className="mt-8"
+                  >
+                    <div className="rounded-2xl overflow-hidden border border-white/[0.08]">
+                      <img loading="lazy" decoding="async" src={section.image}
+                        alt={section.imageAlt ?? section.heading}
+                        className="w-full h-64 md:h-80 object-cover"
+                      />
+                    </div>
+                    {section.imageCaption && (
+                      <figcaption className="text-[13px] text-white/40 mt-3 text-center tracking-wide">
+                        {section.imageCaption}
+                      </figcaption>
+                    )}
+                  </motion.figure>
+                )}
+              </motion.div>
+            );
+          })}
         </div>
-      </section>
+      </article>
 
       {/* THE PLAYBOOK: visible step rail for articles with HowTo steps */}
       {article.howToSteps && article.howToSteps.length > 0 && (
-        <section className="relative z-10 bg-[#0A0A0B] px-6 pb-14">
-          <div className="max-w-3xl mx-auto">
+        <section className="relative z-10 px-6 pb-14">
+          <div className="max-w-[70ch] mx-auto">
             <motion.p
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-8"
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, ease: EASE }}
+              className="text-[10px] uppercase tracking-[0.28em] text-white/40 mb-8"
+              style={MONO}
             >
               The playbook
             </motion.p>
@@ -1207,7 +1242,7 @@ export default function BlogArticle() {
 
       {/* FAQ SECTION */}
       {article.faqs && article.faqs.length > 0 && (
-        <section className="relative z-10 bg-[#0A0A0B] px-6 pb-10">
+        <section className="relative z-10 bg-black px-6 pb-10">
           <div className="max-w-3xl mx-auto">
             <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Frequently Asked Questions</p>
@@ -1234,11 +1269,11 @@ export default function BlogArticle() {
 
       {/* CONTEXTUAL PILLAR LINK */}
       {categoryLinks[article.category] && (
-        <section className="relative z-10 bg-[#0A0A0B] px-6 pb-12">
+        <section className="relative z-10 bg-black px-6 pb-12">
           <div className="max-w-3xl mx-auto">
             <Link
               to={categoryLinks[article.category].href}
-              className="flex items-center justify-between gap-4 liquid-glass rounded-2xl p-5 sm:p-6 border border-white/8 hover:border-white/20 transition-all group"
+              className="flex items-center justify-between gap-4 rounded-2xl p-5 sm:p-6 border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 group"
             >
               <div>
                 <p className="text-[10px] uppercase tracking-[0.2em] text-white/30 mb-1">Related solution</p>
@@ -1257,7 +1292,7 @@ export default function BlogArticle() {
         const relatedArticles = article.related!.map(s => articles.find(a => a.slug === s)).filter(Boolean) as Article[];
         if (!relatedArticles.length) return null;
         return (
-          <section className="relative z-10 bg-[#0A0A0B] px-6 pb-14">
+          <section className="relative z-10 bg-black px-6 pb-14">
             <div className="max-w-3xl mx-auto">
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-6">Continue reading</p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -1265,7 +1300,7 @@ export default function BlogArticle() {
                   const relColor = categoryColors[rel.category] ?? "#ffffff";
                   return (
                     <Link key={rel.slug} to={`/blog/${rel.slug}`}
-                      className="liquid-glass rounded-2xl overflow-hidden group hover:border-white/20 transition-all border border-white/8">
+                      className="rounded-2xl overflow-hidden group border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300">
                       <BlogCover {...getCover(rel.slug, rel.category)} className="h-32" />
                       <div className="p-4">
                         <span className="text-[9px] uppercase tracking-widest mb-2 block" style={{ color: relColor }}>{rel.category}</span>
@@ -1282,34 +1317,39 @@ export default function BlogArticle() {
 
 
       {/* DIVIDER */}
-      <div className="relative z-10 bg-[#0A0A0B] px-6">
+      <div className="relative z-10 bg-black px-6">
         <div className="max-w-3xl mx-auto border-t border-white/10" />
       </div>
 
       {/* CTA */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 md:py-24 px-6">
-        <div className="max-w-3xl mx-auto liquid-glass rounded-3xl p-7 sm:p-10 md:p-14 text-center">
+      <section className="relative z-10 bg-black py-16 md:py-24 px-6">
+        <div className="max-w-3xl mx-auto rounded-3xl p-7 sm:p-10 md:p-14 border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300">
           <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
             <h2 className="text-3xl md:text-4xl font-medium text-white tracking-tight mb-4">Ready to build the system?</h2>
-            <p className="text-white/50 mb-8 max-w-md mx-auto">We work with a small number of operators at a time. Every engagement is built specifically for your market.</p>
-            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black text-sm font-medium tracking-wide hover:bg-white/90 transition-all">
-              Start the conversation <ArrowRight size={14} />
-            </Link>
+            <p className="text-white/50 mb-8 max-w-md">We work with a small number of operators at a time. Every engagement is built specifically for your market.</p>
+            <div className="flex flex-wrap items-center gap-3">
+              <Link to="/contact" className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors">
+                Start the conversation <ArrowRight size={14} />
+              </Link>
+              <Link to="/services" className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/[0.14] text-white/80 text-sm hover:border-white/30 hover:text-white transition-colors">
+                Explore services
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* RELATED ARTICLES */}
-      <section className="relative z-10 bg-[#0A0A0B] pb-16 md:pb-24 px-6">
+      <section className="relative z-10 bg-black pb-16 md:pb-24 px-6">
         <div className="max-w-7xl mx-auto">
           <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-8">More reading</p>
           <div className="grid md:grid-cols-3 gap-6">
             {related.map((a, i) => (
               <motion.div key={a.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }}>
-                <Link to={`/blog/${a.slug}`} className="group block liquid-glass rounded-2xl overflow-hidden hover:ring-1 hover:ring-white/20 transition-all">
+                <Link to={`/blog/${a.slug}`} className="group block rounded-2xl overflow-hidden border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300">
                   <div className="relative h-40 overflow-hidden">
                     <img loading="lazy" decoding="async" src={a.image} alt={a.imageAlt} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A0A0B]/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   </div>
                   <div className="p-5">
                     <span className="text-[9px] uppercase tracking-widest" style={{ color: categoryColors[a.category] || "#fff" }}>{a.category}</span>
@@ -1325,7 +1365,7 @@ export default function BlogArticle() {
         </div>
       </section>
 
-      <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10">
+      <div className="relative z-10 bg-black px-6 pb-10">
         <div className="max-w-7xl mx-auto"><Footer /></div>
       </div>
     </main>

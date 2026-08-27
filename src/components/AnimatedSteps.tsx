@@ -16,7 +16,7 @@ export default function AnimatedSteps({ steps, gradient }: { steps: Step[]; grad
       <motion.div
         aria-hidden="true"
         className="hidden md:block absolute left-[28px] top-2 bottom-2 w-px"
-        style={{ background: "linear-gradient(180deg, rgba(139,125,255,0.5), rgba(255,255,255,0.06))", transformOrigin: "top" }}
+        style={{ background: "linear-gradient(180deg, rgba(251,113,133,0.5), rgba(255,255,255,0.06))", transformOrigin: "top" }}
         initial={{ scaleY: 0 }}
         whileInView={{ scaleY: 1 }}
         viewport={{ once: true, amount: 0.2 }}

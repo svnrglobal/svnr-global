@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import SEO from "../components/SEO";
 import Counter from "../components/Counter";
-import VideoHero from "../components/VideoHero";
 import Footer from "../components/Footer";
-import BlogCover from "../components/blog/BlogCover";
-import { VIDEOS } from "../data/content";
+import Breadcrumbs from "../components/Breadcrumbs";
+import OpticalType from "../components/OpticalType";
 import { CASE_STUDIES } from "../data/caseStudies";
-import { getCaseStudyCover } from "../data/caseStudyCovers";
+
+const MONO = { fontFamily: "var(--font-mono)" };
+const EASE = [0.16, 1, 0.3, 1] as const;
 
 const schema = {
   "@context": "https://schema.org",
@@ -19,9 +20,87 @@ const schema = {
   "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" },
 };
 
+// Counted from the record itself rather than hard-coded, so the strip can never
+// drift out of step with the rows below it.
+const INDUSTRY_COUNT = new Set(CASE_STUDIES.map((c) => c.industry)).size;
+
+const HERO_STATS = [
+  { v: String(INDUSTRY_COUNT), l: "Industries transformed" },
+  { v: "$513M+", l: "Pipeline generated" },
+  { v: "212–340%", l: "Revenue growth range" },
+  { v: "54–93%", l: "Efficiency gains" },
+];
+
+// THE STRIPE MOMENT — the headline result is the only thing on the row that
+// moves. It counts up and overshoots by ~3% before settling, so each engagement
+// reads as an instrument taking a reading rather than a number being asserted.
+// The supporting metrics stay static: one reading per row, not four.
+function ResultRow({ cs, i }: { cs: (typeof CASE_STUDIES)[number]; i: number }) {
+  const [headline, ...rest] = cs.keyMetrics;
+  const flipped = i % 2 === 1;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, ease: EASE }}
+      className="border-t border-white/[0.06]"
+    >
+      <Link
+        to={`/case-studies/${cs.slug}`}
+        className="group block hover:bg-white/[0.015] transition-colors duration-300"
+      >
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 py-12 md:py-16 grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+          <div className={flipped ? "lg:order-2" : undefined}>
+            <p className="text-[10px] tracking-[0.28em] text-white/40" style={MONO}>
+              {cs.industryCode} · {cs.industry.toUpperCase()}
+            </p>
+            <h3 className="text-white text-xl md:text-[26px] font-medium leading-snug tracking-tight mt-5 max-w-xl">
+              {cs.title}
+            </h3>
+            <p className="text-[10px] tracking-[0.2em] text-white/30 mt-5" style={MONO}>
+              {cs.duration.toUpperCase()} · {cs.location.toUpperCase()}
+            </p>
+            <span className="inline-flex items-center gap-2 text-sm text-white/50 group-hover:text-white transition-colors duration-300 mt-7">
+              Read case study
+              <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform duration-300" />
+            </span>
+          </div>
+
+          <div className={flipped ? "lg:order-1" : undefined}>
+            <Counter
+              value={headline.value}
+              duration={1.6}
+              className="block text-5xl md:text-[72px] font-medium text-white tabular-nums leading-[0.95] tracking-tight"
+            />
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mt-4" style={MONO}>
+              {headline.label.toUpperCase()}
+            </p>
+            {rest.length > 0 && (
+              <div className="grid grid-cols-2 gap-6 mt-8 pt-7 border-t border-white/[0.06] max-w-md">
+                {rest.slice(0, 2).map((m) => (
+                  <div key={m.label}>
+                    <span className="block text-lg text-white/70 font-medium tabular-nums leading-none">
+                      {m.value}
+                    </span>
+                    <p className="text-[9px] tracking-[0.2em] text-white/30 mt-2 leading-relaxed" style={MONO}>
+                      {m.label.toUpperCase()}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
 export default function CaseStudies() {
   return (
-    <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+    <main className="relative w-full bg-black font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Case Studies — AI Client Acquisition Results | SVNR Global"
         description="Real results across luxury real estate, wealth management, law firms, dental clinics, hotels & resorts, private healthcare, manufacturing export, e-commerce, and aesthetic clinics."
@@ -34,158 +113,140 @@ export default function CaseStudies() {
       />
 
       {/* HERO */}
-      <VideoHero src={VIDEOS.caseStudies}>
-        <div className="max-w-5xl mx-auto px-6 pt-24 sm:pt-32 pb-16 sm:pb-24 text-center">
+      <section className="relative z-10 px-6 md:px-12 pt-32 md:pt-44 pb-16 md:pb-24">
+        <div className="max-w-[1200px] mx-auto">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Case Studies" }]} />
           <motion.p
-            initial={{ opacity: 0, y: 16 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6"
+            transition={{ duration: 0.5, ease: EASE }}
+            className="text-[10px] tracking-[0.28em] text-white/40 mb-6"
+            style={MONO}
           >
-            Documented Results
+            DOCUMENTED RESULTS
           </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-medium text-white leading-[1.05] tracking-tight mb-6"
+            transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
           >
-            Infrastructure that<br />
-            <span className="shimmer-text">produces results.</span>
-          </motion.h1>
+            <OpticalType className="text-4xl sm:text-5xl md:text-[64px] font-medium text-white leading-[1.05] tracking-tight max-w-3xl">
+              Infrastructure that produces results.
+            </OpticalType>
+          </motion.div>
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.3 }}
-            className="text-white/50 text-lg max-w-2xl mx-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.22 }}
+            className="text-white/45 text-base md:text-lg mt-6 max-w-xl leading-relaxed"
           >
-            Nine industries. Nine transformations. Every result is real, documented, and replicable.
+            Every result below is real, documented, and replicable.
           </motion.p>
-        </div>
-      </VideoHero>
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-3 mt-9"
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
+            >
+              Book a consultation <ArrowRight size={14} />
+            </Link>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/[0.14] text-white/80 text-sm hover:border-white/30 hover:text-white transition-colors"
+            >
+              The agent stack <ArrowRight size={14} />
+            </Link>
+          </motion.div>
 
-      {/* STATS STRIP */}
-      <section className="relative z-10 bg-[#0A0A0B] py-12 border-y border-white/5">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {[
-              { value: "9", label: "Industries Transformed" },
-              { value: "$513M+", label: "Pipeline Generated" },
-              { value: "212–340%", label: "Revenue Growth Range" },
-              { value: "54–93%", label: "Efficiency Gains" },
-            ].map((stat, i) => (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-12 md:mt-16">
+            {HERO_STATS.map((s, i) => (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
+                key={s.l}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+                className="rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 px-6 py-5"
               >
-                <div className="text-3xl md:text-4xl font-medium text-white mb-1"><Counter value={stat.value} duration={1.8} /></div>
-                <div className="text-[10px] uppercase tracking-widest text-white/30">{stat.label}</div>
+                <Counter
+                  value={s.v}
+                  className="block text-2xl md:text-[28px] font-medium text-white tabular-nums leading-none"
+                />
+                <p className="text-[10px] tracking-[0.28em] text-white/40 mt-3" style={MONO}>
+                  {s.l.toUpperCase()}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CASE STUDY GRID */}
-      <section className="relative z-10 bg-[#0A0A0B] py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {CASE_STUDIES.map((cs, i) => {
-              const cover = getCaseStudyCover(cs.slug);
-              return (
-              <motion.div
-                key={cs.slug}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.07 }}
-              >
-                <Link to={`/case-studies/${cs.slug}`} className="group block h-full">
-                  <div className="relative overflow-hidden rounded-3xl h-full flex flex-col"
-                    style={{ background: "rgba(255,255,255,0.03)", border: "1px solid rgba(255,255,255,0.08)" }}>
-
-                    {/* Self-made cover */}
-                    <div className="relative h-56 overflow-hidden rounded-t-3xl">
-                      <BlogCover
-                        motif={cover.motif}
-                        bg={cover.bg}
-                        className="w-full h-full group-hover:scale-[1.04] transition-transform duration-700"
-                      />
-                      {/* Industry tag */}
-                      <div className="absolute top-4 left-4">
-                        <span className="text-[9px] uppercase tracking-[0.2em] text-[#1c1b17]/70 bg-white/45 backdrop-blur-sm px-3 py-1 rounded-full border border-black/10">
-                          {cs.industryCode} · {cs.industry}
-                        </span>
-                      </div>
-                    </div>
-
-                    {/* Content */}
-                    <div className="p-6 flex flex-col flex-1">
-                      {/* Gradient bar */}
-                      <div className="h-0.5 w-10 rounded-full mb-4" style={{ background: cs.gradient }} />
-
-                      <h2 className="text-white font-medium text-base leading-snug mb-3 line-clamp-3 group-hover:text-white/90 transition-colors">
-                        {cs.title}
-                      </h2>
-                      <p className="text-white/40 text-xs leading-relaxed mb-5 flex-1 line-clamp-3">
-                        {cs.summary}
-                      </p>
-
-                      {/* Key metrics */}
-                      <div className="grid grid-cols-2 gap-2 mb-5">
-                        {cs.keyMetrics.slice(0, 2).map((m, j) => (
-                          <div key={j} className="rounded-xl p-3" style={{ background: "rgba(255,255,255,0.04)" }}>
-                            <div className="text-white font-medium text-lg leading-none mb-1">{m.value}</div>
-                            <div className="text-white/35 text-[9px] uppercase tracking-widest leading-tight">{m.label}</div>
-                          </div>
-                        ))}
-                      </div>
-
-                      <div className="flex items-center justify-between">
-                        <span className="text-[10px] uppercase tracking-widest text-white/30">{cs.duration}</span>
-                        <span className="flex items-center gap-1 text-xs text-white/50 group-hover:text-white transition-colors">
-                          Read case study <ArrowRight size={12} className="group-hover:translate-x-1 transition-transform" />
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-              );
-            })}
-          </div>
+      {/* THE RECORD — full-bleed rows, one engagement each */}
+      <section className="relative z-10 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto px-6 md:px-12 pt-20 md:pt-28 pb-10">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              THE RECORD
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight">
+              What each engagement produced.
+            </h2>
+          </motion.div>
         </div>
+
+        {CASE_STUDIES.map((cs, i) => (
+          <ResultRow key={cs.slug} cs={cs} i={i} />
+        ))}
       </section>
 
       {/* CTA */}
-      <section className="relative z-10 bg-[#0A0A0B] py-20 px-6">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.55, ease: EASE }}
+            className="max-w-2xl"
           >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-6">Your Industry</p>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-medium text-white mb-6 tracking-tight">
-              Every one of these started<br />with a single conversation.
-            </h2>
-            <p className="text-white/50 mb-10 max-w-xl mx-auto">
-              Book a call and we'll show you what the infrastructure looks like built for your market, your sector, and your exact acquisition challenge.
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              YOUR INDUSTRY
             </p>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-white text-black text-sm font-medium tracking-wide hover:bg-white/90 transition-all"
-            >
-              Book a Consultation <ArrowRight size={14} />
-            </Link>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight leading-tight mb-5">
+              Every one of these started with a single conversation.
+            </h2>
+            <p className="text-white/45 text-base leading-relaxed mb-9">
+              Book a call and we'll show you what the infrastructure looks like built for your market, your sector, and
+              your exact acquisition challenge.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
+              >
+                Book a consultation <ArrowRight size={14} />
+              </Link>
+              <Link
+                to="/sectors"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/[0.14] text-white/80 text-sm hover:border-white/30 hover:text-white transition-colors"
+              >
+                Browse sectors <ArrowRight size={14} />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto">
+      <div className="relative z-10 px-6 md:px-12 pb-10 max-w-[1200px] mx-auto">
         <Footer />
       </div>
     </main>

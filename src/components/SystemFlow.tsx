@@ -18,8 +18,8 @@ function Connector({ vertical = false }: { vertical?: boolean }) {
           key={k}
           className="absolute w-1.5 h-1.5 rounded-full"
           style={{
-            background: "#a78bfa",
-            boxShadow: "0 0 8px rgba(139,125,255,0.8)",
+            background: "#fda4af",
+            boxShadow: "0 0 8px rgba(251,113,133,0.8)",
             ...(vertical ? { left: -2.5, top: 0 } : { top: -2.5, left: 0 }),
           }}
           animate={vertical ? { y: [0, 40], opacity: [0, 1, 0] } : { x: [0, 40], opacity: [0, 1, 0] }}
@@ -79,12 +79,12 @@ export default function SystemFlow({
           viewport={{ once: true }}
           transition={{ delay: 0.2, type: "spring", bounce: 0.35, duration: 0.8 }}
           className="relative flex flex-col items-center text-center px-6 py-5 rounded-2xl shrink-0"
-          style={{ border: "1px solid rgba(139,125,255,0.35)", background: "rgba(139,125,255,0.06)" }}
+          style={{ border: "1px solid rgba(251,113,133,0.35)", background: "rgba(251,113,133,0.06)" }}
         >
           <motion.span
             aria-hidden="true"
             className="absolute inset-0 rounded-2xl blur-xl -z-10"
-            style={{ background: "rgba(139,125,255,0.18)" }}
+            style={{ background: "rgba(251,113,133,0.18)" }}
             animate={{ opacity: [0.5, 1, 0.5] }}
             transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
           />

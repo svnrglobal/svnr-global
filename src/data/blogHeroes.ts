@@ -9,10 +9,10 @@ export interface HeroSpec {
 // Each new post gets a distinct (kind, color) so every hero looks different.
 export const HERO_BY_SLUG: Record<string, HeroSpec> = {
   // Aether / models
-  "aether-ai-for-premium-acquisition": { kind: "rays", color: "#8b7dff" },
+  "aether-ai-for-premium-acquisition": { kind: "rays", color: "#fb7185" },
   "ora-free-ai-model-svnr": { kind: "grid", color: "#38bdf8" },
-  "soleth-ai-model-advisory": { kind: "waves", color: "#a78bfa" },
-  "aether-flagship-model": { kind: "network", color: "#8b7dff" },
+  "soleth-ai-model-advisory": { kind: "waves", color: "#fda4af" },
+  "aether-flagship-model": { kind: "network", color: "#fb7185" },
   "ora-soleth-aether-comparison": { kind: "stack", color: "#22d3ee" },
   "how-aether-learns-your-market": { kind: "orbit", color: "#60a5fa" },
   "aether-data-privacy": { kind: "rings", color: "#818cf8" },

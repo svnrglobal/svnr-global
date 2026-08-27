@@ -16,7 +16,7 @@ export default function ChatBackground() {
           height: 640,
           top: "-14%",
           left: "6%",
-          background: "radial-gradient(circle, rgba(108,108,255,0.16), rgba(108,108,255,0) 70%)",
+          background: "radial-gradient(circle, rgba(251,113,133,0.16), rgba(251,113,133,0) 70%)",
           filter: "blur(44px)",
         }}
         animate={{ x: [0, 60, -28, 0], y: [0, 40, 80, 0], scale: [1, 1.08, 0.96, 1] }}

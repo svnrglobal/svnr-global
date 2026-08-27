@@ -1,29 +1,74 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Check, X, Minus, Settings, PenLine, Lightbulb, BarChart3, Workflow } from "lucide-react";
-import { VIDEOS } from "../data/content";
-import VideoHero from "../components/VideoHero";
+import { ArrowRight, Check, Settings, PenLine, Lightbulb, BarChart3, Workflow } from "lucide-react";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
 import Breadcrumbs from "../components/Breadcrumbs";
 
-const checks = {
-  yes: <Check size={16} className="text-white" />,
-  no: <X size={16} className="text-white/25" />,
-  partial: <Minus size={16} className="text-white/40" />,
-};
+const EASE = [0.16, 1, 0.3, 1] as const;
 
-const comparisonRows = [
-  { label: "Sector-specific expertise", svnr: "yes", generic: "no", inhouse: "partial", tools: "no" },
-  { label: "Custom AI agents per client", svnr: "yes", generic: "no", inhouse: "no", tools: "no" },
-  { label: "Bespoke outreach, no shared templates", svnr: "yes", generic: "no", inhouse: "partial", tools: "no" },
-  { label: "Permanent infrastructure (not a campaign)", svnr: "yes", generic: "no", inhouse: "yes", tools: "no" },
-  { label: "Custom dashboards & reporting", svnr: "yes", generic: "no", inhouse: "partial", tools: "partial" },
-  { label: "Decision-maker level targeting", svnr: "yes", generic: "partial", inhouse: "partial", tools: "partial" },
-  { label: "Multi-channel (email + LinkedIn + direct)", svnr: "yes", generic: "partial", inhouse: "partial", tools: "no" },
-  { label: "Works for luxury / high-ticket brands", svnr: "yes", generic: "no", inhouse: "partial", tools: "no" },
-  { label: "Results without your daily input", svnr: "yes", generic: "partial", inhouse: "no", tools: "no" },
-  { label: "No onboarding lag (30–60 days to results)", svnr: "yes", generic: "no", inhouse: "no", tools: "no" },
+type Cell = "yes" | "no" | "partial";
+
+const comparisonGroups: { category: string; note: string; rows: { label: string; svnr: Cell; generic: Cell; inhouse: Cell; tools: Cell }[] }[] = [
+  {
+    category: "Expertise & Targeting",
+    note: "How precisely the outreach is aimed at the right buyer.",
+    rows: [
+      { label: "Sector-specific expertise", svnr: "yes", generic: "no", inhouse: "partial", tools: "no" },
+      { label: "Custom AI agents per client", svnr: "yes", generic: "no", inhouse: "no", tools: "no" },
+      { label: "Bespoke outreach, no shared templates", svnr: "yes", generic: "no", inhouse: "partial", tools: "no" },
+      { label: "Decision-maker level targeting", svnr: "yes", generic: "partial", inhouse: "partial", tools: "partial" },
+      { label: "Works for luxury / high-ticket brands", svnr: "yes", generic: "no", inhouse: "partial", tools: "no" },
+    ],
+  },
+  {
+    category: "Delivery Model",
+    note: "What you're actually buying, and whether it lasts.",
+    rows: [
+      { label: "Permanent infrastructure (not a campaign)", svnr: "yes", generic: "no", inhouse: "yes", tools: "no" },
+      { label: "Multi-channel (email + LinkedIn + direct)", svnr: "yes", generic: "partial", inhouse: "partial", tools: "no" },
+      { label: "No onboarding lag (30–60 days to results)", svnr: "yes", generic: "no", inhouse: "no", tools: "no" },
+    ],
+  },
+  {
+    category: "Operations & Reporting",
+    note: "What it takes from your team to keep it running.",
+    rows: [
+      { label: "Custom dashboards & reporting", svnr: "yes", generic: "no", inhouse: "partial", tools: "partial" },
+      { label: "Results without your daily input", svnr: "yes", generic: "partial", inhouse: "no", tools: "no" },
+    ],
+  },
+];
+
+const plans = [
+  {
+    name: "SVNR Global",
+    tag: "Infrastructure",
+    line: "Bespoke acquisition infrastructure, built and operated for you.",
+    features: ["Sector-specific AI agents", "No shared templates", "Runs continuously, compounds over time"],
+    highlight: true,
+  },
+  {
+    name: "Volume Agency",
+    tag: "Belkins, CIENCE, etc.",
+    line: "Templated sequences run at scale across many clients at once.",
+    features: ["Fixed-duration campaigns", "Shared messaging", "Optimised for contact volume"],
+    highlight: false,
+  },
+  {
+    name: "In-House SDR",
+    tag: "Full-time hire",
+    line: "Internal control, at the cost of hiring and ramp time.",
+    features: ["6 months to hire", "3 months to ramp", "Scales with headcount budget"],
+    highlight: false,
+  },
+  {
+    name: "AI Tools",
+    tag: "Apollo, Instantly, etc.",
+    line: "Self-serve platforms that still need a team to run them.",
+    features: ["Requires internal configuration", "No strategy or copywriting included", "You operate it yourself"],
+    highlight: false,
+  },
 ];
 
 const angles = [
@@ -82,24 +127,16 @@ const angles = [
   },
 ];
 
-const ColHeader = ({ label, sub, highlight }: { label: string; sub: string; highlight?: boolean }) => (
-  <th className={`px-4 py-4 text-center ${highlight ? "bg-white/8 rounded-t-xl" : ""}`}>
-    <div className={`text-sm font-medium ${highlight ? "text-white" : "text-white/50"}`}>{label}</div>
-    <div className="text-[10px] uppercase tracking-widest text-white/25 mt-1">{sub}</div>
-  </th>
-);
-
-const Cell = ({ val, highlight }: { val: keyof typeof checks; highlight?: boolean }) => (
-  <td className={`px-4 py-3.5 text-center ${highlight ? "bg-white/5" : ""}`}>
-    <div className="flex justify-center">{checks[val]}</div>
-  </td>
-);
+function CellMark({ val }: { val: Cell }) {
+  if (val === "yes") return <Check size={15} className="text-[#fda4af]" />;
+  if (val === "partial") return <span className="text-white/35 text-xs">±</span>;
+  return <span className="text-white/20">—</span>;
+}
 
 // Small inline visuals that anchor three of the comparison angles. Additive
 // next to the prose; no SEO copy is replaced.
 function AngleVisual({ index }: { index: number }) {
   if (index === 0) {
-    // Volume vs Precision: scattered dots vs converging target
     const scatter = [
       [42, 36], [88, 92], [140, 50], [62, 128], [180, 120], [220, 64],
       [118, 148], [200, 30], [250, 140], [156, 92], [34, 84], [240, 100],
@@ -110,7 +147,7 @@ function AngleVisual({ index }: { index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="rounded-2xl border border-white/8 p-6 mb-8"
+        className="rounded-2xl border border-white/[0.08] p-6 mb-8"
       >
         <svg viewBox="0 0 640 180" className="w-full h-auto" role="img" aria-label="Volume outreach scatters; precision outreach converges on the right buyer">
           {scatter.map(([x, y], i) => (
@@ -120,13 +157,13 @@ function AngleVisual({ index }: { index: number }) {
           <line x1="310" y1="20" x2="310" y2="160" stroke="rgba(255,255,255,0.08)" strokeWidth="1" />
           {[[370, 40], [385, 130], [420, 70], [445, 120], [470, 45]].map(([x, y], i) => (
             <g key={i}>
-              <circle cx={x} cy={y} r={4} fill="rgba(139,125,255,0.7)" />
-              <line x1={x} y1={y} x2={540} y2={90} stroke="rgba(139,125,255,0.3)" strokeWidth="1.5" />
+              <circle cx={x} cy={y} r={4} fill="rgba(251,113,133,0.7)" />
+              <line x1={x} y1={y} x2={540} y2={90} stroke="rgba(251,113,133,0.3)" strokeWidth="1.5" />
             </g>
           ))}
-          <circle cx="540" cy="90" r="22" fill="none" stroke="rgba(139,125,255,0.7)" strokeWidth="1.5" />
-          <circle cx="540" cy="90" r="12" fill="none" stroke="rgba(139,125,255,0.45)" strokeWidth="1.5" />
-          <circle cx="540" cy="90" r="4" fill="#8b7dff" />
+          <circle cx="540" cy="90" r="22" fill="none" stroke="rgba(251,113,133,0.7)" strokeWidth="1.5" />
+          <circle cx="540" cy="90" r="12" fill="none" stroke="rgba(251,113,133,0.45)" strokeWidth="1.5" />
+          <circle cx="540" cy="90" r="4" fill="#fb7185" />
           <text x="480" y="172" textAnchor="middle" fill="rgba(255,255,255,0.3)" fontSize="10" letterSpacing="2">PRECISION</text>
         </svg>
       </motion.div>
@@ -163,7 +200,7 @@ function AngleVisual({ index }: { index: number }) {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ delay: 0.4 }}
-          className="rounded-full border border-[#8b7dff]/40 px-3 py-1.5 text-[10px] uppercase tracking-widest text-white"
+          className="rounded-full border border-[#fb7185]/40 px-3 py-1.5 text-[10px] uppercase tracking-widest text-white"
         >
           One system, operated for you
         </motion.span>
@@ -178,7 +215,7 @@ function AngleVisual({ index }: { index: number }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="rounded-2xl border border-white/8 p-6 mb-8 space-y-4"
+        className="rounded-2xl border border-white/[0.08] p-6 mb-8 space-y-4"
       >
         <div>
           <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2">In-house SDR</p>
@@ -206,8 +243,8 @@ function AngleVisual({ index }: { index: number }) {
           <p className="text-[10px] uppercase tracking-widest text-white/40 mb-2">SVNR</p>
           <div className="flex gap-1">
             {[
-              { w: "15%", bg: "rgba(139,125,255,0.6)", label: "Deploy" },
-              { w: "25%", bg: "rgba(139,125,255,0.3)", label: "Outreach live" },
+              { w: "15%", bg: "rgba(251,113,133,0.6)", label: "Deploy" },
+              { w: "25%", bg: "rgba(251,113,133,0.3)", label: "Outreach live" },
             ].map((s, i) => (
               <motion.div
                 key={s.label}
@@ -232,7 +269,7 @@ function AngleVisual({ index }: { index: number }) {
 
 export default function Compare() {
   return (
-    <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+    <main className="relative w-full bg-black font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="SVNR Global vs Other Agencies — Why Premium Operators Choose SVNR"
         description="How does SVNR Global compare to volume outreach agencies, campaign retainers, AI tools, and in-house teams? A clear breakdown for premium B2B operators."
@@ -279,108 +316,187 @@ export default function Compare() {
       />
 
       {/* HERO */}
-      <VideoHero src={VIDEOS.compare}>
-        <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
+      <section className="relative pt-32 sm:pt-40 pb-16 px-6 md:px-12">
+        <div className="max-w-[1200px] mx-auto">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "SVNR vs Alternatives" }]} />
           <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.1 }}
-            className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6"
+            initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}
+            className="text-[10px] tracking-[0.28em] uppercase text-white/40 mb-6"
+            style={{ fontFamily: "var(--font-mono)" }}
           >
             SVNR vs Alternatives
           </motion.p>
           <motion.h1
-            initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 1.3 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6"
+            initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.05, ease: EASE }}
+            className="text-4xl sm:text-5xl md:text-[64px] font-medium text-white leading-[1.05] tracking-tight mb-6 max-w-3xl"
           >
-            Not all client acquisition<br />
-            <span className="shimmer-text">is built the same.</span>
+            Not all client acquisition is built the same.
           </motion.h1>
           <motion.p
-            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6 }}
-            className="text-white/50 text-lg max-w-2xl mx-auto"
+            initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1, ease: EASE }}
+            className="text-white/45 text-lg max-w-2xl"
           >
             Volume agencies, one-off campaigns, AI tools, in-house teams, each has a use case.
             Here is why premium operators choose infrastructure over any of them.
           </motion.p>
         </div>
-      </VideoHero>
+      </section>
+
+      {/* PLAN-STYLE SUMMARY CARDS */}
+      <section className="relative px-6 md:px-12 pb-16">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-4 gap-4">
+          {plans.map((p, i) => (
+            <motion.div
+              key={p.name}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+              className={`relative rounded-2xl border p-6 flex flex-col ${
+                p.highlight ? "border-white/[0.14] bg-white/[0.028]" : "border-white/[0.08] bg-white/[0.015] hover:bg-white/[0.028] hover:border-white/[0.14]"
+              } transition-colors`}
+            >
+              {p.highlight && (
+                <span className="absolute inset-x-0 top-0 h-[2px] rounded-t-2xl" style={{ background: "linear-gradient(90deg, transparent, #fb7185, transparent)" }} />
+              )}
+              {p.highlight && (
+                <span
+                  className="absolute -top-3 left-6 rounded-full px-3 py-1 text-[10px] tracking-[0.15em] uppercase text-white border border-[#fb7185]/40"
+                  style={{ background: "rgba(251,113,133,0.12)" }}
+                >
+                  Recommended
+                </span>
+              )}
+              <div className="text-[10px] tracking-[0.2em] uppercase text-white/35 mb-2" style={{ fontFamily: "var(--font-mono)" }}>
+                {p.tag}
+              </div>
+              <h3 className="text-xl font-medium text-white tracking-tight mb-3">{p.name}</h3>
+              <p className="text-white/45 text-sm leading-relaxed mb-5">{p.line}</p>
+              <div className="text-[10px] tracking-widest uppercase text-white/30 mb-3 mt-auto">
+                {p.highlight ? "All essentials, plus:" : "Includes"}
+              </div>
+              <ul className="space-y-2">
+                {p.features.map((f) => (
+                  <li key={f} className="flex items-start gap-2 text-sm text-white/50">
+                    <Check size={13} className={p.highlight ? "text-[#fda4af] mt-0.5 shrink-0" : "text-white/25 mt-0.5 shrink-0"} />
+                    {f}
+                  </li>
+                ))}
+              </ul>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
       {/* COMPARISON TABLE */}
-      <section className="relative z-10 bg-[#0A0A0B] py-20 px-4 sm:px-6">
-        <div className="max-w-5xl mx-auto">
-          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "SVNR vs Alternatives" }]} />
+      <section className="relative px-6 md:px-12 py-16">
+        <div className="max-w-[1200px] mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="mb-12 text-center"
+            initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mb-10"
           >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Feature comparison</p>
-            <h2 className="text-3xl sm:text-4xl font-medium text-white tracking-tight">At a glance</h2>
+            <p className="text-[10px] tracking-[0.28em] uppercase text-white/40 mb-4" style={{ fontFamily: "var(--font-mono)" }}>
+              Feature comparison
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight">At a glance</h2>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="liquid-glass rounded-2xl overflow-hidden"
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="rounded-2xl border border-white/[0.08] overflow-hidden"
           >
-            <div className="relative">
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[640px] border-collapse">
-                  <thead>
-                    <tr className="border-b border-white/8">
-                      <th className="sticky left-0 z-10 bg-[#101012] px-4 py-4 text-left text-xs uppercase tracking-widest text-white/30 font-normal">Capability</th>
-                      <ColHeader label="SVNR Global" sub="Infrastructure" highlight />
-                      <ColHeader label="Volume Agency" sub="Belkins, CIENCE, etc." />
-                      <ColHeader label="In-House SDR" sub="Full-time hire" />
-                      <ColHeader label="AI Tools" sub="Apollo, Instantly, etc." />
+            <div className="overflow-x-auto">
+              <table className="w-full min-w-[720px] border-collapse">
+                <thead>
+                  <tr className="sticky top-[64px] z-20 bg-black">
+                    <th className="border-b border-white/[0.08] px-5 py-4 text-left text-[10px] tracking-[0.2em] uppercase text-white/35 font-normal bg-black" style={{ fontFamily: "var(--font-mono)" }}>
+                      Capability
+                    </th>
+                    <th className="border-b border-white/[0.08] px-4 py-4 text-center bg-white/[0.03] relative">
+                      <span className="absolute inset-x-0 top-0 h-[2px]" style={{ background: "#fb7185" }} />
+                      <div className="text-sm font-medium text-white">SVNR Global</div>
+                      <div className="text-[9px] uppercase tracking-widest text-white/30 mt-1">Infrastructure</div>
+                    </th>
+                    <th className="border-b border-white/[0.08] px-4 py-4 text-center bg-black">
+                      <div className="text-sm font-medium text-white/50">Volume Agency</div>
+                      <div className="text-[9px] uppercase tracking-widest text-white/25 mt-1">Belkins, CIENCE, etc.</div>
+                    </th>
+                    <th className="border-b border-white/[0.08] px-4 py-4 text-center bg-black">
+                      <div className="text-sm font-medium text-white/50">In-House SDR</div>
+                      <div className="text-[9px] uppercase tracking-widest text-white/25 mt-1">Full-time hire</div>
+                    </th>
+                    <th className="border-b border-white/[0.08] px-4 py-4 text-center bg-black">
+                      <div className="text-sm font-medium text-white/50">AI Tools</div>
+                      <div className="text-[9px] uppercase tracking-widest text-white/25 mt-1">Apollo, Instantly, etc.</div>
+                    </th>
+                  </tr>
+                </thead>
+                {comparisonGroups.map((group) => (
+                  <tbody key={group.category}>
+                    <tr>
+                      <td colSpan={5} className="px-5 pt-8 pb-2">
+                        <div className="text-sm font-medium text-white">{group.category}</div>
+                        <div className="text-xs text-white/40 mt-0.5">{group.note}</div>
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody>
-                    {comparisonRows.map((row, i) => (
+                    {group.rows.map((row, i) => (
                       <motion.tr
                         key={row.label}
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: Math.min(i * 0.04, 0.3) }}
-                        className={`border-b border-white/5 ${i % 2 === 0 ? "" : "bg-white/[0.02]"}`}
+                        className="border-b border-white/[0.05]"
                       >
-                        <td className="sticky left-0 z-10 bg-[#101012] px-4 py-3.5 text-sm text-white/60">{row.label}</td>
-                        <Cell val={row.svnr as keyof typeof checks} highlight />
-                        <Cell val={row.generic as keyof typeof checks} />
-                        <Cell val={row.inhouse as keyof typeof checks} />
-                        <Cell val={row.tools as keyof typeof checks} />
+                        <td className="px-5 py-3.5 text-sm text-white/55">{row.label}</td>
+                        <td className="px-4 py-3.5 text-center bg-white/[0.015]">
+                          <div className="flex justify-center"><CellMark val={row.svnr} /></div>
+                        </td>
+                        <td className="px-4 py-3.5 text-center">
+                          <div className="flex justify-center"><CellMark val={row.generic} /></div>
+                        </td>
+                        <td className="px-4 py-3.5 text-center">
+                          <div className="flex justify-center"><CellMark val={row.inhouse} /></div>
+                        </td>
+                        <td className="px-4 py-3.5 text-center">
+                          <div className="flex justify-center"><CellMark val={row.tools} /></div>
+                        </td>
                       </motion.tr>
                     ))}
                   </tbody>
-                </table>
-              </div>
-              <div className="pointer-events-none absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-[#0A0A0B] to-transparent md:hidden" />
+                ))}
+              </table>
             </div>
           </motion.div>
-          <p className="text-[10px] text-white/30 text-center mt-3 sm:hidden">Swipe to compare</p>
+          <p className="text-[10px] text-white/30 text-center mt-3 md:hidden">Swipe to compare</p>
         </div>
       </section>
 
       {/* ANGLE SECTIONS */}
-      <section className="relative z-10 bg-[#0A0A0B] py-10 px-6">
-        <div className="max-w-4xl mx-auto space-y-24">
+      <section className="relative px-6 md:px-12 py-10">
+        <div className="max-w-[1200px] mx-auto space-y-24">
           {angles.map((a, i) => (
             <motion.div
               key={a.title}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+              className="max-w-3xl"
             >
               <div className="mb-2">
-                <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-3">
+                <p className="text-[10px] tracking-[0.28em] uppercase text-white/30 mb-3" style={{ fontFamily: "var(--font-mono)" }}>
                   {String(i + 1).padStart(2, "0")}
                 </p>
-                <h2 className="text-3xl sm:text-4xl font-medium text-white tracking-tight mb-2">{a.title}</h2>
+                <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight mb-2">{a.title}</h2>
                 <p className="text-white/40 text-sm italic mb-8">{a.subtitle}</p>
               </div>
 
               <div className="space-y-5 mb-8">
                 {a.body.map((para, j) => (
-                  <p key={j} className="text-white/60 leading-relaxed text-[15px]">{para}</p>
+                  <p key={j} className="text-white/45 leading-relaxed text-[15px]">{para}</p>
                 ))}
               </div>
 
@@ -388,14 +504,14 @@ export default function Compare() {
 
               <div className="flex flex-wrap gap-2">
                 {a.tags.map((tag) => (
-                  <span key={tag} className="px-3 py-1.5 rounded-full text-[10px] uppercase tracking-widest text-white/40 border border-white/10">
+                  <span key={tag} className="px-3 py-1.5 rounded-full text-[10px] uppercase tracking-widest text-white/40 border border-white/[0.08]">
                     {tag}
                   </span>
                 ))}
               </div>
 
               {i < angles.length - 1 && (
-                <div className="mt-16 border-t border-white/8" />
+                <div className="mt-16 border-t border-white/[0.08]" />
               )}
             </motion.div>
           ))}
@@ -403,18 +519,20 @@ export default function Compare() {
       </section>
 
       {/* BOTTOM CALLOUT */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
+      <section className="relative px-6 md:px-12 py-24">
         <div className="max-w-3xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="liquid-glass rounded-3xl p-10 sm:p-14 text-center"
+            initial={{ opacity: 0, y: 24 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="rounded-2xl border border-white/[0.08] bg-white/[0.015] p-10 sm:p-14 text-center"
           >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-6">The short version</p>
-            <h2 className="text-3xl sm:text-4xl font-medium text-white tracking-tight mb-6">
-              If you operate at the premium end,<br />
-              <span className="shimmer-text">the approach has to match.</span>
+            <p className="text-[10px] tracking-[0.28em] uppercase text-white/30 mb-6" style={{ fontFamily: "var(--font-mono)" }}>
+              The short version
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight mb-6">
+              If you operate at the premium end, the approach has to match.
             </h2>
-            <p className="text-white/50 mb-10 max-w-xl mx-auto leading-relaxed">
+            <p className="text-white/45 mb-10 max-w-xl mx-auto leading-relaxed">
               Volume agencies dilute your brand. Campaigns create dependency. Tools require expertise you don't have.
               In-house teams ramp slowly. SVNR deploys infrastructure that runs, built specifically for your market,
               your sector, and the calibre of client you want to attract.
@@ -428,7 +546,7 @@ export default function Compare() {
               </Link>
               <Link
                 to="/engagement"
-                className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-white/20 text-white text-sm hover:border-white/50 transition-all"
+                className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-white/[0.14] text-white text-sm hover:border-white/30 transition-all"
               >
                 See How We Work <ArrowRight size={14} />
               </Link>
@@ -437,7 +555,7 @@ export default function Compare() {
         </div>
       </section>
 
-      <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto">
+      <div className="relative px-6 md:px-12 pb-10 max-w-[1200px] mx-auto">
         <Footer />
       </div>
     </main>

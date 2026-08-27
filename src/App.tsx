@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route, useLocation, Navigate } from "react-router-dom";
 import { useEffect, lazy, Suspense } from "react";
-import { MotionConfig, motion, useScroll, useSpring } from "motion/react";
+import { MotionConfig, motion } from "motion/react";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
 import { setLenis, scrollToTop } from "./lib/lenis";
@@ -95,32 +95,14 @@ function ScrollToTop() {
   return null;
 }
 
-// Thin reading-progress bar pinned to the top of the viewport (public pages only).
-function ScrollProgress() {
-  const { pathname } = useLocation();
-  const { scrollYProgress } = useScroll();
-  const scaleX = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.3 });
-  if (APP_ROUTES.some((p) => pathname.startsWith(p))) return null;
-  return (
-    <motion.div
-      aria-hidden="true"
-      style={{ scaleX, transformOrigin: "0%" }}
-      className="fixed top-0 left-0 right-0 h-[2px] z-[60] pointer-events-none"
-    >
-      <div className="w-full h-full" style={{ background: "linear-gradient(90deg, #6c6cff, #a78bfa)" }} />
-    </motion.div>
-  );
-}
-
-// Minimal branded fallback shown only while a lazy route chunk loads (SPA nav).
-// The app background is already #0A0A0B, so this just adds a subtle pulse.
+// Minimal fallback shown only while a lazy route chunk loads (SPA nav).
+// The app background is already black, so this just adds a subtle pulse.
 function PageLoader() {
   return (
-    <div className="fixed inset-0 z-[40] flex items-center justify-center bg-[#0A0A0B]" aria-hidden="true">
+    <div className="fixed inset-0 z-[40] flex items-center justify-center bg-black" aria-hidden="true">
       <motion.div
-        className="w-2 h-2 rounded-full"
-        style={{ background: "#8b7dff" }}
-        animate={{ opacity: [0.3, 1, 0.3], scale: [1, 1.5, 1] }}
+        className="w-2 h-2 rounded-full bg-white/30"
+        animate={{ opacity: [0.25, 0.8, 0.25], scale: [1, 1.4, 1] }}
         transition={{ duration: 1.1, repeat: Infinity, ease: "easeInOut" }}
       />
     </div>
@@ -153,7 +135,7 @@ export default function App() {
       <a href="#main-content" className="skip-link">Skip to content</a>
       <SmoothScroll />
       <ScrollToTop />
-      <ScrollProgress />
+
       <Nav />
       <Suspense fallback={<PageLoader />}>
         <RouteFade>

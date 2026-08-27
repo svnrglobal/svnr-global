@@ -24,13 +24,13 @@ export default function AgentOrbit() {
     <div className="relative w-full max-w-md mx-auto aspect-square">
       <svg viewBox="0 0 100 100" className="absolute inset-0 w-full h-full" aria-hidden="true">
         {pts.map((p, i) => (
-          <line key={i} x1="50" y1="50" x2={p.x} y2={p.y} stroke="rgba(139,125,255,0.22)" strokeWidth="0.4" />
+          <line key={i} x1="50" y1="50" x2={p.x} y2={p.y} stroke="rgba(251,113,133,0.22)" strokeWidth="0.4" />
         ))}
         {pts.map((p, i) => (
           <motion.circle
             key={`d${i}`}
             r="0.9"
-            fill="#a78bfa"
+            fill="#fda4af"
             initial={{ cx: 50, cy: 50, opacity: 0 }}
             animate={{ cx: [50, p.x], cy: [50, p.y], opacity: [0, 1, 0] }}
             transition={{ duration: 2.2, delay: i * 0.35, repeat: Infinity, ease: "easeInOut" }}
@@ -40,7 +40,7 @@ export default function AgentOrbit() {
 
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center">
         <div className="relative">
-          <span className="absolute inset-0 rounded-full blur-xl" style={{ background: "rgba(139,125,255,0.35)" }} />
+          <span className="absolute inset-0 rounded-full blur-xl" style={{ background: "rgba(251,113,133,0.35)" }} />
           <AetherLogo size={52} state="pulse" className="relative text-white" />
         </div>
         <span className="mt-2 text-[10px] uppercase tracking-[0.25em] text-white/50">Cassian Soleth</span>

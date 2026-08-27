@@ -36,7 +36,7 @@ export const categoryColors: Record<string, string> = {
   "Wealth Management": "#11998e",
   "B2B Platforms": "#f953c6",
   "Strategy": "#FC466B",
-  "Cassian": "#8b7dff",
+  "Cassian": "#fb7185",
   "Use Cases": "#38bdf8",
   "Maritime & Logistics": "#4facfe",
   "High-Ticket E-commerce": "#00C6FF",

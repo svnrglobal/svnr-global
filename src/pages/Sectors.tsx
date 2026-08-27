@@ -1,118 +1,140 @@
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import {
-  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer,
-  RadialBarChart, RadialBar, PieChart, Pie, Cell,
-  AreaChart, Area,
-} from "recharts";
-import { VIDEOS, SECTORS } from "../data/content";
-import VideoHero from "../components/VideoHero";
+import { SECTORS } from "../data/content";
 import Footer from "../components/Footer";
 import SEO from "../components/SEO";
 import Breadcrumbs from "../components/Breadcrumbs";
+import OpticalType from "../components/OpticalType";
+import Counter from "../components/Counter";
+import { SECTOR_MINI } from "../components/minis";
+import { useIdleMischief } from "../hooks/useIdleMischief";
 
-const sectorCharts: Record<string, React.ReactNode> = {
-  "luxury-rugs-home-textiles": (
-    <BarChart data={[
-      { market: "DE", value: 45 }, { market: "FR", value: 38 }, { market: "UK", value: 52 },
-      { market: "US", value: 61 }, { market: "AE", value: 29 }, { market: "JP", value: 22 },
-    ]}>
-      <XAxis dataKey="market" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10 }} axisLine={false} tickLine={false} />
-      <YAxis hide />
-      <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 11, color: "#fff" }} />
-      <Bar dataKey="value" fill="#F5A623" radius={[4, 4, 0, 0]} />
-    </BarChart>
-  ),
-  "premium-real-estate": (
-    <AreaChart data={[
-      { m: "Jan", hni: 12 }, { m: "Feb", hni: 19 }, { m: "Mar", hni: 31 },
-      { m: "Apr", hni: 44 }, { m: "May", hni: 58 }, { m: "Jun", hni: 72 },
-    ]}>
-      <defs>
-        <linearGradient id="re-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="5%" stopColor="#0071E3" stopOpacity={0.4} />
-          <stop offset="95%" stopColor="#0071E3" stopOpacity={0} />
-        </linearGradient>
-      </defs>
-      <XAxis dataKey="m" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10 }} axisLine={false} tickLine={false} />
-      <YAxis hide />
-      <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 11, color: "#fff" }} />
-      <Area type="monotone" dataKey="hni" stroke="#0071E3" strokeWidth={2} fill="url(#re-grad)" dot={false} />
-    </AreaChart>
-  ),
-  "private-equity-family-offices": (
-    <PieChart>
-      <Pie data={[{ value: 75 }, { value: 25 }]} cx="50%" cy="50%" innerRadius={30} outerRadius={50} startAngle={90} endAngle={-270}>
-        <Cell fill="#764ba2" />
-        <Cell fill="rgba(255,255,255,0.05)" />
-      </Pie>
-      <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 11, color: "#fff" }} />
-    </PieChart>
-  ),
-  "b2b-luxury-brands": (
-    <BarChart data={[
-      { q: "Q1", leads: 28 }, { q: "Q2", leads: 35 }, { q: "Q3", leads: 41 }, { q: "Q4", leads: 52 },
-    ]}>
-      <XAxis dataKey="q" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10 }} axisLine={false} tickLine={false} />
-      <YAxis hide />
-      <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 11, color: "#fff" }} />
-      <Bar dataKey="leads" fill="#f953c6" radius={[4, 4, 0, 0]} />
-    </BarChart>
-  ),
-  "wealth-management": (
-    <RadialBarChart cx="50%" cy="50%" innerRadius={20} outerRadius={55} data={[{ value: 8, fill: "#38ef7d" }, { value: 100, fill: "rgba(255,255,255,0.05)" }]}>
-      <RadialBar dataKey="value" />
-      <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 11, color: "#fff" }} />
-    </RadialBarChart>
-  ),
-  "high-ticket-ecommerce": (
-    <AreaChart data={[
-      { m: "M1", aov: 100 }, { m: "M2", aov: 148 }, { m: "M3", aov: 212 }, { m: "M4", aov: 280 }, { m: "M5", aov: 312 },
-    ]}>
-      <defs>
-        <linearGradient id="hte-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="5%" stopColor="#3F5EFB" stopOpacity={0.4} />
-          <stop offset="95%" stopColor="#3F5EFB" stopOpacity={0} />
-        </linearGradient>
-      </defs>
-      <XAxis dataKey="m" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10 }} axisLine={false} tickLine={false} />
-      <YAxis hide />
-      <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 11, color: "#fff" }} />
-      <Area type="monotone" dataKey="aov" stroke="#3F5EFB" strokeWidth={2} fill="url(#hte-grad)" dot={false} />
-    </AreaChart>
-  ),
-  "maritime-logistics": (
-    <BarChart data={[
-      { sector: "Bulk", value: 32 }, { sector: "Container", value: 48 }, { sector: "Tanker", value: 28 }, { sector: "RoRo", value: 18 },
-    ]}>
-      <XAxis dataKey="sector" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 9 }} axisLine={false} tickLine={false} />
-      <YAxis hide />
-      <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 11, color: "#fff" }} />
-      <Bar dataKey="value" fill="#4facfe" radius={[4, 4, 0, 0]} />
-    </BarChart>
-  ),
-  "professional-services": (
-    <AreaChart data={[
-      { q: "Q1", mandates: 2 }, { q: "Q2", mandates: 4 }, { q: "Q3", mandates: 5 }, { q: "Q4", mandates: 6 },
-    ]}>
-      <defs>
-        <linearGradient id="ps-grad" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="5%" stopColor="#ffd200" stopOpacity={0.4} />
-          <stop offset="95%" stopColor="#ffd200" stopOpacity={0} />
-        </linearGradient>
-      </defs>
-      <XAxis dataKey="q" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 10 }} axisLine={false} tickLine={false} />
-      <YAxis hide />
-      <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 11, color: "#fff" }} />
-      <Area type="monotone" dataKey="mandates" stroke="#ffd200" strokeWidth={2} fill="url(#ps-grad)" dot={false} />
-    </AreaChart>
-  ),
+const MONO = { fontFamily: "var(--font-mono)" };
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+type Sector = (typeof SECTORS)[number];
+
+// Bento tiling: 2/1 · 1/2 · 2/1 · 1/2 fills four clean rows of three columns.
+const SPANS: Record<string, 1 | 2> = {
+  "luxury-rugs-home-textiles": 2,
+  "premium-real-estate": 1,
+  "private-equity-family-offices": 1,
+  "b2b-luxury-brands": 2,
+  "wealth-management": 2,
+  "high-ticket-ecommerce": 1,
+  "maritime-logistics": 1,
+  "professional-services": 2,
 };
+
+// The data encodes units as suffixes ("€+", "min"). Render them as a human
+// would write them — currency in front, word units spaced. No value is changed.
+function fmtMetric(value: string | number, unit: string): string {
+  const v = String(value);
+  if (unit.startsWith("€") || unit.startsWith("$")) return `${unit[0]}${v}${unit.slice(1)}`;
+  if (/^[a-z]{2,}$/.test(unit)) return `${v} ${unit}`;
+  return `${v}${unit}`;
+}
+
+function SectorCard({ s, i }: { s: Sector; i: number }) {
+  const { lit, mischief, bind } = useIdleMischief();
+  const span = SPANS[s.slug] ?? 1;
+  // Mischief replays the demo unprompted once, a beat after the reader leaves.
+  const active = lit || mischief;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      whileHover={{ y: -4, transition: { duration: 0.22, ease: "easeOut" } }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+      className={span === 2 ? "md:col-span-2" : "md:col-span-1"}
+    >
+      <Link
+        to={`/sectors/${s.slug}`}
+        {...bind}
+        className="group relative flex flex-col justify-end h-full min-h-[280px] rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 overflow-hidden p-7"
+      >
+        <span
+          className="absolute top-6 left-7 text-[10px] tracking-widest text-white/20 tabular-nums transition-colors duration-300 group-hover:text-white/40"
+          style={MONO}
+        >
+          {s.number}
+        </span>
+        <ArrowRight
+          size={14}
+          className="absolute top-6 right-7 text-white/20 group-hover:text-white/70 group-hover:translate-x-1 transition-all duration-300"
+        />
+
+        {SECTOR_MINI[s.slug]?.(active)}
+
+        <div className="relative z-10 mt-auto">
+          <h3 className="text-white text-lg md:text-xl font-medium tracking-tight mb-1.5">{s.label}</h3>
+          <p className="text-white/40 text-sm leading-snug">{s.title}</p>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
+
+// THE STRIPE MOMENT — the whole book of numbers as one instrument panel.
+// Twenty-four readings settle into place as the panel scrolls in, each one an
+// actual figure from the sector data. Delete it and the buyer loses every
+// number on the page, which is exactly why it stays.
+function IndexLedger() {
+  return (
+    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.015] overflow-hidden divide-y divide-white/[0.06]">
+      {SECTORS.map((s, i) => (
+        <motion.div
+          key={s.slug}
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-40px" }}
+          transition={{ duration: 0.45, delay: i * 0.05, ease: EASE }}
+        >
+          <Link
+            to={`/sectors/${s.slug}`}
+            className="group grid grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.95fr)_auto] items-center gap-5 lg:gap-8 px-6 md:px-8 py-6 hover:bg-white/[0.02] transition-colors duration-300"
+          >
+            <div className="min-w-0">
+              <div className="flex items-baseline gap-3">
+                <span className="text-[10px] tracking-widest text-white/20 tabular-nums shrink-0" style={MONO}>
+                  {s.number}
+                </span>
+                <h3 className="text-white text-base font-medium tracking-tight">{s.label}</h3>
+              </div>
+              <p className="text-white/35 text-xs leading-relaxed mt-1.5">{s.proof}</p>
+            </div>
+
+            <div className="grid grid-cols-3 gap-4">
+              {s.metrics.map((m) => (
+                <div key={m.label} className="min-w-0">
+                  <Counter
+                    value={fmtMetric(m.value, m.unit)}
+                    className="block text-lg md:text-xl font-medium text-white tabular-nums leading-none"
+                  />
+                  <p className="text-[9px] tracking-[0.18em] text-white/30 mt-2 leading-tight" style={MONO}>
+                    {m.label.toUpperCase()}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            <ArrowRight
+              size={14}
+              className="hidden lg:block text-white/20 group-hover:text-white/70 group-hover:translate-x-1 transition-all duration-300"
+            />
+          </Link>
+        </motion.div>
+      ))}
+    </div>
+  );
+}
 
 export default function Sectors() {
   return (
-    <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+    <main className="relative w-full bg-black font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Industries We Serve — Luxury, Real Estate, Private Equity & More | SVNR Global"
         description="SVNR Global delivers AI client acquisition systems tailored to luxury rug brands, premium real estate firms, private equity, wealth management, maritime, B2B luxury, and high-ticket e-commerce operators."
@@ -127,97 +149,133 @@ export default function Sectors() {
           "publisher": { "@type": "Organization", "name": "SVNR Global", "url": "https://svnrglobal.com" }
         }}
       />
-      <VideoHero src={VIDEOS.sectors}>
-        <div className="max-w-4xl mx-auto px-6 text-center pt-20 sm:pt-32 pb-14 sm:pb-24">
+
+      {/* HERO */}
+      <section className="relative z-10 px-6 md:px-12 pt-32 md:pt-44 pb-14 md:pb-20">
+        <div className="max-w-[1200px] mx-auto">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Industries" }]} />
           <motion.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1.1 }}
-            className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-6"
+            transition={{ duration: 0.5, ease: EASE }}
+            className="text-[10px] tracking-[0.28em] text-white/40 mb-6"
+            style={MONO}
           >
-            Industries
+            INDUSTRIES
           </motion.p>
-          <motion.h1
-            initial={{ opacity: 0, y: 30 }}
+          <motion.div
+            initial={{ opacity: 0, y: 18 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1, delay: 1.3 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-medium text-white leading-tight tracking-tight mb-6"
+            transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
           >
-            We operate in<br />
-            <span className="shimmer-text">eight industries.</span>
-          </motion.h1>
+            <OpticalType className="text-4xl sm:text-5xl md:text-[64px] font-medium text-white leading-[1.05] tracking-tight max-w-3xl">
+              We operate in eight industries.
+            </OpticalType>
+          </motion.div>
           <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1.7 }}
-            className="text-white/50 text-lg"
+            transition={{ duration: 0.5, delay: 0.22 }}
+            className="text-white/45 text-base md:text-lg mt-6 max-w-xl leading-relaxed"
           >
             Each industry has its own operating rhythm. We build accordingly.
           </motion.p>
-        </div>
-      </VideoHero>
-
-      <section className="relative z-10 bg-[#0A0A0B] py-12 md:py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Industries" }]} />
-        </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-          {SECTORS.map((s, i) => (
-            <motion.div
-              key={s.slug}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: i * 0.06 }}
-              className="liquid-glass rounded-3xl overflow-hidden"
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+            className="flex flex-col sm:flex-row gap-3 mt-9"
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
             >
-              <div className="h-1 w-full" style={{ background: s.gradient }} />
-              <div className="p-5 sm:p-8">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
-                    <span className="text-[10px] uppercase tracking-[0.3em] text-white/20 block mb-2">{s.number}</span>
-                    <h3 className="text-xl font-medium text-white mb-1">{s.label}</h3>
-                    <p className="text-white/50 text-sm">{s.title}</p>
-                  </div>
-                  <Link
-                    to={`/sectors/${s.slug}`}
-                    className="p-2 rounded-full border border-white/10 hover:border-white/30 transition-all"
-                  >
-                    <ArrowRight size={14} className="text-white/50" />
-                  </Link>
-                </div>
-
-                <p className="text-white/50 text-sm leading-relaxed mb-6">{s.summary}</p>
-
-                {/* Animated chart */}
-                <div className="h-24 mb-6">
-                  <ResponsiveContainer width="100%" height="100%">
-                    {sectorCharts[s.slug] as React.ReactElement}
-                  </ResponsiveContainer>
-                </div>
-
-                {/* Metrics */}
-                <div className="grid grid-cols-3 gap-2 sm:gap-3">
-                  {s.metrics.map((m) => (
-                    <div key={m.label} className="text-center">
-                      <div className="text-base sm:text-lg font-medium text-white stat-number">{m.value}{m.unit}</div>
-                      <div className="text-[8px] sm:text-[9px] text-white/30 mt-0.5 leading-tight">{m.label}</div>
-                    </div>
-                  ))}
-                </div>
-
-                {s.proof && (
-                  <div className="mt-5 pt-5 border-t border-white/8">
-                    <p className="text-xs text-white/40 italic">{s.proof}</p>
-                  </div>
-                )}
-              </div>
-            </motion.div>
-          ))}
+              Book a consultation <ArrowRight size={14} />
+            </Link>
+            <Link
+              to="/services"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/[0.14] text-white/80 text-sm hover:border-white/30 hover:text-white transition-colors"
+            >
+              The agent stack <ArrowRight size={14} />
+            </Link>
+          </motion.div>
         </div>
       </section>
 
-      <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto">
+      {/* BENTO — every card runs its own sector's demo on hover */}
+      <section className="relative z-10 px-6 md:px-12 pb-20 md:pb-28">
+        <div className="max-w-[1200px] mx-auto">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {SECTORS.map((s, i) => (
+              <SectorCard key={s.slug} s={s} i={i} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* THE INDEX */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mb-10 max-w-2xl"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              THE INDEX
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight leading-tight mb-5">
+              The numbers behind each industry.
+            </h2>
+            <p className="text-white/45 text-base leading-relaxed">
+              Every row links through to the full sector breakdown.
+            </p>
+          </motion.div>
+
+          <IndexLedger />
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.55, ease: EASE }}
+            className="max-w-2xl"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              NEXT
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight leading-tight mb-5">
+              Find the system built for your market.
+            </h2>
+            <p className="text-white/45 text-base leading-relaxed mb-9">
+              Each system is built for your market. None are templates.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
+              >
+                Book a consultation <ArrowRight size={14} />
+              </Link>
+              <Link
+                to="/case-studies"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/[0.14] text-white/80 text-sm hover:border-white/30 hover:text-white transition-colors"
+              >
+                See the work <ArrowRight size={14} />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <div className="relative z-10 px-6 md:px-12 pb-10 max-w-[1200px] mx-auto">
         <Footer />
       </div>
     </main>

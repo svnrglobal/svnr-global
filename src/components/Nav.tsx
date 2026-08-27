@@ -1,188 +1,225 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "motion/react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import Logo from "./Logo";
 
-const links = [
-  { label: "Home",       href: "/" },
-  { label: "Services",   href: "/services" },
-  { label: "Industries", href: "/sectors" },
-  { label: "Case Studies", href: "/case-studies" },
-  { label: "Cassian",    href: "/cassian" },
-  { label: "How We Work", href: "/engagement" },
-  { label: "About",      href: "/about" },
+// Single source of truth — mirrors the footer taxonomy.
+const SERVICES = [
+  { label: "Client Acquisition", href: "/services/client-acquisition", desc: "Reach and warm the exact decision-makers in your market." },
+  { label: "AI Receptionist", href: "/services/ai-receptionist", desc: "A trained AI front desk that qualifies and routes." },
+  { label: "Revenue Operations", href: "/services/revenue-operations", desc: "Full-funnel ops built around your deal cycle." },
+  { label: "Sector Workflows", href: "/services/sector-workflows", desc: "Industry-specific automation that replaces manual work." },
+  { label: "Intelligence Research", href: "/services/intelligence-research", desc: "Deep prospect research and signal monitoring." },
+  { label: "Brand Outreach", href: "/services/brand-outreach", desc: "Message sequences written at the level of your market." },
+  { label: "Deal Flow & Investors", href: "/services/dealflow-investor", desc: "Proprietary deal flow for PE and family offices." },
+  { label: "Channel Partnership", href: "/services/channel-partnership", desc: "The partner acquisition system for channel sellers." },
 ];
+
+const INDUSTRIES = [
+  { label: "Luxury Rugs", href: "/sectors/luxury-rugs-home-textiles" },
+  { label: "Premium Real Estate", href: "/sectors/premium-real-estate" },
+  { label: "Private Equity", href: "/sectors/private-equity-family-offices" },
+  { label: "B2B Luxury Brands", href: "/sectors/b2b-luxury-brands" },
+  { label: "Wealth Management", href: "/sectors/wealth-management" },
+  { label: "High-Ticket E-commerce", href: "/sectors/high-ticket-ecommerce" },
+  { label: "Maritime & Logistics", href: "/sectors/maritime-logistics" },
+  { label: "Professional Services", href: "/sectors/professional-services" },
+];
+
+const PLAIN = [
+  { label: "Case Studies", href: "/case-studies" },
+  { label: "How We Work", href: "/engagement" },
+  { label: "About", href: "/about" },
+];
+
+type MenuKey = "services" | "industries";
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
-  const [visible, setVisible] = useState(true);
+  const [openMenu, setOpenMenu] = useState<MenuKey | null>(null);
+  const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-  const lastScrollY = useRef(0);
 
-  useEffect(() => setOpen(false), [location]);
+  useEffect(() => {
+    setOpen(false);
+    setOpenMenu(null);
+  }, [location]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const y = window.scrollY;
-      if (y < 60) {
-        setVisible(true);
-      } else if (y > lastScrollY.current + 8) {
-        setVisible(false);
-        setOpen(false);
-      } else if (y < lastScrollY.current - 8) {
-        setVisible(true);
-      }
-      lastScrollY.current = y;
+      setScrolled(window.scrollY > 12);
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setOpenMenu(null);
+        setOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
   const HIDE = ["/login", "/signup", "/verify", "/dashboard", "/admin", "/settings", "/member", "/chat"];
   if (HIDE.some((p) => location.pathname.startsWith(p))) return null;
 
+  const linkCls = "text-[13px] text-white/55 hover:text-white transition-colors px-3 py-2";
+
   return (
-    <motion.div
-      animate={{ y: visible ? 0 : -120, opacity: visible ? 1 : 0 }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-      className="fixed top-0 left-0 right-0 z-50 flex items-start justify-between px-6 md:px-10 pt-5 pointer-events-none"
-    >
-
-      {/* ── Logo (left) ── */}
-      <motion.div
-        initial={{ opacity: 0, y: -12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="pointer-events-auto shrink-0 hidden lg:block"
+    <header className="fixed top-0 inset-x-0 z-50">
+      <div
+        className={`relative transition-colors duration-300 ${
+          scrolled || openMenu ? "bg-[#0A0A0B]/90 backdrop-blur-xl border-b border-white/8" : "border-b border-transparent"
+        }`}
       >
-        <Link to="/" className="flex items-center">
-          <img
-            src="/svnr-logo.svg"
-            alt="SVNR Global"
-            className="block w-[88px] h-[88px] xl:w-[112px] xl:h-[112px]"
-            style={{ objectFit: "contain", mixBlendMode: "screen" }}
-          />
-        </Link>
-      </motion.div>
+        <div className="h-14 px-5 md:px-7 flex items-center gap-6">
+          {/* Logo — tight to left edge */}
+          <Link to="/" className="flex items-center text-white shrink-0" aria-label="SVNR Global home">
+            <Logo variant="mark" size={26} />
+          </Link>
 
-      {/* ── Floating glass pill, desktop ── */}
-      <motion.nav
-        initial={{ opacity: 0, y: -14 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.7, delay: 0.1, ease: [0.22, 1, 0.36, 1] }}
-        className="hidden lg:flex items-center pointer-events-auto absolute left-1/2 -translate-x-1/2 w-max max-w-[calc(100vw-3rem)]"
-        style={{
-          background: "rgba(15,15,17,0.65)",
-          backdropFilter: "blur(24px)",
-          WebkitBackdropFilter: "blur(24px)",
-          border: "1px solid rgba(255,255,255,0.10)",
-          borderRadius: "9999px",
-          padding: "5px 6px",
-          boxShadow: "0 8px 32px rgba(0,0,0,0.35), inset 0 1px 0 rgba(255,255,255,0.06)",
-        }}
-      >
-        {links.map((l) => {
-          const active =
-            location.pathname === l.href ||
-            (l.href !== "/" && location.pathname.startsWith(l.href));
-          return (
-            <Link
-              key={l.href}
-              to={l.href}
-              className="relative px-2.5 py-2 rounded-full text-[10.5px] uppercase tracking-[0.12em] font-light transition-colors duration-200 hover:text-white whitespace-nowrap"
-              style={{ color: active ? "#fff" : "rgba(255,255,255,0.45)" }}
-            >
-              {active && (
-                <motion.span
-                  layoutId="nav-active-pill"
-                  className="absolute inset-0 rounded-full"
-                  style={{ background: "rgba(255,255,255,0.09)" }}
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.4 }}
-                />
+          {/* Desktop nav + mega-menu — immediately after logo */}
+          <nav
+            className="hidden lg:flex items-center gap-0.5 relative"
+            onMouseLeave={() => setOpenMenu(null)}
+          >
+            {(["services", "industries"] as MenuKey[]).map((key) => (
+              <div key={key} onMouseEnter={() => setOpenMenu(key)} className="relative">
+                <button
+                  type="button"
+                  aria-expanded={openMenu === key}
+                  onClick={() => setOpenMenu(openMenu === key ? null : key)}
+                  className={`${linkCls} capitalize inline-flex items-center gap-1 ${openMenu === key ? "text-white" : ""}`}
+                >
+                  {key}
+                  <ChevronDown
+                    size={12}
+                    className={`transition-transform duration-200 ${openMenu === key ? "rotate-180" : ""}`}
+                  />
+                </button>
+              </div>
+            ))}
+            {PLAIN.map((l) => (
+              <Link key={l.href} to={l.href} className={linkCls} onMouseEnter={() => setOpenMenu(null)}>
+                {l.label}
+              </Link>
+            ))}
+
+            {/* Mega-menu panel */}
+            <AnimatePresence>
+              {openMenu && (
+                <motion.div
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -6 }}
+                  transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
+                  className="absolute top-full left-0 mt-3 w-[min(680px,90vw)]"
+                >
+                  <div className="rounded-xl border border-white/10 bg-[#101012] p-5 shadow-[0_16px_48px_rgba(0,0,0,0.5)]">
+                    <p className="eyebrow text-white/40 mb-4 capitalize">{openMenu}</p>
+                    {openMenu === "services" ? (
+                      <div className="grid grid-cols-2 gap-x-6 gap-y-1">
+                        {SERVICES.map((s) => (
+                          <Link
+                            key={s.href}
+                            to={s.href}
+                            className="group rounded-lg px-3 py-2.5 hover:bg-white/[0.04] transition-colors"
+                          >
+                            <span className="block text-sm text-white/85 group-hover:text-white">{s.label}</span>
+                            <span className="block text-xs text-white/35 mt-0.5 leading-snug">{s.desc}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    ) : (
+                      <div className="grid grid-cols-2 gap-x-6 gap-y-0.5">
+                        {INDUSTRIES.map((s) => (
+                          <Link
+                            key={s.href}
+                            to={s.href}
+                            className="rounded-lg px-3 py-2 text-sm text-white/70 hover:text-white hover:bg-white/[0.04] transition-colors"
+                          >
+                            {s.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                    <Link
+                      to={openMenu === "services" ? "/services" : "/sectors"}
+                      className="mt-4 flex items-center justify-between rounded-lg border border-white/10 bg-white/[0.02] px-4 py-3 text-sm text-white/70 hover:text-white hover:border-white/20 transition-colors"
+                    >
+                      <span>{openMenu === "services" ? "Explore the agent stack" : "See all sectors"}</span>
+                      <span aria-hidden>→</span>
+                    </Link>
+                  </div>
+                </motion.div>
               )}
-              <span className="relative z-10">{l.label}</span>
+            </AnimatePresence>
+          </nav>
+
+          {/* Right: Log in + CTA + mobile toggle */}
+          <div className="flex items-center gap-3 shrink-0 ml-auto">
+            <Link
+              to="/cassian"
+              className="hidden sm:inline-flex text-[13px] text-white/55 hover:text-white transition-colors px-3 py-2"
+            >
+              Log in
             </Link>
-          );
-        })}
+            <Link to="/contact" className="btn-primary hidden sm:inline-flex">
+              Book a call <span aria-hidden>↗</span>
+            </Link>
+            <button
+              type="button"
+              className="lg:hidden text-white/60 hover:text-white transition-colors"
+              onClick={() => setOpen(!open)}
+              aria-label="Toggle menu"
+            >
+              {open ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+      </div>
 
-        {/* Separator */}
-        <div
-          className="mx-1 shrink-0"
-          style={{ width: 1, height: 16, background: "rgba(255,255,255,0.12)" }}
-        />
-
-        {/* CTA button inside pill */}
-        <Link
-          to="/contact"
-          className="flex items-center gap-1 px-4 py-2 rounded-full text-[10.5px] uppercase tracking-[0.12em] font-medium text-[#0A0A0B] transition-all hover:opacity-90 shrink-0"
-          style={{ background: "#ffffff" }}
-        >
-          Book a Call <span className="text-[10px]">↗</span>
-        </Link>
-      </motion.nav>
-
-      {/* ── Mobile logo ── */}
-      <Link
-        to="/"
-        className="lg:hidden pointer-events-auto shrink-0"
-      >
-        <img
-          src="/svnr-logo.svg"
-          alt="SVNR Global"
-          className="w-[56px] h-[56px]"
-          style={{ objectFit: "contain", mixBlendMode: "screen" }}
-        />
-      </Link>
-
-      {/* ── Mobile hamburger ── */}
-      <motion.button
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3 }}
-        className="lg:hidden pointer-events-auto text-white/60 hover:text-white transition-colors mt-1 shrink-0"
-        onClick={() => setOpen(!open)}
-        aria-label="Toggle menu"
-      >
-        {open ? <X size={20} /> : <Menu size={20} />}
-      </motion.button>
-
-      {/* ── Mobile dropdown ── */}
+      {/* Mobile dropdown */}
       <AnimatePresence>
         {open && (
           <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.97 }}
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.2, ease: "easeOut" }}
-            className="absolute top-[64px] left-4 right-4 pointer-events-auto rounded-2xl overflow-hidden"
-            style={{
-              background: "rgba(12,12,14,0.97)",
-              backdropFilter: "blur(24px)",
-              WebkitBackdropFilter: "blur(24px)",
-              border: "1px solid rgba(255,255,255,0.08)",
-              boxShadow: "0 16px 48px rgba(0,0,0,0.5)",
-            }}
+            className="lg:hidden mx-4 mt-2 rounded-2xl border border-white/8 bg-[#0C0C0E]/97 backdrop-blur-xl overflow-hidden"
           >
-            <div className="flex flex-col gap-1 p-3">
-              {links.map((l) => (
-                <Link
-                  key={l.href}
-                  to={l.href}
-                  className="px-4 py-3 rounded-xl text-sm text-white/60 hover:text-white hover:bg-white/5 uppercase tracking-widest font-light transition-all"
-                >
+            <div className="max-h-[70vh] overflow-y-auto p-3">
+              <p className="eyebrow text-white/35 px-3 pt-2 pb-1">Services</p>
+              {SERVICES.map((s) => (
+                <Link key={s.href} to={s.href} className="block px-3 py-2 rounded-lg text-sm text-white/65 hover:text-white hover:bg-white/5 transition-colors">
+                  {s.label}
+                </Link>
+              ))}
+              <p className="eyebrow text-white/35 px-3 pt-3 pb-1">Industries</p>
+              {INDUSTRIES.map((s) => (
+                <Link key={s.href} to={s.href} className="block px-3 py-2 rounded-lg text-sm text-white/65 hover:text-white hover:bg-white/5 transition-colors">
+                  {s.label}
+                </Link>
+              ))}
+              <div className="h-px bg-white/8 my-2" />
+              {PLAIN.map((l) => (
+                <Link key={l.href} to={l.href} className="block px-3 py-2 rounded-lg text-sm text-white/65 hover:text-white hover:bg-white/5 transition-colors">
                   {l.label}
                 </Link>
               ))}
-              <Link
-                to="/contact"
-                className="mt-1 mx-1 text-center px-4 py-3 rounded-xl text-xs uppercase tracking-widest text-[#0A0A0B] bg-white font-medium hover:opacity-90 transition-all"
-              >
-                Book a Call ↗
+              <Link to="/contact" className="btn-primary w-full mt-2">
+                Book a call <span aria-hidden>↗</span>
               </Link>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </header>
   );
 }

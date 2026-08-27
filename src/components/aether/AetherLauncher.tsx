@@ -24,13 +24,26 @@ const HIDE_PREFIXES = [
   "/member",
 ];
 
+// The tip card never opens over a hero or a conversion step. It waits for the
+// reader to show intent — scrolling past the fold — and stays out of the way on
+// pages where any extra friction costs a booking.
+const NO_TEASER_PREFIXES = ["/contact", "/cassian"];
+const SCROLL_INTENT_PX = 600;
+
 export default function AetherLauncher() {
   const { pathname } = useLocation();
   const { session, profile } = useAuth();
   const approved = Boolean(session && profile?.prose_access_granted);
 
   if (HIDE_PREFIXES.some((p) => pathname.startsWith(p))) return null;
-  return approved ? <ChatLauncher pathname={pathname} /> : <TeaserLauncher />;
+  return approved ? (
+    <ChatLauncher pathname={pathname} />
+  ) : (
+    <TeaserLauncher
+      teaseOk={!NO_TEASER_PREFIXES.some((p) => pathname.startsWith(p))}
+      pathname={pathname}
+    />
+  );
 }
 
 // ── Approved: inline Ora chat ────────────────────────────────────────
@@ -109,13 +122,14 @@ function ChatLauncher({ pathname }: { pathname: string }) {
 }
 
 // ── Not approved: teaser ─────────────────────────────────────────────
-function TeaserLauncher() {
+function TeaserLauncher({ teaseOk, pathname }: { teaseOk: boolean; pathname: string }) {
   const [mounted, setMounted] = useState(false);
   const [open, setOpen] = useState(false);
   const [idx, setIdx] = useState(0);
   const [hover, setHover] = useState(false);
   const [dismissed, setDismissed] = useState(false);
   const [openedTip, setOpenedTip] = useState<string | null>(null);
+  const [engaged, setEngaged] = useState(false);
 
   useEffect(() => {
     const t = setTimeout(() => setMounted(true), 900);
@@ -127,11 +141,61 @@ function TeaserLauncher() {
     return () => clearTimeout(t);
   }, []);
 
+  // Intent gate: the card only appears once the reader has scrolled past the
+  // fold. Re-armed on navigation so a fresh page starts clean again.
+  //
+  // Two independent signals, because neither alone covers every route. Lenis
+  // owns the scroll position on marketing routes but drives real native
+  // scrolling underneath, so the scroll listener fires there and under
+  // reduced-motion alike; the sentinel covers any route that scrolls inside a
+  // container instead of the window. Whichever trips first wins, then both
+  // tear down.
   useEffect(() => {
-    if (open || dismissed || hover) return;
+    setEngaged(false);
+    if (!teaseOk) return;
+
+    let done = false;
+    const trip = () => {
+      if (done) return;
+      done = true;
+      setEngaged(true);
+      cleanup();
+    };
+
+    const onScroll = () => {
+      if (window.scrollY > SCROLL_INTENT_PX) trip();
+    };
+
+    const sentinel = document.createElement("div");
+    sentinel.setAttribute("aria-hidden", "true");
+    sentinel.style.cssText = `position:absolute;top:0;left:0;width:1px;height:${SCROLL_INTENT_PX}px;pointer-events:none;visibility:hidden;`;
+    document.body.appendChild(sentinel);
+
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) trip();
+      },
+      { threshold: 0 },
+    );
+
+    function cleanup() {
+      window.removeEventListener("scroll", onScroll);
+      io.disconnect();
+      sentinel.remove();
+    }
+
+    io.observe(sentinel);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // deep-link / restored scroll position
+
+    return cleanup;
+  }, [teaseOk, pathname]);
+
+  useEffect(() => {
+    if (open || dismissed || hover || !engaged) return;
     const id = setInterval(() => setIdx((i) => (i + 1) % CASSIAN_TIPS.length), 4800);
     return () => clearInterval(id);
-  }, [open, dismissed, hover]);
+  }, [open, dismissed, hover, engaged]);
 
   const openPanel = (tip?: string) => {
     setOpenedTip(tip ?? null);
@@ -146,7 +210,7 @@ function TeaserLauncher() {
     }
   };
 
-  const showCard = mounted && !open && !dismissed;
+  const showCard = mounted && engaged && !open && !dismissed;
 
   return (
     <div className="fixed bottom-5 right-5 z-[60] flex flex-col items-end gap-3 pointer-events-none">

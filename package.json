@@ -12,6 +12,8 @@
     "indexnow": "node scripts/indexnow.mjs"
   },
   "dependencies": {
+    "@fontsource-variable/geist": "^5.2.9",
+    "@fontsource-variable/geist-mono": "^5.2.8",
     "@supabase/supabase-js": "^2.107.0",
     "@tailwindcss/vite": "^4.3.0",
     "hls.js": "^1.6.16",

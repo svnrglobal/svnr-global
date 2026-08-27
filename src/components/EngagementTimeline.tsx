@@ -9,7 +9,7 @@ interface Milestone {
 // nodes pop in sequence. Horizontal on desktop, vertical rail on mobile.
 export default function EngagementTimeline({
   milestones,
-  accent = "#8b7dff",
+  accent = "#fb7185",
 }: {
   milestones: Milestone[];
   accent?: string;

@@ -7,6 +7,13 @@
       "runtimeArgs": ["run", "dev", "--", "--port", "5173"],
       "port": 5173,
       "cwd": "/Users/heraomair/Downloads/svnr-react"
+    },
+    {
+      "name": "svnr-prod",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["vite", "preview", "--port", "4180"],
+      "port": 4180,
+      "cwd": "/Users/heraomair/Downloads/svnr-react"
     }
   ]
 }

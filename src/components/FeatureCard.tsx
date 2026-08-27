@@ -29,11 +29,12 @@ export default function FeatureCard({
   title,
   description,
   icon,
-  gradient,
+  gradient: _gradient,
   delay = 0,
   number,
   onClick,
 }: FeatureCardProps) {
+  void _gradient;
   const IconComp = ICONS[icon] || Star;
 
   return (
@@ -41,38 +42,29 @@ export default function FeatureCard({
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.8, ease: "easeOut", delay }}
-      className="relative flex flex-col justify-start items-start w-full max-w-[300px] group mx-auto cursor-pointer"
+      transition={{ duration: 0.6, ease: "easeOut", delay }}
+      className="group h-full"
       onClick={onClick}
     >
-      <div
-        className="absolute inset-0 w-full h-[280px] opacity-50 rounded-[40px] pointer-events-none transition-opacity duration-300 group-hover:opacity-70"
-        style={{ background: gradient, filter: "blur(45px)" }}
-      />
-      <div
-        className="relative self-stretch h-[280px] rounded-[40px] z-10 overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]"
-        style={{
-          border: "8px solid transparent",
-          background: `linear-gradient(#1A1A1C, #1A1A1C) padding-box, ${gradient} border-box`,
-        }}
-      >
-        <div className="w-full h-full p-7 flex flex-col justify-between">
-          <div>
-            <div className="flex items-center justify-between mb-5">
-              <div className="text-white/90">
-                <IconComp size={32} strokeWidth={2.5} />
-              </div>
-              {number && (
-                <span className="text-[10px] text-white/30 tracking-widest font-medium">{number}</span>
-              )}
-            </div>
-            <h3 className="text-white font-medium text-xl mb-3 tracking-tight">{title}</h3>
-            <p className="text-gray-400 text-[14px] leading-[1.6] font-normal">{description}</p>
+      <div className="relative h-full flex flex-col justify-between rounded-xl border border-white/[0.08] bg-white/[0.015] p-6 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.03] cursor-pointer">
+        <div>
+          <div className="flex items-center justify-between mb-5">
+            <IconComp size={22} strokeWidth={1.75} className="text-white/70" />
+            {number && (
+              <span
+                className="text-[10px] tracking-widest text-white/30 tabular-nums"
+                style={{ fontFamily: "var(--font-mono)" }}
+              >
+                {number}
+              </span>
+            )}
           </div>
-          <div className="flex items-center gap-1 text-white/30 text-xs group-hover:text-white/60 transition-colors">
-            <span>Learn more</span>
-            <ArrowRight size={12} />
-          </div>
+          <h3 className="text-white font-semibold text-lg mb-2 tracking-tight">{title}</h3>
+          <p className="text-white/45 text-sm leading-relaxed">{description}</p>
+        </div>
+        <div className="mt-6 flex items-center gap-1.5 text-white/35 text-xs group-hover:text-white/70 transition-colors">
+          <span>Learn more</span>
+          <ArrowRight size={12} className="group-hover:translate-x-0.5 transition-transform" />
         </div>
       </div>
     </motion.div>

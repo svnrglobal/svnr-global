@@ -4,13 +4,35 @@ import { ArrowRight } from "lucide-react";
 import Footer from "../components/Footer";
 import Nav from "../components/Nav";
 import SEO from "../components/SEO";
-import VideoHero from "../components/VideoHero";
+import Breadcrumbs from "../components/Breadcrumbs";
 
-const FOUNDER_VIDEO = "https://stream.mux.com/tLkHO1qZoaaQOUeVWo8hEBeGQfySP02EPS02BmnNFyXys.m3u8";
+const BELIEFS = [
+  {
+    label: "Infrastructure, not agency",
+    line: "Systems that find, reach, and warm the right people, running continuously, without constant human input.",
+  },
+  {
+    label: "Precision over volume",
+    line: "We optimise for speed at the right moment, reaching the right person with the right context before anyone else does.",
+  },
+  {
+    label: "Craft deserves reach",
+    line: "Exceptional work shouldn't be one relationship, one trade fair, or one lucky introduction away from falling apart.",
+  },
+];
+
+const CREDENTIALS = [
+  { name: "Founder & CEO", line: "SVNR Global — AI-powered acquisition infrastructure, founded 2019." },
+  { name: "Background", line: "Family business in the luxury rug and carpet trade, one of India's oldest craft-intensive industries." },
+  { name: "Education", line: "Degree in computer applications, completed while building SVNR." },
+  { name: "Base", line: "New Delhi, operating globally." },
+  { name: "Reach", line: "9+ industries served across luxury, real estate, private equity, and high-ticket B2B." },
+  { name: "LinkedIn", line: "in.linkedin.com/in/hamza-omair-5434b1354" },
+];
 
 export default function Founder() {
   return (
-    <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+    <main className="relative w-full bg-black font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Hamza Omair — Founder, SVNR Global"
         description="Hamza Omair founded SVNR Global to build AI-powered acquisition infrastructure for premium operators. Rooted in manufacturing, built on technology."
@@ -35,164 +57,166 @@ export default function Founder() {
 
       <Nav />
 
-      {/* HERO, video background */}
-      <VideoHero src={FOUNDER_VIDEO} minHeight="min-h-screen">
-        <div className="max-w-7xl mx-auto px-6 pt-32 pb-20 grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-end min-h-screen">
-          {/* Text */}
-          <div className="flex flex-col justify-end pb-4">
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.1 }}
-              className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-6"
-            >
-              Founder
-            </motion.p>
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 1.3 }}
-              className="text-5xl sm:text-6xl md:text-7xl font-medium text-white leading-[1.0] tracking-tight mb-6"
-            >
-              Hamza<br />Omair
-            </motion.h1>
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 1.6 }}
-              className="text-white/40 text-base leading-relaxed max-w-sm"
-            >
-              Founder & CEO, SVNR Global.<br />
-              New Delhi, operating globally.
-            </motion.p>
-          </div>
+      {/* HERO */}
+      <section className="relative pt-40 pb-20 px-6 md:px-12">
+        <div className="max-w-[1200px] mx-auto">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Founder" }]} />
 
-          {/* Photo */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1.2, delay: 1.4 }}
-            className="flex justify-center md:justify-end items-end pb-4"
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[10px] tracking-[0.28em] uppercase text-white/40 mt-8 mb-6"
+            style={{ fontFamily: "var(--font-mono)" }}
           >
-            <div className="relative w-64 sm:w-72 md:w-80">
-              <img loading="lazy" decoding="async" src="/hamza.jpg"
-                alt="Hamza Omair, Founder of SVNR Global"
-                className="w-full rounded-2xl object-cover"
-                style={{ aspectRatio: "1/1" }}
-              />
-              {/* Subtle bottom fade to blend with page */}
-              <div className="absolute bottom-0 left-0 right-0 h-16 rounded-b-2xl"
-                style={{ background: "linear-gradient(to top, rgba(10,10,11,0.6), transparent)" }} />
-            </div>
+            Founder
+          </motion.p>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.05, ease: [0.16, 1, 0.3, 1] }}
+            className="text-4xl sm:text-5xl md:text-[64px] font-medium leading-[1.05] tracking-tight text-white max-w-[900px]"
+          >
+            I wanted to build employees for myself, without hiring employees.
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+            className="text-white/45 text-lg leading-relaxed max-w-2xl mt-6"
+          >
+            Hamza Omair, Founder &amp; CEO of SVNR Global — AI-powered acquisition infrastructure for premium operators, built from New Delhi and run globally.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="mt-10"
+          >
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-all"
+            >
+              Book a call <ArrowRight size={14} />
+            </Link>
           </motion.div>
         </div>
-      </VideoHero>
+      </section>
+
+      {/* BELIEFS */}
+      <section className="px-6 md:px-12 py-20 border-t border-white/[0.08]">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8">
+          {BELIEFS.map((b, i) => (
+            <motion.div
+              key={b.label}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <p
+                className="text-[10px] tracking-[0.28em] uppercase text-white/40 mb-4"
+                style={{ fontFamily: "var(--font-mono)" }}
+              >
+                {b.label}
+              </p>
+              <p className="text-white/45 text-base leading-relaxed">{b.line}</p>
+            </motion.div>
+          ))}
+        </div>
+      </section>
 
       {/* STORY */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
-        <div className="max-w-3xl mx-auto">
-
+      <section className="px-6 md:px-12 py-20 border-t border-white/[0.08]">
+        <div className="max-w-[1200px] mx-auto max-w-3xl">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mb-20"
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="space-y-5 text-white/45 text-base leading-relaxed"
           >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/25 mb-8">The beginning</p>
-            <p className="text-white text-2xl sm:text-3xl font-medium leading-snug tracking-tight mb-8">
-              I wanted to build employees for myself, without hiring employees.
+            <p>
+              I was finishing my degree in computer applications when I started building what would become SVNR. Technology and AI had always been close to how I thought, but the problem I was trying to solve was very practical.
             </p>
-            <div className="space-y-5 text-white/50 text-base leading-relaxed">
-              <p>
-                I was finishing my degree in computer applications when I started building what would become SVNR. Technology and AI had always been close to how I thought, but the problem I was trying to solve was very practical.
-              </p>
-              <p>
-                I grew up around my family's business in the luxury rug and carpet trade, one of the oldest and most craft-intensive industries in India. I watched exceptional work struggle to reach the buyers it deserved. Not because of quality. Because acquisition was either one relationship, one trade fair, or one lucky introduction away from falling apart.
-              </p>
-              <p>
-                I didn't want to build an agency. I wanted to build infrastructure, systems that could do the work of finding, reaching, and warming the right people, running continuously, without constant human input. Employees without the overhead of employees.
-              </p>
-            </div>
-          </motion.div>
-
-          <div className="h-px bg-white/5 mb-20" />
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="mb-20"
-          >
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/25 mb-8">The conviction</p>
-            <p className="text-white text-2xl sm:text-3xl font-medium leading-snug tracking-tight mb-8">
-              Speed without precision is just noise.
+            <p>
+              I grew up around my family's business in the luxury rug and carpet trade, one of the oldest and most craft-intensive industries in India. I watched exceptional work struggle to reach the buyers it deserved. Not because of quality. Because acquisition was either one relationship, one trade fair, or one lucky introduction away from falling apart.
             </p>
-            <div className="space-y-5 text-white/50 text-base leading-relaxed">
-              <p>
-                Most acquisition businesses optimise for volume. More outreach, more contacts, more campaigns. We optimise for speed at the right moment, reaching the right person with the right context before anyone else does.
-              </p>
-              <p>
-                That's what AI makes possible when it's built correctly. Not automation for automation's sake. Infrastructure that moves faster than any team could manually, and does it with the precision that premium markets demand.
-              </p>
-            </div>
+            <p>
+              I didn't want to build an agency. I wanted to build infrastructure, systems that could do the work of finding, reaching, and warming the right people, running continuously, without constant human input. Employees without the overhead of employees.
+            </p>
+            <p>
+              Most acquisition businesses optimise for volume. More outreach, more contacts, more campaigns. We optimise for speed at the right moment, reaching the right person with the right context before anyone else does.
+            </p>
+            <p>
+              That's what AI makes possible when it's built correctly. Not automation for automation's sake. Infrastructure that moves faster than any team could manually, and does it with the precision that premium markets demand.
+            </p>
           </motion.div>
+        </div>
+      </section>
 
-          <div className="h-px bg-white/5 mb-20" />
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+      {/* CREDENTIALS — dense name-plus-line list */}
+      <section className="px-6 md:px-12 py-20 border-t border-white/[0.08]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.p
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="grid grid-cols-3 gap-3 sm:gap-6 mb-20"
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="text-[10px] tracking-[0.28em] uppercase text-white/40 mb-8"
+            style={{ fontFamily: "var(--font-mono)" }}
           >
-            {[
-              { value: "2019", label: "Founded" },
-              { value: "9+", label: "Industries served" },
-              { value: "Global", label: "Operating reach" },
-            ].map((s) => (
-              <div key={s.label} className="text-center">
-                <div className="text-2xl sm:text-3xl font-medium text-white mb-1">{s.value}</div>
-                <div className="text-[10px] uppercase tracking-widest text-white/25">{s.label}</div>
-              </div>
+            Background
+          </motion.p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12">
+            {CREDENTIALS.map((c, i) => (
+              <motion.div
+                key={c.name}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col sm:flex-row sm:items-baseline gap-1 sm:gap-4 py-4 border-b border-white/[0.08]"
+              >
+                <span className="text-white text-sm font-medium whitespace-nowrap sm:w-40 shrink-0">{c.name}</span>
+                <span className="text-white/40 text-sm leading-relaxed">{c.line}</span>
+              </motion.div>
             ))}
-          </motion.div>
-
-          <div className="h-px bg-white/5 mb-20" />
+          </div>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-wrap gap-4"
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-wrap gap-4 mt-12"
           >
             <a
               href="https://in.linkedin.com/in/hamza-omair-5434b1354"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 text-white/50 hover:text-white hover:border-white/40 transition-all text-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-white/[0.08] hover:border-white/[0.14] text-white/45 hover:text-white transition-all text-sm"
             >
               LinkedIn <ArrowRight size={12} />
             </a>
             <Link
               to="/about"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/15 text-white/50 hover:text-white hover:border-white/40 transition-all text-sm"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-2xl border border-white/[0.08] hover:border-white/[0.14] text-white/45 hover:text-white transition-all text-sm"
             >
               About SVNR Global <ArrowRight size={12} />
             </Link>
-            <Link
-              to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-all"
-            >
-              Book a call <ArrowRight size={12} />
-            </Link>
           </motion.div>
-
         </div>
       </section>
 
-      <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto">
+      <div className="px-6 md:px-12 pb-10 max-w-[1200px] mx-auto">
         <Footer />
       </div>
     </main>

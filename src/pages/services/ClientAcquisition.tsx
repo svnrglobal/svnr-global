@@ -1,39 +1,52 @@
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Target, Map, Mail, Handshake } from "lucide-react";
-import { AreaChart, Area, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { ArrowRight } from "lucide-react";
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
+import Breadcrumbs from "../../components/Breadcrumbs";
+import OpticalType from "../../components/OpticalType";
 import Counter from "../../components/Counter";
-import AnimatedSteps from "../../components/AnimatedSteps";
-import SystemFlow from "../../components/SystemFlow";
+import ConsoleFrame from "../../components/console/ConsoleFrame";
+import {
+  ProspectConsole,
+  SequenceBoard,
+  PartnerMap,
+} from "../../components/console/replicas";
+import { SelfResolvingAlert, LogTail } from "../../components/console/primitives";
+import { useIdleMischief } from "../../hooks/useIdleMischief";
 
-const gradient = "linear-gradient(135deg, #667eea, #764ba2)";
+const MONO = { fontFamily: "var(--font-mono)" };
+const EASE = [0.16, 1, 0.3, 1] as const;
 
-const chartData = [
-  { week: "W1", leads: 4 }, { week: "W2", leads: 9 }, { week: "W3", leads: 14 },
-  { week: "W4", leads: 18 }, { week: "W5", leads: 22 }, { week: "W6", leads: 27 },
-  { week: "W7", leads: 31 }, { week: "W8", leads: 35 }, { week: "W9", leads: 37 },
-  { week: "W10", leads: 39 }, { week: "W11", leads: 41 }, { week: "W12", leads: 42 },
-];
-
-const capabilities = [
-  { icon: Map, title: "Market Mapping", desc: "Identify every relevant decision-maker in your target geography before a single message is sent." },
-  { icon: Target, title: "Prospect Identification", desc: "AI-driven qualification against your ideal client profile across 50+ data signals." },
-  { icon: Mail, title: "Multi-Channel Outreach", desc: "Precision sequences across email, LinkedIn, and direct channels tuned to your sector." },
-  { icon: Handshake, title: "Warm Handoff", desc: "We run the conversation until the prospect is genuinely warm. You close from a position of strength." },
+const HERO_STATS = [
+  { v: "40+", l: "Qualified leads per month" },
+  { v: "18%", l: "Average reply rate" },
+  { v: "14 days", l: "To first meeting" },
 ];
 
 const steps = [
-  { n: "01", title: "Define ideal client profile", desc: "We work with you to map the precise characteristics of your best-fit client, sector, size, geography, decision-maker title." },
+  { n: "01", title: "Define ideal client profile", desc: "We work with you to map the precise characteristics of your best-fit client — sector, size, geography, decision-maker title." },
   { n: "02", title: "Map the target universe", desc: "Using proprietary data infrastructure, we identify every qualifying company and decision-maker in your market." },
   { n: "03", title: "Research & qualify", desc: "Each prospect is individually researched and scored. Only the highest-signal targets enter the outreach sequence." },
-  { n: "04", title: "Deploy outreach sequences", desc: "Multi-touch, multi-channel sequences are deployed. Every message is personalised to the individual, no templates." },
+  { n: "04", title: "Deploy outreach sequences", desc: "Multi-touch, multi-channel sequences are deployed. Every message is personalised to the individual — no templates." },
   { n: "05", title: "Warm handoff to principal", desc: "When a prospect responds with genuine interest, we hand them directly to you with full context for the conversation." },
 ];
 
 const sectors = ["Luxury Rugs", "Premium Real Estate", "Private Equity", "Wealth Management", "B2B Luxury", "Professional Services"];
+
+const RELATED = [
+  { to: "/blog/client-acquisition-system-vs-campaign", label: "System vs Campaign" },
+  { to: "/blog/client-acquisition-cost-referral-dependency", label: "Breaking Referral Dependency" },
+  { to: "/blog/what-is-outreach-infrastructure", label: "What Is Outreach Infrastructure" },
+];
+
+const services = [
+  { slug: "ai-receptionist", label: "AI Receptionist", desc: "Every inbound enquiry qualified, answered, and routed the moment it arrives, day or night." },
+  { slug: "revenue-operations", label: "Revenue Operations", desc: "The pipeline this system fills, tracked end-to-end. Every stage measured and managed." },
+  { slug: "intelligence-research", label: "Intelligence & Research", desc: "The signal layer behind qualification — funding, hiring, and market movement mapped per account." },
+];
 
 const CLIENT_ACQUISITION_FAQS = [
   { q: "What does SVNR's client acquisition system actually do?", a: "The system identifies every qualifying prospect in your target market using AI-driven research across 50+ data signals, builds personalised multi-channel outreach sequences, runs the entire conversation until the prospect is genuinely warm, and hands them directly to you with full context. You only engage at the point of a qualified conversation." },
@@ -42,9 +55,89 @@ const CLIENT_ACQUISITION_FAQS = [
   { q: "How quickly does SVNR's client acquisition system start delivering results?", a: "Most clients see the first qualified prospect conversations within 14–21 days of deployment. The system compounds over time — month 3 consistently outperforms month 1 as early relationships mature and the sequence is refined on real response data." },
 ];
 
+// THE STRIPE MOMENT — the account console, blown up to hero scale inside the
+// console chrome. Plays on load; replays once, quietly, after a hover-and-leave.
+function HeroConsole() {
+  const { lit, mischief, bind } = useIdleMischief();
+  const [replay, setReplay] = useState(0);
+
+  useEffect(() => {
+    if (mischief) setReplay((n) => n + 1);
+  }, [mischief]);
+
+  return (
+    <motion.div
+      {...bind}
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
+    >
+      <ConsoleFrame label="prospect-console — live" badge="LIVE">
+        <div key={replay}>
+          <ProspectConsole lit={mischief || lit || replay === 0} />
+        </div>
+      </ConsoleFrame>
+    </motion.div>
+  );
+}
+
+// Feature block wrapper: label / badge / headline / sentence / a replaying console.
+function FeatureBlock({
+  eyebrow,
+  badge,
+  title,
+  copy,
+  consoleLabel,
+  children,
+  delay = 0,
+}: {
+  eyebrow: string;
+  badge: string;
+  title: string;
+  copy: string;
+  consoleLabel: string;
+  children: (lit: boolean) => React.ReactNode;
+  delay?: number;
+}) {
+  const { lit, mischief, bind } = useIdleMischief();
+  const [replay, setReplay] = useState(0);
+
+  useEffect(() => {
+    if (mischief) setReplay((n) => n + 1);
+  }, [mischief]);
+
+  const active = mischief || lit;
+
+  return (
+    <motion.div
+      {...bind}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.5, delay, ease: EASE }}
+      className="rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 p-7 md:p-8"
+    >
+      <p className="text-[10px] tracking-[0.28em] text-white/40 mb-3" style={MONO}>
+        {eyebrow.toUpperCase()}
+      </p>
+      <span
+        className="inline-block text-[9px] tracking-widest text-white/30 border border-white/[0.08] rounded px-1.5 py-0.5 mb-5"
+        style={MONO}
+      >
+        {badge}
+      </span>
+      <h3 className="text-white text-lg md:text-xl font-medium tracking-tight mb-2">{title}</h3>
+      <p className="text-white/45 text-sm leading-relaxed mb-6">{copy}</p>
+      <ConsoleFrame label={consoleLabel}>
+        <div key={replay}>{children(active)}</div>
+      </ConsoleFrame>
+    </motion.div>
+  );
+}
+
 export default function ClientAcquisition() {
   return (
-    <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+    <main className="relative w-full bg-black font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Client Acquisition — AI-Powered B2B Outreach | SVNR Global"
         description="AI-powered B2B client acquisition for luxury brands, private equity, real estate, and high-ticket operators. 40+ qualified conversations per month. First results in 14–21 days. No ads, no referrals."
@@ -92,40 +185,88 @@ export default function ClientAcquisition() {
           { name: "Client Acquisition", url: "/services/client-acquisition" },
         ]}
       />
+
       {/* HERO */}
-      <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <video
-          className="absolute inset-0 w-full h-full object-cover z-0"
-          src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260418_115655_b4d9cd77-feed-43cd-a198-af78ebdf1f7a.mp4"
-          autoPlay loop muted playsInline
-        />
-        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.55) 55%, rgba(10,10,11,0.25) 100%)" }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-4">Service 01</p>
-            <h1 className="text-5xl md:text-7xl font-medium text-white tracking-tight mb-4">Client Acquisition</h1>
-            <p className="text-xl text-white/60 max-w-xl">We build the pipeline that brings the right clients to you, consistently.</p>
-          </motion.div>
+      <section className="relative z-10 px-6 md:px-12 pt-32 md:pt-44 pb-16 md:pb-24">
+        <div className="max-w-[1200px] mx-auto">
+          <Breadcrumbs items={[{ label: "Home", to: "/" }, { label: "Services", to: "/services" }, { label: "Client Acquisition" }]} />
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
+            <div>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="text-[10px] tracking-[0.28em] text-white/40 mb-6"
+                style={MONO}
+              >
+                SYSTEM 01 · CLIENT ACQUISITION
+              </motion.p>
+              <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.08, ease: EASE }}>
+                <OpticalType className="text-4xl sm:text-5xl md:text-[64px] font-medium text-white leading-[1.05] tracking-tight">
+                  The system that fills your pipeline.
+                </OpticalType>
+              </motion.div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.22 }}
+                className="text-white/45 text-base md:text-lg mt-6 max-w-xl leading-relaxed"
+              >
+                We identify, reach, and warm the exact decision-makers in your market — continuously, without your time.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-3 mt-9"
+              >
+                <Link to="/contact" className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors">
+                  Start the conversation <ArrowRight size={14} />
+                </Link>
+                <Link to="/services" className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/[0.14] text-white/80 text-sm hover:border-white/30 hover:text-white transition-colors">
+                  All systems <ArrowRight size={14} />
+                </Link>
+              </motion.div>
+            </div>
+
+            <HeroConsole />
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 md:mt-16">
+            {HERO_STATS.map((s, i) => (
+              <motion.div
+                key={s.l}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+                className="rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 px-6 py-5"
+              >
+                <Counter value={s.v} className="block text-2xl md:text-[28px] font-medium text-white tabular-nums leading-none" />
+                <p className="text-[10px] tracking-[0.28em] text-white/40 mt-3" style={MONO}>
+                  {s.l.toUpperCase()}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* DASHBOARD IMAGE */}
-      <section className="relative z-10 bg-[#0A0A0B] pt-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }} className="rounded-2xl overflow-hidden border border-white/10">
-            <img loading="lazy" decoding="async" src="/services/client-acquisition.png" alt="Client Acquisition Dashboard" className="w-full h-auto object-cover" />
-          </motion.div>
-        </div>
-      </section>
-
-      {/* SECTORS */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-6">Which industries benefit most</p>
+      {/* WHICH SECTORS */}
+      <section className="relative z-10 px-6 md:px-12 py-16 md:py-20 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-60px" }} transition={{ duration: 0.5, ease: EASE }}>
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-6" style={MONO}>
+              WHICH INDUSTRIES BENEFIT MOST
+            </p>
             <div className="flex flex-wrap gap-3">
               {sectors.map((s) => (
-                <span key={s} className="px-4 py-2 rounded-full text-xs uppercase tracking-widest text-white/70 border border-white/15">
+                <span
+                  key={s}
+                  className="px-4 py-2 rounded-full text-xs uppercase tracking-widest text-white/60 border border-white/[0.08]"
+                  style={MONO}
+                >
                   {s}
                 </span>
               ))}
@@ -134,167 +275,281 @@ export default function ClientAcquisition() {
         </div>
       </section>
 
-      {/* METRICS */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6 border-t border-white/8">
-        <div className="max-w-7xl mx-auto grid grid-cols-3 gap-8">
-          {[
-            { value: "40+", label: "Qualified leads per month" },
-            { value: "18%", label: "Average reply rate" },
-            { value: "14 days", label: "To first meeting" },
-          ].map((m) => (
-            <motion.div key={m.label} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
-              <div className="text-4xl md:text-5xl font-medium mb-2" style={{ background: gradient, WebkitBackgroundClip: "text", WebkitTextFillColor: "transparent", backgroundClip: "text" }}>
-                <Counter value={m.value} />
-              </div>
-              <p className="text-xs uppercase tracking-widest text-white/40">{m.label}</p>
-            </motion.div>
-          ))}
-        </div>
-      </section>
-
-      {/* HOW IT RUNS: system flow infographic */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">How it runs</p>
-            <h2 className="text-3xl font-medium text-white tracking-tight">Signals in. Conversations out.</h2>
+      {/* FEATURE BLOCKS — the core of the page */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mb-14"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              WHAT THE SYSTEM DELIVERS
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight">
+              Four capabilities, one pipeline.
+            </h2>
           </motion.div>
-          <SystemFlow
-            inputs={["Market mapping", "50+ data signals", "Individual research", "Multi-channel sequences"]}
-            engine="Client Acquisition System"
-            engineIcon={Target}
-            output={{ value: "40+", label: "qualified conversations per month" }}
-            gradient={gradient}
-          />
-        </div>
-      </section>
 
-      {/* CAPABILITIES */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Capabilities</p>
-            <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tight">What the system delivers</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {capabilities.map((c, i) => (
-              <motion.div
-                key={c.title}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                whileHover={{ rotateX: -5, rotateY: 5, scale: 1.02 }}
-                style={{ transformStyle: "preserve-3d", perspective: 1000 }}
-                className="liquid-glass rounded-2xl p-7"
-              >
-                <div className="w-10 h-10 rounded-xl flex items-center justify-center mb-4" style={{ background: gradient }}>
-                  <c.icon size={18} className="text-white" />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <FeatureBlock
+              eyebrow="Market mapping"
+              badge="ICP MATCH"
+              title="Every qualifying account, mapped before contact."
+              copy="We identify every relevant decision-maker in your target geography before a single message is sent."
+              consoleLabel="prospect-console"
+              delay={0}
+            >
+              {(lit) => <ProspectConsole lit={lit} />}
+            </FeatureBlock>
+
+            <FeatureBlock
+              eyebrow="Prospect identification"
+              badge="50+ SIGNALS"
+              title="Qualification against your ideal client profile."
+              copy="AI-driven qualification runs across 50+ data signals so only the highest-fit targets enter a sequence."
+              consoleLabel="pipeline-health"
+              delay={0.05}
+            >
+              {(lit) => (
+                <div className="py-1">
+                  <SelfResolvingAlert
+                    lit={lit}
+                    problem="Stale deal detected — Nordvik Group, 19 days idle"
+                    resolution="Auto-escalated to owner, follow-up sent"
+                    meta="11 min"
+                  />
                 </div>
-                <h3 className="text-white font-medium mb-2">{c.title}</h3>
-                <p className="text-sm text-white/50 leading-relaxed">{c.desc}</p>
+              )}
+            </FeatureBlock>
+
+            <FeatureBlock
+              eyebrow="Multi-channel outreach"
+              badge="EMAIL + LINKEDIN"
+              title="Precision sequences tuned to your sector."
+              copy="Multi-touch sequences run across email and LinkedIn, personalised to the individual, never templated."
+              consoleLabel="sequence-board"
+              delay={0.1}
+            >
+              {(lit) => <SequenceBoard lit={lit} />}
+            </FeatureBlock>
+
+            <FeatureBlock
+              eyebrow="Warm handoff"
+              badge="ROUTED"
+              title="You close from a position of strength."
+              copy="We run the conversation until the prospect is genuinely warm, then hand off with full context."
+              consoleLabel="handoff-log"
+              delay={0.15}
+            >
+              {(lit) => (
+                <LogTail
+                  lit={lit}
+                  rows={[
+                    { t: "09:14", status: "reply", text: "Prospect replied — routed to qualification" },
+                    { t: "10:02", status: "warm", text: "Interest confirmed — context brief prepared" },
+                    { t: "10:48", status: "handoff", text: "Handed off to principal for first call" },
+                  ]}
+                />
+              )}
+            </FeatureBlock>
+          </div>
+        </div>
+      </section>
+
+      {/* HOW IT RUNS */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              HOW IT RUNS
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight leading-tight mb-6">
+              Signals in. Conversations out.
+            </h2>
+            <p className="text-white/45 text-sm leading-relaxed mb-4">
+              Most acquisition motions depend on one person who knows everyone, or a trade fair cycle that produces
+              two new contacts per year. We replace that dependency with a permanent operating system.
+            </p>
+            <p className="text-white/45 text-sm leading-relaxed">
+              40+ qualified conversations per month. 18% average reply rate. First meetings inside 14 days.
+            </p>
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.08, ease: EASE }}
+          >
+            <ConsoleFrame label="partner-map">
+              <PartnerMap lit={true} />
+            </ConsoleFrame>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* PROCESS */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mb-10"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              PROCESS
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight">
+              How the system deploys.
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
+            {steps.map((s, i) => (
+              <motion.div
+                key={s.n}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+                className="rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 p-6"
+              >
+                <span className="text-[10px] tracking-widest text-white/20 tabular-nums" style={MONO}>
+                  {s.n}
+                </span>
+                <p className="text-white text-sm font-medium leading-snug mt-4">{s.title}</p>
+                <p className="text-white/40 text-xs leading-relaxed mt-2">{s.desc}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6 border-t border-white/8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-16">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Process</p>
-            <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tight">How the system deploys</h2>
+      {/* APPLICABLE SYSTEMS */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mb-10"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              RELATED SYSTEMS
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight">
+              Built to run alongside client acquisition.
+            </h2>
           </motion.div>
-          <AnimatedSteps steps={steps} gradient={gradient} />
-        </div>
-      </section>
-
-      {/* CHART */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6 border-t border-white/8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Performance</p>
-            <h2 className="text-3xl font-medium text-white tracking-tight">Leads generated over 12 weeks</h2>
-          </motion.div>
-          <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} className="liquid-glass rounded-2xl p-8">
-            <div className="h-64">
-              <ResponsiveContainer width="100%" height="100%">
-                <AreaChart data={chartData}>
-                  <defs>
-                    <linearGradient id="ca-grad" x1="0" y1="0" x2="0" y2="1">
-                      <stop offset="5%" stopColor="#667eea" stopOpacity={0.3} />
-                      <stop offset="95%" stopColor="#667eea" stopOpacity={0} />
-                    </linearGradient>
-                  </defs>
-                  <XAxis dataKey="week" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 11 }} axisLine={false} tickLine={false} />
-                  <YAxis tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 11 }} axisLine={false} tickLine={false} />
-                  <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 12, color: "#fff" }} />
-                  <Area type="monotone" dataKey="leads" stroke="#667eea" strokeWidth={2} fill="url(#ca-grad)" dot={false} />
-                </AreaChart>
-              </ResponsiveContainer>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-
-      {/* RELATED INSIGHTS */}
-      <section className="relative z-10 bg-[#0A0A0B] pb-16 px-6 border-t border-white/8">
-        <div className="max-w-7xl mx-auto pt-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-3">Related Insights</p>
-            <h2 className="text-2xl font-medium text-white tracking-tight">From the SVNR blog</h2>
-          </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 * 0.1 }}>
-              <Link to="/blog/client-acquisition-system-vs-campaign" className="block liquid-glass rounded-2xl p-5 hover:border-white/20 transition-all border border-white/8">
-                <p className="text-[9px] uppercase tracking-widest text-white/30 mb-2">Read</p>
-                <p className="text-white/80 text-sm font-medium leading-snug hover:text-white transition-colors">System vs Campaign</p>
-                <p className="text-white/30 text-[10px] mt-3 uppercase tracking-widest">→ svnrglobal.com/blog</p>
-              </Link>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1 * 0.1 }}>
-              <Link to="/blog/client-acquisition-cost-referral-dependency" className="block liquid-glass rounded-2xl p-5 hover:border-white/20 transition-all border border-white/8">
-                <p className="text-[9px] uppercase tracking-widest text-white/30 mb-2">Read</p>
-                <p className="text-white/80 text-sm font-medium leading-snug hover:text-white transition-colors">Breaking Referral Dependency</p>
-                <p className="text-white/30 text-[10px] mt-3 uppercase tracking-widest">→ svnrglobal.com/blog</p>
-              </Link>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 2 * 0.1 }}>
-              <Link to="/blog/what-is-outreach-infrastructure" className="block liquid-glass rounded-2xl p-5 hover:border-white/20 transition-all border border-white/8">
-                <p className="text-[9px] uppercase tracking-widest text-white/30 mb-2">Read</p>
-                <p className="text-white/80 text-sm font-medium leading-snug hover:text-white transition-colors">What Is Outreach Infrastructure</p>
-                <p className="text-white/30 text-[10px] mt-3 uppercase tracking-widest">→ svnrglobal.com/blog</p>
-              </Link>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {services.map((s, i) => (
+              <motion.div
+                key={s.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4, transition: { duration: 0.22, ease: "easeOut" } }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+              >
+                <Link
+                  to={`/services/${s.slug}`}
+                  className="group relative flex flex-col h-full rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 p-7"
+                >
+                  <ArrowRight size={14} className="absolute top-7 right-7 text-white/20 group-hover:text-white/70 group-hover:translate-x-1 transition-all duration-300" />
+                  <h3 className="text-white text-lg md:text-xl font-medium tracking-tight mb-2 pr-8">{s.label}</h3>
+                  <p className="text-white/40 text-sm leading-relaxed">{s.desc}</p>
+                </Link>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
+
       {/* CTA */}
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
-        <div className="max-w-3xl mx-auto text-center">
-          <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-5xl font-medium text-white mb-6 tracking-tight">
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.55, ease: EASE }}
+            className="max-w-2xl"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              NEXT
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight leading-tight mb-5">
               Ready to build the pipeline?
             </h2>
-            <p className="text-white/50 mb-10">Every engagement is built specifically for your market. No templates. No shared infrastructure.</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link to="/contact" className="inline-flex items-center gap-3 px-10 py-4 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-all">
-                Book a Consultation <ArrowRight size={14} />
+            <p className="text-white/45 text-base leading-relaxed mb-9">
+              Every engagement is built specifically for your market. No templates. No shared infrastructure.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link to="/contact" className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors">
+                Start the conversation <ArrowRight size={14} />
               </Link>
-              <Link to="/services" className="inline-flex items-center gap-3 px-10 py-4 rounded-full border border-white/20 text-white text-sm hover:border-white/50 transition-all">
-                View All Services <ArrowRight size={14} />
+              <Link to="/services" className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/[0.14] text-white/80 text-sm hover:border-white/30 hover:text-white transition-colors">
+                All systems <ArrowRight size={14} />
               </Link>
             </div>
           </motion.div>
         </div>
       </section>
 
-      
       <FaqSection faqs={CLIENT_ACQUISITION_FAQS} title="Common questions about Client Acquisition" />
 
-      <div className="relative z-10 px-6 pb-10 max-w-7xl mx-auto">
+      {/* RELATED INSIGHTS */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-24 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mb-8"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              RELATED INSIGHTS
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight">From the SVNR blog</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {RELATED.map((r, i) => (
+              <motion.div
+                key={r.to}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+              >
+                <Link
+                  to={r.to}
+                  className="group relative flex items-center justify-between gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 p-6"
+                >
+                  <div>
+                    <p className="text-[10px] tracking-[0.28em] text-white/40 mb-2" style={MONO}>
+                      READ
+                    </p>
+                    <p className="text-white text-sm font-medium leading-snug">{r.label}</p>
+                  </div>
+                  <ArrowRight size={14} className="shrink-0 text-white/20 group-hover:text-white/70 group-hover:translate-x-1 transition-all duration-300" />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="relative z-10 px-6 md:px-12 pb-10 max-w-[1200px] mx-auto">
         <Footer />
       </div>
     </main>

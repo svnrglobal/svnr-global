@@ -83,7 +83,7 @@ export const SERVICES = [
     label: "Intelligence Research",
     title: "Know your market before you move.",
     summary: "Deep prospect research, competitive mapping, and signal monitoring. Delivered as intelligence, not data.",
-    gradient: "linear-gradient(137deg, #667eea 0%, #764ba2 45%, #f093fb 100%)",
+    gradient: "linear-gradient(137deg, #667eea 0%, #e11d48 45%, #fda4af 100%)",
     icon: "Search",
     metrics: [
       { label: "Prospect profiles built", value: 500, unit: "+" },

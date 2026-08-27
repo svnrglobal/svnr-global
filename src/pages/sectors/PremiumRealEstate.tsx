@@ -1,21 +1,42 @@
+import { useEffect, useState } from "react";
 import { motion } from "motion/react";
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-import { AreaChart, Area, RadialBarChart, RadialBar, ResponsiveContainer, Tooltip, XAxis } from "recharts";
 import Footer from "../../components/Footer";
 import FaqSection from "../../components/FaqSection";
 import SEO from "../../components/SEO";
-import EngagementTimeline from "../../components/EngagementTimeline";
+import Breadcrumbs from "../../components/Breadcrumbs";
+import OpticalType from "../../components/OpticalType";
+import Counter from "../../components/Counter";
+import { SECTOR_MINI } from "../../components/minis";
+import { useIdleMischief } from "../../hooks/useIdleMischief";
 
-const timelineData = [
-  { day: "D1", response: 100 }, { day: "D3", response: 72 },
-  { day: "D7", response: 48 }, { day: "D14", response: 30 },
+const MONO = { fontFamily: "var(--font-mono)" };
+const EASE = [0.16, 1, 0.3, 1] as const;
+
+const HERO_STATS = [
+  { v: "14 min", l: "Time to first qualified reply" },
+  { v: "5K+", l: "HNW contacts mapped" },
+  { v: "68%", l: "Off-market deal rate" },
+];
+
+// Deal sourcing, off-market versus portal.
+const SOURCING = { offMarket: 68, portal: 32 };
+
+// Response by day from first contact, indexed to 100 at day one.
+const RESPONSE = [
+  { day: "D1", response: 100 },
+  { day: "D3", response: 72 },
+  { day: "D7", response: 48 },
+  { day: "D14", response: 30 },
   { day: "D30", response: 15 },
 ];
 
-const radialData = [
-  { name: "Off-market", value: 68, fill: "#0071E3" },
-  { name: "Portal", value: 32, fill: "rgba(255,255,255,0.1)" },
+const MILESTONES = [
+  { n: "01", when: "Week 0", label: "Buyer signals mapped" },
+  { n: "02", when: "Week 2 to 3", label: "Outreach live" },
+  { n: "03", when: "First reply", label: "14 minutes in a live programme" },
+  { n: "04", when: "Day 90", label: "Principal pipeline active" },
 ];
 
 const services = [
@@ -32,6 +53,17 @@ const insights = [
   "The off-market buyer is not passive. They are a principal with capital, a geographic preference, and a clear sense of what a good transaction looks like. They are waiting for someone who understands their parameters.",
 ];
 
+const IMAGES = [
+  "/sectors/real-estate-photo-1505873242700-f289a29e1e0f.avif",
+  "/sectors/real-estate-premium_photo-1661915661139-5b6a4e4a6fcc.avif",
+];
+
+const RELATED = [
+  { to: "/blog/real-estate-investor-buyer-acquisition", label: "Reaching Investor Buyers" },
+  { to: "/blog/hnw-investor-outreach-strategy", label: "HNW Investor Outreach" },
+  { to: "/blog/uhnw-client-acquisition-strategy", label: "UHNW Client Acquisition" },
+];
+
 const PREMIUM_RE_FAQS = [
   { q: "How do premium real estate firms find HNW buyers without property portals?", a: "By identifying principal buyers — HNW individuals, family offices, and institutional investors — through AI-driven signal monitoring and business press, then initiating direct contact through email and WhatsApp with messages specific to their investment profile and capital position." },
   { q: "Why do luxury properties sit on the market for too long?", a: "Most prime property is marketed to whoever is actively searching portals. This excludes international buyers, passive investors, and principals who would purchase if they knew the property existed. Off-market buyer acquisition expands the buyer pool beyond what portals can reach." },
@@ -39,9 +71,131 @@ const PREMIUM_RE_FAQS = [
   { q: "How quickly can SVNR generate buyer pipeline for a premium real estate firm?", a: "Most programmes produce the first qualified principal contact within 14 days of deployment. A recent engagement produced a qualified principal reply in 14 minutes. Speed of contact is determined by targeting precision and message quality." },
 ];
 
+// THE STRIPE MOMENT — the sector's own mini, blown up to hero scale inside a
+// bordered instrument panel. The reply lands on load, and lands once more,
+// quietly, about eight seconds after a reader hovers it and moves on.
+function ReplyArtefact() {
+  const { mischief, bind } = useIdleMischief();
+  const [replay, setReplay] = useState(0);
+
+  useEffect(() => {
+    if (mischief) setReplay((n) => n + 1);
+  }, [mischief]);
+
+  return (
+    <motion.div
+      {...bind}
+      initial={{ opacity: 0, y: 24 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
+      className="relative overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 min-h-[300px] md:min-h-[380px] p-7"
+    >
+      <div className="relative z-10 flex items-start justify-between gap-4">
+        <span className="text-[10px] tracking-[0.28em] text-white/40" style={MONO}>
+          INBOX
+        </span>
+        <span className="text-[10px] tracking-[0.2em] text-white/25" style={MONO}>
+          DIRECT · NOT PORTAL
+        </span>
+      </div>
+
+      <div
+        key={replay}
+        className="absolute top-0 left-0 origin-top-left w-[77%] h-[77%] scale-[1.3] md:w-[67%] md:h-[67%] md:scale-[1.5]"
+      >
+        {SECTOR_MINI["premium-real-estate"]?.(true)}
+      </div>
+
+      <p className="absolute z-10 bottom-7 left-7 right-7 text-[10px] text-white/30" style={MONO}>
+        Outreach sent → principal reply logged at 14 minutes
+      </p>
+    </motion.div>
+  );
+}
+
+// One bar, two truths: where the deals actually come from.
+function SourcingSplit() {
+  return (
+    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.015] p-7">
+      <p className="text-[10px] tracking-[0.28em] text-white/40 mb-6" style={MONO}>
+        DEAL SOURCING · OFF-MARKET VS PORTAL
+      </p>
+      <div className="flex h-3 w-full overflow-hidden rounded-full bg-white/[0.05]">
+        <motion.div
+          className="h-full bg-white/45"
+          initial={{ width: "0%" }}
+          whileInView={{ width: `${SOURCING.offMarket}%` }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, ease: EASE }}
+        />
+        <motion.div
+          className="h-full bg-white/[0.12]"
+          initial={{ width: "0%" }}
+          whileInView={{ width: `${SOURCING.portal}%` }}
+          viewport={{ once: true, margin: "-60px" }}
+          transition={{ duration: 0.7, delay: 0.12, ease: EASE }}
+        />
+      </div>
+      <div className="flex items-baseline justify-between mt-5">
+        <div>
+          <p className="text-2xl font-medium text-white tabular-nums leading-none">{SOURCING.offMarket}%</p>
+          <p className="text-[10px] tracking-[0.28em] text-white/40 mt-2" style={MONO}>
+            OFF-MARKET
+          </p>
+        </div>
+        <div className="text-right">
+          <p className="text-2xl font-medium text-white/35 tabular-nums leading-none">{SOURCING.portal}%</p>
+          <p className="text-[10px] tracking-[0.28em] text-white/25 mt-2" style={MONO}>
+            PORTAL
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// The decay is the argument for speed: bars shorten as the days pass.
+function ResponseDecay() {
+  return (
+    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.015] p-7">
+      <p className="text-[10px] tracking-[0.28em] text-white/40 mb-6" style={MONO}>
+        RESPONSE BY DAY FROM FIRST CONTACT · D1 = 100
+      </p>
+      <div className="flex flex-col gap-3">
+        {RESPONSE.map((r, i) => (
+          <div key={r.day} className="flex items-center gap-3">
+            <span className="w-8 shrink-0 text-[9px] tracking-widest text-white/25" style={MONO}>
+              {r.day}
+            </span>
+            <div className="h-[3px] flex-1 rounded-full bg-white/[0.06] overflow-hidden">
+              <motion.div
+                className="h-full rounded-full bg-white/40"
+                initial={{ width: "0%" }}
+                whileInView={{ width: `${r.response}%` }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.55, delay: i * 0.08, ease: EASE }}
+              />
+            </div>
+            <motion.span
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.3, delay: 0.25 + i * 0.08 }}
+              className="w-8 shrink-0 text-right text-[11px] text-white/55 tabular-nums"
+              style={MONO}
+            >
+              {r.response}
+            </motion.span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function PremiumRealEstate() {
   return (
-    <main className="relative w-full bg-[#0A0A0B] font-sans selection:bg-white/20 selection:text-white">
+    <main className="relative w-full bg-black font-sans selection:bg-white/20 selection:text-white">
       <SEO
         title="Premium Real Estate Client Acquisition | SVNR Global"
         description="Off-market buyer acquisition for premium real estate. We reach HNW investors, family offices, and principal buyers directly — no portal dependency. First qualified buyer contact within 14 days. Europe, Gulf, and global."
@@ -89,179 +243,335 @@ export default function PremiumRealEstate() {
           { name: "Premium Real Estate", url: "/sectors/premium-real-estate" },
         ]}
       />
-      <section className="relative w-full h-screen flex items-end justify-start overflow-hidden">
-        <img fetchPriority="high" decoding="async" src="/sectors/real-estate-photo-1505873242700-f289a29e1e0f.avif" alt="Premium Real Estate" className="absolute inset-0 w-full h-full object-cover z-0" />
-        <div className="absolute inset-0 z-[1]" style={{ background: "linear-gradient(to top, rgba(10,10,11,1) 0%, rgba(10,10,11,0.4) 50%, rgba(10,10,11,0.1) 100%)" }} />
-        <div className="relative z-10 max-w-7xl mx-auto px-6 md:px-10 pb-20 w-full">
-          <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }}>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/40 mb-4">Sector 02</p>
-            <h1 className="text-5xl md:text-7xl font-medium text-white tracking-tight mb-4">Premium<br />Real Estate</h1>
-            <p className="text-xl text-white/60 max-w-2xl">Principal relationships, not portal listings. For real estate firms moving toward direct HNW and institutional investor relationships.</p>
-            <div className="flex flex-wrap gap-4 mt-8">
-              <div className="liquid-glass rounded-2xl px-6 py-3">
-                <div className="text-2xl font-medium text-white">14 min</div>
-                <div className="text-[10px] text-white/40 uppercase tracking-widest">Time to first qualified reply</div>
-              </div>
-              <div className="liquid-glass rounded-2xl px-6 py-3">
-                <div className="text-2xl font-medium text-white">5K+</div>
-                <div className="text-[10px] text-white/40 uppercase tracking-widest">HNW contacts mapped</div>
-              </div>
-              <div className="liquid-glass rounded-2xl px-6 py-3">
-                <div className="text-2xl font-medium text-white">68%</div>
-                <div className="text-[10px] text-white/40 uppercase tracking-widest">Off-market deal rate</div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
-      <section className="relative z-10 bg-[#0A0A0B] py-20 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="liquid-glass rounded-3xl p-8 md:p-12">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Proof</p>
-            <p className="text-2xl md:text-3xl font-medium text-white max-w-3xl">A Zurich real estate firm. A qualified principal replied in fourteen minutes, reached directly on WhatsApp with a message specific to their investment profile, before any competitor had made contact.</p>
-          </motion.div>
-        </div>
-      </section>
-
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-start">
-          <motion.div initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The Market Reality</p>
-            <h2 className="text-4xl font-medium text-white tracking-tight mb-6">Portal dependency is a buyer quality problem, not a volume problem.</h2>
-            {insights.map((insight, i) => (
-              <motion.p key={i} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="text-white/60 text-sm leading-relaxed mb-4">
-                {insight}
+      {/* HERO */}
+      <section className="relative z-10 px-6 md:px-12 pt-32 md:pt-44 pb-16 md:pb-24">
+        <div className="max-w-[1200px] mx-auto">
+          <Breadcrumbs
+            items={[{ label: "Home", to: "/" }, { label: "Sectors", to: "/sectors" }, { label: "Premium Real Estate" }]}
+          />
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 lg:gap-14 items-center">
+            <div>
+              <motion.p
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, ease: EASE }}
+                className="text-[10px] tracking-[0.28em] text-white/40 mb-6"
+                style={MONO}
+              >
+                SECTOR 02 · PREMIUM REAL ESTATE
               </motion.p>
-            ))}
-          </motion.div>
-          <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.8, delay: 0.2 }} className="space-y-6">
-            <div className="liquid-glass rounded-3xl p-8">
-              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Response rate by contact method</p>
-              <div className="h-44">
-                <ResponsiveContainer width="100%" height="100%">
-                  <AreaChart data={timelineData}>
-                    <defs>
-                      <linearGradient id="re1" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#0071E3" stopOpacity={0.4} />
-                        <stop offset="95%" stopColor="#0071E3" stopOpacity={0} />
-                      </linearGradient>
-                    </defs>
-                    <XAxis dataKey="day" tick={{ fill: "rgba(255,255,255,0.3)", fontSize: 11 }} axisLine={false} tickLine={false} />
-                    <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 12, color: "#fff" }} cursor={false} />
-                    <Area type="monotone" dataKey="response" stroke="#0071E3" strokeWidth={2} fill="url(#re1)" dot={false} />
-                  </AreaChart>
-                </ResponsiveContainer>
-              </div>
+              <motion.div
+                initial={{ opacity: 0, y: 18 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.08, ease: EASE }}
+              >
+                <OpticalType className="text-4xl sm:text-5xl md:text-[64px] font-medium text-white leading-[1.05] tracking-tight">
+                  Principal relationships, not portal listings.
+                </OpticalType>
+              </motion.div>
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.22 }}
+                className="text-white/45 text-base md:text-lg mt-6 max-w-xl leading-relaxed"
+              >
+                For real estate firms moving toward direct HNW and institutional investor relationships.
+              </motion.p>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                className="flex flex-col sm:flex-row gap-3 mt-9"
+              >
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
+                >
+                  Start the conversation <ArrowRight size={14} />
+                </Link>
+                <Link
+                  to="/sectors"
+                  className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/[0.14] text-white/80 text-sm hover:border-white/30 hover:text-white transition-colors"
+                >
+                  All sectors <ArrowRight size={14} />
+                </Link>
+              </motion.div>
             </div>
-            <div className="liquid-glass rounded-3xl p-8">
-              <p className="text-[10px] uppercase tracking-widest text-white/30 mb-4">Deal sourcing, off-market vs. portal</p>
-              <div className="h-40 flex items-center justify-center">
-                <ResponsiveContainer width="100%" height="100%">
-                  <RadialBarChart innerRadius="40%" outerRadius="90%" data={radialData} startAngle={90} endAngle={-270}>
-                    <RadialBar dataKey="value" cornerRadius={4} />
-                    <Tooltip contentStyle={{ background: "#1A1A1C", border: "none", borderRadius: 8, fontSize: 12, color: "#fff" }} />
-                  </RadialBarChart>
-                </ResponsiveContainer>
-              </div>
-              <div className="flex justify-center gap-8 mt-2">
-                <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-blue-500" /><span className="text-xs text-white/50">Off-market 68%</span></div>
-                <div className="flex items-center gap-2"><div className="w-2 h-2 rounded-full bg-white/20" /><span className="text-xs text-white/50">Portal 32%</span></div>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
-      <section className="relative z-10 bg-[#0A0A0B] py-12 px-6">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 gap-4">
-          {["/sectors/real-estate-photo-1505873242700-f289a29e1e0f.avif", "/sectors/real-estate-premium_photo-1661915661139-5b6a4e4a6fcc.avif"].map((src, i) => (
-            <motion.div key={i} initial={{ opacity: 0, scale: 0.95 }} whileInView={{ opacity: 1, scale: 1 }} viewport={{ once: true }} transition={{ delay: i * 0.15 }} className="rounded-2xl overflow-hidden aspect-[4/3]">
-              <img loading="lazy" decoding="async" src={src} className="w-full h-full object-cover hover:scale-105 transition-transform duration-700" alt="Premium real estate UHNW investor buyer pipeline generation" />
-            </motion.div>
-          ))}
-        </div>
-      </section>
+            <ReplyArtefact />
+          </div>
 
-      {/* THE 90-DAY PATH: engagement timeline */}
-      <section className="relative z-10 bg-[#0A0A0B] py-16 px-6">
-        <div className="max-w-6xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">The 90-day path</p>
-            <h2 className="text-3xl font-medium text-white tracking-tight">From engagement to active pipeline.</h2>
-          </motion.div>
-          <EngagementTimeline accent="#0071E3" milestones={[{"when":"Week 0","label":"Buyer signals mapped"},{"when":"Week 2 to 3","label":"Outreach live"},{"when":"First reply","label":"14 minutes in a live programme"},{"when":"Day 90","label":"Principal pipeline active"}]} />
-        </div>
-      </section>
-
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
-        <div className="max-w-7xl mx-auto">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-12">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-4">Applicable Systems</p>
-            <h2 className="text-4xl font-medium text-white tracking-tight">The infrastructure built for premium real estate.</h2>
-          </motion.div>
-          <div className="grid md:grid-cols-2 gap-6">
-            {services.map((s, i) => (
-              <motion.div key={s.slug} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: i * 0.1 }} className="liquid-glass rounded-2xl p-8 group card-3d">
-                <h3 className="text-white font-medium text-xl mb-3 group-hover:text-blue-400 transition-colors">{s.label}</h3>
-                <p className="text-white/50 text-sm leading-relaxed mb-4">{s.desc}</p>
-                <Link to={`/services/${s.slug}`} className="inline-flex items-center gap-2 text-xs text-white/40 hover:text-white transition-colors">Learn more <ArrowRight size={12} /></Link>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-12 md:mt-16">
+            {HERO_STATS.map((s, i) => (
+              <motion.div
+                key={s.l}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+                className="rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 px-6 py-5"
+              >
+                <Counter value={s.v} className="block text-2xl md:text-[28px] font-medium text-white tabular-nums leading-none" />
+                <p className="text-[10px] tracking-[0.28em] text-white/40 mt-3" style={MONO}>
+                  {s.l.toUpperCase()}
+                </p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="relative z-10 bg-[#0A0A0B] py-24 px-6">
-        <div className="max-w-4xl mx-auto text-center liquid-glass rounded-3xl p-12 md:p-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
-            <h2 className="text-4xl md:text-5xl font-medium text-white tracking-tight mb-6">Build the principal relationships that portals cannot produce.</h2>
-            <p className="text-white/50 mb-8 max-w-xl mx-auto">We map and reach the HNW buyers in your market before anyone else does.</p>
-            <Link to="/contact" className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white text-black text-sm font-medium tracking-wide hover:bg-white/90 transition-all">
-              Start the conversation <ArrowRight size={14} />
-            </Link>
+      {/* PROOF */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.55, ease: EASE }}
+            className="rounded-2xl border border-white/[0.08] bg-white/[0.015] p-8 md:p-12"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-6" style={MONO}>
+              PROOF
+            </p>
+            <p className="text-xl md:text-3xl font-medium text-white tracking-tight leading-snug max-w-3xl">
+              A Zurich real estate firm. A qualified principal replied in fourteen minutes, reached directly on
+              WhatsApp with a message specific to their investment profile, before any competitor had made contact.
+            </p>
           </motion.div>
         </div>
       </section>
 
-      
-      <FaqSection faqs={PREMIUM_RE_FAQS} title="Common questions about premium real estate buyer acquisition" />
-
-      <div className="relative z-10 bg-[#0A0A0B] px-6 pb-10"><div className="max-w-7xl mx-auto">
-      {/* RELATED INSIGHTS */}
-      <section className="relative z-10 bg-[#0A0A0B] pb-16 px-6 border-t border-white/8">
-        <div className="max-w-7xl mx-auto pt-16">
-          <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="mb-10">
-            <p className="text-[10px] uppercase tracking-[0.3em] text-white/30 mb-3">Related Insights</p>
-            <h2 className="text-2xl font-medium text-white tracking-tight">From the SVNR blog</h2>
+      {/* THE MARKET REALITY */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-14 items-start">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              THE MARKET REALITY
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight leading-tight mb-6">
+              Portal dependency is a buyer quality problem, not a volume problem.
+            </h2>
+            {insights.map((insight) => (
+              <p key={insight} className="text-white/45 text-sm leading-relaxed mb-4 last:mb-0">
+                {insight}
+              </p>
+            ))}
           </motion.div>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0 * 0.1 }}>
-              <Link to="/blog/real-estate-investor-buyer-acquisition" className="block liquid-glass rounded-2xl p-5 hover:border-white/20 transition-all border border-white/8">
-                <p className="text-[9px] uppercase tracking-widest text-white/30 mb-2">Read</p>
-                <p className="text-white/80 text-sm font-medium leading-snug hover:text-white transition-colors">Reaching Investor Buyers</p>
-                <p className="text-white/30 text-[10px] mt-3 uppercase tracking-widest">→ svnrglobal.com/blog</p>
-              </Link>
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, delay: 0.08, ease: EASE }}
+            className="flex flex-col gap-4"
+          >
+            <SourcingSplit />
+            <ResponseDecay />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* SECTOR IMAGERY */}
+      <section className="relative z-10 px-6 md:px-12 pb-4">
+        <div className="max-w-[1200px] mx-auto grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {IMAGES.map((src, i) => (
+            <motion.div
+              key={src}
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-60px" }}
+              transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+              className="rounded-2xl border border-white/[0.08] overflow-hidden aspect-[4/3]"
+            >
+              <img
+                loading="lazy"
+                decoding="async"
+                src={src}
+                className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-500"
+                alt="Premium real estate UHNW investor buyer pipeline generation"
+              />
             </motion.div>
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 1 * 0.1 }}>
-              <Link to="/blog/hnw-investor-outreach-strategy" className="block liquid-glass rounded-2xl p-5 hover:border-white/20 transition-all border border-white/8">
-                <p className="text-[9px] uppercase tracking-widest text-white/30 mb-2">Read</p>
-                <p className="text-white/80 text-sm font-medium leading-snug hover:text-white transition-colors">HNW Investor Outreach</p>
-                <p className="text-white/30 text-[10px] mt-3 uppercase tracking-widest">→ svnrglobal.com/blog</p>
-              </Link>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 2 * 0.1 }}>
-              <Link to="/blog/uhnw-client-acquisition-strategy" className="block liquid-glass rounded-2xl p-5 hover:border-white/20 transition-all border border-white/8">
-                <p className="text-[9px] uppercase tracking-widest text-white/30 mb-2">Read</p>
-                <p className="text-white/80 text-sm font-medium leading-snug hover:text-white transition-colors">UHNW Client Acquisition</p>
-                <p className="text-white/30 text-[10px] mt-3 uppercase tracking-widest">→ svnrglobal.com/blog</p>
-              </Link>
-            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* THE 90-DAY PATH */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mb-10"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              THE 90-DAY PATH
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight">
+              From engagement to active pipeline.
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {MILESTONES.map((m, i) => (
+              <motion.div
+                key={m.n}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+                className="rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 p-6"
+              >
+                <span className="text-[10px] tracking-widest text-white/20 tabular-nums" style={MONO}>
+                  {m.n}
+                </span>
+                <p className="text-[10px] tracking-[0.28em] text-white/40 mt-5" style={MONO}>
+                  {m.when.toUpperCase()}
+                </p>
+                <p className="text-white text-sm font-medium leading-snug mt-2">{m.label}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      <Footer /></div></div>
+      {/* APPLICABLE SYSTEMS */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mb-10"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              APPLICABLE SYSTEMS
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight">
+              The infrastructure built for premium real estate.
+            </h2>
+          </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {services.map((s, i) => (
+              <motion.div
+                key={s.slug}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                whileHover={{ y: -4, transition: { duration: 0.22, ease: "easeOut" } }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+              >
+                <Link
+                  to={`/services/${s.slug}`}
+                  className="group relative flex flex-col h-full rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 p-7"
+                >
+                  <ArrowRight
+                    size={14}
+                    className="absolute top-7 right-7 text-white/20 group-hover:text-white/70 group-hover:translate-x-1 transition-all duration-300"
+                  />
+                  <h3 className="text-white text-lg md:text-xl font-medium tracking-tight mb-2 pr-8">{s.label}</h3>
+                  <p className="text-white/40 text-sm leading-relaxed">{s.desc}</p>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-28 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.55, ease: EASE }}
+            className="max-w-2xl"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              NEXT
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight leading-tight mb-5">
+              Build the principal relationships that portals cannot produce.
+            </h2>
+            <p className="text-white/45 text-base leading-relaxed mb-9">
+              We map and reach the HNW buyers in your market before anyone else does.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Link
+                to="/contact"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-white text-black text-sm font-medium hover:bg-white/90 transition-colors"
+              >
+                Start the conversation <ArrowRight size={14} />
+              </Link>
+              <Link
+                to="/services/client-acquisition"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full border border-white/[0.14] text-white/80 text-sm hover:border-white/30 hover:text-white transition-colors"
+              >
+                Client acquisition <ArrowRight size={14} />
+              </Link>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      <FaqSection faqs={PREMIUM_RE_FAQS} title="Common questions about premium real estate buyer acquisition" />
+
+      {/* RELATED INSIGHTS */}
+      <section className="relative z-10 px-6 md:px-12 py-20 md:py-24 border-t border-white/[0.06]">
+        <div className="max-w-[1200px] mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.5, ease: EASE }}
+            className="mb-8"
+          >
+            <p className="text-[10px] tracking-[0.28em] text-white/40 mb-5" style={MONO}>
+              RELATED INSIGHTS
+            </p>
+            <h2 className="text-2xl md:text-4xl font-medium text-white tracking-tight">From the SVNR blog</h2>
+          </motion.div>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+            {RELATED.map((r, i) => (
+              <motion.div
+                key={r.to}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: i * 0.05, ease: EASE }}
+              >
+                <Link
+                  to={r.to}
+                  className="group relative flex items-center justify-between gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.015] hover:border-white/[0.14] hover:bg-white/[0.028] transition-colors duration-300 p-6"
+                >
+                  <div>
+                    <p className="text-[10px] tracking-[0.28em] text-white/40 mb-2" style={MONO}>
+                      READ
+                    </p>
+                    <p className="text-white text-sm font-medium leading-snug">{r.label}</p>
+                  </div>
+                  <ArrowRight
+                    size={14}
+                    className="shrink-0 text-white/20 group-hover:text-white/70 group-hover:translate-x-1 transition-all duration-300"
+                  />
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <div className="relative z-10 px-6 md:px-12 pb-10 max-w-[1200px] mx-auto">
+        <Footer />
+      </div>
     </main>
   );
 }
